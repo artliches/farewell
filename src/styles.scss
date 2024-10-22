@@ -19,6 +19,18 @@
     font-weight: 100 1000;
 }
 
+@font-face {
+    font-family: "CallingCode";
+    src: local("CallingCode"), url(./app/assets/fonts/CallingCode.ttf) format('opentype');
+    font-weight: 100 1000;
+}
+
+@font-face {
+    font-family: "Alegreya";
+    src: local("Alegreya"), url(./app/assets/fonts/Alegreya.ttf) format('opentype');
+    font-weight: 100 1000;
+}
+
 @mixin flex-column($gap: 0rem) {
     display: flex;
     flex-direction: column;
@@ -40,7 +52,7 @@ body {
 }
 
 .farewell-layout {
-    @include flex-column;
+    @include flex-column(0.5rem);
     header {
         @include flex-column;
         align-items: center;
@@ -56,6 +68,25 @@ body {
         }
         em {
             font-size: 0.8rem;
+        }
+    }
+
+    .body-layout {
+        display: flex;
+        justify-content: space-evenly;
+        font-size: 1.5rem;
+        .cats{
+            font-family: 'CATS';
+
+        }
+        .roboto {
+            font-family: 'Roboto'
+        }
+        .code {
+            font-family: 'CallingCode';
+        }
+        .ale {
+            font-family: 'Alegreya';
         }
     }
 }
