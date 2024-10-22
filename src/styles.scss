@@ -1,1 +1,76 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+    --fta-blue: #40BFBF;
+    --chromatic-black: #010203;
+    --off-white: #FAF9F6;
+
+    --background-color: var(--chromatic-black);
+    --body-color: var(--off-white);
+}
+
+@font-face {
+    font-family: "CATS";
+    src: local("CATS"), url(./app/assets/fonts/CATS.ttf) format('opentype');
+    font-weight: 100 1000;
+}
+
+@font-face {
+    font-family: "Roboto";
+    src: local("Roboto"), url(./app/assets/fonts/Roboto.ttf) format('opentype');
+    font-weight: 100 1000;
+}
+
+@mixin flex-column($gap: 0rem) {
+    display: flex;
+    flex-direction: column;
+    gap: $gap;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--body-color);
+    font-family: 'Roboto';
+    font-size: 1rem;
+}
+
+.farewell-layout {
+    @include flex-column;
+    header {
+        @include flex-column;
+        align-items: center;
+        text-align: center;
+        h1 {
+            margin: 0;            
+            font-family: 'CATS';
+            background-color: var(--fta-blue);
+            padding: 0.5rem 0;
+            letter-spacing: 0.5rem;
+            font-size: 3rem;
+            width: 100%;
+        }
+        em {
+            font-size: 0.8rem;
+        }
+    }
+}
+
+//TABLET
+@media only screen and (min-width: 768px) {
+    .farewell-layout {
+        header {
+            h1 {
+                letter-spacing: 2rem;
+                font-size: 5rem;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 1440px) {
+}
