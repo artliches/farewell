@@ -73,6 +73,7 @@ body {
 
     .body-layout {
         display: flex;
+        flex-direction: column;
         justify-content: space-evenly;
         font-size: 1.5rem;
         .cats{
@@ -99,6 +100,9 @@ body {
                 letter-spacing: 2rem;
                 font-size: 5rem;
             }
+        }
+        .body-layout {
+            flex-direction: row;
         }
     }
 }
