@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1729628535812,
+  "timestamp": 1729629018387,
   "index": "/farewell/index.csr.html",
   "assetGroups": [
     {
@@ -14,10 +14,10 @@
         "/farewell/favicon.ico",
         "/farewell/index.csr.html",
         "/farewell/index.html",
-        "/farewell/main-IM47E3ET.js",
+        "/farewell/main-LOMQWNX2.js",
         "/farewell/manifest.webmanifest",
         "/farewell/polyfills-FFHMD2TL.js",
-        "/farewell/styles-RMKY66BG.css"
+        "/farewell/styles-J5LIYYUF.css"
       ],
       "patterns": []
     },
@@ -34,7 +34,9 @@
         "/farewell/icons/apple-touch-icon.png",
         "/farewell/icons/favicon-16x16.png",
         "/farewell/icons/favicon-32x32.png",
+        "/farewell/media/Alegreya-JSGAVCRA.ttf",
         "/farewell/media/CATS-DS6PZY2Z.ttf",
+        "/farewell/media/CallingCode-XBE72OYF.ttf",
         "/farewell/media/Roboto-YL6RY2OQ.ttf"
       ],
       "patterns": []
@@ -48,14 +50,16 @@
     "/farewell/icons/apple-touch-icon.png": "2a6631e06169c8699d78a50d09097eef2d4f8a28",
     "/farewell/icons/favicon-16x16.png": "596b043a23ec2e2c7489b4ba06aa0fa0b9b94db6",
     "/farewell/icons/favicon-32x32.png": "52402d8c3733635b79ed660a20fe07a186704450",
-    "/farewell/index.csr.html": "d0afd87901cc1e37eb30ce27a228c4ee674157d5",
-    "/farewell/index.html": "e11f7f892f6d6c246f1ad72793476c11b74566c2",
-    "/farewell/main-IM47E3ET.js": "11779f8664c9e602a7eeaae18c2e0578eb652730",
+    "/farewell/index.csr.html": "8f2341ec1c14ef955bc368153b8cab473b6c488b",
+    "/farewell/index.html": "9288b7ec285698b6638171450cfd25ee51ece3a3",
+    "/farewell/main-LOMQWNX2.js": "e9a36833e3d86f4d22df4454c539e7508d9d1f5e",
     "/farewell/manifest.webmanifest": "dc510c18c4126f4fef6aef9abda5d3599063837a",
+    "/farewell/media/Alegreya-JSGAVCRA.ttf": "6609880948728419617455150aea67982b0319c1",
     "/farewell/media/CATS-DS6PZY2Z.ttf": "86b01de1a3bf84b98da42bbcad7a5b303cfc0f16",
+    "/farewell/media/CallingCode-XBE72OYF.ttf": "559ac8a987f16dc20342cc599472ed1c2da1d996",
     "/farewell/media/Roboto-YL6RY2OQ.ttf": "49b4d9fac9359dbe93549548dcf74141e491ad6f",
     "/farewell/polyfills-FFHMD2TL.js": "f49b49a155bc7d192db62a4c15d0a612b460a667",
-    "/farewell/styles-RMKY66BG.css": "36cb6f4c1ef535d558f1ade6f1af275141bc336a"
+    "/farewell/styles-J5LIYYUF.css": "8b0e65595e1d32d41e97a7bcbdacb6f2ede0cea5"
   },
   "navigationUrls": [
     {
