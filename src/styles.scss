@@ -2,32 +2,95 @@
     --fta-blue: #40BFBF;
     --chromatic-black: #010203;
     --off-white: #FAF9F6;
+    --pink: #FF3EB5;
+    --yellow: #FFE900;
+    --red: red;
 
     --background-color: var(--chromatic-black);
     --body-color: var(--off-white);
+    --main-header-left-color: var(--fta-blue);
+    --main-header-right-color: var(--off-white);
+
+    --header-background-color: var(--fta-blue);
+    --header-color: var(--off-white);
+
+    --hover-background: var(--pink);
+    --hover-color: var(--off-white);
+
+    --border-color: var(--fta-blue);
 }
 
+.charge {
+    --background-color: var(--fta-blue);
+    --body-color: var(--chromatic-black);
+    --main-header-left-color: var(--chromatic-black);
+    --main-header-right-color: black;
+
+    --header-background-color: var(--chromatic-black);
+    --border-color: var(--chromatic-black);
+}
+
+.bone {
+    --background-color: var(--off-white);
+    --body-color: var(--chromatic-black);
+    --main-header-left-color: var(--red);
+    --main-header-right-color: var(--chromatic-black);
+
+    --header-background-color: var(--red);
+    --border-color: var(--red);
+
+    --hover-background: var(--fta-blue);
+    --hover-color: var(--chromatic-black);
+}
+
+.mork {
+    --background-color: #FFE900;
+    --body-color: var(--chromatic-black);
+    --main-header-left-color: var(--chromatic-black);
+    --main-header-right-color: var(--chromatic-black);
+
+    --header-background-color: var(--chromatic-black);
+    --border-color: var(--chromatic-black);
+}
+
+.gum {
+    --background-color: var(--pink);
+    --body-color: var(--chromatic-black);
+
+    --header-background-color: var(--off-white);
+    --header-color: var(--chromatic-black);
+    --border-color: var(--off-white);
+
+    --hover-background: var(--yellow);
+    --hover-color: var(--chromatic-black);
+
+    --main-header-left-color: var(--fta-blue);
+    --main-header-right-color: var(--off-white);
+}
+
+//main display fonts
 @font-face {
-    font-family: "CATS";
-    src: local("CATS"), url(./app/assets/fonts/CATS.ttf) format('opentype');
+    font-family: "DIRTBAG";
+    src: local("DIRTBAG"), url(./app/assets/fonts/DIRTBAG.OTF) format('opentype');
     font-weight: 100 1000;
 }
 
 @font-face {
-    font-family: "Roboto";
-    src: local("Roboto"), url(./app/assets/fonts/Roboto.ttf) format('opentype');
+    font-family: "BAALREGULAR";
+    src: local("BAALREGULAR"), url(./app/assets/fonts/BAALREGULAR.OTF) format('opentype');
+    font-weight: 100 1000;
+}
+
+//body fonts
+@font-face {
+    font-family: "BAHNSCHRIFT";
+    src: local("BAHNSCHRIFT"), url(./app/assets/fonts/BAHNSCHRIFT.TTF) format('truetype');
     font-weight: 100 1000;
 }
 
 @font-face {
-    font-family: "CallingCode";
-    src: local("CallingCode"), url(./app/assets/fonts/CallingCode.ttf) format('opentype');
-    font-weight: 100 1000;
-}
-
-@font-face {
-    font-family: "Alegreya";
-    src: local("Alegreya"), url(./app/assets/fonts/Alegreya.ttf) format('opentype');
+    font-family: "ALEGREYA";
+    src: local("ALEGREYA"), url(./app/assets/fonts/ALEGREYA.OTF) format('opentype');
     font-weight: 100 1000;
 }
 
@@ -47,11 +110,40 @@ html, body {
 body {
     background-color: var(--background-color);
     color: var(--body-color);
-    font-family: 'Roboto';
-    font-size: 1rem;
+    font-family: 'ALEGREYA';
+    font-size: 16px;
+}
+
+.emphasize {
+    font-family: "BAALREGULAR";
+    letter-spacing: 5px;
+}
+
+.clickable {
+    cursor: pointer;
+    user-select: none;
+    background-color: var(--header-background-color);
+    color: var(--header-color);
+    width: max-content;
+    .emphasize {
+        text-decoration: underline;
+    }
+    &:hover {
+        font-weight: bold;
+        transform: scale(1.1) rotate(2deg) !important;
+        background-color: var(--hover-background) !important;
+        color: var(--hover-color);
+        transition: all .05s ease-in-out !important;
+    }
+    &:active {
+        font-weight: unset;
+        transform: scale(1) !important;
+    }
 }
 
 .farewell-layout {
+    background-color: var(--background-color);
+    width: 100%;
     @include flex-column(0.5rem);
     header {
         @include flex-column;
@@ -59,11 +151,13 @@ body {
         text-align: center;
         h1 {
             margin: 0;            
-            font-family: 'CATS';
-            background-color: var(--fta-blue);
+            font-family: 'DIRTBAG';
+            background: linear-gradient(to right, var(--main-header-left-color), var(--main-header-right-color));
+            background-clip: text;
+            color: transparent;
             padding: 0.5rem 0;
             letter-spacing: 0.5rem;
-            font-size: 3rem;
+            font-size: 2rem;
             width: 100%;
         }
         em {
@@ -72,24 +166,61 @@ body {
     }
 
     .body-layout {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-evenly;
-        font-size: 1.5rem;
+        @include flex-column;
+        *:nth-child(even) {
+            .grvnt-header.clickable {
+                &:hover  {
+                    transform: scale(1.1) rotate(-2deg) !important;
+                }
+                &:active {
+                    font-weight: unset;
+                    transform: scale(1) !important;
+                }
+            }
+        }
+    }
+}
 
-        text-align: center;
-        .cats{
-            font-family: 'CATS';
+.grvnt-card {
+    @include flex-column(0.5rem);
+    border-bottom: 2px solid var(--border-color);
 
+    &:first-of-type {
+        border-top: 2px solid var(--border-color);
+    }
+    padding: 0 16px 8px 16px;
+    .grvnt-header {
+        align-self: center;
+        font-weight: bold;
+        font-family: 'DIRTBAG';
+        font-size: 1.1rem;
+        strong {
+            text-decoration: underline;
         }
-        .roboto {
-            font-family: 'Roboto'
+        &.baal {
+            font-family: BAALREGULAR;
+            font-size: 2rem;
+            letter-spacing: 0.5rem;
+            padding: 0.3rem 0.5rem 0 0.5rem;
         }
-        .code {
-            font-family: 'CallingCode';
+    }
+    .grvnt-body {
+        @include flex-column(0.5rem);
+
+    }
+}
+
+@media only screen and (min-width: 375px) {
+    .farewell-layout {
+        header {
+            h1 {
+                font-size: 3rem;
+            }
         }
-        .ale {
-            font-family: 'Alegreya';
+    }
+    .grvnt-card {
+        .grvnt-header {
+            font-size: 1.4rem;
         }
     }
 }
@@ -103,11 +234,25 @@ body {
                 font-size: 5rem;
             }
         }
-        .body-layout {
-            flex-direction: row;
+    }
+    .grvnt-card {
+        .grvnt-header {
+            font-size: 1.8rem;
         }
     }
 }
 
+// small laptop
+@media only screen and (min-width: 1024px) {
+    .farewell-layout {
+        max-width: 90%;
+        margin: auto;
+    }
+}
+
 @media only screen and (min-width: 1440px) {
+    .farewell-layout {
+        max-width: 65%;
+        margin: auto;
+    }
 }

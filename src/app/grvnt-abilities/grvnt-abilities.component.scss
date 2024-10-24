@@ -1,0 +1,81 @@
+.grvnt-card {
+    padding: 0;
+}
+.grvnt-body {
+    display: flex;
+    flex-direction: column;
+    .ability-layout {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 0 1rem;
+        &:first-of-type {
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .ability {
+            display: grid;
+            column-gap: 0.5rem;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(2, min-content);
+            grid-template-areas:
+                "name   stat"
+                "detail stat";
+            .ability-name {
+                grid-area: name;
+                font-family: "BAHNSCHRIFT";
+                padding: 0 0.5rem;
+            }
+            small {
+                grid-area: detail;
+                font-size: 10px;
+                .emphasize {
+                    font-size: 14px;
+                }
+            }
+            .stat {
+                grid-area: stat;
+                place-self: center;
+                font-size: 2rem;
+            }
+            &:nth-child(odd) {
+                .ability-name.clickable {
+                    &:hover {
+                        transform: scale(1.1) rotate(-2deg) !important;
+                    }
+                    &:active {
+                        font-weight: unset;
+                        transform: scale(1) !important;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 375px) {
+    .grvnt-body {
+        .ability-layout {
+            padding: 0;
+            display: flex;
+            flex-flow: wrap;
+            justify-content: space-evenly;
+
+            .ability {
+                grid-template-columns: auto 1fr;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    .grvnt-body {
+        .ability-layout {
+            .ability {
+                small {
+                    font-size: 12px;
+                }
+            }
+        }
+    }
+}

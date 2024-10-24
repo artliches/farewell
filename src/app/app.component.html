@@ -1,13 +1,17 @@
-<span class="farewell-layout">
+<span class="farewell-layout" [ngClass]="currentTheme">
     <header>
-        <h1>FAREWELL</h1>
-        <em>random generators for <strong>FAREWELL TO ARMS: REDUX</strong></em>
+        <h1>GRVNT RECRUITER</h1>
+        <!-- <em>random generators for <strong>FAREWELL TO ARMS: REDUX</strong></em> -->
     </header>
 
     <section class="body-layout">
-        <span class="cats">CATS cats</span>
-        <span class="roboto">ROBOTO roboto</span>
-        <span class="code">CALLINGCODE callingcode</span>
-        <span class="ale">ALEGREYA alegreya</span>
+        <span class="toolbar">
+            <span class="theme-section">
+                <div (click)="shuffleTheme()" class="clickable">SHUFFLE THEME:</div>
+                <strong>{{getThemeName()}}</strong>
+            </span>
+        </span>
+        <app-grvnt-abilities></app-grvnt-abilities>
+        <app-grvnt-identity></app-grvnt-identity>
     </section>
 </span>

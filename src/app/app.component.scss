@@ -1,0 +1,23 @@
+.toolbar {
+    font-size: 10px;
+    .theme-section {
+        display: flex;
+        gap: 3px;
+        border: 1px solid var(--border-color);
+        border-right: 2px solid var(--border-color);
+        width: max-content;
+        padding-right: 3px;
+        strong {
+            font-family: 'BAHNSCHRIFT';
+        }
+    }
+    .clickable {
+        font-family: "DIRTBAG";
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .toolbar {
+        font-size: 14px;
+    }
+}
