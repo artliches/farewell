@@ -1,6 +1,7 @@
 .grvnt-card {
     padding: 0;
 }
+
 .grvnt-body {
     display: flex;
     flex-direction: column;
@@ -9,9 +10,6 @@
         flex-direction: column;
         gap: 0.5rem;
         padding: 0 1rem;
-        &:first-of-type {
-            border-bottom: 1px solid var(--border-color);
-        }
 
         .ability {
             display: grid;

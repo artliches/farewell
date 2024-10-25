@@ -1,28 +1,35 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { GrvntAbilitiesComponent } from "./grvnt-abilities/grvnt-abilities.component";
 import { GrvntIdentityComponent } from "./grvnt-identity/grvnt-identity.component";
 import { CommonModule } from '@angular/common';
+import { GrvntClassComponent } from "./grvnt-class/grvnt-class.component";
+import { GrvntVitalsComponent } from "./grvnt-vitals/grvnt-vitals.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, GrvntAbilitiesComponent, GrvntIdentityComponent, CommonModule],
+  imports: [RouterOutlet, GrvntAbilitiesComponent, GrvntIdentityComponent, CommonModule, GrvntClassComponent, GrvntVitalsComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   offWhite = '#FAF9F6';
   chromeBlack = '#010203';
   morkYellow = '#FFE900';
   pink = '#FF3EB5';
+
+  currentUI: string = 'stacked';
+
+
   currentTheme: string = 'nomansland';
   themeArray: Array<string> = [
     'nomansland',
     'charge',
     'bone',
     'mork',
-    'gum'
+    'gum',
+    'vet',
   ];
   themeBackgrounds: Array<any> = [
     {
@@ -50,7 +57,19 @@ export class AppComponent {
       background: this.pink,
       color: this.offWhite,
     },
+    {
+      theme: 'vet',
+      background: this.offWhite,
+      color: this.chromeBlack,
+    },
   ];
+
+  ngOnInit(): void {
+  }
+
+  shuffleUI() {
+    this.currentUI = this.currentUI === 'stacked' ? 'killroy' : 'stacked';
+  }
 
   shuffleTheme() {
     const currThemeIndex = this.themeArray.indexOf(this.currentTheme);
@@ -83,6 +102,9 @@ export class AppComponent {
       }
       case this.currentTheme === 'gum': {
         return `CHEWING GUM`;
+      }
+      case this.currentTheme === 'vet': {
+        return `VETERAN`;
       }
     }
     return '';

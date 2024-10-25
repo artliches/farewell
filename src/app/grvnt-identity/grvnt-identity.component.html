@@ -4,10 +4,13 @@
     </div>
     <div class="grvnt-body">
         <div>
-            Your name is forgotten in the mud, dirt, and blood. You are simply <span (click)="rerollName()" class="clickable">{{nameObj.name}}</span>.
+            Your name is forgotten in the mud, dirt, and blood. You are simply <span (click)="rerollName()" class="clickable">"{{nameObj.name}}"</span>.
         </div>
         <div>
-            You joined this hellish war <span (click)="rerollReasons()" class="clickable" [innerHTML]="reasonObj.descrip"></span>.
+            You joined this hellish war <span (click)="rerollReasons()" class="clickable" [innerHTML]="reasonObj.descrip"></span>. The endless fighting has left you with {{nextWordGrammer(scarsObj.descrip)}} <span (click)="rerollScars()" class="clickable" [innerHTML]="scarsObj.descrip"></span>.
+        </div>
+        <div>
+            To deal with the atrocities of wartime, you cope by <span class="clickable" (click)="rerollVices()" [innerHTML]="vicesObj.descrip"></span>.
         </div>
     </div>
 </span>

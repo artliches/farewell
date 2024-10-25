@@ -1,4 +1,4 @@
-<span class="farewell-layout" [ngClass]="currentTheme">
+<span class="farewell-layout {{currentUI}}" [ngClass]="currentTheme">
     <header>
         <h1>GRVNT RECRUITER</h1>
         <!-- <em>random generators for <strong>FAREWELL TO ARMS: REDUX</strong></em> -->
@@ -10,8 +10,13 @@
                 <div (click)="shuffleTheme()" class="clickable">SHUFFLE THEME:</div>
                 <strong>{{getThemeName()}}</strong>
             </span>
+            <!-- <span class="theme-section">
+                <div (click)="shuffleUI()" class="clickable">LAYOUT TEST</div>
+                <strong>{{currentUI | uppercase}}</strong>
+            </span> -->
         </span>
-        <app-grvnt-abilities></app-grvnt-abilities>
-        <app-grvnt-identity></app-grvnt-identity>
+        <app-grvnt-abilities class="stats"></app-grvnt-abilities>
+        <app-grvnt-identity class="id"></app-grvnt-identity>
+        <app-grvnt-class class="job"></app-grvnt-class>
     </section>
 </span>
