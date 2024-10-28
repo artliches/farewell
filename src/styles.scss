@@ -18,6 +18,8 @@
     --hover-color: var(--off-white);
 
     --border-color: var(--fta-blue);
+    --selection-background-color: var(--fta-blue);
+    --selection-color: var(--chromatic-black);
 }
 
 .charge {
@@ -29,6 +31,8 @@
     --header-background-color: var(--chromatic-black);
     --header-color: var(--fta-blue);
     --border-color: var(--chromatic-black);
+    --selection-background-color: var(--chromatic-black);
+    --selection-color: var(--fta-blue);
 }
 
 .bone {
@@ -42,6 +46,8 @@
 
     --hover-background: var(--fta-blue);
     --hover-color: var(--chromatic-black);
+    --selection-background-color: var(--red);
+    --selection-color: var(--chromatic-black);
 }
 
 .mork {
@@ -53,6 +59,8 @@
     --header-background-color: var(--chromatic-black);
     --header-color: var(--off-white);
     --border-color: var(--chromatic-black);
+    --selection-background-color: var(--chromatic-black);
+    --selection-color: var(--yellow);
 }
 
 .gum {
@@ -68,6 +76,8 @@
 
     --main-header-left-color: var(--fta-blue);
     --main-header-right-color: var(--off-white);
+    --selection-background-color: var(--yellow);
+    --selection-color: var(--chromatic-black);
 }
 
 .vet {
@@ -83,6 +93,8 @@
 
     --main-header-left-color: var(--pink);
     --main-header-right-color: var(--red);
+    --selection-background-color: var(--pink);
+    --selection-color: var(--off-white);
 }
 
 .sapper {
@@ -98,6 +110,8 @@
 
     --hover-background: var(--yellow);
     --hover-color: var(--chromatic-black);
+    --selection-background-color: var(--yellow);
+    --selection-color: var(--chromatic-black);
 }
 
 //main display fonts
@@ -144,6 +158,11 @@ body {
     color: var(--body-color);
     font-family: 'ALEGREYA';
     font-size: 16px;
+}
+
+::selection {
+    background: var(--selection-background-color);
+    color: var(--selection-color);
 }
 
 .emphasize {
