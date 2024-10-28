@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1729876972155,
+  "timestamp": 1730132452774,
   "index": "/farewell/index.csr.html",
   "assetGroups": [
     {
@@ -14,10 +14,10 @@
         "/farewell/favicon.ico",
         "/farewell/index.csr.html",
         "/farewell/index.html",
-        "/farewell/main-5NQUWYVE.js",
+        "/farewell/main-UUMLUSNJ.js",
         "/farewell/manifest.webmanifest",
         "/farewell/polyfills-FFHMD2TL.js",
-        "/farewell/styles-4IIRDY27.css"
+        "/farewell/styles-S5V2523E.css"
       ],
       "patterns": []
     },
@@ -33,7 +33,8 @@
         "/farewell/icons/android-chrome-512x512.png",
         "/farewell/icons/apple-touch-icon.png",
         "/farewell/icons/favicon-16x16.png",
-        "/farewell/icons/favicon-32x32.png"
+        "/farewell/icons/favicon-32x32.png",
+        "/farewell/media/ALEGREYA-JSGAVCRA.ttf"
       ],
       "patterns": []
     }
@@ -46,12 +47,13 @@
     "/farewell/icons/apple-touch-icon.png": "2a6631e06169c8699d78a50d09097eef2d4f8a28",
     "/farewell/icons/favicon-16x16.png": "596b043a23ec2e2c7489b4ba06aa0fa0b9b94db6",
     "/farewell/icons/favicon-32x32.png": "52402d8c3733635b79ed660a20fe07a186704450",
-    "/farewell/index.csr.html": "6d11d58ca16daddd1e792d9fb052222202a11723",
-    "/farewell/index.html": "8fd905e804caa88f44da55c9460f2d3e09cb6416",
-    "/farewell/main-5NQUWYVE.js": "817d11c655f7693bf1fb1b8ffdf224cb6d0825f7",
+    "/farewell/index.csr.html": "ed2afbe32286ef243fee0be46ae8ad3fe6f4d64c",
+    "/farewell/index.html": "81cd0be0d6efdd401c15ce792b0bb915c4a4b41b",
+    "/farewell/main-UUMLUSNJ.js": "a20da6d3f96bb0ee6f00c7fa56a7b1a98d8fb135",
     "/farewell/manifest.webmanifest": "dc510c18c4126f4fef6aef9abda5d3599063837a",
+    "/farewell/media/ALEGREYA-JSGAVCRA.ttf": "6609880948728419617455150aea67982b0319c1",
     "/farewell/polyfills-FFHMD2TL.js": "f49b49a155bc7d192db62a4c15d0a612b460a667",
-    "/farewell/styles-4IIRDY27.css": "6d4d50baaa1d19a9fafcdc5bac5e23de167a175a"
+    "/farewell/styles-S5V2523E.css": "2666553097e4da24f189208567c4235b3a6f6c54"
   },
   "navigationUrls": [
     {
