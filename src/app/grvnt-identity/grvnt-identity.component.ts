@@ -109,6 +109,32 @@ export class GrvntIdentityComponent implements OnInit {
 
     if (this.scarsObj.descrip.includes('[d6]')) {
       this.scarsObj.descrip = this.scarsObj.descrip.replace('[d6]', this.random.getRandomNumber(1, 6).toString());
+    } else if (this.scarsObj.descrip.includes('infected')) {
+      const hand = this.random.getRandomNumber(1, 2) === 1 ? 'left' : 'right';
+      const finger = this.getFinger(this.random.getRandomNumber(1, 4));
+
+      this.scarsObj.descrip = this.scarsObj.descrip.replace('[d4]', finger);
+      this.scarsObj.descrip = this.scarsObj.descrip.replace('[d2]', hand);
+    }
+  }
+
+  private getFinger(fingerIndex: number) {
+    switch (true) {
+      case fingerIndex === 1: {
+        return 'pointer';
+      }
+      case fingerIndex === 2: {
+        return 'middle';
+      }
+      case fingerIndex === 3: {
+        return 'ring';
+      }
+      case fingerIndex === 4: {
+        return 'little';
+      }
+      default: {
+        return 'null';
+      }
     }
   }
 

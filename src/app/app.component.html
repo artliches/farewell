@@ -17,6 +17,10 @@
         </span>
         <app-grvnt-abilities class="stats"></app-grvnt-abilities>
         <app-grvnt-identity class="id"></app-grvnt-identity>
-        <app-grvnt-class class="job"></app-grvnt-class>
+        <app-grvnt-class
+            class="job"
+            [job]="jobObj"
+            (newJobEmitter)="getNewJob()"
+        ></app-grvnt-class>
     </section>
 </span>

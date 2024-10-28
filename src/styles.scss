@@ -85,6 +85,21 @@
     --main-header-right-color: var(--red);
 }
 
+.sapper {
+    --background-color: var(--off-white);
+    --body-color: var(--chromatic-black);
+
+    --main-header-left-color: var(--yellow);
+    --main-header-right-color: var(--red);
+
+    --header-background-color: var(--chromatic-black);
+    --header-color: var(--yellow);
+    --border-color: var(--chromatic-black);
+
+    --hover-background: var(--yellow);
+    --hover-color: var(--chromatic-black);
+}
+
 //main display fonts
 @font-face {
     font-family: "DIRTBAG";
@@ -107,7 +122,7 @@
 
 @font-face {
     font-family: "ALEGREYA";
-    src: local("ALEGREYA"), url(./app/assets/fonts/ALEGREYA.OTF) format('opentype');
+    src: local("ALEGREYA"), url(./app/assets/fonts/ALEGREYA.ttf) format('truetype');
     font-weight: 100 1000;
 }
 
@@ -225,6 +240,14 @@ body {
     .grvnt-body {
         height: 100%;
         @include flex-column(0.5rem);
+    }
+}
+
+.skills {
+    .skill-section {
+        .clickable {
+            font-family: 'BAHNSCHRIFT';
+        }
     }
 }
 

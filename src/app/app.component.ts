@@ -5,6 +5,8 @@ import { GrvntIdentityComponent } from "./grvnt-identity/grvnt-identity.componen
 import { CommonModule } from '@angular/common';
 import { GrvntClassComponent } from "./grvnt-class/grvnt-class.component";
 import { GrvntVitalsComponent } from "./grvnt-vitals/grvnt-vitals.component";
+import { RandomNumberService } from './random-number.service';
+import { JOBS } from './assets/grvnts.constants';
 
 @Component({
   selector: 'app-root',
@@ -14,22 +16,24 @@ import { GrvntVitalsComponent } from "./grvnt-vitals/grvnt-vitals.component";
   styleUrl: './app.component.scss'
 })
 export class AppComponent implements OnInit {
+  constructor(
+    private random: RandomNumberService
+  ) {}
   offWhite = '#FAF9F6';
   chromeBlack = '#010203';
   morkYellow = '#FFE900';
   pink = '#FF3EB5';
 
   currentUI: string = 'stacked';
-
-
   currentTheme: string = 'nomansland';
   themeArray: Array<string> = [
     'nomansland',
     'charge',
-    'bone',
     'mork',
     'gum',
+    'bone',
     'vet',
+    'sapper'
   ];
   themeBackgrounds: Array<any> = [
     {
@@ -62,9 +66,53 @@ export class AppComponent implements OnInit {
       background: this.offWhite,
       color: this.chromeBlack,
     },
+    {
+      theme: 'sapper',
+      background: this.offWhite,
+      color: this.chromeBlack,
+    },
   ];
 
+  jobObj = {
+    name: '',
+    stats: [{}],
+    extras: [''],
+    descrip: '',
+    skills: [{}],
+    currIndex: -1,
+  };
+
   ngOnInit(): void {
+    //shuffle jobs and choose the first on load
+    this.random.shuffleArray(JOBS);
+    this.jobObj = {
+      name: JOBS[0].name,
+      stats: JOBS[0].stats,
+      extras: JOBS[0].extras,
+      descrip: JOBS[0].descrip,
+      skills: JOBS[0].skills,
+      currIndex: 0
+    };
+  }
+
+  getNewJob() {
+    let newIndex = 0;
+    const isEndOfArray = JOBS.length === this.jobObj.currIndex + 1;
+
+    if (isEndOfArray) {
+      this.random.shuffleArray(JOBS);
+    } else {
+      newIndex = this.jobObj.currIndex + 1;
+    }
+
+    this.jobObj = {
+      name: JOBS[newIndex].name,
+      stats: JOBS[newIndex].stats,
+      extras: JOBS[newIndex].extras,
+      descrip: JOBS[newIndex].descrip,
+      skills: JOBS[newIndex].skills,
+      currIndex: newIndex
+    };
   }
 
   shuffleUI() {
@@ -105,6 +153,9 @@ export class AppComponent implements OnInit {
       }
       case this.currentTheme === 'vet': {
         return `VETERAN`;
+      }
+      case this.currentTheme === 'sapper': {
+        return `SAPPER`;
       }
     }
     return '';
