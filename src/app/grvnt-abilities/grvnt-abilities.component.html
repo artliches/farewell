@@ -1,58 +1,54 @@
 <span class="grvnt-card">
-    <div class="grvnt-header clickable">
+    <div (click)="rerollAll()" class="grvnt-header clickable">
         STATS
     </div>
     <div class="grvnt-body">
         <span class="ability-layout">
-            <span class="ability">
-                <div class="ability-name clickable">TOUGHNESS</div>
-                <small class="ability-description">resist shock/gas/cold/heat</small>
-                <span class="stat">&#177;0</span>
-            </span>
-            <span class="ability">
-                <div class="ability-name clickable">AGILITY</div>
-                <small class="ability-description">
-                    defend, sneak, avoid explosions
-                </small>
-                <span class="stat">&#177;0</span>
-            </span>
-            <span class="ability">
-                <div class="ability-name clickable">PRESENCE</div>
-                <small class="ability-description">
-                    shoot, perceive, use war scrolls
-                </small>
-                <span class="stat">&#177;0</span>
-            </span>
-            <span class="ability">
-                <div class="ability-name clickable">STRENGTH</div>
-                <small class="ability-description">
-                    melee, throw, carry requisitions
-                </small>
-                <span class="stat">&#177;0</span>
-            </span>
+            @for (stat of statsArray; track $index) {
+                <span class="ability">
+                    <div (click)="rerollStat(stat.name)" class="ability-name clickable">{{stat.name | uppercase}}</div>
+                    <small class="ability-description">
+                        {{stat.descrip}}
+                        @if (showRolls && stat.rollsArray) {
+                            <div>
+                                [{{stat.rollsArray}}]
+                                @if (stat.statMod) {
+                                    {{stat.statMod}}
+                                }
+                            </div>
+                        }
+                    </small>
+                    <span class="stat">
+                        @if (stat.value === 0) {
+                            &#177;
+                        }
+                        {{stat.value}}
+                    </span>
+                </span>
+            }
         </span>
+
         <span class="ability-layout">
-            <span class="ability">
-                <div class="ability-name clickable">HIT POINTS</div>
-                <small class="ability-description">
-                    0 or -1: downed | -2: <strong class="emphasize">DEATH</strong>
-                </small>
-                <span class="stat">1</span>
-            </span>
-            <span class="ability">
-                <div class="ability-name clickable">OMENS</div>
-                <small class="ability-description">
-                    twist cruel fate
-                </small>
-                <span class="stat">2 (d4)</span>
-            </span>
-            <span class="ability">
-                <div class="ability-name clickable">SILVER</div>
-                <small class="ability-description">
-                    shrapnel waiting to happen
-                </small>
-                <span class="stat">666 s</span>
-            </span>
+            @for (vital of vitalsArray; track $index) {
+                <span class="ability">
+                    <div (click)="rerollVital(vital.name)" class="ability-name clickable">{{vital.name | uppercase}}</div>
+                    <small class="ability-description">
+                        {{vital.descrip}}
+                        @if (showRolls && vital.rollsArray) {
+                            <div>[{{vital.rollsArray}}]</div>
+                        }
+                    </small>
+                    <span class="stat">
+                        @if (vital.name === 'omens') {
+                            {{vital.valueObj?.current}} ({{vital.valueObj?.die}})
+                        }
+                        {{vital.value}}
+                        @if (vital.name === 'silver') {
+                            s
+                        }
+                    </span>
+                </span>
+            }
         </span>
     </div>
 </span>

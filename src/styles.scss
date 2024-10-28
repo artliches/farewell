@@ -257,6 +257,7 @@ body {
         }
     }
     .grvnt-body {
+        margin-top: 0.5rem;
         height: 100%;
         @include flex-column(0.5rem);
     }

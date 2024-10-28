@@ -17,7 +17,7 @@
             display: grid;
             column-gap: 0.5rem;
             grid-template-columns: repeat(2, 1fr);
-            grid-template-rows: repeat(2, min-content);
+            grid-template-rows: auto 1fr;
             grid-template-areas:
                 "name   stat"
                 "detail stat";

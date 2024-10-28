@@ -73,6 +73,8 @@ export class AppComponent implements OnInit {
     },
   ];
 
+  showRolls: boolean = false;
+
   jobObj = {
     name: '',
     stats: [{}],
@@ -93,6 +95,10 @@ export class AppComponent implements OnInit {
       skills: JOBS[0].skills,
       currIndex: 0
     };
+  }
+
+  toggleRolls() {
+    this.showRolls = !this.showRolls;
   }
 
   getNewJob() {

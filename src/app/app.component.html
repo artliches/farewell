@@ -10,12 +10,20 @@
                 <div (click)="shuffleTheme()" class="clickable">SHUFFLE THEME:</div>
                 <strong>{{getThemeName()}}</strong>
             </span>
+            <span class="theme-section no-extra-section">
+                <div (click)="toggleRolls()" class="clickable">{{showRolls ? 'HIDE' : 'SHOW'}} ROLLS</div>
+            </span>
             <!-- <span class="theme-section">
                 <div (click)="shuffleUI()" class="clickable">LAYOUT TEST</div>
                 <strong>{{currentUI | uppercase}}</strong>
             </span> -->
         </span>
-        <app-grvnt-abilities class="stats"></app-grvnt-abilities>
+        <app-grvnt-abilities
+            class="stats"
+            [job]="jobObj"
+            [showRolls]="showRolls"
+        >
+        </app-grvnt-abilities>
         <app-grvnt-identity class="id"></app-grvnt-identity>
         <app-grvnt-class
             class="job"

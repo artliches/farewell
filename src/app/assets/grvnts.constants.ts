@@ -194,7 +194,7 @@ export const JOBS = [
         stats: [
             {
                 name: 'hp',
-                mod: 'd10'
+                mod: 10
             },
             {
                 name: 'omens',
@@ -251,7 +251,7 @@ export const JOBS = [
         stats: [
             {
                 name: 'hp',
-                mod: 'd6'
+                mod: 6
             },
             {
                 name: 'omens',

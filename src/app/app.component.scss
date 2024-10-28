@@ -1,6 +1,7 @@
 .toolbar {
     font-size: 10px;
     display: flex;
+    justify-content: space-between;
     .theme-section {
         display: flex;
         gap: 3px;
@@ -8,6 +9,9 @@
         border-right: 2px solid var(--border-color);
         width: max-content;
         padding-right: 3px;
+        &.no-extra-section {
+            padding-right: 0rem;
+        }
         strong {
             font-family: 'BAHNSCHRIFT';
         }
