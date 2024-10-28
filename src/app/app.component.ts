@@ -99,11 +99,9 @@ export class AppComponent implements OnInit {
     let newIndex = 0;
     const isEndOfArray = JOBS.length === this.jobObj.currIndex + 1;
 
-    if (isEndOfArray) {
-      this.random.shuffleArray(JOBS);
-    } else {
+    if (!isEndOfArray) {
       newIndex = this.jobObj.currIndex + 1;
-    }
+    } 
 
     this.jobObj = {
       name: JOBS[newIndex].name,
