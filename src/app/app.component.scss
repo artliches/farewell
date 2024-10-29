@@ -4,13 +4,16 @@
     justify-content: space-between;
     .theme-section {
         display: flex;
-        gap: 3px;
-        border: 1px solid var(--border-color);
-        border-right: 2px solid var(--border-color);
+        gap: 0.188rem;
+        border: 0.063rem solid var(--border-color);
+        border-right: 0.125rem solid var(--border-color);
         width: max-content;
-        padding-right: 3px;
+        padding-right: 0.188rem;
         &.no-extra-section {
             padding-right: 0rem;
+            div.clickable {
+                padding-top: 0.2rem;
+            }            
         }
         strong {
             font-family: 'BAHNSCHRIFT';
@@ -23,6 +26,6 @@
 
 @media only screen and (min-width: 768px) {
     .toolbar {
-        font-size: 14px;
+        font-size: 0.875rem;
     }
 }
