@@ -15,6 +15,7 @@ export class GrvntAbilitiesComponent implements OnInit, OnChanges {
   ) {}
   @Input() job: any;
   @Input() showRolls: boolean = false;
+  @Input() beastHP: number = 0;
 
   statsArray: Array<{
     name: string,
@@ -87,6 +88,7 @@ export class GrvntAbilitiesComponent implements OnInit, OnChanges {
   ];
 
   ngOnInit(): void {
+    this.beastHP = 0;
     this.statsArray.forEach(stat => {
       this.rerollStat(stat.name);
     });
@@ -99,13 +101,35 @@ export class GrvntAbilitiesComponent implements OnInit, OnChanges {
     if (changes['job'] && !changes['job'].firstChange) {
       this.rerollAll();
     }
+    if (changes['beastHP'] && changes['beastHP'].currentValue > 0) {
+      const hpIndex = this.vitalsArray.findIndex(vital => vital.name === 'hp');
+      if (hpIndex !== undefined && this.vitalsArray[hpIndex].value) {
+        this.vitalsArray[hpIndex].value -= changes['beastHP'].previousValue;
+        this.vitalsArray[hpIndex].value += this.beastHP;
+      }
+    }
   }
 
   rerollAll() {
-    this.statsArray.forEach(stat => stat.value = 0);
+    this.statsArray.forEach(stat => {
+      stat.value = 0;
+      stat.rollsArray = [];
+      stat.statMod = '';
+    });
+
+    this.vitalsArray.forEach(vital => {
+      vital.rollsArray = '';
+      if (vital.value) {
+        vital.value = 0;
+      } else if (vital.valueObj) {
+        vital.valueObj.current = 0;
+        vital.valueObj.die = 'd2';
+      }
+    });
     this.statsArray.forEach(stat => {
       this.rerollStat(stat.name);
     });
+    
     this.vitalsArray.forEach(vital => {
       this.rerollVital(vital.name)
     });
@@ -121,7 +145,7 @@ export class GrvntAbilitiesComponent implements OnInit, OnChanges {
         
         if (toughness !== undefined) {
           vital.rollsArray = `${roll} ${toughness < 0 ? '' : '+'} ${toughness}`;
-          vital.value = roll + toughness > 0 ? roll + toughness : 1;
+          vital.value = roll + toughness > 0 ? roll + toughness + this.beastHP : 1 + this.beastHP;
         }
       } else if (vital.name === 'omens') {
         const roll = this.random.getRandomNumber(1, jobMod.mod);
@@ -141,7 +165,7 @@ export class GrvntAbilitiesComponent implements OnInit, OnChanges {
             jobMod.mod.indexOf('x') + 1
           )
         );
-        const roll = this.random.getRandomNumber(numberOfDie, dieSize);
+        const roll = this.random.rollMultipleDie(numberOfDie, dieSize);
 
         vital.rollsArray = `${roll} x ${multiplier}`;
         vital.value = roll * multiplier;
@@ -174,7 +198,8 @@ export class GrvntAbilitiesComponent implements OnInit, OnChanges {
           const currentHPRoll = Number(hp.rollsArray[0]);
           const newHP = currentHPRoll + stat.value;
           
-          hp.value = newHP;
+          //beastHP is 0 if not a beast, or positive if it is
+          hp.value = newHP + this.beastHP;
           hp.rollsArray = `${currentHPRoll} ${stat.value < 0 ? '' : '+'} ${stat.value}`;
         }
       }

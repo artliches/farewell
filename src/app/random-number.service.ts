@@ -22,7 +22,15 @@ export class RandomNumberService {
     return array;
   }
 
-  getRandomNumber(min: number, max: number) {
+  getRandomNumber(min: number, max: number): number {
     return Math.floor(Math.random() * (max - min + 1) + min);
+  }
+
+  rollMultipleDie(numDie: number, dieSize: number): number {
+    let sumOfRolls = 0;
+    for (let i = 0; i < numDie; i++) {
+      sumOfRolls += this.getRandomNumber(1, dieSize);
+    }
+    return sumOfRolls;
   }
 }

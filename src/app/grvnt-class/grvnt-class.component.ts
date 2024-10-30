@@ -15,6 +15,7 @@ export class GrvntClassComponent implements OnInit, OnChanges {
   ) {}
   @Input() job: any;
   @Output() newJobEmitter: EventEmitter<boolean> = new EventEmitter();
+  @Output() newBeast: EventEmitter<number> = new EventEmitter();
 
   skillObj: {
     descrip: string,
@@ -22,6 +23,14 @@ export class GrvntClassComponent implements OnInit, OnChanges {
     currIndex: number,
     arrayIndex: number,
   }[] = [];
+
+  beastObj: {
+    originalArray: string[],
+    currBeast: number
+  } = {
+    originalArray: [],
+    currBeast: -1
+  };
 
   ngOnInit(): void {
       this.getSkills();
@@ -40,6 +49,9 @@ export class GrvntClassComponent implements OnInit, OnChanges {
 
   private getSkills() {
     this.job.skills.forEach((skill: { table: string[]; descrip: string; }, index: number) => {
+      if (this.job.name.includes('altered') && index === 1) {
+        this.beastObj.originalArray = JSON.parse(JSON.stringify(skill.table));
+      }
       let newData = this.random.shuffleArray(skill.table)[0];
       if (newData.includes('[')) {
         newData = this.rollAndReplaceInString(newData);
@@ -51,6 +63,10 @@ export class GrvntClassComponent implements OnInit, OnChanges {
         arrayIndex: index,
       };
       this.skillObj.push(newSkill);
+
+      if (this.beastObj && this.beastObj.originalArray.length > 0) {
+          this.beastObj.currBeast = this.getBeastIndex(newSkill.data);
+      }
     });
   }
 
@@ -70,6 +86,19 @@ export class GrvntClassComponent implements OnInit, OnChanges {
 
     this.skillObj[index].data = newData;
     this.skillObj[index].currIndex = newIndex;
+    if (this.beastObj && this.beastObj.originalArray.length > 0 && index === 1) {
+      this.beastObj.currBeast = this.getBeastIndex(this.skillObj[index].data);    
+    }
+  }
+
+  private getBeastIndex(beastDescripToMatch: string) {
+    let indexToReturn = 0;
+    const beastIndex = this.beastObj.originalArray.findIndex(beast => {
+      return beast === beastDescripToMatch;
+    });
+    indexToReturn = beastIndex + 1;
+    this.newBeast.emit(indexToReturn);  
+    return indexToReturn;
   }
 
   private rollAndReplaceInString(newData: string, recursionCounter?: number) {

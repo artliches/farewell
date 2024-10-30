@@ -35,7 +35,13 @@
                     <small class="ability-description">
                         {{vital.descrip}}
                         @if (showRolls && vital.rollsArray) {
-                            <div>[{{vital.rollsArray}}]</div>
+                            <div>
+                                [{{vital.rollsArray}}
+                                    @if (beastHP && vital.name === 'hp') {
+                                        + {{beastHP}}
+                                    }
+                                ]
+                            </div>
                         }
                     </small>
                     <span class="stat">

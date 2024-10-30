@@ -23,6 +23,7 @@ export class AppComponent implements OnInit {
   chromeBlack = '#010203';
   morkYellow = '#FFE900';
   pink = '#FF3EB5';
+  red = 'red';
 
   currentUI: string = 'stacked';
   currentTheme: string = 'nomansland';
@@ -33,7 +34,8 @@ export class AppComponent implements OnInit {
     'gum',
     'bone',
     'vet',
-    'sapper'
+    'sapper',
+    'marks',
   ];
   themeBackgrounds: Array<any> = [
     {
@@ -71,6 +73,11 @@ export class AppComponent implements OnInit {
       background: this.offWhite,
       color: this.chromeBlack,
     },
+    {
+      theme: 'marks',
+      background: this.red,
+      color: this.offWhite,
+    },
   ];
 
   showRolls: boolean = false;
@@ -83,6 +90,8 @@ export class AppComponent implements OnInit {
     skills: [{}],
     currIndex: -1,
   };
+
+  beastHP: number = 0;
 
   ngOnInit(): void {
     //shuffle jobs and choose the first on load
@@ -117,6 +126,12 @@ export class AppComponent implements OnInit {
       skills: JOBS[newIndex].skills,
       currIndex: newIndex
     };
+  }
+
+  addBeastHP(beastHP: number) {
+    setTimeout(() => {
+      this.beastHP = beastHP;
+    });
   }
 
   shuffleUI() {
@@ -160,6 +175,9 @@ export class AppComponent implements OnInit {
       }
       case this.currentTheme === 'sapper': {
         return `SAPPER`;
+      }
+      case this.currentTheme === 'marks': {
+        return `MARKSMAN`;
       }
     }
     return '';

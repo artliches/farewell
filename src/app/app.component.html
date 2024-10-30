@@ -22,6 +22,7 @@
             class="stats"
             [job]="jobObj"
             [showRolls]="showRolls"
+            [beastHP]="beastHP"
         >
         </app-grvnt-abilities>
         <app-grvnt-identity class="id"></app-grvnt-identity>
@@ -29,6 +30,7 @@
             class="job"
             [job]="jobObj"
             (newJobEmitter)="getNewJob()"
+            (newBeast)="addBeastHP($event)"
         ></app-grvnt-class>
     </section>
 </span>

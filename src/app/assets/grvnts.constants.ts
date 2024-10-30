@@ -308,5 +308,626 @@ export const JOBS = [
                 ],
             },
         ]
-    }
+    },
+    {
+        name: 'recluse marksman',
+        stats: [
+            {
+                name: 'hp',
+                mod: 6
+            },
+            {
+                name: 'omens',
+                mod: 4
+            },
+            {
+                name: 'silver',
+                mod: '1d6x10'
+            },
+            {
+                name: 'ammo',
+                mod: 'd4'
+            },
+            {
+                name: 'presence',
+                mod: 2
+            },
+            {
+                name: 'strength',
+                mod: -2
+            },
+        ],
+        extras: [
+            '<strong>More-Precise Rifle.</strong> d10 ranged, SCOPED, IMPACT 1'
+        ],
+        descrip:`
+            <em>
+            War is typically a group effort, but you <strong>prefer it alone</strong>. You pay particular attention to the grass, the wind, and the birds – they’re the closest you have to friends. Where the pain of being an outcast once tortured you, it is now your <strong>greatest weapon</strong>.
+            </em>
+        `,
+        skills: [
+            {
+                descrip: 'The shot you are best known for is:',
+                table: [
+                    ` Removing the <strong>lit smoke of an enemy grvnt</strong> from across No Man’s Land.`,
+                    ` Putting one straight through the scope of an enemy Recluse Marksman. <strong>They never saw it coming</strong>.`,
+                    ` <strong>Assassinating a key enemy officer</strong>. You crawled on your belly for days to remain undetected.`,
+                    ` Eliminating a Falchon-Winged Altered Mercenary <strong>mid-flight</strong> in the black of night.`,
+                    ` Igniting a SLAGG deposit with a single shot, <strong>eliminating an entire platoon</strong> led by a fearsome lich.`,
+                    ` Unconfirmed. Since you work alone, no one can confirm your story. <strong>No one can disprove it either...</strong>`
+                ]
+            },
+            {
+                descrip: '',
+                table: [
+                    '<strong class="clickable">Night Stalker.</strong> Years of solitary cavern life have made your eyes large and incredibly keen in the dark. <strong>-2 DR on Presence rolls at night</strong>. Bright lights blind you for <strong>d2 turns</strong>. You may rest while On Watch.',
+                    '<strong class="clickable">Coriolis Effect.</strong> You prefer to be above your targets. <strong>1-in-6 chance your shot hits a second grvnt for d6 damage</strong>, double chance when at a higher elevation.',
+                    '<strong class="clickable">Pet Raven.</strong> You have a close relationship with a three-eyed Raven. <strong>Spend 1 Power</strong>: see through the Raven’s eyes for miles in all directions, detect even the slightest movements, and sense the wind and weather. You, too, have a third eye. <strong>+2 DR when interacting with people</strong>.',
+                    '<strong class="clickable">All Quiet.</strong> Your Precise Rifle has a silent, non-lethal option. <strong>Spend 1 Power</strong>: fire a shot that cannot miss, inducing SLEEP in the target (<strong>cannot act for d4 turns or until attacked</strong>). If awakened peacefully, the target divulges an important piece of information about the objective or enemy forces. <strong>Your rifle is the only thing you can hear</strong>.',
+                    '<strong class="clickable">Calm the Nerves.</strong> Crit on an 18-20 while smoking or using other addictive substances. <strong>Lower your SHOCK by 1 when using</strong>.',
+                    '<strong class="clickable">Occult Obscurity.</strong> <strong>Spend 1 Power</strong>: calm your mind, speaking with your surroundings and becoming as one. You cannot be located by enemies until after your next <strong>d4 attacks</strong>.',
+                ],
+            },
+        ]
+    },
+    {
+        name: 'homesick rifleman',
+        stats: [
+            {
+                name: 'hp',
+                mod: 6
+            },
+            {
+                name: 'omens',
+                mod: 2
+            },
+            {
+                name: 'silver',
+                mod: '3d6x10'
+            },
+            {
+                name: 'ammo',
+                mod: 'd4'
+            },
+        ],
+        extras: [
+            `Start with a <strong>Malevolent Rile</strong>. Do not roll for Firearms.`
+        ],
+        descrip:`
+            <em>
+                Unable to leave home behind—no matter how horrible it was—you took part of it with you to the battlefield. War does not suit you. Oftentimes the gruesome sight of combat induces a deep introspection. Your squad are your siblings now; your written words, your parents.
+            </em>
+        `,
+        skills: [
+            {
+                descrip: 'What rifle did you start with:',
+                table: [
+                    `<div><strong class="underline">Legion, the Haunted Rifle.</strong> Found atop a pyre of fallen grvnts, their souls are bound to this Malevolent Rifle and refer to themselves as <strong>Legion</strong>. <strong>Spend 1 Power</strong>: Legion’s ghost wages war by your side, dealing <strong>d8 damage</strong>. Legion’s ghost does not use Ammo.</div>`,
+                    `<div><strong class="underline">The Galgen Beheader</strong> A Malevolent Rifle capped with an <strong>oversized bayonet</strong> (<strong>d8</strong>), perfect for beheading many an unfortunate grvnt. <strong>Melee attacks Crit on an 18-20</strong>.</div>`,
+                    `<div><strong class="underline">R.O.D. Grenades</strong> Revengeful Occvlt Destruction (R.O.D.) mounted at the end of any Firearm’s barrel. <strong>Add any grenade type to your rifle’s next attack</strong>.</div>`,
+                    `<div><strong class="underline">Basilisk Carbine</strong> Your rifle suffers no penalties in melee. While in melee, <strong>spend another ammo to attack again this turn</strong>.</div>`,
+                ]
+            },
+            {
+                descrip: 'What did you bring with you:',
+                table: [
+                    `<div><strong class="underline">Letters from Home.</strong> Loathed by your family, they send letters doused in poison or booby-trapped with explosives; you’ve learned the hard way never to open them. They make great makeshift weapons though (<strong>d4 damage plus a random Weapon Keyword</strong>). You start with d4 and slowly receive more as you write home.</div>`,
+                    `<div><strong class="underline">Stop Watch</strong> Before your grizzled veteran grandfather passed, he left you his pocket watch. It smells like shit… <strong>1-in-4 chance to block a successful non-BLAST attack</strong>.</div>`,
+                    `<div><strong class="underline">Purple Heart Poetry</strong> Writing your thoughts in a leather-bound journal keeps you sane in an insane world. Your words shake souls: <strong>test Presence DR12 to add your SHOCK to a target</strong>. They immediately suffer the new result.</div>`,
+                    `<div><strong class="underline">Lovesick</strong> You carry a small painting of your love back home; sometimes it animates and speaks to you. Conversing with the painting allows you to successfully <strong>cast a random War Scroll once per day</strong>, even if you don’t own the Scroll.</div>`,
+                ],
+            },
+            {
+                descrip: 'Before you left, your family told you:',
+                table: [
+                    ` If the war does not end you, they will <strong>consider themselves well fed</strong> upon your return.`,
+                    ` Write home always – they need <strong>fuel for the hearth</strong>.`,
+                    ` Finally, the family name can be cleared from its <strong>generational curse</strong>.`,
+                    ` They <strong>never even noticed</strong> you left.`,
+                    ` Try to <strong>block the bullets</strong> for the other, better grvnts.`,
+                    ` Remember to wear a helmet. <strong>Protect what little brains you got left</strong>.`,
+
+                ],
+            },
+        ]
+    },
+    {
+        name: 'cynically cursed chaplain',
+        stats: [
+            {
+                name: 'hp',
+                mod: 6
+            },
+            {
+                name: 'omens',
+                mod: 4
+            },
+            {
+                name: 'silver',
+                mod: '2d6x20'
+            },
+            {
+                name: 'ammo',
+                mod: 'd2'
+            },
+            {
+                name: 'presence',
+                mod: 1
+            },
+            {
+                name: 'strength',
+                mod: 1
+            },
+            {
+                name: 'toughness',
+                mod: -2
+            },
+        ],
+        extras: [
+            `May choose to suffer <strong>d2 SHOCK</strong> in place of any SHOCK test.`
+        ],
+        descrip:`
+            <em>
+            With terrific violence and unjust cruelty replacing the soft and somber death of the Dying Lands, you have come to a simple conclusion: <strong>the gods are dead, and we have killed them</strong>. Burning bodies and craven blast marks seed doubt that the Shimmering Fields will not meet the same fate. People do not change. <strong>Faith does not stop bullets</strong>.
+            </em>
+        `,
+        skills: [
+            {
+                descrip: 'What cursed you with such crippling cynicism?:',
+                table: [
+                    ` Your supplications of late have gone unanswered… <strong>Perhaps they never were</strong>.`,
+                    ` Blasphemous rumors that the <strong>dead are being resurrected</strong> to serve the army of the earth saint.`,
+                    ` The <strong>death of someone close to you</strong> in the name of the cause. A crisis of faith shakes you. `,
+                    ` The horrors of war, utter destruction, and unspeakable violence. <strong>The heavens do not seem to care</strong>.`,
+                    ` An acceptance of absurdist nihilism… <strong>That’s all war is, anyway</strong>.`,
+                    ` Mortar fire took more than just a piece of your brain: <strong>faith logically makes no sense to you anymore</strong>. Some call you a pessimist; you contend you’re a <strong>realist</strong>.>`
+                ]
+            },
+            {
+                descrip: '',
+                table: [
+                    '<strong class="clickable">Cross of the Carpenter Saint.</strong> You carry an impossibly large crucifix on your back (<strong>d8</strong>), crafted from the coffin of a dead Galgen saint; its weight <strong>crushes you constantly</strong>. Lower your <strong>SHOCK by one</strong> to defend with the crucifix as a <strong>Large Shield</strong>.',
+                    '<strong class="clickable">Fire and Brimstone.</strong> Preaching over the horrific sounds of the battlefield twists the minds of those you direct your sermons toward. <strong>Test Presence DR12 to trigger a random SHOCK</strong> on an enemy creature (<strong>never greater than your own</strong>).',
+                    '<strong class="clickable">Galgorian Chanting.</strong> <strong>Test Presence DR12 minus current SHOCK</strong> while chanting over the body of a recently-deceased ally: all grvnts may <strong>reroll Omens, Powers, and Ammo</strong> as if it were a new day.',
+                    '<strong class="clickable">Grief Seed.</strong> A briar of thorns grows from your arm (<strong>d6</strong>) – it feeds off your grief and cynicism, choking the flesh as you lose hope. <strong>Spend 1 Power and lose all SHOCK</strong>: rip the seed from your flesh and throw it at the enemy for damage equal to the SHOCK lost. BLAST 3.',
+                    '<strong class="clickable">The Sorrow of Salvation.</strong> The souls of those you’ve anointed live inside you, manifesting their gruesome fates in your waking nightmares. Every dawn, a soul leaves their weapon (<strong>roll d10 on Firearms</strong>) at your feet as penance for the misdeeds they’ve committed. Weapons procured this way may never deal more damage than your SHOCK and fade into nothing the following dawn.',
+                    '<strong class="clickable">Thurible of Indignation.</strong> Purify the battlefield with this incense-smoldering flail (<strong>d6, BURN 1</strong>). Any time you suffer SHOCK, <strong>immediately attack the closest target</strong>.',
+                ],
+            },
+        ]
+    },
+    {
+        name: 'arcane medic',
+        stats: [
+            {
+                name: 'hp',
+                mod: 6
+            },
+            {
+                name: 'omens',
+                mod: 2
+            },
+            {
+                name: 'silver',
+                mod: '2d6x10'
+            },
+            {
+                name: 'ammo',
+                mod: 'd2'
+            },
+            {
+                name: 'toughness',
+                mod: 2
+            },
+            {
+                name: 'strength',
+                mod: -2
+            },
+        ],
+        extras: [
+            'Start with one <strong>Field Dress Kit</strong> and a <strong>War Scroll</strong>.'
+        ],
+        descrip:`
+            <em>
+            “I solemnly swear to heal others that they <strong>may do harm in my stead</strong>. I charge boldly towards disease, injury, and death to save those that desire their revenge – and I shall aid the passing of those who do not. This is my <strong>Hippocritic Oath</strong>.”
+            </em>
+        `,
+        skills: [
+            {
+                descrip: 'From who/where did you learn your medical knowledge?:',
+                table: [
+                    ` In the <strong>dungeons of Galgenbeck</strong>, guided by torturers with a brutally-acquired understanding of anatomy.`,
+                    ` Cannibals in the <strong>Hunger Wound</strong>. They taught you to prepare all types of flesh.`,
+                    ` A drunken mortician who always licked their fingers – <strong>a habit you picked up</strong>.`,
+                    ` Working in shit-filled stables among the livestock. <strong>Their anatomy is close enough</strong>.`,
+                    ` A highly educated Icefell expat. <strong>You euthanized them</strong> when they could teach you no more.`,
+                    ` Aboard a Múrland ship using carpenter’s tools. <strong>You’re cut out for amputations</strong>.`
+                ]
+            },
+            {
+                descrip: '',
+                table: [
+                    `<strong class="clickable">The Artist at Work.</strong> Your mostly foolproof healing process involves carving small arcane symbols into your patients’ flesh. They gain <strong>+d2 healing per day permanently</strong>, but roll <strong>+1 on the SHOCK table per carving</strong>.`,
+                    `<strong class="clickable">Leech Therapy.</strong> You carry <strong>d6 Onda Leeches</strong>. Attach to any creature – the creature takes <strong>-d2 damage</strong>. Will cure most illnesses and lower SHOCK if left on for <strong>d2 days</strong>; also take <strong>-1 to one Stat</strong>. You must summon these leeches from the marshes (<strong>spend 1 Power: d3 more</strong>) or travel to Onda to acquire more.`,
+                    `<strong class="clickable">Abscission Obsession.</strong> Your interest in the interior anatomy of your comrades has made you invaluable as a surgeon… and also <strong>completely insane</strong>. <strong>Spend 1 Power</strong>: save any creature nearby from being <strong>Broken</strong>; or let nature take its course and requisition their organs. <strong>Every 2 times you do this, get Promoted</strong>.`,
+                    `<strong class="clickable">Avenging Aegis.</strong> This SLAGG-treated shield has proven impervious to harm. While planted in the ground, it provides <strong>Full cover and cannot be destroyed</strong> – your own mobile wall.`,
+                    `<strong class="clickable">Voynichian Script of Last Rites.</strong> An indecipherable manuscript stolen from a monastery of astral-projecting monks deep in the forests of Sarkash. No one understands its SLAGGVARA-inked lettering, so you improvise. “Reading” from the scroll <strong>revives a recently-felled creature with half their HP</strong>. Can never be used on the same creature twice.`,
+                    `<strong class="clickable">Unguent.</strong> <strong>Spend 1 Power</strong>: craft an Ointment (<strong>d4 uses</strong>) that has <strong>d4</strong> stacking effects for <strong>d4 turns</strong>:
+                        <ol>
+                            <li><strong>Heal 2 HP</strong> per turn and raise Max HP by 4</li>
+                            <li><strong>AND</strong> Reduce SHOCK by 2 and ignore SHOCK</li>
+                            <li><strong>AND</strong> Raise Toughness and Strength by 2</li>
+                            <li><strong>AND</strong> Raise Agility and Presence by 2</li>
+                        </ol>
+                    `,
+                ],
+            },
+        ]
+    },
+    {
+        name: 'altered mercenary',
+        stats: [
+            {
+                name: 'hp',
+                mod: 8
+            },
+            {
+                name: 'omens',
+                mod: 2
+            },
+            {
+                name: 'silver',
+                mod: '2d6x10'
+            },
+            {
+                name: 'presence',
+                mod: -2
+            },
+            {
+                name: 'strength',
+                mod: 1
+            },
+            {
+                name: 'toughness',
+                mod: 1
+            },
+        ],
+        extras: [
+            'Cannot use <strong>Firearms</strong> or <strong>Tier 2+ Armor</strong>'
+        ],
+        descrip:`
+            <em>
+            Some consider it a blessing; others find it a cruel revenge of the Dying Lands as destruction ravages the face of the earth. Wildfolk, the SLAGG-cursed, beasts of no nation – these are but a few pejoratives muttered under the breath of those who despise your altered existence. As misunderstood outcasts, Altered Mercenaries wander until someone claims them.
+            </em>
+        `,
+        skills: [
+            {
+                descrip: 'Soldier of what fortune?:',
+                table: [
+                    ` A sense of <strong>belonging</strong>.`,
+                    ` <strong>10s</strong> for every successful mission.`,
+                    ` Enough <strong>beer</strong> to drown a fish – <strong>you overindulge to the point of passing out</strong>.`,
+                    ` The sweet taste of addiction, <strong>your vice of choice</strong>.`,
+                    ` <strong>5s</strong> for every Ammo you return to camp.`,
+                    ` Your own life, <strong>lest the Inquisitors find you</strong>`
+                ]
+            },
+            {
+                descrip: '',
+                table: [
+                    '<strong class="clickable">Schunk-Striped.</strong> Never clean and always reeking of death, you discovered a deterrent is often the best weapon. When you take <strong>SHOCK or suffer damage</strong>, your body spurts putrid <strong>GAS at the damage source</strong>.',
+                    '<strong class="clickable">Arach-Webbed.</strong> Webs of lies and demise, both of which you deftly spin. <strong>Spend 1 Power</strong>: fire a razor web, immobilizing the target until the wire is removed. Ensnared enemies suffer <strong>d6 damage per turn</strong>. Test <strong>Toughness DR14</strong> each round or the web tears.',
+                    '<strong class="clickable">Falchon-Winged.</strong> You have four large, flight-capable wings, and your face is more bird-like than human. Your razor-sharp talons at the ends of your fingers deal <strong>d10 damage</strong>. <strong>Agility tests are -2 DR while flying</strong>.',
+                    '<strong class="clickable">Hyena-Throated.</strong> Your bark is worse than your bite (<strong>d6, dealing damage heals d2</strong>). The insidious laughter bellowing from your jowls mimicks the <strong>death knell of dying grvnts</strong>. <strong>Spend 1 Power and test Presence DR8</strong>: cast a random War Scroll.',
+                    '<strong class="clickable">Krok-Toothed.</strong> Adept amongst the mud and battlefield debris, you find cover where most others cannot. Lay flat on your belly and test <strong>Agility DR10</strong>: gain Partial cover and remain undetected. Attacks with your giant maw from cover hit at DR8 (<strong>d8 damage, SHOCK</strong>) with rows upon rows of <strong class="emphasize"> TEETH</strong> that lock their victim in a harrowing death maelstrom.',
+                    '<strong class="clickable">Kongoose-Tusked.</strong> From your jaw protrude two mammoth tusks, curving to the sky and glowing white (<strong>2d6 between up to two adjacent creatures, IMPACT 1</strong>). You are covered in long, shaggy fur <strong>(-d6 permanent Armor</strong>).',
+                ],
+            },
+        ]
+    },
+    // {
+    //     name: 'recluse marksman',
+    //     stats: [
+    //         {
+    //             name: 'hp',
+    //             mod: 6
+    //         },
+    //         {
+    //             name: 'omens',
+    //             mod: 4
+    //         },
+    //         {
+    //             name: 'silver',
+    //             mod: '1d6x10'
+    //         },
+    //         {
+    //             name: 'ammo',
+    //             mod: 'd4'
+    //         },
+    //         {
+    //             name: 'presence',
+    //             mod: 2
+    //         },
+    //         {
+    //             name: 'strength',
+    //             mod: -2
+    //         },
+    //     ],
+    //     extras: [
+    //         '<strong>More-Precise Rifle.</strong> d10 ranged, SCOPED, IMPACT 1'
+    //     ],
+    //     descrip:`
+    //         <em>
+    //         War is typically a group effort, but you <strong>prefer it alone</strong>. You pay particular attention to the grass, the wind, and the birds – they’re the closest you have to friends. Where the pain of being an outcast once tortured you, it is now your <strong>greatest weapon</strong>.
+    //         </em>
+    //     `,
+    //     skills: [
+    //         {
+    //             descrip: 'The shot you are best known for is:',
+    //             table: [
+    //                 ` Removing the <strong>lit smoke of an enemy grvnt</strong> from across No Man’s Land.`,
+    //                 ` Putting one straight through the scope of an enemy Recluse Marksman. <strong>They never saw it coming</strong>.`,
+    //                 ` <strong>Assassinating a key enemy officer</strong>. You crawled on your belly for days to remain undetected.`,
+    //                 ` Eliminating a Falchon-Winged Altered Mercenary <strong>mid-flight</strong> in the black of night.`,
+    //                 ` Igniting a SLAGG deposit with a single shot, <strong>eliminating an entire platoon</strong> led by a fearsome lich.`,
+    //                 ` Unconfirmed. Since you work alone, no one can confirm your story. <strong>No one can disprove it either...</strong>`
+    //             ]
+    //         },
+    //         {
+    //             descrip: '',
+    //             table: [
+    //                 '<strong class="clickable">Night Stalker.</strong> Years of solitary cavern life have made your eyes large and incredibly keen in the dark. <strong>-2 DR on Presence rolls at night</strong>. Bright lights blind you for <strong>d2 turns</strong>. You may rest while On Watch.',
+    //                 '<strong class="clickable">Coriolis Effect.</strong> You prefer to be above your targets. <strong>1-in-6 chance your shot hits a second grvnt for d6 damage</strong>, double chance when at a higher elevation.',
+    //                 '<strong class="clickable">Pet Raven.</strong> You have a close relationship with a three-eyed Raven. <strong>Spend 1 Power</strong>: see through the Raven’s eyes for miles in all directions, detect even the slightest movements, and sense the wind and weather. You, too, have a third eye. <strong>+2 DR when interacting with people</strong>.',
+    //                 '<strong class="clickable">All Quiet.</strong> Your Precise Rifle has a silent, non-lethal option. <strong>Spend 1 Power</strong>: fire a shot that cannot miss, inducing SLEEP in the target (<strong>cannot act for d4 turns or until attacked</strong>). If awakened peacefully, the target divulges an important piece of information about the objective or enemy forces. <strong>Your rifle is the only thing you can hear</strong>.',
+    //                 '<strong class="clickable">Calm the Nerves.</strong> Crit on an 18-20 while smoking or using other addictive substances. <strong>Lower your SHOCK by 1 when using</strong>.',
+    //                 '<strong class="clickable">Occult Obscurity.</strong> <strong>Spend 1 Power</strong>: calm your mind, speaking with your surroundings and becoming as one. You cannot be located by enemies until after your next <strong>d4 attacks</strong>.',
+    //             ],
+    //         },
+    //     ]
+    // },
+    // {
+    //     name: 'recluse marksman',
+    //     stats: [
+    //         {
+    //             name: 'hp',
+    //             mod: 6
+    //         },
+    //         {
+    //             name: 'omens',
+    //             mod: 4
+    //         },
+    //         {
+    //             name: 'silver',
+    //             mod: '1d6x10'
+    //         },
+    //         {
+    //             name: 'ammo',
+    //             mod: 'd4'
+    //         },
+    //         {
+    //             name: 'presence',
+    //             mod: 2
+    //         },
+    //         {
+    //             name: 'strength',
+    //             mod: -2
+    //         },
+    //     ],
+    //     extras: [
+    //         '<strong>More-Precise Rifle.</strong> d10 ranged, SCOPED, IMPACT 1'
+    //     ],
+    //     descrip:`
+    //         <em>
+    //         War is typically a group effort, but you <strong>prefer it alone</strong>. You pay particular attention to the grass, the wind, and the birds – they’re the closest you have to friends. Where the pain of being an outcast once tortured you, it is now your <strong>greatest weapon</strong>.
+    //         </em>
+    //     `,
+    //     skills: [
+    //         {
+    //             descrip: 'The shot you are best known for is:',
+    //             table: [
+    //                 ` Removing the <strong>lit smoke of an enemy grvnt</strong> from across No Man’s Land.`,
+    //                 ` Putting one straight through the scope of an enemy Recluse Marksman. <strong>They never saw it coming</strong>.`,
+    //                 ` <strong>Assassinating a key enemy officer</strong>. You crawled on your belly for days to remain undetected.`,
+    //                 ` Eliminating a Falchon-Winged Altered Mercenary <strong>mid-flight</strong> in the black of night.`,
+    //                 ` Igniting a SLAGG deposit with a single shot, <strong>eliminating an entire platoon</strong> led by a fearsome lich.`,
+    //                 ` Unconfirmed. Since you work alone, no one can confirm your story. <strong>No one can disprove it either...</strong>`
+    //             ]
+    //         },
+    //         {
+    //             descrip: '',
+    //             table: [
+    //                 '<strong class="clickable">Night Stalker.</strong> Years of solitary cavern life have made your eyes large and incredibly keen in the dark. <strong>-2 DR on Presence rolls at night</strong>. Bright lights blind you for <strong>d2 turns</strong>. You may rest while On Watch.',
+    //                 '<strong class="clickable">Coriolis Effect.</strong> You prefer to be above your targets. <strong>1-in-6 chance your shot hits a second grvnt for d6 damage</strong>, double chance when at a higher elevation.',
+    //                 '<strong class="clickable">Pet Raven.</strong> You have a close relationship with a three-eyed Raven. <strong>Spend 1 Power</strong>: see through the Raven’s eyes for miles in all directions, detect even the slightest movements, and sense the wind and weather. You, too, have a third eye. <strong>+2 DR when interacting with people</strong>.',
+    //                 '<strong class="clickable">All Quiet.</strong> Your Precise Rifle has a silent, non-lethal option. <strong>Spend 1 Power</strong>: fire a shot that cannot miss, inducing SLEEP in the target (<strong>cannot act for d4 turns or until attacked</strong>). If awakened peacefully, the target divulges an important piece of information about the objective or enemy forces. <strong>Your rifle is the only thing you can hear</strong>.',
+    //                 '<strong class="clickable">Calm the Nerves.</strong> Crit on an 18-20 while smoking or using other addictive substances. <strong>Lower your SHOCK by 1 when using</strong>.',
+    //                 '<strong class="clickable">Occult Obscurity.</strong> <strong>Spend 1 Power</strong>: calm your mind, speaking with your surroundings and becoming as one. You cannot be located by enemies until after your next <strong>d4 attacks</strong>.',
+    //             ],
+    //         },
+    //     ]
+    // },
+    // {
+    //     name: 'recluse marksman',
+    //     stats: [
+    //         {
+    //             name: 'hp',
+    //             mod: 6
+    //         },
+    //         {
+    //             name: 'omens',
+    //             mod: 4
+    //         },
+    //         {
+    //             name: 'silver',
+    //             mod: '1d6x10'
+    //         },
+    //         {
+    //             name: 'ammo',
+    //             mod: 'd4'
+    //         },
+    //         {
+    //             name: 'presence',
+    //             mod: 2
+    //         },
+    //         {
+    //             name: 'strength',
+    //             mod: -2
+    //         },
+    //     ],
+    //     extras: [
+    //         '<strong>More-Precise Rifle.</strong> d10 ranged, SCOPED, IMPACT 1'
+    //     ],
+    //     descrip:`
+    //         <em>
+    //         War is typically a group effort, but you <strong>prefer it alone</strong>. You pay particular attention to the grass, the wind, and the birds – they’re the closest you have to friends. Where the pain of being an outcast once tortured you, it is now your <strong>greatest weapon</strong>.
+    //         </em>
+    //     `,
+    //     skills: [
+    //         {
+    //             descrip: 'The shot you are best known for is:',
+    //             table: [
+    //                 ` Removing the <strong>lit smoke of an enemy grvnt</strong> from across No Man’s Land.`,
+    //                 ` Putting one straight through the scope of an enemy Recluse Marksman. <strong>They never saw it coming</strong>.`,
+    //                 ` <strong>Assassinating a key enemy officer</strong>. You crawled on your belly for days to remain undetected.`,
+    //                 ` Eliminating a Falchon-Winged Altered Mercenary <strong>mid-flight</strong> in the black of night.`,
+    //                 ` Igniting a SLAGG deposit with a single shot, <strong>eliminating an entire platoon</strong> led by a fearsome lich.`,
+    //                 ` Unconfirmed. Since you work alone, no one can confirm your story. <strong>No one can disprove it either...</strong>`
+    //             ]
+    //         },
+    //         {
+    //             descrip: '',
+    //             table: [
+    //                 '<strong class="clickable">Night Stalker.</strong> Years of solitary cavern life have made your eyes large and incredibly keen in the dark. <strong>-2 DR on Presence rolls at night</strong>. Bright lights blind you for <strong>d2 turns</strong>. You may rest while On Watch.',
+    //                 '<strong class="clickable">Coriolis Effect.</strong> You prefer to be above your targets. <strong>1-in-6 chance your shot hits a second grvnt for d6 damage</strong>, double chance when at a higher elevation.',
+    //                 '<strong class="clickable">Pet Raven.</strong> You have a close relationship with a three-eyed Raven. <strong>Spend 1 Power</strong>: see through the Raven’s eyes for miles in all directions, detect even the slightest movements, and sense the wind and weather. You, too, have a third eye. <strong>+2 DR when interacting with people</strong>.',
+    //                 '<strong class="clickable">All Quiet.</strong> Your Precise Rifle has a silent, non-lethal option. <strong>Spend 1 Power</strong>: fire a shot that cannot miss, inducing SLEEP in the target (<strong>cannot act for d4 turns or until attacked</strong>). If awakened peacefully, the target divulges an important piece of information about the objective or enemy forces. <strong>Your rifle is the only thing you can hear</strong>.',
+    //                 '<strong class="clickable">Calm the Nerves.</strong> Crit on an 18-20 while smoking or using other addictive substances. <strong>Lower your SHOCK by 1 when using</strong>.',
+    //                 '<strong class="clickable">Occult Obscurity.</strong> <strong>Spend 1 Power</strong>: calm your mind, speaking with your surroundings and becoming as one. You cannot be located by enemies until after your next <strong>d4 attacks</strong>.',
+    //             ],
+    //         },
+    //     ]
+    // },
+    // {
+    //     name: 'recluse marksman',
+    //     stats: [
+    //         {
+    //             name: 'hp',
+    //             mod: 6
+    //         },
+    //         {
+    //             name: 'omens',
+    //             mod: 4
+    //         },
+    //         {
+    //             name: 'silver',
+    //             mod: '1d6x10'
+    //         },
+    //         {
+    //             name: 'ammo',
+    //             mod: 'd4'
+    //         },
+    //         {
+    //             name: 'presence',
+    //             mod: 2
+    //         },
+    //         {
+    //             name: 'strength',
+    //             mod: -2
+    //         },
+    //     ],
+    //     extras: [
+    //         '<strong>More-Precise Rifle.</strong> d10 ranged, SCOPED, IMPACT 1'
+    //     ],
+    //     descrip:`
+    //         <em>
+    //         War is typically a group effort, but you <strong>prefer it alone</strong>. You pay particular attention to the grass, the wind, and the birds – they’re the closest you have to friends. Where the pain of being an outcast once tortured you, it is now your <strong>greatest weapon</strong>.
+    //         </em>
+    //     `,
+    //     skills: [
+    //         {
+    //             descrip: 'The shot you are best known for is:',
+    //             table: [
+    //                 ` Removing the <strong>lit smoke of an enemy grvnt</strong> from across No Man’s Land.`,
+    //                 ` Putting one straight through the scope of an enemy Recluse Marksman. <strong>They never saw it coming</strong>.`,
+    //                 ` <strong>Assassinating a key enemy officer</strong>. You crawled on your belly for days to remain undetected.`,
+    //                 ` Eliminating a Falchon-Winged Altered Mercenary <strong>mid-flight</strong> in the black of night.`,
+    //                 ` Igniting a SLAGG deposit with a single shot, <strong>eliminating an entire platoon</strong> led by a fearsome lich.`,
+    //                 ` Unconfirmed. Since you work alone, no one can confirm your story. <strong>No one can disprove it either...</strong>`
+    //             ]
+    //         },
+    //         {
+    //             descrip: '',
+    //             table: [
+    //                 '<strong class="clickable">Night Stalker.</strong> Years of solitary cavern life have made your eyes large and incredibly keen in the dark. <strong>-2 DR on Presence rolls at night</strong>. Bright lights blind you for <strong>d2 turns</strong>. You may rest while On Watch.',
+    //                 '<strong class="clickable">Coriolis Effect.</strong> You prefer to be above your targets. <strong>1-in-6 chance your shot hits a second grvnt for d6 damage</strong>, double chance when at a higher elevation.',
+    //                 '<strong class="clickable">Pet Raven.</strong> You have a close relationship with a three-eyed Raven. <strong>Spend 1 Power</strong>: see through the Raven’s eyes for miles in all directions, detect even the slightest movements, and sense the wind and weather. You, too, have a third eye. <strong>+2 DR when interacting with people</strong>.',
+    //                 '<strong class="clickable">All Quiet.</strong> Your Precise Rifle has a silent, non-lethal option. <strong>Spend 1 Power</strong>: fire a shot that cannot miss, inducing SLEEP in the target (<strong>cannot act for d4 turns or until attacked</strong>). If awakened peacefully, the target divulges an important piece of information about the objective or enemy forces. <strong>Your rifle is the only thing you can hear</strong>.',
+    //                 '<strong class="clickable">Calm the Nerves.</strong> Crit on an 18-20 while smoking or using other addictive substances. <strong>Lower your SHOCK by 1 when using</strong>.',
+    //                 '<strong class="clickable">Occult Obscurity.</strong> <strong>Spend 1 Power</strong>: calm your mind, speaking with your surroundings and becoming as one. You cannot be located by enemies until after your next <strong>d4 attacks</strong>.',
+    //             ],
+    //         },
+    //     ]
+    // },
+    // {
+    //     name: 'recluse marksman',
+    //     stats: [
+    //         {
+    //             name: 'hp',
+    //             mod: 6
+    //         },
+    //         {
+    //             name: 'omens',
+    //             mod: 4
+    //         },
+    //         {
+    //             name: 'silver',
+    //             mod: '1d6x10'
+    //         },
+    //         {
+    //             name: 'ammo',
+    //             mod: 'd4'
+    //         },
+    //         {
+    //             name: 'presence',
+    //             mod: 2
+    //         },
+    //         {
+    //             name: 'strength',
+    //             mod: -2
+    //         },
+    //     ],
+    //     extras: [
+    //         '<strong>More-Precise Rifle.</strong> d10 ranged, SCOPED, IMPACT 1'
+    //     ],
+    //     descrip:`
+    //         <em>
+    //         War is typically a group effort, but you <strong>prefer it alone</strong>. You pay particular attention to the grass, the wind, and the birds – they’re the closest you have to friends. Where the pain of being an outcast once tortured you, it is now your <strong>greatest weapon</strong>.
+    //         </em>
+    //     `,
+    //     skills: [
+    //         {
+    //             descrip: 'The shot you are best known for is:',
+    //             table: [
+    //                 ` Removing the <strong>lit smoke of an enemy grvnt</strong> from across No Man’s Land.`,
+    //                 ` Putting one straight through the scope of an enemy Recluse Marksman. <strong>They never saw it coming</strong>.`,
+    //                 ` <strong>Assassinating a key enemy officer</strong>. You crawled on your belly for days to remain undetected.`,
+    //                 ` Eliminating a Falchon-Winged Altered Mercenary <strong>mid-flight</strong> in the black of night.`,
+    //                 ` Igniting a SLAGG deposit with a single shot, <strong>eliminating an entire platoon</strong> led by a fearsome lich.`,
+    //                 ` Unconfirmed. Since you work alone, no one can confirm your story. <strong>No one can disprove it either...</strong>`
+    //             ]
+    //         },
+    //         {
+    //             descrip: '',
+    //             table: [
+    //                 '<strong class="clickable">Night Stalker.</strong> Years of solitary cavern life have made your eyes large and incredibly keen in the dark. <strong>-2 DR on Presence rolls at night</strong>. Bright lights blind you for <strong>d2 turns</strong>. You may rest while On Watch.',
+    //                 '<strong class="clickable">Coriolis Effect.</strong> You prefer to be above your targets. <strong>1-in-6 chance your shot hits a second grvnt for d6 damage</strong>, double chance when at a higher elevation.',
+    //                 '<strong class="clickable">Pet Raven.</strong> You have a close relationship with a three-eyed Raven. <strong>Spend 1 Power</strong>: see through the Raven’s eyes for miles in all directions, detect even the slightest movements, and sense the wind and weather. You, too, have a third eye. <strong>+2 DR when interacting with people</strong>.',
+    //                 '<strong class="clickable">All Quiet.</strong> Your Precise Rifle has a silent, non-lethal option. <strong>Spend 1 Power</strong>: fire a shot that cannot miss, inducing SLEEP in the target (<strong>cannot act for d4 turns or until attacked</strong>). If awakened peacefully, the target divulges an important piece of information about the objective or enemy forces. <strong>Your rifle is the only thing you can hear</strong>.',
+    //                 '<strong class="clickable">Calm the Nerves.</strong> Crit on an 18-20 while smoking or using other addictive substances. <strong>Lower your SHOCK by 1 when using</strong>.',
+    //                 '<strong class="clickable">Occult Obscurity.</strong> <strong>Spend 1 Power</strong>: calm your mind, speaking with your surroundings and becoming as one. You cannot be located by enemies until after your next <strong>d4 attacks</strong>.',
+    //             ],
+    //         },
+    //     ]
+    // }
 ]

@@ -115,6 +115,23 @@
     --selection-color: var(--chromatic-black);
 }
 
+.marks {
+    --background-color: var(--red);
+    --body-color: var(--off-white);
+
+    --main-header-left-color: var(--off-white);
+    --main-header-right-color: var(--off-white);
+
+    --header-background-color: var(--off-white);
+    --header-color: var(--chromatic-black);
+    --border-color: var(--off-white);
+
+    --hover-background: var(--chromatic-black);
+    --hover-color: var(--red);
+    --selection-background-color: var(--off-white);
+    --selection-color: var(--chromatic-black);
+}
+
 //main display fonts
 @font-face {
     font-family: "DIRTBAG";
@@ -169,6 +186,10 @@ body {
 .emphasize {
     font-family: "BAALREGULAR";
     letter-spacing: 5px;
+}
+
+.underline {
+    text-decoration: underline;
 }
 
 .clickable {
@@ -268,6 +289,15 @@ body {
     .skill-section {
         .clickable {
             font-family: 'BAHNSCHRIFT';
+        }
+        span>ol {
+            margin: .5rem 0 0;
+            padding-left: 1rem;
+            &.compact-list {
+                columns: 2;
+                font-size: .8rem;
+                list-style-position: inside;
+            }
         }
     }
 }
