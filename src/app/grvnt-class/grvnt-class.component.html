@@ -13,9 +13,15 @@
         }
         <div class="skills">
             @for (skill of skillObj; track $index) {
-                <div class="skill-section">
+                <div [ngClass]="job.name === 'embedded one' && $index === 1 ? 'embedded': ''" class="skill-section">
                     @if (skill.descrip) {
-                        <strong (click)="rerollSkill($index)" class="clickable">{{skill.descrip}}</strong>
+                        @if (job.name === 'embedded one' && $index === 1) {
+                            <div class="embedded-label">
+                                <strong [innerHTML]="skill.descrip"></strong>
+                            </div>
+                        } @else {
+                            <strong [innerHTML]="skill.descrip" (click)="rerollSkill($index)" class="clickable"></strong>
+                        }
                         <span [innerHTML]="skill.data"></span>
                     } @else {
                         <span (click)="rerollSkill($index)" [innerHTML]="skill.data"></span>

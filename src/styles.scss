@@ -192,6 +192,14 @@ body {
     text-decoration: underline;
 }
 
+.left-indent {
+    padding-left: 1rem;
+}
+
+.embedded-padding {
+    padding: 0.5rem;
+}
+
 .clickable {
     cursor: pointer;
     user-select: none;

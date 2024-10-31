@@ -91,6 +91,8 @@ export class AppComponent implements OnInit {
     currIndex: -1,
   };
 
+  isEmbedded: boolean = false;
+
   beastHP: number = 0;
 
   ngOnInit(): void {
@@ -104,6 +106,8 @@ export class AppComponent implements OnInit {
       skills: JOBS[0].skills,
       currIndex: 0
     };
+    this.isEmbedded = this.jobObj.name === 'embedded one';
+
   }
 
   toggleRolls() {
@@ -126,6 +130,8 @@ export class AppComponent implements OnInit {
       skills: JOBS[newIndex].skills,
       currIndex: newIndex
     };
+
+    this.isEmbedded = this.jobObj.name === 'embedded one';
   }
 
   addBeastHP(beastHP: number) {

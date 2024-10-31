@@ -3,4 +3,9 @@
     .clickable {
         font-family: 'BAHNSCHRIFT';
     }
+    .embedded-name-layout {
+        span:not(:first-of-type) {
+            margin-left: 0.2rem;
+        }
+    }
 }

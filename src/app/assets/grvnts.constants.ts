@@ -101,6 +101,75 @@ export const NICKNAMES = [
     'Borg',
 ];
 
+export const EMBEDDED_NAMES = [
+    [
+        `Early`,
+        `Worried`,
+        `Petulant`,
+        `Scarred`,
+        `Aboon`,
+        `Stealthy`,
+        `Fractured`,
+        `Dilatory`,
+        `Bilious`,
+        `Invidious`,
+        `Redolent`,
+        `Uxorious`,
+        `Taciturn`,
+        `Tumult`,
+        `Impartial`,
+        `Loquacious`,
+        `Gargantuan`,
+        `Acerbic`,
+        `Meteoric`,
+        `Detriment`,
+    ],
+    [
+        `Mourns`,
+        `Sneaks`,
+        `Arrives`,
+        `Brings`,
+        `Impales`,
+        `Whispers`,
+        `Breaks`,
+        `Loves`,
+        `Commands`,
+        `Yells`,
+        `Dehorns`,
+        `Caresses`,
+        `Washes`,
+        `Whispers`,
+        `Drags`,
+        `Forges`,
+        `Sings`,
+        `Borrows`,
+        `Plays`,
+        `Defenestrates`,
+    ],
+    [
+        `the Pain`,
+        `the Dawn`,
+        `the Knell`,
+        `the Darkness`,
+        `the Hermit`,
+        `the Stars`,
+        `the Tower`,
+        `the Battle`,
+        `the Flame`,
+        `the Sulfer`,
+        `the Joy`,
+        `the Wastes`,
+        `the Creation`,
+        `the Beginning`,
+        `the Trip`,
+        `the All`,
+        `the Nothing`,
+        `the Other`,
+        `the Eye`,
+        `the End`,
+    ],
+]
+
 export const REASONS = [
     'because you had no choice - it was that, or be <strong>hung for your crimes</strong>',
     'because as a prisoner you developed an obsession with <span class="emphasize">BRUTALITY AND PAIN</span>',
@@ -625,67 +694,98 @@ export const JOBS = [
             },
         ]
     },
-    // {
-    //     name: 'recluse marksman',
-    //     stats: [
-    //         {
-    //             name: 'hp',
-    //             mod: 6
-    //         },
-    //         {
-    //             name: 'omens',
-    //             mod: 4
-    //         },
-    //         {
-    //             name: 'silver',
-    //             mod: '1d6x10'
-    //         },
-    //         {
-    //             name: 'ammo',
-    //             mod: 'd4'
-    //         },
-    //         {
-    //             name: 'presence',
-    //             mod: 2
-    //         },
-    //         {
-    //             name: 'strength',
-    //             mod: -2
-    //         },
-    //     ],
-    //     extras: [
-    //         '<strong>More-Precise Rifle.</strong> d10 ranged, SCOPED, IMPACT 1'
-    //     ],
-    //     descrip:`
-    //         <em>
-    //         War is typically a group effort, but you <strong>prefer it alone</strong>. You pay particular attention to the grass, the wind, and the birds – they’re the closest you have to friends. Where the pain of being an outcast once tortured you, it is now your <strong>greatest weapon</strong>.
-    //         </em>
-    //     `,
-    //     skills: [
-    //         {
-    //             descrip: 'The shot you are best known for is:',
-    //             table: [
-    //                 ` Removing the <strong>lit smoke of an enemy grvnt</strong> from across No Man’s Land.`,
-    //                 ` Putting one straight through the scope of an enemy Recluse Marksman. <strong>They never saw it coming</strong>.`,
-    //                 ` <strong>Assassinating a key enemy officer</strong>. You crawled on your belly for days to remain undetected.`,
-    //                 ` Eliminating a Falchon-Winged Altered Mercenary <strong>mid-flight</strong> in the black of night.`,
-    //                 ` Igniting a SLAGG deposit with a single shot, <strong>eliminating an entire platoon</strong> led by a fearsome lich.`,
-    //                 ` Unconfirmed. Since you work alone, no one can confirm your story. <strong>No one can disprove it either...</strong>`
-    //             ]
-    //         },
-    //         {
-    //             descrip: '',
-    //             table: [
-    //                 '<strong class="clickable">Night Stalker.</strong> Years of solitary cavern life have made your eyes large and incredibly keen in the dark. <strong>-2 DR on Presence rolls at night</strong>. Bright lights blind you for <strong>d2 turns</strong>. You may rest while On Watch.',
-    //                 '<strong class="clickable">Coriolis Effect.</strong> You prefer to be above your targets. <strong>1-in-6 chance your shot hits a second grvnt for d6 damage</strong>, double chance when at a higher elevation.',
-    //                 '<strong class="clickable">Pet Raven.</strong> You have a close relationship with a three-eyed Raven. <strong>Spend 1 Power</strong>: see through the Raven’s eyes for miles in all directions, detect even the slightest movements, and sense the wind and weather. You, too, have a third eye. <strong>+2 DR when interacting with people</strong>.',
-    //                 '<strong class="clickable">All Quiet.</strong> Your Precise Rifle has a silent, non-lethal option. <strong>Spend 1 Power</strong>: fire a shot that cannot miss, inducing SLEEP in the target (<strong>cannot act for d4 turns or until attacked</strong>). If awakened peacefully, the target divulges an important piece of information about the objective or enemy forces. <strong>Your rifle is the only thing you can hear</strong>.',
-    //                 '<strong class="clickable">Calm the Nerves.</strong> Crit on an 18-20 while smoking or using other addictive substances. <strong>Lower your SHOCK by 1 when using</strong>.',
-    //                 '<strong class="clickable">Occult Obscurity.</strong> <strong>Spend 1 Power</strong>: calm your mind, speaking with your surroundings and becoming as one. You cannot be located by enemies until after your next <strong>d4 attacks</strong>.',
-    //             ],
-    //         },
-    //     ]
-    // },
+    {
+        name: 'embedded one',
+        stats: [
+            {
+                name: 'hp',
+                mod: 8
+            },
+            {
+                name: 'omens',
+                mod: 4
+            },
+            {
+                name: 'silver',
+                mod: '0d0x0'
+            },
+            {
+                name: 'toughness',
+                mod: -2
+            },
+            {
+                name: 'agility',
+                mod: 1
+            },
+            {
+                name: 'presence',
+                mod: 1
+            },
+        ],
+        extras: [
+            `You are infused with <strong class="emphasize">ETHER</strong> that grants you a <strong>GIFT</strong> and <em>COVERINGS</em>.`,
+            '<strong>Ontological Oddity.</strong> Test Toughness to become invisible (cannot attack or heal).'
+        ],
+        descrip:`
+            <em>
+            Like all Pale Ones, you are <strong>ephemeral</strong>, <strong>unknowable</strong>. Sent by your kin to observe (<strong>and participate in</strong>) the Dying Lands’ war, you are out of place and time. Your squad views you with varying levels of contempt, fascination, and distrust. What mysteries of these primitive beasts will you solve? For now, <strong>you ensconce yourself in their violent ways</strong>.
+            </em>
+        `,
+        skills: [
+            {
+                descrip: '',
+                table: [
+                    {
+                        ether: "TIME",
+                        gift: `<strong>Rewind.</strong> Roll the <strong>same</strong> attack as a comrade this turn`,
+                        covering: `<em>Fast Forward.</em> When hit, <strong>immediately</strong> take another turn`
+                    },
+                    {
+                        ether: "GROWTH",
+                        gift: `<strong>Blacktrunk Club.</strong> d8 damage, <strong>SHOCK</strong>`,
+                        covering: `<em>Creeping Vines.</em> -d2, <strong>Partial</strong> cover`
+                    },
+                    {
+                        ether: "DECAY",
+                        gift: `<strong>Undead Fox.</strong> d6 damage, <strong>IMPACT</strong> 1`,
+                        covering: `<em>Animal Hides.</em> -d4, <strong>Partial</strong> cover`
+                    },
+                    {
+                        ether: "INTERDEPENDENCE",
+                        gift: `<strong>Palms or Fists.</strong> Test <strong>Presence DR12</strong> to force a <strong>Morale</strong> test, or attack for <strong>d4 damage</strong>`,
+                        covering: `<em>Nude.</em> Enemies roll +2 on <strong>Morale RESULTS</strong> table`
+                    },
+                    {
+                        ether: "MOVEMENT",
+                        gift: `<strong>Super Speed.</strong> Test <strong>Agility DR12</strong> to cause <strong>d4 damage</strong> to <strong>d4 enemies</strong>`,
+                        covering: `<em>Parallax.</em> <strong>DR16</strong> to hit`
+                    },
+                    {
+                        ether: "CURIOSITY",
+                        gift: `<strong>Battlefield Finds.</strong> Roll d10 on the Firearms table each morning`,
+                        covering: `<em>Battlefield Finds.</em> Roll d6 on the Armor table each morning`
+                    },
+                ],
+            },
+            {
+                descrip: 'You may summon your <span class="emphasize">ETHER</span> once per day for the following effect:',
+                table: [
+                    `<div class="embedded-padding"><strong class="underline">TIME.</strong>  The battlefield becomes an array of possibilities, <strong>literally</strong>. Every possible event is laid bare before you. <strong>Roll 6d6 and choose the sum of any three dice</strong>:
+                        <div class="left-indent">
+                            <div><strong class="underline">3-9</strong> all enemies gain <strong>d2 SHOCK</strong>.</div>
+                            <div><strong class="underline">10-15</strong> all enemies test <strong>Morale at -2</strong>.</div>
+                            <div><strong class="underline">16-18</strong> all enemies take <strong>d6 damage</strong>.</div>
+                        </div>
+                    </div>`,
+                    `<div class="embedded-padding"><strong class="underline">GROWTH.</strong>  <strong>Roll 2d6</strong>. <div>For each <strong>4-6</strong>, d3 creatures near you GROW enormous (<strong>x2 HP, d12 melee attack</strong>). For each <strong>1-3</strong>, d3 creatures near you SHRINK smaller (DR16 to hit, half HP and attack).</div></div>`,
+                    `<div class="embedded-padding"><strong class="underline">DECAY.</strong>  <strong>Roll 3d6</strong>. <div>For each <strong>1-2</strong>, d3 Firearms nearby turn to dust. For each <strong>3-4</strong>, Armor rots off d3 grvnts near you. For each <strong>5-6</strong>, d3 creatures near you take d8 damage.</div></div>`,
+                    `<div class="embedded-padding"><strong class="underline">INTERDEPENDENCE.</strong>  <strong>Roll 4d6</strong> and assign each to one creature. <div>That creature can add or subtract their die’s value from any roll. The squad lose all SHOCK.</div></div>`,
+                    `<div class="embedded-padding"><strong class="underline">MOVEMENT.</strong>  <strong>Roll 1d6</strong>. Your squad takes that many immediate actions.</div>`,
+                    `<div class="embedded-padding"><strong class="underline">CURIOSITY.</strong>  <strong>Roll 5d6</strong>. Use any three results to gain something from each SHIT table.</div>`
+                ]
+            },
+        ]
+    },
     // {
     //     name: 'recluse marksman',
     //     stats: [

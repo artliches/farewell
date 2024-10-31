@@ -1,10 +1,27 @@
 <span class="grvnt-card">
     <div (click)="rerollAll()" class="grvnt-header clickable">
-        THEY CALL YOU <strong>{{nameObj.name | uppercase}}</strong>.
+        THEY CALL YOU <strong>
+            @if (this.isEmbedded) {
+                @for (name of embeddedNameObj; track $index) {
+                    {{name.part}}
+                }
+            } @else {
+                {{nameObj.name | uppercase}}
+            }
+        </strong>
     </div>
     <div class="grvnt-body">
         <div>
-            Your name is forgotten in the mud, dirt, and blood. You are simply <span (click)="rerollName()" class="clickable">"{{nameObj.name}}"</span>.
+            Your name is forgotten in the mud, dirt, and blood. You are simply 
+            @if (isEmbedded) {
+                <span class="embedded-name-layout">
+                    @for (name of embeddedNameObj; track $index) {
+                        <span (click)="rerollEmbeddedName($index)" class="clickable">{{name.part}}</span>
+                    }
+                </span>
+            } @else {
+                <span (click)="rerollName()" class="clickable">"{{nameObj.name}}"</span>
+            }.
         </div>
         <div>
             You joined this hellish war <span (click)="rerollReasons()" class="clickable" [innerHTML]="reasonObj.descrip"></span>. The endless fighting has left you with {{nextWordGrammer(scarsObj.descrip)}} <span (click)="rerollScars()" class="clickable" [innerHTML]="scarsObj.descrip"></span>.
