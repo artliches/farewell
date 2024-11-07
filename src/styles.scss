@@ -200,6 +200,10 @@ body {
     padding: 0.5rem;
 }
 
+.center-text {
+    text-align: center;
+}
+
 .clickable {
     cursor: pointer;
     user-select: none;
@@ -293,6 +297,11 @@ body {
     }
 }
 
+ul {
+    margin: 0;
+    padding-left: 2rem;
+}
+
 .skills {
     .skill-section {
         .clickable {
@@ -305,6 +314,17 @@ body {
                 columns: 2;
                 font-size: .8rem;
                 list-style-position: inside;
+                li {
+                    &:not(:last-of-type) {
+                        margin-bottom: 0.2rem;
+                    }
+                    ol {
+                        margin: 0;
+                        li {
+                            margin-bottom: 0 !important;
+                        }
+                    }
+                }
             }
         }
     }
@@ -379,7 +399,7 @@ body {
 
 @media only screen and (min-width: 1440px) {
     .farewell-layout {
-        max-width: 56.25rem;
+        max-width: 65%;
         margin: auto;
     }
 }

@@ -786,248 +786,289 @@ export const JOBS = [
             },
         ]
     },
-    // {
-    //     name: 'recluse marksman',
-    //     stats: [
-    //         {
-    //             name: 'hp',
-    //             mod: 6
-    //         },
-    //         {
-    //             name: 'omens',
-    //             mod: 4
-    //         },
-    //         {
-    //             name: 'silver',
-    //             mod: '1d6x10'
-    //         },
-    //         {
-    //             name: 'ammo',
-    //             mod: 'd4'
-    //         },
-    //         {
-    //             name: 'presence',
-    //             mod: 2
-    //         },
-    //         {
-    //             name: 'strength',
-    //             mod: -2
-    //         },
-    //     ],
-    //     extras: [
-    //         '<strong>More-Precise Rifle.</strong> d10 ranged, SCOPED, IMPACT 1'
-    //     ],
-    //     descrip:`
-    //         <em>
-    //         War is typically a group effort, but you <strong>prefer it alone</strong>. You pay particular attention to the grass, the wind, and the birds – they’re the closest you have to friends. Where the pain of being an outcast once tortured you, it is now your <strong>greatest weapon</strong>.
-    //         </em>
-    //     `,
-    //     skills: [
-    //         {
-    //             descrip: 'The shot you are best known for is:',
-    //             table: [
-    //                 ` Removing the <strong>lit smoke of an enemy grvnt</strong> from across No Man’s Land.`,
-    //                 ` Putting one straight through the scope of an enemy Recluse Marksman. <strong>They never saw it coming</strong>.`,
-    //                 ` <strong>Assassinating a key enemy officer</strong>. You crawled on your belly for days to remain undetected.`,
-    //                 ` Eliminating a Falchon-Winged Altered Mercenary <strong>mid-flight</strong> in the black of night.`,
-    //                 ` Igniting a SLAGG deposit with a single shot, <strong>eliminating an entire platoon</strong> led by a fearsome lich.`,
-    //                 ` Unconfirmed. Since you work alone, no one can confirm your story. <strong>No one can disprove it either...</strong>`
-    //             ]
-    //         },
-    //         {
-    //             descrip: '',
-    //             table: [
-    //                 '<strong class="clickable">Night Stalker.</strong> Years of solitary cavern life have made your eyes large and incredibly keen in the dark. <strong>-2 DR on Presence rolls at night</strong>. Bright lights blind you for <strong>d2 turns</strong>. You may rest while On Watch.',
-    //                 '<strong class="clickable">Coriolis Effect.</strong> You prefer to be above your targets. <strong>1-in-6 chance your shot hits a second grvnt for d6 damage</strong>, double chance when at a higher elevation.',
-    //                 '<strong class="clickable">Pet Raven.</strong> You have a close relationship with a three-eyed Raven. <strong>Spend 1 Power</strong>: see through the Raven’s eyes for miles in all directions, detect even the slightest movements, and sense the wind and weather. You, too, have a third eye. <strong>+2 DR when interacting with people</strong>.',
-    //                 '<strong class="clickable">All Quiet.</strong> Your Precise Rifle has a silent, non-lethal option. <strong>Spend 1 Power</strong>: fire a shot that cannot miss, inducing SLEEP in the target (<strong>cannot act for d4 turns or until attacked</strong>). If awakened peacefully, the target divulges an important piece of information about the objective or enemy forces. <strong>Your rifle is the only thing you can hear</strong>.',
-    //                 '<strong class="clickable">Calm the Nerves.</strong> Crit on an 18-20 while smoking or using other addictive substances. <strong>Lower your SHOCK by 1 when using</strong>.',
-    //                 '<strong class="clickable">Occult Obscurity.</strong> <strong>Spend 1 Power</strong>: calm your mind, speaking with your surroundings and becoming as one. You cannot be located by enemies until after your next <strong>d4 attacks</strong>.',
-    //             ],
-    //         },
-    //     ]
-    // },
-    // {
-    //     name: 'recluse marksman',
-    //     stats: [
-    //         {
-    //             name: 'hp',
-    //             mod: 6
-    //         },
-    //         {
-    //             name: 'omens',
-    //             mod: 4
-    //         },
-    //         {
-    //             name: 'silver',
-    //             mod: '1d6x10'
-    //         },
-    //         {
-    //             name: 'ammo',
-    //             mod: 'd4'
-    //         },
-    //         {
-    //             name: 'presence',
-    //             mod: 2
-    //         },
-    //         {
-    //             name: 'strength',
-    //             mod: -2
-    //         },
-    //     ],
-    //     extras: [
-    //         '<strong>More-Precise Rifle.</strong> d10 ranged, SCOPED, IMPACT 1'
-    //     ],
-    //     descrip:`
-    //         <em>
-    //         War is typically a group effort, but you <strong>prefer it alone</strong>. You pay particular attention to the grass, the wind, and the birds – they’re the closest you have to friends. Where the pain of being an outcast once tortured you, it is now your <strong>greatest weapon</strong>.
-    //         </em>
-    //     `,
-    //     skills: [
-    //         {
-    //             descrip: 'The shot you are best known for is:',
-    //             table: [
-    //                 ` Removing the <strong>lit smoke of an enemy grvnt</strong> from across No Man’s Land.`,
-    //                 ` Putting one straight through the scope of an enemy Recluse Marksman. <strong>They never saw it coming</strong>.`,
-    //                 ` <strong>Assassinating a key enemy officer</strong>. You crawled on your belly for days to remain undetected.`,
-    //                 ` Eliminating a Falchon-Winged Altered Mercenary <strong>mid-flight</strong> in the black of night.`,
-    //                 ` Igniting a SLAGG deposit with a single shot, <strong>eliminating an entire platoon</strong> led by a fearsome lich.`,
-    //                 ` Unconfirmed. Since you work alone, no one can confirm your story. <strong>No one can disprove it either...</strong>`
-    //             ]
-    //         },
-    //         {
-    //             descrip: '',
-    //             table: [
-    //                 '<strong class="clickable">Night Stalker.</strong> Years of solitary cavern life have made your eyes large and incredibly keen in the dark. <strong>-2 DR on Presence rolls at night</strong>. Bright lights blind you for <strong>d2 turns</strong>. You may rest while On Watch.',
-    //                 '<strong class="clickable">Coriolis Effect.</strong> You prefer to be above your targets. <strong>1-in-6 chance your shot hits a second grvnt for d6 damage</strong>, double chance when at a higher elevation.',
-    //                 '<strong class="clickable">Pet Raven.</strong> You have a close relationship with a three-eyed Raven. <strong>Spend 1 Power</strong>: see through the Raven’s eyes for miles in all directions, detect even the slightest movements, and sense the wind and weather. You, too, have a third eye. <strong>+2 DR when interacting with people</strong>.',
-    //                 '<strong class="clickable">All Quiet.</strong> Your Precise Rifle has a silent, non-lethal option. <strong>Spend 1 Power</strong>: fire a shot that cannot miss, inducing SLEEP in the target (<strong>cannot act for d4 turns or until attacked</strong>). If awakened peacefully, the target divulges an important piece of information about the objective or enemy forces. <strong>Your rifle is the only thing you can hear</strong>.',
-    //                 '<strong class="clickable">Calm the Nerves.</strong> Crit on an 18-20 while smoking or using other addictive substances. <strong>Lower your SHOCK by 1 when using</strong>.',
-    //                 '<strong class="clickable">Occult Obscurity.</strong> <strong>Spend 1 Power</strong>: calm your mind, speaking with your surroundings and becoming as one. You cannot be located by enemies until after your next <strong>d4 attacks</strong>.',
-    //             ],
-    //         },
-    //     ]
-    // },
-    // {
-    //     name: 'recluse marksman',
-    //     stats: [
-    //         {
-    //             name: 'hp',
-    //             mod: 6
-    //         },
-    //         {
-    //             name: 'omens',
-    //             mod: 4
-    //         },
-    //         {
-    //             name: 'silver',
-    //             mod: '1d6x10'
-    //         },
-    //         {
-    //             name: 'ammo',
-    //             mod: 'd4'
-    //         },
-    //         {
-    //             name: 'presence',
-    //             mod: 2
-    //         },
-    //         {
-    //             name: 'strength',
-    //             mod: -2
-    //         },
-    //     ],
-    //     extras: [
-    //         '<strong>More-Precise Rifle.</strong> d10 ranged, SCOPED, IMPACT 1'
-    //     ],
-    //     descrip:`
-    //         <em>
-    //         War is typically a group effort, but you <strong>prefer it alone</strong>. You pay particular attention to the grass, the wind, and the birds – they’re the closest you have to friends. Where the pain of being an outcast once tortured you, it is now your <strong>greatest weapon</strong>.
-    //         </em>
-    //     `,
-    //     skills: [
-    //         {
-    //             descrip: 'The shot you are best known for is:',
-    //             table: [
-    //                 ` Removing the <strong>lit smoke of an enemy grvnt</strong> from across No Man’s Land.`,
-    //                 ` Putting one straight through the scope of an enemy Recluse Marksman. <strong>They never saw it coming</strong>.`,
-    //                 ` <strong>Assassinating a key enemy officer</strong>. You crawled on your belly for days to remain undetected.`,
-    //                 ` Eliminating a Falchon-Winged Altered Mercenary <strong>mid-flight</strong> in the black of night.`,
-    //                 ` Igniting a SLAGG deposit with a single shot, <strong>eliminating an entire platoon</strong> led by a fearsome lich.`,
-    //                 ` Unconfirmed. Since you work alone, no one can confirm your story. <strong>No one can disprove it either...</strong>`
-    //             ]
-    //         },
-    //         {
-    //             descrip: '',
-    //             table: [
-    //                 '<strong class="clickable">Night Stalker.</strong> Years of solitary cavern life have made your eyes large and incredibly keen in the dark. <strong>-2 DR on Presence rolls at night</strong>. Bright lights blind you for <strong>d2 turns</strong>. You may rest while On Watch.',
-    //                 '<strong class="clickable">Coriolis Effect.</strong> You prefer to be above your targets. <strong>1-in-6 chance your shot hits a second grvnt for d6 damage</strong>, double chance when at a higher elevation.',
-    //                 '<strong class="clickable">Pet Raven.</strong> You have a close relationship with a three-eyed Raven. <strong>Spend 1 Power</strong>: see through the Raven’s eyes for miles in all directions, detect even the slightest movements, and sense the wind and weather. You, too, have a third eye. <strong>+2 DR when interacting with people</strong>.',
-    //                 '<strong class="clickable">All Quiet.</strong> Your Precise Rifle has a silent, non-lethal option. <strong>Spend 1 Power</strong>: fire a shot that cannot miss, inducing SLEEP in the target (<strong>cannot act for d4 turns or until attacked</strong>). If awakened peacefully, the target divulges an important piece of information about the objective or enemy forces. <strong>Your rifle is the only thing you can hear</strong>.',
-    //                 '<strong class="clickable">Calm the Nerves.</strong> Crit on an 18-20 while smoking or using other addictive substances. <strong>Lower your SHOCK by 1 when using</strong>.',
-    //                 '<strong class="clickable">Occult Obscurity.</strong> <strong>Spend 1 Power</strong>: calm your mind, speaking with your surroundings and becoming as one. You cannot be located by enemies until after your next <strong>d4 attacks</strong>.',
-    //             ],
-    //         },
-    //     ]
-    // },
-    // {
-    //     name: 'recluse marksman',
-    //     stats: [
-    //         {
-    //             name: 'hp',
-    //             mod: 6
-    //         },
-    //         {
-    //             name: 'omens',
-    //             mod: 4
-    //         },
-    //         {
-    //             name: 'silver',
-    //             mod: '1d6x10'
-    //         },
-    //         {
-    //             name: 'ammo',
-    //             mod: 'd4'
-    //         },
-    //         {
-    //             name: 'presence',
-    //             mod: 2
-    //         },
-    //         {
-    //             name: 'strength',
-    //             mod: -2
-    //         },
-    //     ],
-    //     extras: [
-    //         '<strong>More-Precise Rifle.</strong> d10 ranged, SCOPED, IMPACT 1'
-    //     ],
-    //     descrip:`
-    //         <em>
-    //         War is typically a group effort, but you <strong>prefer it alone</strong>. You pay particular attention to the grass, the wind, and the birds – they’re the closest you have to friends. Where the pain of being an outcast once tortured you, it is now your <strong>greatest weapon</strong>.
-    //         </em>
-    //     `,
-    //     skills: [
-    //         {
-    //             descrip: 'The shot you are best known for is:',
-    //             table: [
-    //                 ` Removing the <strong>lit smoke of an enemy grvnt</strong> from across No Man’s Land.`,
-    //                 ` Putting one straight through the scope of an enemy Recluse Marksman. <strong>They never saw it coming</strong>.`,
-    //                 ` <strong>Assassinating a key enemy officer</strong>. You crawled on your belly for days to remain undetected.`,
-    //                 ` Eliminating a Falchon-Winged Altered Mercenary <strong>mid-flight</strong> in the black of night.`,
-    //                 ` Igniting a SLAGG deposit with a single shot, <strong>eliminating an entire platoon</strong> led by a fearsome lich.`,
-    //                 ` Unconfirmed. Since you work alone, no one can confirm your story. <strong>No one can disprove it either...</strong>`
-    //             ]
-    //         },
-    //         {
-    //             descrip: '',
-    //             table: [
-    //                 '<strong class="clickable">Night Stalker.</strong> Years of solitary cavern life have made your eyes large and incredibly keen in the dark. <strong>-2 DR on Presence rolls at night</strong>. Bright lights blind you for <strong>d2 turns</strong>. You may rest while On Watch.',
-    //                 '<strong class="clickable">Coriolis Effect.</strong> You prefer to be above your targets. <strong>1-in-6 chance your shot hits a second grvnt for d6 damage</strong>, double chance when at a higher elevation.',
-    //                 '<strong class="clickable">Pet Raven.</strong> You have a close relationship with a three-eyed Raven. <strong>Spend 1 Power</strong>: see through the Raven’s eyes for miles in all directions, detect even the slightest movements, and sense the wind and weather. You, too, have a third eye. <strong>+2 DR when interacting with people</strong>.',
-    //                 '<strong class="clickable">All Quiet.</strong> Your Precise Rifle has a silent, non-lethal option. <strong>Spend 1 Power</strong>: fire a shot that cannot miss, inducing SLEEP in the target (<strong>cannot act for d4 turns or until attacked</strong>). If awakened peacefully, the target divulges an important piece of information about the objective or enemy forces. <strong>Your rifle is the only thing you can hear</strong>.',
-    //                 '<strong class="clickable">Calm the Nerves.</strong> Crit on an 18-20 while smoking or using other addictive substances. <strong>Lower your SHOCK by 1 when using</strong>.',
-    //                 '<strong class="clickable">Occult Obscurity.</strong> <strong>Spend 1 Power</strong>: calm your mind, speaking with your surroundings and becoming as one. You cannot be located by enemies until after your next <strong>d4 attacks</strong>.',
-    //             ],
-    //         },
-    //     ]
-    // }
+    {
+        name: 'radiant bannerman',
+        stats: [
+            {
+                name: 'hp',
+                mod: 6
+            },
+            {
+                name: 'omens',
+                mod: 3
+            },
+            {
+                name: 'silver',
+                mod: '2d6x10'
+            },
+            {
+                name: 'ammo',
+                mod: 'd3'
+            },
+            {
+                name: 'presence',
+                mod: 2
+            },
+            {
+                name: 'toughness',
+                mod: -2
+            },
+        ],
+        extras: [
+            'A large, colorful <strong>Bannerspear</strong> (d6, IMPACT 1) is fused to your spine and can be seen from a great distance. <em>What color is your banner?</em>'
+        ],
+        descrip:`
+            <em>
+            <div>Then raise the colored standard high.</div>
+            <div>Within its shade we'll live and die,</div>
+            <div>Though cowards flinch and traitors sneer,</div>
+            <div>We'll keep our banner flying here.</div>
+            </em>
+        `,
+        skills: [
+            {
+                descrip: '',
+                table: [
+                    `<strong class="clickable">Vampiric Garnet.</strong>  Roll <strong>d4+1</strong> on the Armor table – your flesh blocks damage naturally as though wearing that Armor Tier. When you block damage, <strong>the wound immediately closes</strong>, causing fear in the attacker (<strong>immediately tests Morale</strong>). It is rumored you often <strong>turn into a bat at night</strong>...`,
+                    `<strong class="clickable">Somber Ash.</strong> <strong>Spend 1 Power</strong>: the ashen sky descends upon the field of battle. SILENCE <strong>d4</strong> creatures (<strong>cannot use scrolls or specialities for d4 turns</strong>).`,
+                    `<strong class="clickable">Deepest Cobalt.</strong> Killing forges you in steel. Every time you kill an enemy with your Bannerspear, you and nearby allies gain <strong>d4 Armor</strong> on your next defense.`,
+                    `<strong class="clickable">Shining Snow.</strong> <strong>Spend 1 Power</strong>: nearby siblings-in-arms are emboldened by your presence. They may:
+                        <ul>
+                            <li>gain <strong>d2</strong> Omens/Powers</li>
+                            <li>heal <strong>d4</strong> HP</li>
+                            <li>lower SHOCK by <strong>d3</strong></li>
+                        </ul>
+                    `,
+                    `<strong class="clickable">Deathly Coal.</strong> <strong>Spend 1 Power</strong>: darkness devours the souls of your enemies… and everyone else. <strong>d6</strong> nearby enemies suffer <strong>Dark Thoughts</strong>, while allies suffer <strong>d4 SHOCK</strong>.`,
+                    `<strong class="clickable">Powerful Emerald.</strong> You shine brightly. <strong>Spend 1 Power</strong>: add or subtract <strong>d4</strong> from any allied <strong>Initiative</strong> or <strong>SHOCK</strong> test. Nearby enemies always roll <strong>Morale at +2</strong>.`,
+                ],
+            },
+            {
+                descrip: 'Battle cry:',
+                table: [
+                    ` “<strong>Take my life, but I'll take yours too!</strong>”`,
+                    ` A blood-curdling scream, <strong>challenging Morale when yelled in unison</strong>.`,
+                    ` The <strong>rhythmic clamor</strong> of swords on shields and rifle stocks on solid earth. `,
+                    ` “<strong>Not one step back!</strong>”`,
+                    ` Dragging your bayonet across your chest, <strong>claiming first blood for yourself</strong>.`,
+                    ` Feral application of <strong>corpse paint</strong> as your broken fingernails claw at your flesh.`
+                ]
+            },
+        ]
+    },
+    {
+        name: 'new world engineer',
+        stats: [
+            {
+                name: 'hp',
+                mod: 8
+            },
+            {
+                name: 'omens',
+                mod: 4
+            },
+            {
+                name: 'silver',
+                mod: '1d6x10'
+            },
+            {
+                name: 'ammo',
+                mod: 'd4+2'
+            },
+            {
+                name: 'presence',
+                mod: -2
+            },
+            {
+                name: 'agility',
+                mod: 2
+            },
+        ],
+        extras: [
+            'You lead two <strong>Muskoxen</strong> (<strong>HP 14</strong>) that drag piles of weathered building materials behind them.'
+        ],
+        descrip:`
+            <em>
+            Obsessed with progress and the potential applications of <strong>SLAGGVARA</strong>. You scoff at the old ways and embrace the industrial age of enlightenment, seeking to <strong>immortalize yourself through your creations</strong>.
+            </em>
+        `,
+        skills: [
+            {
+                descrip: 'You may construct any <strong>two</strong> of the following <strong>once per mission</strong>:',
+                table: [
+                    `<strong>Tower of Power.</strong>Erect a wooden tower <strong>d3</strong> levels high. Firing from the tower adds <strong>+1 Presence per level</strong>. Falling deals <strong>d3 damage per level</strong>. Provides Partial cover.`,
+                    `<strong>So Hwatcha Want.</strong> Construct a mobile rocket battery (<strong>2d6 rockets, d2 damage each, IMPACT 2</strong>). Costs 1 <strong>SLAGG</strong> to fire.`,
+                    `<strong>No Tanks.</strong> Install a row of metal <strong>“Dredgehog”</strong> tank traps. Armored enemies cannot pass them (<strong>lose d2 turns finding a new path</strong>).`,
+                    `<strong>Bridge the Gap.</strong> Quickly assemble a wooden fording bridge across rivers or chasms. <strong>Strong enough to hold a squad but not armored units</strong>.`,
+                    `<strong>Hunker Dory.</strong> Pour a stone and metal reinforced box, providing <strong>Total Cover</strong> and a long, narrow embrasure. <strong>Fits two grvnts</strong>.`,
+                    `<strong>Barbed and Ready.</strong> You have a near-unlimited supply of Barbed Wire, and you deploy it like a sculptor (<strong>spend 1 Power</strong>). All enemies encountering it roll (<strong>d3</strong>):
+                        <ol>
+                            <li><strong>d3</strong> damage</li>
+                            <li><strong>Morale</strong></li>
+                            <li><strong>SHOCK</strong></li>
+                        </ol> 
+                    `,
+                ]
+            },
+            {
+                descrip: 'When you embraced your new discipline, you left:',
+                table: [
+                    ` A backwards, yokel cult in the <strong>forests of Sarkash</strong> claiming to possess golden plates etched with <strong>forgotten scripture</strong>.`,
+                    ` An ancient monastery in the foothills of <strong>Faithspire</strong> where you transcribed dusty tomes of <strong>useless knowledge</strong>.`,
+                    ` The strict and unnecessary belief that life is a <strong>binary of good and evil</strong>.`,
+                    ` Raiments of the priesthood. Long-time comrades still sometimes call you ”<strong>Father</strong>”—despite your revocation of the cloth—and <strong>pester you with confession</strong>.`,
+                    ` Maleficium and a pact with a forgotten deity. <strong>It was just a phase</strong>.`,
+                    ` A fishing village of <strong>degenerates and peasants</strong>, none of whom could count higher than their <strong>number of remaining teeth</strong>.`,
+                ],
+            },
+        ]
+    },
+    {
+        name: 'despondent interpreter',
+        stats: [
+            {
+                name: 'hp',
+                mod: 6
+            },
+            {
+                name: 'omens',
+                mod: 4
+            },
+            {
+                name: 'silver',
+                mod: '1d6x10'
+            },
+            {
+                name: 'ammo',
+                mod: 'd2'
+            },
+            {
+                name: 'presence',
+                mod: 2
+            },
+            {
+                name: 'strength',
+                mod: -2
+            },
+        ],
+        extras: [
+            '<strong>Unthreatening.</strong> 1-in-2 chance you are ignored in combat'
+        ],
+        descrip:`
+            <em>
+            History is written by the victors, but <strong>promotions are written by the scribes who bear witness to battle</strong>. Some say the <strong>pen is mightier than the sword</strong>; with a single stroke, the tide of war can be forever influenced. Keep your <strong>head down</strong> and your <strong>inkwell full</strong>.
+            </em>
+        `,
+        skills: [
+            {
+                descrip: 'Your preferred ink and writing tool are:',
+                table: [
+                    ` Icefell Sable (<strong>the only color they’re capable of producing</strong>) and Vierwinged Falchon plume.`,
+                    ` Blood and your finger. <strong>Smudges terribly</strong>.`,
+                    ` Fine, sharpened <strong>Mountfont graphite fitted to Blacktrunk wood</strong>.`,
+                    ` Liquified <strong>Black Salt Wind</strong> and a custom-handled <strong>Dredgehog quill</strong>.`,
+                    ` The means matter not so long as the stationary is <strong>well-pressed Onda kelp papyri</strong>.`,
+                    ` Dyed <strong>Butaboar fats</strong> and the <strong>twisted pin of a grenade</strong>.`,
+
+                ]
+            },
+            {
+                descrip: '<strong>Keeper of the Record.</strong> When any of the following happen during a battle, mark it off <strong>permanently</strong>. Gain one permanent bonus for the entire squad for every <strong>three</strong> completed.',
+                table: [
+                    `Any squad member cheats death on a <strong>Broken</strong> roll.`,
+                    `The squad spends all their <strong>SLAGG</strong>.`,
+                    `An entire <strong>building</strong> is destroyed.`,
+                    `A <strong>Heavy Machinery</strong> unit is destroyed.`,
+                    `A squad member dies of <strong>SHOCK</strong>.`,
+                    `An enemy grvnt switches <strong>allegiance</strong>.`,
+                    `A <strong>War Scroll</strong> causes an Occultic Accident.`,
+                    `A squad member does <strong>max damage</strong> with a Requisitions attack.`,
+                    `A squad member survives a <strong>GAS</strong> attack.`,
+                    `An <strong>entire</strong> enemy company is killed.`,
+                    `An enemy is eliminated in a <strong>non-lethal</strong> way.`,
+                    `An entire enemy <strong>squad</strong> runs away.`,
+                    `Your unit acquires three or more <strong>Battle Scars</strong> in a mission.`,
+                    `An enemy faction <strong>Special Forces</strong> unit is eliminated.`,
+                    `Mulitple enemies die from <strong>BURN</strong>.`,
+                    `Multiple enemies die from a single <strong>BLAST</strong> attack.`,
+                    `A <strong>Radiant Bannerman </strong>is killed in the line of duty.`,
+                    `A <strong>1</strong> is rolled after using an <strong>Omen</strong>.`,
+                    `Multiple grvnts are <strong>Promoted</strong> to Warlord.`,
+                    `A <strong>Sabotaged</strong> corpse is looted.`,
+                ],
+            },
+            {
+                descrip: '<strong>BONUS.</strong> Only once:',
+                table: [
+                    `+1 <strong>SLAGG</strong> every mission.`,
+                    `Roll <strong>Broken</strong> up to <strong>-2 HP</strong>.`,
+                    `Gain <strong>Lobster Armor</strong> as available Requistions.`,
+                    `When gaining<strong> War Scrolls</strong>, <strong>choose</strong> instead of rolling random.`,
+                    `All members of the squad are <strong>Promoted</strong> at the end of the mission.`,
+                    `Word of your accomplishments reaches faraway ears. Automatically win your next <strong>Diplomacy Phase</strong>.`,
+                    `All <strong>new</strong> grvnts choose their own <strong>SHIT</strong>`,
+                    `All <strong>SHOCK</strong> rolls for the squad are now <strong>d3</strong>.`,
+                ],
+            },
+        ]
+    },
+    {
+        name: 'sadistic soldier',
+        stats: [
+            {
+                name: 'hp',
+                mod: 10
+            },
+            {
+                name: 'omens',
+                mod: 2
+            },
+            {
+                name: 'silver',
+                mod: '1d6x10'
+            },
+            {
+                name: 'ammo',
+                mod: 'd2'
+            },
+            {
+                name: 'presence',
+                mod: -2
+            },
+            {
+                name: 'toughness',
+                mod: 2
+            },
+        ],
+        extras: [
+            'Start with a <strong>Punch Dagger</strong>. All your melee weapons do <strong>+d2 damage</strong>.'
+        ],
+        descrip:`
+            <em>
+            Pleasure is sweetest when paid for by <strong>another's pain</strong>. Where you were once punished for your <strong>psychotically cruel crimes</strong>, you now have been loosed upon the world; the only <strong>boundaries to your carnage are your own capabilities</strong>. Also, your choice in jewelry is <strong>questionable at best</strong>. 
+            </em>
+        `,
+        skills: [
+            {
+                descrip: 'When killing an enemy with a <strong>melee weapon</strong>, roll <strong>d6</strong> to see what you have collected:',
+                table: [
+                    `<strong>EARS.</strong> The screams of the battlefield are <strong>horrific</strong>, so you’re actually doing them a favor. For every ear you collect: <strong>+1 Agility and -1 Toughness</strong>`,
+                    `<strong>EYES.</strong> They really wouldn’t want to see <strong>what you’re about to do</strong>. For every eye you collect: <strong>+1 Presence and -1 Strength</strong>`,
+                    `<strong>TEETH.</strong> This one was way too <strong>mouthy</strong>. For every tooth you collect: <strong>+1 Tier of Armor and -1 max HP</strong>`,
+                    `<strong>NOSES.</strong> The stench of death is <strong>no longer of their concern</strong>. For every nose you collect: <strong>+1 Toughness and -1 Agility</strong>`,
+                    `<strong>FINGERS.</strong> They don’t need to <strong>pull a trigger anymore</strong>. For every finger you collect: <strong>+1 damage and -1 Tier of Armor</strong>`,
+                    `<strong>TONGUES.</strong> You just really like tongues. <strong>They’re neat</strong>. For every tongue you collect: <strong>+1 max HP and -1 Presence</strong>`,
+                ]
+            },
+            {
+                descrip: 'But what you REALLY like are',
+                table: [
+                    ` <strong>Brains.</strong> Tasting them always reminds you of the <strong>first time</strong>. <strong>Gain one memory from the (previous) owner’s gray matter</strong>.`,
+                    ` <strong>Bones.</strong> You make sweet musicks with the hollowed out structures of former humans. <strong>Prolonged playing drives listeners mad</strong>.`,
+                    ` <strong>Guts.</strong> Looms without the lubrication of human offal don’t work quite the same. <strong>You craft what you find into the most hideous items</strong>.`,
+                    ` <strong>Excrement.</strong> Bathing in filth has made you powerfully infectious… and fetid. <strong>Attacks against you have a chance of infecting the attacker</strong>.`,
+                ],
+            },
+        ]
+    }
 ]

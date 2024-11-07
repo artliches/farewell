@@ -3,7 +3,7 @@
         {{job.name | uppercase}}
     </div>
     <div class="grvnt-body">
-        <div
+        <div [ngClass]="job.name === 'radiant bannerman' ? 'center-text': ''"
             class="job-descrip"
             [innerHTML]="job.descrip"
         >
@@ -12,6 +12,53 @@
             <div [innerHTML]="extra"></div>
         }
         <div class="skills">
+            @if (job.name === 'new world engineer' || job.name === 'sadistic soldier') {
+                <div class="skill-section skill-table">
+                    <div class="skill-label">
+                        <span [innerHTML]="job.skills[0].descrip"></span>
+                    </div>
+                    <span>
+                        <ol class="compact-list">
+                            @for (building of job.skills[0].table; track $index) {
+                                <li>
+                                    <span [innerHtml]="building"></span>
+                                </li>
+                            }
+                        </ol>
+                    </span>
+                    @if (job.name === 'sadistic soldier') {
+                        <div class="skill-label">
+                            <small>Drop <strong>undesired</strong> collectables whenever you rest. <strong>You can NEVER be Promoted</strong>.</small>
+                        </div>
+                    }
+                </div>
+
+            } @else if (job.name === 'despondent interpreter') {
+                <div class="skill-section skill-table">
+                    <div class="skill-label">
+                        <span [innerHTML]="job.skills[1].descrip"></span>
+                    </div>
+                    <span>
+                        <ol class="compact-list">
+                            @for (record of job.skills[1].table; track $index) {
+                                <li><span [innerHTML]="record"></span></li>
+                            }
+                        </ol>
+                    </span>
+                </div>
+                <div class="skill-section skill-table">
+                    <div class="skill-label">
+                        <span [innerHTML]="job.skills[2].descrip"></span>
+                    </div>
+                    <span>
+                        <ol class="compact-list">
+                            @for (bonus of job.skills[2].table; track $index) {
+                                <li><span [innerHTML]="bonus"></span></li>
+                            }
+                        </ol>
+                    </span>
+                </div>
+            }
             @for (skill of skillObj; track $index) {
                 <div [ngClass]="job.name === 'embedded one' && $index === 1 ? 'embedded': ''" class="skill-section">
                     @if (skill.descrip) {
@@ -28,6 +75,7 @@
                     }
                 </div>
             }
+            
         </div>
     </div>
 </span>

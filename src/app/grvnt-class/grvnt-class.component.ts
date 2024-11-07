@@ -49,24 +49,57 @@ export class GrvntClassComponent implements OnInit, OnChanges {
 
   private getSkills() {
     let newSkill: {descrip: string,  data: string,  currIndex: number, arrayIndex: number};
-    this.job.skills.forEach((skill: { table: string[] | any[]; descrip: string; }, index: number) => {
-      if (this.job.name.includes('altered') && index === 1) {
-        this.beastObj.originalArray = JSON.parse(JSON.stringify(skill.table));
-      }
-      if (this.job.name.includes('embedded')) {
-        if (index === 0) {
-          const newData = this.random.shuffleArray(skill.table)[0];
-          newSkill = {
-            descrip: newData.ether,
-            data: `
-              <div>${newData.gift}</div>
-              <div>${newData.covering}</div>
-            `,
-            currIndex: 0,
-            arrayIndex: index,
-          };
+
+    if (this.job.name === 'new world engineer' || this.job.name === 'sadistic soldier') {
+      let newData = this.random.shuffleArray(this.job.skills[1].table)[0];
+      newSkill = {
+        descrip: this.job.skills[1].descrip,
+        data: newData,
+        currIndex: 0,
+        arrayIndex: 1,
+      };
+      this.skillObj.push(newSkill);
+    } else if (this.job.name === 'despondent interpreter') {
+      let newData = this.random.shuffleArray(this.job.skills[0].table)[0];
+      newSkill = {
+        descrip: this.job.skills[0].descrip,
+        data: newData,
+        currIndex: 0,
+        arrayIndex: 1,
+      };
+      this.skillObj.push(newSkill);
+    } else {
+      this.job.skills.forEach((skill: { table: string[] | any[]; descrip: string; }, index: number) => {      
+        if (this.job.name.includes('altered') && index === 1) {
+          this.beastObj.originalArray = JSON.parse(JSON.stringify(skill.table));
+        }
+  
+        if (this.job.name.includes('embedded')) {
+          if (index === 0) {
+            const newData = this.random.shuffleArray(skill.table)[0];
+            newSkill = {
+              descrip: newData.ether,
+              data: `
+                <div>${newData.gift}</div>
+                <div>${newData.covering}</div>
+              `,
+              currIndex: 0,
+              arrayIndex: index,
+            };
+          } else {
+            const newData = skill.table.find(x => x.includes(this.skillObj[0].descrip));
+            newSkill = {
+              descrip: skill.descrip,
+              data: newData,
+              currIndex: 0,
+              arrayIndex: index,
+            };
+          }
         } else {
-          const newData = skill.table.find(x => x.includes(this.skillObj[0].descrip));
+          let newData = this.random.shuffleArray(skill.table)[0];
+          if (newData.includes('[')) {
+            newData = this.rollAndReplaceInString(newData);
+          }
           newSkill = {
             descrip: skill.descrip,
             data: newData,
@@ -74,27 +107,17 @@ export class GrvntClassComponent implements OnInit, OnChanges {
             arrayIndex: index,
           };
         }
-      } else {
-        let newData = this.random.shuffleArray(skill.table)[0];
-        if (newData.includes('[')) {
-          newData = this.rollAndReplaceInString(newData);
+        this.skillObj.push(newSkill);
+    
+        if (this.beastObj && this.beastObj.originalArray.length > 0) {
+            this.beastObj.currBeast = this.getBeastIndex(newSkill.data);
         }
-        newSkill = {
-          descrip: skill.descrip,
-          data: newData,
-          currIndex: 0,
-          arrayIndex: index,
-        };
-      }
-      this.skillObj.push(newSkill);
-  
-      if (this.beastObj && this.beastObj.originalArray.length > 0) {
-          this.beastObj.currBeast = this.getBeastIndex(newSkill.data);
-      }
-    });
+      });
+    }
   }
 
   rerollSkill(index: number) {
+    const skillIndex = this.job.name === 'new world engineer' ? index + 1 : index;
     let newIndex = 0;
     const isEndOfArray = this.job.skills[index]['table'].length === this.skillObj[index].currIndex + 1;
     if (isEndOfArray) {
@@ -125,7 +148,7 @@ export class GrvntClassComponent implements OnInit, OnChanges {
       this.skillObj[index+1].data = updatedEtherUse;
 
     } else {
-      let newData = this.job.skills[index]['table'][newIndex];
+      let newData = this.job.skills[skillIndex]['table'][newIndex];
       if (newData.includes('[')) {
         newData = this.rollAndReplaceInString(newData);
       }

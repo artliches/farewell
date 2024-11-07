@@ -10,4 +10,11 @@
             color: var(--background-color);
         }
     }
+    .skill-table {
+        border: 1px solid var(--border-color);
+        .skill-label {
+            background-color: var(--border-color);
+            color: var(--background-color);
+        }
+    }
 }
