@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { RandomNumberService } from '../random-number.service';
 import { CommonModule } from '@angular/common';
 
@@ -16,6 +16,7 @@ export class GrvntAbilitiesComponent implements OnInit, OnChanges {
   @Input() job: any;
   @Input() showRolls: boolean = false;
   @Input() beastHP: number = 0;
+  @Output() presence: EventEmitter<any> = new EventEmitter();
 
   statsArray: Array<{
     name: string,
@@ -192,6 +193,9 @@ export class GrvntAbilitiesComponent implements OnInit, OnChanges {
       }
       // convert rawRoll according to table
       stat.value = this.getModifierFromRawRoll(rawRoll);
+      if (statName === 'presence') {
+        this.presence.emit(stat.value);
+      }
       if (statName === 'toughness') {
         const hp = this.vitalsArray.find(vital => vital.name === 'hp');
         if (hp && hp.rollsArray) {

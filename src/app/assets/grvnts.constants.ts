@@ -1063,12 +1063,51 @@ export const JOBS = [
             {
                 descrip: 'But what you REALLY like are',
                 table: [
-                    ` <strong>Brains.</strong> Tasting them always reminds you of the <strong>first time</strong>. <strong>Gain one memory from the (previous) owner’s gray matter</strong>.`,
-                    ` <strong>Bones.</strong> You make sweet musicks with the hollowed out structures of former humans. <strong>Prolonged playing drives listeners mad</strong>.`,
-                    ` <strong>Guts.</strong> Looms without the lubrication of human offal don’t work quite the same. <strong>You craft what you find into the most hideous items</strong>.`,
-                    ` <strong>Excrement.</strong> Bathing in filth has made you powerfully infectious… and fetid. <strong>Attacks against you have a chance of infecting the attacker</strong>.`,
+                    ` <strong class="underline">Brains.</strong> Tasting them always reminds you of the <strong>first time</strong>. <strong>Gain one memory from the (previous) owner’s gray matter</strong>.`,
+                    ` <strong class="underline">Bones.</strong> You make sweet musicks with the hollowed out structures of former humans. <strong>Prolonged playing drives listeners mad</strong>.`,
+                    ` <strong class="underline">Guts.</strong> Looms without the lubrication of human offal don’t work quite the same. <strong>You craft what you find into the most hideous items</strong>.`,
+                    ` <strong class="underline">Excrement.</strong> Bathing in filth has made you powerfully infectious… and fetid. <strong>Attacks against you have a chance of infecting the attacker</strong>.`,
                 ],
             },
         ]
     }
-]
+];
+
+export const CARRY = [
+    `<strong class="clickable">nothing</strong>, supplies were low.`,
+    `a kick to the teeth and <strong class="clickable">nothing</strong> to show for it.`,
+    `the unspent Ammo from the previous day in your <strong class="clickable">Bandolier</strong>.`,
+    `2 more normal-sized items in your <strong class="clickable">Side Satchel</strong>.`,
+    `6 more normal- sized items in your <strong class="clickable">Ratty Ol’ Haversack</strong>.`,
+    `whatever you can convince your starving <strong class="clickable">Pack Mule</strong> to carry. Won't carry you.`,
+];
+
+export const READINESS = [
+    `<strong class="clickable">Entrenching Tool</strong>. <strong>d4 damage</strong>`,
+    `<strong class="clickable">SLAGG Dip</strong>. <strong>d4</strong> applications, adds a <strong>random Weapon Keyword</strong>`,
+    `<strong class="clickable">Small Shield</strong>`,
+    `<strong class="clickable">Ammo Box</strong>. <strong>+[d4]</strong> Ammo (<strong>contains all types</strong>)`,
+    `<strong class="clickable">Field Dress Kit</strong>. <strong>[Presence+4]</strong> uses,  (<strong>stops bleeding/infection and heals d6 HP</strong>)`,
+    `<strong class="clickable">Ammo Belt</strong>, (<strong>carries one unspent Ammo from the previous day</strong>)`,
+    `<strong class="clickable">Scope</strong>`,
+    `<strong class="clickable">Large Shield</strong>`,
+    `<strong class="clickable">Gas Mask</strong>`,
+    `<strong class="clickable">Tergol’s Secret Cocktail</strong> <strong>d4</strong> damage, SHOCK, BURN 3`,
+    `<strong class="clickable">Helmet</strong>`,
+    `War Scroll random`,
+];
+
+export const PERSONAL = [
+    `Pack of <strong class="clickable">smokes</strong> `,
+    `<strong class="clickable">Wire cutters</strong>`,
+    `<strong class="clickable">Compass</strong>`,
+    `Last letter from <strong class="clickable">home</strong> `,
+    `<strong class="clickable">Prayer beads</strong>`,
+    `<strong class="clickable">Grappling hook</strong>`,
+    `Pocketful of <strong class="clickable">bent nails</strong>`,
+    `<strong class="clickable">[d2]</strong> Signal flares`,
+    `<strong class="clickable">Repair kit</strong>`,
+    `<strong class="clickable">Dead friend’s</strong> dog tags `,
+    `20ft <strong class="clickable">Barbed Wire</strong> coil  `,
+    `Raw piece of <strong class="clickable">SLAGG</strong>`,
+];

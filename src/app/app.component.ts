@@ -7,11 +7,12 @@ import { GrvntClassComponent } from "./grvnt-class/grvnt-class.component";
 import { GrvntVitalsComponent } from "./grvnt-vitals/grvnt-vitals.component";
 import { RandomNumberService } from './random-number.service';
 import { JOBS } from './assets/grvnts.constants';
+import { GrvntShitComponent } from "./grvnt-shit/grvnt-shit.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, GrvntAbilitiesComponent, GrvntIdentityComponent, CommonModule, GrvntClassComponent, GrvntVitalsComponent],
+  imports: [GrvntAbilitiesComponent, GrvntIdentityComponent, CommonModule, GrvntClassComponent, GrvntVitalsComponent, GrvntShitComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
@@ -94,6 +95,7 @@ export class AppComponent implements OnInit {
   isEmbedded: boolean = false;
 
   beastHP: number = 0;
+  presenceNum: number = -5;
 
   ngOnInit(): void {
     //shuffle jobs and choose the first on load
@@ -137,6 +139,12 @@ export class AppComponent implements OnInit {
   addBeastHP(beastHP: number) {
     setTimeout(() => {
       this.beastHP = beastHP;
+    });
+  }
+
+  getPresence(presenceNum: any) {
+    setTimeout(() => {
+      this.presenceNum = presenceNum;
     });
   }
 

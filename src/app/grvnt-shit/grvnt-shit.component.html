@@ -1,0 +1,42 @@
+<span class="grvnt-card">
+    <div class="shit-header">
+        <div class="shit-scroll">
+            <ul aria-hidden="true">
+                <li><em>you better pray for something good</em></li>
+                <li><em>this is what they'll take from you when you're cold</em></li>
+                <li><em>you better pray for something good</em></li>
+                <li><em>this is what they'll take from you when you're cold</em></li>
+            </ul>
+            <ul aria-hidden="true">
+                <li><em>you better pray for something good</em></li>
+                <li><em>this is what they'll take from you when you're cold</em></li>
+                <li><em>you better pray for something good</em></li>
+                <li><em>this is what they'll take from you when you're cold</em></li>
+            </ul>
+        </div>
+        <div (click)="rerollAll()" class="grvnt-header clickable">SHIT</div>
+    </div>
+    <div class="grvnt-body">
+        <div>
+            You can carry 2 normal-sized items, plus
+            <span (click)="rerollCarry()" [innerHTML]="carryObj.descrip"></span>
+        </div>
+        <ul>
+            @if (!hasNothing) {
+                <li>
+                    <span (click)="rerollReady()" [innerHTML]="readyObj.descrip"></span>
+                </li>
+                <li>
+                    <span (click)="rerollPersonal()" [innerHTML]="personalObj.descrip"></span>
+                </li>
+            }
+        </ul>
+        @if (hasShock) {
+            <em>
+                You must have seen some shit to get that much <strong>SHIT!</strong>
+                Most of this belonged to some other sucker until you <strong>pried it off their corpse.</strong>
+                Permenant <strong>+1</strong> roll on SHOCK table
+            </em>
+        }
+    </div>
+</span>

@@ -23,6 +23,7 @@
             [job]="jobObj"
             [showRolls]="showRolls"
             [beastHP]="beastHP"
+            (presence)="getPresence($event)"
         >
         </app-grvnt-abilities>
         <app-grvnt-identity
@@ -36,5 +37,9 @@
             (newJobEmitter)="getNewJob()"
             (newBeast)="addBeastHP($event)"
         ></app-grvnt-class>
+        <app-grvnt-shit
+            class="shit"
+            [presenceMod]="presenceNum"
+        ></app-grvnt-shit>
     </section>
 </span>

@@ -5,6 +5,7 @@
     --pink: #FF3EB5;
     --yellow: #FFE900;
     --red: red;
+    --scroll-font-color: #333333;
 
     --background-color: var(--chromatic-black);
     --body-color: var(--off-white);
@@ -21,6 +22,8 @@
     --border-width: 0.125rem;
     --selection-background-color: var(--fta-blue);
     --selection-color: var(--chromatic-black);
+
+    --scroll-font-size: 1rem;
 }
 
 .charge {
@@ -34,6 +37,8 @@
     --border-color: var(--chromatic-black);
     --selection-background-color: var(--chromatic-black);
     --selection-color: var(--fta-blue);
+
+    --scroll-font-color: #66cccc;
 }
 
 .bone {
@@ -49,6 +54,8 @@
     --hover-color: var(--chromatic-black);
     --selection-background-color: var(--red);
     --selection-color: var(--chromatic-black);
+
+    --scroll-font-color: #e8e3d5;
 }
 
 .mork {
@@ -62,6 +69,8 @@
     --border-color: var(--chromatic-black);
     --selection-background-color: var(--chromatic-black);
     --selection-color: var(--yellow);
+
+    --scroll-font-color: #fff699;
 }
 
 .gum {
@@ -79,6 +88,8 @@
     --main-header-right-color: var(--off-white);
     --selection-background-color: var(--yellow);
     --selection-color: var(--chromatic-black);
+
+    --scroll-font-color: #ff71c9;
 }
 
 .vet {
@@ -96,6 +107,7 @@
     --main-header-right-color: var(--red);
     --selection-background-color: var(--pink);
     --selection-color: var(--off-white);
+    --scroll-font-color: #e8e3d5;
 }
 
 .sapper {
@@ -113,6 +125,7 @@
     --hover-color: var(--chromatic-black);
     --selection-background-color: var(--yellow);
     --selection-color: var(--chromatic-black);
+    --scroll-font-color: #e8e3d5;
 }
 
 .marks {
@@ -130,6 +143,8 @@
     --hover-color: var(--red);
     --selection-background-color: var(--off-white);
     --selection-color: var(--chromatic-black);
+
+    --scroll-font-color: #cc0000;
 }
 
 //main display fonts
@@ -274,7 +289,8 @@ body {
     &:first-of-type {
         border-top: var(--border-width) solid var(--border-color);
     }
-    padding: 0 1rem 0.5rem 1rem;
+    padding: 0 1rem;
+    margin-bottom: 0.5rem;
     .grvnt-header {
         text-align: center;
         place-self: center;
@@ -374,7 +390,8 @@ ul {
             grid-template-areas: 
                 "toolbar    toolbar"
                 "stats      stats"
-                "id         job";
+                "id         job"
+                "shit       shit";
             .toolbar {
                 grid-area: toolbar;
             }
@@ -392,6 +409,9 @@ ul {
                 .grvnt-card {
                     border-left: var(--border-width) solid var(--border-color);
                 }
+            }
+            .shit {
+                grid-area: shit;
             }
         }
     }

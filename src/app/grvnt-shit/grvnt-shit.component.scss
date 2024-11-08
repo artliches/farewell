@@ -1,0 +1,47 @@
+.shit-header {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas:
+        "header";
+    
+    .shit-scroll {
+        grid-area: header;
+        display: flex;
+        overflow: hidden;
+        user-select: none;
+        ul {
+            padding: 0;
+            font-size: var(--scroll-font-size);
+            color: var(--scroll-font-color);
+            list-style: none;
+            display: flex;
+            gap: 8px;
+            flex-shrink: 0;
+            justify-content: space-between;
+            align-items: center;
+            min-width: 100%;
+    
+            animation: scrolling-text 60s linear infinite;
+        }
+    }
+    .grvnt-header {
+        grid-area: header;
+        z-index: 2;
+    }
+}
+
+.grvnt-body {
+    ul {
+        list-style: square;
+        li {
+            padding-bottom: 0.3rem;
+        }
+    }
+}
+
+@keyframes scrolling-text {
+    to {
+        transform: translateX(calc(-100% - 8px));
+    }
+}
