@@ -1,6 +1,6 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { RandomNumberService } from '../random-number.service';
-import { CARRY, PERSONAL, READINESS } from '../assets/grvnts.constants';
+import { CARRY, PERSONAL, READINESS, WAR_SCROLLS } from '../assets/grvnts.constants';
 
 @Component({
   selector: 'app-grvnt-shit',
@@ -9,8 +9,9 @@ import { CARRY, PERSONAL, READINESS } from '../assets/grvnts.constants';
   templateUrl: './grvnt-shit.component.html',
   styleUrl: './grvnt-shit.component.scss'
 })
-export class GrvntShitComponent implements OnChanges {
+export class GrvntShitComponent implements OnInit, OnChanges {
   @Input() presenceMod: number = 0;
+  @Input() job: any;
   constructor(
     private random: RandomNumberService
   ) {}
@@ -23,10 +24,11 @@ export class GrvntShitComponent implements OnChanges {
   };
 
   readyTable: any[] = [];
-  readyObj: {descrip: string, currIndex: number, tableIndex: number} = {
+  readyObj: {descrip: string, currIndex: number, tableIndex: number, presenceString: string} = {
     descrip: '',
     currIndex: -1,
     tableIndex: -1,
+    presenceString: '',
   };
 
   personalTable: any[] =[];
@@ -43,12 +45,29 @@ export class GrvntShitComponent implements OnChanges {
     personal: 0
   };
 
+  warScrolls: {descrip: string, currIndex: number, isFromReadiness?: boolean}[] = [];
+  extrasArray: string[] = [];
+
   hasNothing: boolean = false;
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (!changes['presenceMod'].firstChange) {
+  ngOnInit(): void {
       this.rollArrays();
       this.rerollAll();
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['job']) {
+      this.extrasArray = [];
+      if (this.job.name === 'arcane medic') {
+        this.extrasArray.push('Field Dress Kit');
+        this.rerollWarScroll();
+      }
+    }
+    if (changes['presenceMod'] && !changes['presenceMod'].firstChange) {
+      // parse and replace the string if it exists
+      if (this.readyObj.presenceString) {
+        this.readyObj.descrip = this.parseAndReplaceNumberString(this.readyObj.presenceString);
+      }
     }
   }
 
@@ -60,7 +79,7 @@ export class GrvntShitComponent implements OnChanges {
     }
   }
 
-  rerollCarry() {
+  rerollCarry(isSingleReroll?: boolean) {
     let newIndex;
     const isEndOfArray = this.carryObj.currIndex + 1 === CARRY.length;
 
@@ -79,26 +98,29 @@ export class GrvntShitComponent implements OnChanges {
       tableIndex: tableIndex,
     };
 
-    if (this.carryObj.tableIndex + 1 <= 2) {
-      this.hasNothing = true;
-      this.readyObj = {
-        descrip: '',
-        currIndex: -1,
-        tableIndex: -1,
-      };
-      this.personalObj = {
-        descrip: '',
-        currIndex: -1,
-        tableIndex: -1,
-      };
-    } else {
-      this.hasNothing = false;
-      if (this.readyObj.descrip === '' && this.personalObj.descrip === '') {
-        this.rerollReady();
-        this.rerollPersonal();
+    if (isSingleReroll) {
+      if (this.carryObj.tableIndex + 1 <= 2) {
+        this.hasNothing = true;
+        this.readyObj = {
+          descrip: '',
+          currIndex: -1,
+          tableIndex: -1,
+          presenceString: '',
+        };
+        this.personalObj = {
+          descrip: '',
+          currIndex: -1,
+          tableIndex: -1,
+        };
+      } else {
+        this.hasNothing = false;
+        if (this.readyObj.descrip === '' && this.personalObj.descrip === '') {
+          this.rerollReady();
+          this.rerollPersonal();
+        }
+        this.shockObj.carry = this.carryObj.tableIndex + 1;
+        this.hasShock = this.checkForShock();
       }
-      this.shockObj.carry = this.carryObj.tableIndex + 1;
-      this.hasShock = this.checkForShock();
     }
   }
 
@@ -114,15 +136,27 @@ export class GrvntShitComponent implements OnChanges {
     }
 
     let newDescrip = READINESS[newIndex];
+    let presenceString = '';
     if (newDescrip.includes('[')) {
+      presenceString = newDescrip.includes('Presence') ? newDescrip : '';
       newDescrip = this.parseAndReplaceNumberString(newDescrip);
     }
     const tableIndex = this.readyTable.findIndex(search => search === newDescrip);
+
+    if (newDescrip === 'War Scroll') {
+      //get random warscroll
+      this.rerollWarScroll(true);
+    } else if (this.readyObj.descrip === 'War Scroll') {
+      // remove old warscroll
+      const scrollToRemoveIndex = this.warScrolls.findIndex(scroll => scroll.isFromReadiness);
+      this.warScrolls.splice(scrollToRemoveIndex, 1);
+    }
 
     this.readyObj = {
       descrip: newDescrip,
       currIndex: newIndex,
       tableIndex: tableIndex,
+      presenceString: presenceString,
     };
 
     this.shockObj.ready = this.readyObj.tableIndex + 1;
@@ -173,6 +207,8 @@ export class GrvntShitComponent implements OnChanges {
     
     this.personalTable = JSON.parse(JSON.stringify(PERSONAL));
     this.random.shuffleArray(PERSONAL);
+
+    this.random.shuffleArray(WAR_SCROLLS);
   }
 
   private parseAndReplaceNumberString(descrip: string): string {
@@ -180,7 +216,7 @@ export class GrvntShitComponent implements OnChanges {
       const firstBracketIndex = descrip.indexOf('[') + 1;
       const lastBracketIndex = descrip.indexOf(']');
       const stringToParse = descrip.slice(firstBracketIndex, lastBracketIndex);
-      if (stringToParse.includes('Presence')) {
+      if (stringToParse.includes('Presence') && this.presenceMod !== -5) {
         const modNumber = stringToParse.slice(
           stringToParse.indexOf('+')+1
         );
@@ -193,5 +229,76 @@ export class GrvntShitComponent implements OnChanges {
 
       return descrip.replace(`[d${dieSize}]`, this.random.getRandomNumber(1, Number(dieSize)).toString());
       }
+  }
+
+  rerollWarScroll(isFromReadiness?: boolean, index?: number) {
+    if (this.warScrolls.length === 0) {
+      //adding new warscroll
+      this.warScrolls.push({
+        descrip: WAR_SCROLLS[0],
+        currIndex: 0,
+        isFromReadiness: isFromReadiness
+      });
+    } else if (index !== undefined) {
+      // get new existing scroll
+      let newWarScrollIndex = this.warScrolls[index].currIndex;
+      const isEndOfArray = newWarScrollIndex + 1 === WAR_SCROLLS.length
+
+      if (isEndOfArray) {
+        //remix array
+        this.random.shuffleArray(WAR_SCROLLS);
+      }
+      let indexesToSkip: number[] = [];
+
+      //grab indexes of scrolls based on current array
+      this.warScrolls.forEach(scroll => {
+        indexesToSkip.push(WAR_SCROLLS.indexOf(scroll.descrip));
+      });
+
+      if (isEndOfArray) {
+        // count from the top
+        for (let i = 0; i < WAR_SCROLLS.length; i++) {
+          if (!indexesToSkip.includes(i)) {
+            newWarScrollIndex = i;
+            break;
+          }
+        }
+      } else {
+        //count from the last location
+        do {
+          newWarScrollIndex += 1;
+        } while (
+          indexesToSkip.includes(newWarScrollIndex)
+        );
+      }
+
+      this.warScrolls[index] = {
+        descrip: WAR_SCROLLS[newWarScrollIndex],
+        currIndex: newWarScrollIndex,
+        isFromReadiness: isFromReadiness
+      }
+
+    } else {
+      // add a war scroll to existing list
+      let newWarScrollIndex = -1;
+      let indexesToSkip: number[] = [];
+
+      //grab indexes of scrolls based on current array
+      this.warScrolls.forEach(scroll => {
+        indexesToSkip.push(WAR_SCROLLS.indexOf(scroll.descrip));
+      });
+
+      do {
+        newWarScrollIndex += 1;
+      } while (
+        indexesToSkip.includes(newWarScrollIndex)
+      );
+      // might have to check if we hit the end of the array
+      this.warScrolls.push({
+        descrip: WAR_SCROLLS[newWarScrollIndex],
+        currIndex: newWarScrollIndex,
+        isFromReadiness: isFromReadiness
+      });
+    }
   }
 }

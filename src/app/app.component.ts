@@ -109,7 +109,6 @@ export class AppComponent implements OnInit {
       currIndex: 0
     };
     this.isEmbedded = this.jobObj.name === 'embedded one';
-
   }
 
   toggleRolls() {

@@ -19,18 +19,52 @@
     <div class="grvnt-body">
         <div>
             You can carry 2 normal-sized items, plus
-            <span (click)="rerollCarry()" [innerHTML]="carryObj.descrip"></span>
+            <span (click)="rerollCarry(true)" [innerHTML]="carryObj.descrip"></span>
         </div>
         <ul>
+            @if (extrasArray.length > 0) {
+                @for (extra of extrasArray; track $index) {
+                    <li><strong>{{extra}}</strong></li>
+                }
+            }
             @if (!hasNothing) {
-                <li>
-                    <span (click)="rerollReady()" [innerHTML]="readyObj.descrip"></span>
-                </li>
+                @if (readyObj.descrip !== 'War Scroll') {
+                    <li>
+                        <span (click)="rerollReady()" [innerHTML]="readyObj.descrip"></span>
+                    </li>
+                }
+
                 <li>
                     <span (click)="rerollPersonal()" [innerHTML]="personalObj.descrip"></span>
                 </li>
             }
         </ul>
+        @if (warScrolls.length > 0) {
+            <div class="warscroll-section">
+                <div class="warscroll-header">
+                    <span class="warscroll-label">
+                        <strong>WARSCROLLS</strong>.
+                    </span>
+                    <em>
+                        When reading a scroll, test <strong>Presence DR12</strong> to successfully wield it; else, the scroll fails, you lose <strong>d2 HP</strong>, and suffer <strong>d2 SHOCK</strong>. A <strong>Fumble</strong> when reading a War Scroll results in an <strong>Occultic Accident</strong>, <span class="underline">destroying the scroll forever</span>.
+                    </em>
+                </div>
+                <ul>
+                    @for (scroll of warScrolls; track $index) {
+                        <li>
+                            <span class="warscroll-display">
+                                <div><em>{{scroll.isFromReadiness ? 'Part of starting pack' : 'Part of the Arcane Medic kit'}}</em></div>
+                                @if (scroll.isFromReadiness) {
+                                    <span (click)="rerollReady()" [innerHTML]="scroll.descrip"></span>
+                                } @else {
+                                    <span (click)="rerollWarScroll(false, $index)" [innerHTML]="scroll.descrip"></span>
+                                }
+                            </span>
+                        </li>
+                    }   
+                </ul>
+            </div>
+        }
         @if (hasShock) {
             <em>
                 You must have seen some shit to get that much <strong>SHIT!</strong>

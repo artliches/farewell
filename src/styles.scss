@@ -284,13 +284,12 @@ body {
 .grvnt-card {
     height: 100%;
     @include flex-column;
+    padding: 0 1rem;
     border-bottom: var(--border-width) solid var(--border-color);
 
     &:first-of-type {
         border-top: var(--border-width) solid var(--border-color);
     }
-    padding: 0 1rem;
-    margin-bottom: 0.5rem;
     .grvnt-header {
         text-align: center;
         place-self: center;
@@ -414,6 +413,9 @@ ul {
                 grid-area: shit;
             }
         }
+    }
+    .grvnt-card {
+        margin-bottom: 0.5rem;
     }
 }
 

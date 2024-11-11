@@ -40,6 +40,25 @@
     }
 }
 
+.warscroll-section {
+    border: 1px solid var(--border-color);
+    .warscroll-header {
+        margin-bottom: 0.5rem;
+        .warscroll-label {
+            background-color: var(--border-color);
+            color: var(--background-color);
+        }
+    }
+    .warscroll-display {
+        vertical-align: middle;
+        display: inline-flex;
+        flex-direction: column;
+    }
+    em {
+        font-size: 0.8rem;
+    }
+}
+
 @keyframes scrolling-text {
     to {
         transform: translateX(calc(-100% - 8px));

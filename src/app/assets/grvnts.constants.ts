@@ -1094,7 +1094,7 @@ export const READINESS = [
     `<strong class="clickable">Gas Mask</strong>`,
     `<strong class="clickable">Tergol’s Secret Cocktail</strong> <strong>d4</strong> damage, SHOCK, BURN 3`,
     `<strong class="clickable">Helmet</strong>`,
-    `War Scroll random`,
+    `War Scroll`,
 ];
 
 export const PERSONAL = [
@@ -1110,4 +1110,27 @@ export const PERSONAL = [
     `<strong class="clickable">Dead friend’s</strong> dog tags `,
     `20ft <strong class="clickable">Barbed Wire</strong> coil  `,
     `Raw piece of <strong class="clickable">SLAGG</strong>`,
+];
+
+export const WAR_SCROLLS = [
+    `<strong class="clickable">Nay-Palm.</strong> Extending your hand, you issue commands with a fiery countenance. d3 creatures of your choice spontaneously combust and die in d4 turns. Their flames spread to all they touch.`,
+    `<strong class="clickable">Bite the Bullet.</strong> A target already wounded by a Firearm takes that same Firearm damage again as the bullet grows teeth and gnaws its way out of them. IMPACT 4.`,
+    `<strong class="clickable">For Whom the Bell Tolls.</strong> Fell utterances of Necrubel buffet the psyche. All within 30ft suffer SHOCK.`,
+    `<strong class="clickable">Afraid to Shoot Strangers.</strong> All Firearms around you jam for d4 turns.`,
+    `<strong class="clickable">Lay of the Land.</strong> Spectral seismic activity shifts the land in unnatural ways as Full cover surges up from the earth.`,
+    `<strong class="clickable">Red Badge of Courage.</strong> One creature is immune to SHOCK and does not spend Ammo for d4 rounds. They are always targeted first.`,
+    `<strong class="clickable">GAS!</strong> The immediate area is filled with toxic GAS.`,
+    `<strong class="clickable">Trenchfoot.</strong> The ground swallows one target. Their Armor rots one Tier for each turn they remain trapped. Test Strength DR12 to escape.`,
+    `<strong class="clickable">Full Metal Jacket.</strong> Sacrifice d2 Ammo: gain one Tier of Armor per Ammo sacrificed.`,
+    `<strong class="clickable">Apocalypse Later.</strong> Reduce d2 allies’ SHOCK to 0. They suffer d10 SHOCK the next morning.`,
+    `<strong class="clickable">Night and Day.</strong> The Sun and Moon are your playthings. Turn day to night or night to day, and roll all “next day” equipment immediately.`,
+    `<strong class="clickable">Black Candles Burn, All Minds Align.</strong> Evenly distribute the squad’s total SHOCK amongst all nearby allied grvnts.`,
+    `<strong class="clickable">Misfire</strong> All Ammo within 30ft instantly explodes for d4 damage.`,
+    `<strong class="clickable">Tumbling Down.</strong> Collapse all nearby buildings to your current level. Anyone inside takes d3 damage per level demolished.`,
+    `<strong class="clickable">Gunpowder Plot.</strong> Use your Warlord Order twice in the same mission, but your Warlord dies at the end of that mission.`,
+    `<strong class="clickable">Magnum Opus.</strong> Summon a phantom 666 Shooter that fires once each at d6 targets (1-5: it fires at you too).`,
+    `<strong class="clickable">VEX’s Assistant.</strong> A haggard intern brings the joyous tidings of VEX to the battlefield. Blue light consumes d2 random allies (test Presence to avoid) and d4 enemies as they disappear. You have no idea where they went.`,
+    `<strong class="clickable">Take Me to Your Leader.</strong> Gain a random Warlord Order from an opposing faction. `,
+    `<strong class="clickable">The Trooper.</strong> d2 allies may close the distance against an enemy wielding a Firearm as they fire.`,
+    `<strong class="clickable">War Pigs.</strong> A stampede of ravenous hogs comb the battlefield and eat everything, living or otherwise. 4d10 damage evenly distributed to all targets.`,
 ];
