@@ -33,6 +33,9 @@
 
 .grvnt-body {
     ul {
+        display: flex;
+        flex-direction: column;
+        gap: 0.2rem;
         list-style: square;
         li {
             padding-bottom: 0.3rem;
@@ -40,19 +43,23 @@
     }
 }
 
+.extra-shit-info {
+    vertical-align: middle;
+    display: inline-flex;
+    flex-direction: column;
+    em {
+        font-size: 0.8rem;
+    }
+}
+
 .warscroll-section {
-    border: 1px solid var(--border-color);
+    border: 2px solid var(--border-color);
     .warscroll-header {
         margin-bottom: 0.5rem;
         .warscroll-label {
             background-color: var(--border-color);
             color: var(--background-color);
         }
-    }
-    .warscroll-display {
-        vertical-align: middle;
-        display: inline-flex;
-        flex-direction: column;
     }
     em {
         font-size: 0.8rem;

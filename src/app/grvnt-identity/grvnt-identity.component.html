@@ -1,5 +1,5 @@
 <span class="grvnt-card">
-    <div (click)="rerollAll()" class="grvnt-header clickable">
+    <div (click)="rerollAll(false)" class="grvnt-header clickable">
         THEY CALL YOU <strong>
             @if (this.isEmbedded) {
                 @for (name of embeddedNameObj; track $index) {
@@ -28,6 +28,9 @@
         </div>
         <div>
             To deal with the atrocities of wartime, you cope by <span class="clickable" (click)="rerollVices()" [innerHTML]="vicesObj.descrip"></span>.
+        </div>
+        <div>
+            This war has rattled you to the core. Start with <span (click)="getShock(false)" class="clickable">{{shockObj.value}} (d2) <strong>SHOCK</strong></span> and <span [innerHTML]="shockObj.effect"></span>.
         </div>
     </div>
 </span>

@@ -81,6 +81,12 @@ export class GrvntAbilitiesComponent implements OnInit, OnChanges {
       rollsArray: '',
     },
     {
+      name: 'powers',
+      descrip: 'd4+presence/day',
+      value: 1,
+      rollsArray: '',
+    },
+    {
       name: 'silver',
       descrip: 'shrapnel waiting to happen',
       value: 0,
@@ -170,6 +176,13 @@ export class GrvntAbilitiesComponent implements OnInit, OnChanges {
 
         vital.rollsArray = `${roll} x ${multiplier}`;
         vital.value = roll * multiplier;
+      } else if (vital.name === 'powers') {
+        const roll = this.random.getRandomNumber(1, 4);
+        const presence = this.statsArray.find(stat => stat.name === 'presence')?.value;
+        if (presence !== undefined) {
+          vital.rollsArray = `${roll} ${presence < 0 ? '' : '+'} ${presence}`;
+          vital.value = roll + presence;
+        }
       }
     }
   }

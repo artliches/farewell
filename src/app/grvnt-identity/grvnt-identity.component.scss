@@ -1,5 +1,12 @@
 .grvnt-body {
     line-height: 16*1.3px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, auto) 1fr;
+    div:last-of-type {
+        place-self: end;
+        padding-bottom: 0.5rem;
+    }
     .clickable {
         font-family: 'BAHNSCHRIFT';
     }

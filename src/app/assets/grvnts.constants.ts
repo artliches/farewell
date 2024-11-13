@@ -275,7 +275,7 @@ export const JOBS = [
             },
             {
                 name: 'ammo',
-                mod: 'd3'
+                mod: 3
             },
             {
                 name: 'toughness',
@@ -287,6 +287,15 @@ export const JOBS = [
             },
         ],
         extras: [],
+        startingGear: [],
+        startingShit: [
+            {
+                firearms: 10
+            },
+            {
+                armor: 6
+            }
+        ],
         descrip:`
             <em>It's rare that a grvnt live to fight another day, but then - with the Dying Lands constantly at war - there's as much opportunity to live as to die. Oftentimes they're one and the same. Such experience is valued among the sea of countless conscripts who reek fo pissed trousers. <strong>What doesn't kill you makes a great story</strong>.</em>
         `,
@@ -332,7 +341,7 @@ export const JOBS = [
             },
             {
                 name: 'ammo',
-                mod: 'd3'
+                mod: 3
             },
             {
                 name: 'agility',
@@ -346,6 +355,18 @@ export const JOBS = [
         extras: [
             'Throwing grenades is <strong>-2DR</strong> and <strong>BLAST</strong> does not affect you.',
             'Every time you roll Ammo, also roll <strong>d3 on Side Arms to restock grenades</strong>.',
+        ],
+        startingGear: [],
+        startingShit: [
+            {
+                firearms: 10
+            },
+            {
+                sidearm: 3
+            },
+            {
+                armor: 4
+            }
         ],
         descrip:`
             <em>
@@ -395,7 +416,7 @@ export const JOBS = [
             },
             {
                 name: 'ammo',
-                mod: 'd4'
+                mod: 4
             },
             {
                 name: 'presence',
@@ -407,7 +428,16 @@ export const JOBS = [
             },
         ],
         extras: [
-            '<strong>More-Precise Rifle.</strong> d10 ranged, SCOPED, IMPACT 1'
+            'Start with <strong>More-Precise Rifle</strong>'
+        ],
+        startingGear: [],
+        startingShit: [
+            {
+                armor: 2
+            },
+            {
+                firearms: `<strong class="underline">More-Precise Rifle.</strong> <strong>d10</strong> ranged, <em>SCOPED, IMPACT 1</em>`
+            }
         ],
         descrip:`
             <em>
@@ -456,11 +486,20 @@ export const JOBS = [
             },
             {
                 name: 'ammo',
-                mod: 'd4'
+                mod: 4
             },
         ],
         extras: [
             `Start with a <strong>Malevolent Rile</strong>. Do not roll for Firearms.`
+        ],
+        startingGear: [],
+        startingShit: [
+            {
+                armor: 4
+            },
+            {
+                firearms: `<strong class="underline">Malevolent Rifle (M1).</strong> <strong>d8</strong> rifle, two-handed, <em>IMPACT 1</em>`
+            }
         ],
         descrip:`
             <em>
@@ -516,10 +555,6 @@ export const JOBS = [
                 mod: '2d6x20'
             },
             {
-                name: 'ammo',
-                mod: 'd2'
-            },
-            {
                 name: 'presence',
                 mod: 1
             },
@@ -534,6 +569,15 @@ export const JOBS = [
         ],
         extras: [
             `May choose to suffer <strong>d2 SHOCK</strong> in place of any SHOCK test.`
+        ],
+        startingGear: [],
+        startingShit: [
+            {
+                warscroll: 2
+            },
+            {
+                armor: 4
+            }
         ],
         descrip:`
             <em>
@@ -582,7 +626,7 @@ export const JOBS = [
             },
             {
                 name: 'ammo',
-                mod: 'd2'
+                mod: 2
             },
             {
                 name: 'toughness',
@@ -595,6 +639,21 @@ export const JOBS = [
         ],
         extras: [
             'Start with one <strong>Field Dress Kit</strong> and a <strong>War Scroll</strong>.'
+        ],
+        startingGear: [
+            {
+                descrip: `<strong class="underline">Field Dress Kit</strong>. <strong>[Presence+4]</strong> uses, (<strong>stops bleeding/infection and heals d6 HP</strong>)`,
+                presenceString: `<strong class="underline">Field Dress Kit</strong>. <strong>[Presence+4]</strong> uses, (<strong>stops bleeding/infection and heals d6 HP</strong>)`
+            },
+            'war scroll'
+        ],
+        startingShit: [
+            {
+                armor: 6
+            },
+            {
+                firearms: 6
+            }
         ],
         descrip:`
             <em>
@@ -664,6 +723,12 @@ export const JOBS = [
         extras: [
             'Cannot use <strong>Firearms</strong> or <strong>Tier 2+ Armor</strong>'
         ],
+        startingGear: [],
+        startingShit: [
+            {
+                armor: 2
+            }
+        ],
         descrip:`
             <em>
             Some consider it a blessing; others find it a cruel revenge of the Dying Lands as destruction ravages the face of the earth. Wildfolk, the SLAGG-cursed, beasts of no nation – these are but a few pejoratives muttered under the breath of those who despise your altered existence. As misunderstood outcasts, Altered Mercenaries wander until someone claims them.
@@ -726,6 +791,8 @@ export const JOBS = [
             `You are infused with <strong class="emphasize">ETHER</strong> that grants you a <strong>GIFT</strong> and <em>COVERINGS</em>.`,
             '<strong>Ontological Oddity.</strong> Test Toughness to become invisible (cannot attack or heal).'
         ],
+        startingGear: [],
+        startingShit: [],
         descrip:`
             <em>
             Like all Pale Ones, you are <strong>ephemeral</strong>, <strong>unknowable</strong>. Sent by your kin to observe (<strong>and participate in</strong>) the Dying Lands’ war, you are out of place and time. Your squad views you with varying levels of contempt, fascination, and distrust. What mysteries of these primitive beasts will you solve? For now, <strong>you ensconce yourself in their violent ways</strong>.
@@ -803,7 +870,7 @@ export const JOBS = [
             },
             {
                 name: 'ammo',
-                mod: 'd3'
+                mod: 3
             },
             {
                 name: 'presence',
@@ -815,7 +882,16 @@ export const JOBS = [
             },
         ],
         extras: [
-            'A large, colorful <strong>Bannerspear</strong> (d6, IMPACT 1) is fused to your spine and can be seen from a great distance. <em>What color is your banner?</em>'
+            'A large, colorful <strong class="underline">Bannerspear</strong> (<strong>d6</strong>, <em>IMPACT 1</em>) is fused to your spine and can be seen from a great distance. <em>What color is your banner?</em>'
+        ],
+        startingGear: [],
+        startingShit: [
+            {
+                armor: 2
+            },
+            {
+                firearms: 4
+            }
         ],
         descrip:`
             <em>
@@ -873,7 +949,7 @@ export const JOBS = [
             },
             {
                 name: 'ammo',
-                mod: 'd4+2'
+                mod: 4
             },
             {
                 name: 'presence',
@@ -886,6 +962,15 @@ export const JOBS = [
         ],
         extras: [
             'You lead two <strong>Muskoxen</strong> (<strong>HP 14</strong>) that drag piles of weathered building materials behind them.'
+        ],
+        startingGear: [],
+        startingShit: [
+            {
+                armor: 4
+            },
+            {
+                firearms: 6
+            }
         ],
         descrip:`
             <em>
@@ -940,7 +1025,7 @@ export const JOBS = [
             },
             {
                 name: 'ammo',
-                mod: 'd2'
+                mod: 2
             },
             {
                 name: 'presence',
@@ -952,7 +1037,18 @@ export const JOBS = [
             },
         ],
         extras: [
-            '<strong>Unthreatening.</strong> 1-in-2 chance you are ignored in combat'
+            '<strong>Unthreatening.</strong> 1-in-2 chance you are ignored in combat',
+            `A <strong>somewhat</strong> casual observer with a knack for conversing with the enemy. If nearby during an enemy Morale test, <strong>roll +1 on RESULT</strong>.`,
+            'Start with a random <strong>War Scroll</strong>',
+        ],
+        startingGear: ['war scroll'],
+        startingShit: [
+            {
+                armor: 4
+            },
+            {
+                firearms: 4
+            }
         ],
         descrip:`
             <em>
@@ -1029,7 +1125,7 @@ export const JOBS = [
             },
             {
                 name: 'ammo',
-                mod: 'd2'
+                mod: 2
             },
             {
                 name: 'presence',
@@ -1043,9 +1139,21 @@ export const JOBS = [
         extras: [
             'Start with a <strong>Punch Dagger</strong>. All your melee weapons do <strong>+d2 damage</strong>.'
         ],
+        startingGear: [],
+        startingShit: [
+            {
+                armor: 2
+            },
+            {
+                firearms: 10
+            },
+            {
+                sidearm: `<strong class="underline">Punch Dagger.</strong> <strong>d4</strong>, <em>SHOCK</em>`
+            }
+        ],
         descrip:`
             <em>
-            Pleasure is sweetest when paid for by <strong>another's pain</strong>. Where you were once punished for your <strong>psychotically cruel crimes</strong>, you now have been loosed upon the world; the only <strong>boundaries to your carnage are your own capabilities</strong>. Also, your choice in jewelry is <strong>questionable at best</strong>. 
+                Pleasure is sweetest when paid for by <strong>another's pain</strong>. Where you were once punished for your <strong>psychotically cruel crimes</strong>, you now have been loosed upon the world; the only <strong>boundaries to your carnage are your own capabilities</strong>. Also, your choice in jewelry is <strong>questionable at best</strong>. 
             </em>
         `,
         skills: [
@@ -1085,15 +1193,15 @@ export const CARRY = [
 export const READINESS = [
     `<strong class="clickable">Entrenching Tool</strong>. <strong>d4 damage</strong>`,
     `<strong class="clickable">SLAGG Dip</strong>. <strong>d4</strong> applications, adds a <strong>random Weapon Keyword</strong>`,
-    `<strong class="clickable">Small Shield</strong>`,
+    `<strong class="clickable">Small Shield.</strong> -1 damage, break to prevent <strong>all damage from melee</strong> <em>Partial cover from ranged</em>`,
     `<strong class="clickable">Ammo Box</strong>. <strong>+[d4]</strong> Ammo (<strong>contains all types</strong>)`,
-    `<strong class="clickable">Field Dress Kit</strong>. <strong>[Presence+4]</strong> uses,  (<strong>stops bleeding/infection and heals d6 HP</strong>)`,
+    `<strong class="clickable">Field Dress Kit</strong>. <strong>[Presence+4]</strong> uses, (<strong>stops bleeding/infection and heals d6 HP</strong>)`,
     `<strong class="clickable">Ammo Belt</strong>, (<strong>carries one unspent Ammo from the previous day</strong>)`,
     `<strong class="clickable">Scope</strong>`,
-    `<strong class="clickable">Large Shield</strong>`,
-    `<strong class="clickable">Gas Mask</strong>`,
+    `<strong class="clickable">Large Shield.</strong> -2 damage, break to prevent <strong>all damage from melee</strong> <em>Full cover from ranged</em>`,
+    `<strong class="clickable">Gas Mask.</strong> <strong>DR8 Toughness</strong> to overcome <em>GAS</em>`,
     `<strong class="clickable">Tergol’s Secret Cocktail</strong> <strong>d4</strong> damage, SHOCK, BURN 3`,
-    `<strong class="clickable">Helmet</strong>`,
+    `<strong class="clickable">Helmet.</strong> break to prevent all damage from a <strong>single attack</strong>`,
     `War Scroll`,
 ];
 
@@ -1133,4 +1241,40 @@ export const WAR_SCROLLS = [
     `<strong class="clickable">Take Me to Your Leader.</strong> Gain a random Warlord Order from an opposing faction. `,
     `<strong class="clickable">The Trooper.</strong> d2 allies may close the distance against an enemy wielding a Firearm as they fire.`,
     `<strong class="clickable">War Pigs.</strong> A stampede of ravenous hogs comb the battlefield and eat everything, living or otherwise. 4d10 damage evenly distributed to all targets.`,
+];
+
+export const FIREARMS = [
+    `<strong class="clickable">Cvlt .45</strong> <strong>d4</strong> pistol, <em>no penalty in melee, no Ammo requirements</em>`,
+    `<strong class="clickable">666 Shooter</strong> <strong>d4</strong> revolver, <em>SCOPED</em>`,
+    `<strong class="clickable">Vermin Maimer</strong> <strong>d6</strong> sawed-off shotgun, <em>gains HEAVY in melee</em>`,
+    `<strong class="clickable">Dual Cvlt .45s</strong> <strong>2d4</strong> pistol pair, <em>no penalty in melee, no Ammo requirements, two-handed</em>`,
+    `<strong class="clickable">Schleswig Sprayer</strong> <strong>d6</strong> machine gun, <em>d2 targets per Ammo spent, two-handed</em>`,
+    `<strong class="clickable">Malevolent Rifle (M1)</strong> <strong>d8</strong> rifle, <em>two-handed, IMPACT 1</em>`,
+    `<strong class="clickable">Malevolent Rifle (M1) + Bayonet</strong>, <strong>d8</strong> rifle + <em>d4 melee, two-handed, IMPACT 1</em>`,
+    `<strong class="clickable">Precise Rifle</strong> <strong>d10</strong> long rifle, <em>two-handed, SCOPED</em>`,
+    `<strong class="clickable">Boom Lance</strong> <strong>d10</strong> rocket launcher, <em>two-handed, BLAST 2, HEAVY</em>`,
+    `<strong class="clickable">Slug Launcher</strong> <strong>d12</strong> shell cannon (test Strength DR12 to fire), <em>two-handed, IMPACT 2, SHOCK</em>`,
+];
+
+export const SIDEARMS = [
+    `<strong class="clickable">[d3] Smog Poppers</strong> Smoke grenades that create Full cover in an area`,
+    `<strong class="clickable">[d3] SLAGG Bangs</strong> Creatures within 20ft suffer -2 to all rolls for d2 turns, SHOCK`,
+    `<strong class="clickable">[d3] Scream Grenades</strong> small explosive (d4, BLAST 3, HEAVY)`,
+    `<strong class="clickable">Punch Dagger</strong> d4, SHOCK`,
+    `<strong class="clickable">Fire Spear</strong> d6 melee or d8 ranged, BURN 1 once per combat`,
+    `<strong class="clickable">Shorter Sword</strong> d6, can be fastened as a bayonet`,
+    `<strong class="clickable">Barbed Wire Club</strong> d6, ignores helmets`,
+    `<strong class="clickable">Short Bow</strong> d6 (with [10+Presence] arrows)`,
+    `<strong class="clickable">Zweihander</strong> d10, HEAVY`,
+    `<strong class="clickable">[d2] Shinrippers</strong> 3d4, IMPACT 1, HEAVY, SHOCK; 1-in-6 chance to go off when handled`,
+];
+
+export const ARMOR = [
+    `<strong class="clickable">Tier 0 Armor.</strong> <strong class="underline">peasant rags</strong> (<em>no armor</em>)`,
+    `<strong class="clickable">Tier 1 Armor.</strong> <strong class="underline">rat-chewed gambison, thatched reed vest</strong> (<em>-d2 damage</em>)`,
+    `<strong class="clickable">Tier 2 Armor.</strong> <strong class="underline">scrap-metal, splint mail</strong> (<em>-d4 damage</em>)`,
+    `<strong class="clickable">Tier 2 Armor.</strong> <strong class="underline">scrap-metal, splint mail + helmet</strong> (<em>-d4 damage</em>)`,
+    `<strong class="clickable">Tier 3 Armor.</strong> <strong class="underline">crawler bodywork, howler bear pelts </strong>(<em>-d6 damage</em>)`,
+    `<strong class="clickable">Tier 3 Armor.</strong> <strong class="underline">crawler bodywork, howler bear pelts + plus helmet</strong> (<em>-d6 damage</em>)`,
+    `<strong class="clickable">Tier 4 Armor.</strong> <strong class="underline">Lobster Armor</strong> (a misnomer, any deep water is deadly) (<em>-d8 damage</em>)`,
 ];

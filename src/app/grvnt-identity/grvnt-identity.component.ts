@@ -42,9 +42,14 @@ export class GrvntIdentityComponent implements OnInit, OnChanges {
     currIndex: -1,
   };
 
+  shockObj = {
+    value: 2,
+    effect: 'd2'
+  };
+
   ngOnInit(): void {
     this.createArrays();
-    this.rerollAll();
+    this.rerollAll(true);
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -57,7 +62,7 @@ export class GrvntIdentityComponent implements OnInit, OnChanges {
       }
   }
 
-  rerollAll() {
+  rerollAll(isPageLoad: boolean) {
     if (this.isEmbedded) {
       this.getNewEmbeddedName();
     } else {
@@ -66,6 +71,18 @@ export class GrvntIdentityComponent implements OnInit, OnChanges {
     this.rerollReasons();
     this.rerollScars();
     this.rerollVices();
+
+    this.getShock(isPageLoad);
+  }
+
+  getShock(isPageLoad: boolean) {
+    if (isPageLoad) {
+      this.shockObj.value = this.random.getRandomNumber(1, 2);
+    } else {
+      this.shockObj.value = this.shockObj.value === 2 ? 1 : 2;
+    }
+    this.shockObj.effect = this.shockObj.value === 1 ?
+      `<strong class="underline">THE SHAKES.</strong> Always have last initiative` : `<strong class="underline">PRIMAL FEAR.</strong> Next <strong>SHOCK</strong> roll is d6`
   }
 
   private getNewEmbeddedName() {

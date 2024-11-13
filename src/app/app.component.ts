@@ -83,12 +83,23 @@ export class AppComponent implements OnInit {
 
   showRolls: boolean = false;
 
-  jobObj = {
+  jobObj: {
+    name: string,
+    stats: {name: string, mod: number | string}[],
+    extras: string[],
+    startingGear: Array<any>,
+    startingShit: Array<any>,
+    descrip: string,
+    skills: {descrip: string, table: string[] | {ether: string, gift: string, covering: string}[]}[],
+    currIndex: number,
+  } = {
     name: '',
-    stats: [{}],
+    stats: [],
     extras: [''],
+    startingGear: [],
+    startingShit: [],
     descrip: '',
-    skills: [{}],
+    skills: [],
     currIndex: -1,
   };
 
@@ -104,6 +115,8 @@ export class AppComponent implements OnInit {
       name: JOBS[0].name,
       stats: JOBS[0].stats,
       extras: JOBS[0].extras,
+      startingGear: JOBS[0].startingGear,
+      startingShit: JOBS[0].startingShit,
       descrip: JOBS[0].descrip,
       skills: JOBS[0].skills,
       currIndex: 0
@@ -127,6 +140,8 @@ export class AppComponent implements OnInit {
       name: JOBS[newIndex].name,
       stats: JOBS[newIndex].stats,
       extras: JOBS[newIndex].extras,
+      startingGear: JOBS[newIndex].startingGear,
+      startingShit: JOBS[newIndex].startingShit,
       descrip: JOBS[newIndex].descrip,
       skills: JOBS[newIndex].skills,
       currIndex: newIndex
