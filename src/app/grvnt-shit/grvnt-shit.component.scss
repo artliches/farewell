@@ -32,6 +32,9 @@
 }
 
 .grvnt-body {
+    ul.shit-list {
+        padding-left: 1rem !important;
+    }
     ul {
         display: flex;
         flex-direction: column;
