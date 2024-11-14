@@ -125,6 +125,10 @@ export class AppComponent implements OnInit {
     this.isEmbedded = this.jobObj.name === 'embedded one';
   }
 
+  print() {
+    window.print();
+  }
+
   toggleRolls() {
     this.showRolls = !this.showRolls;
   }

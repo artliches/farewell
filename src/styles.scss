@@ -223,6 +223,11 @@ body {
     font-size: 0.8rem;
 }
 
+.flex-row {
+    display: flex;
+    gap: 2px;
+}
+
 .clickable {
     cursor: pointer;
     user-select: none;
@@ -432,5 +437,56 @@ ul {
     .farewell-layout {
         max-width: 65%;
         margin: auto;
+    }
+}
+
+@media print {
+    .farewell-layout {
+        color: black;
+        display: flex;
+        flex-direction: column;
+        header {
+            h1 {
+                color: black;
+            }
+            .reroll-all {
+                display: none;
+            }
+        }
+        .body-layout {
+            .grvnt-card {
+                border-color: black;
+                .grvnt-body {
+                    .skills {
+                        .skill-table, .embedded {
+                            border-color: black;
+                        }
+                    }
+                    .warscroll-section {
+                        border-color: black;
+                    }
+                    .ability-layout {
+                        display: flex;
+                        flex-direction: row;
+                        flex-flow: wrap;
+                        justify-content: space-evenly;
+                        &:first-of-type {
+                            border-color: black;
+                        }
+                        .ability {
+                            display: grid;
+                            grid-template-columns: auto 1fr !important;
+                            grid-template-rows: auto 1fr !important;
+                        }
+                    }
+                }
+            }
+            .toolbar {
+                display: none;
+            }
+        }
+        footer {
+            font-size: 0.5rem;
+        }
     }
 }

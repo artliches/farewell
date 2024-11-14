@@ -9,9 +9,14 @@
 
     <section class="body-layout">
         <span class="toolbar">
-            <span class="theme-section">
-                <div (click)="shuffleTheme()" class="clickable">SHUFFLE THEME:</div>
-                <strong>{{getThemeName()}}</strong>
+            <span class="flex-row">
+                <span class="theme-section">
+                    <div (click)="shuffleTheme()" class="clickable">SHUFFLE THEME:</div>
+                    <strong>{{getThemeName()}}</strong>
+                </span>
+                <span class="theme-section no-extra-section">
+                    <div (click)="print()" class="clickable">PRINT</div>
+                </span>
             </span>
 
             <span class="theme-section no-extra-section">
