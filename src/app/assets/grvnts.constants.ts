@@ -293,6 +293,9 @@ export const JOBS = [
                 firearms: 10
             },
             {
+                sidearm: 10
+            },
+            {
                 armor: 6
             }
         ],
@@ -437,7 +440,10 @@ export const JOBS = [
             },
             {
                 firearms: `<strong class="underline">More-Precise Rifle.</strong> <strong>d10</strong> ranged, <em>SCOPED, IMPACT 1</em>`
-            }
+            },
+            {
+                sidearm: 10
+            },
         ],
         descrip:`
             <em>
@@ -499,7 +505,10 @@ export const JOBS = [
             },
             {
                 firearms: `<strong class="underline">Malevolent Rifle (M1).</strong> <strong>d8</strong> rifle, two-handed, <em>IMPACT 1</em>`
-            }
+            },
+            {
+                sidearm: 10
+            },
         ],
         descrip:`
             <em>
@@ -577,7 +586,10 @@ export const JOBS = [
             },
             {
                 armor: 4
-            }
+            },
+            {
+                sidearm: 10
+            },
         ],
         descrip:`
             <em>
@@ -653,7 +665,10 @@ export const JOBS = [
             },
             {
                 firearms: 6
-            }
+            },
+            {
+                sidearm: 10
+            },
         ],
         descrip:`
             <em>
@@ -727,7 +742,10 @@ export const JOBS = [
         startingShit: [
             {
                 armor: 2
-            }
+            },
+            {
+                sidearm: 10
+            },
         ],
         descrip:`
             <em>
@@ -970,7 +988,10 @@ export const JOBS = [
             },
             {
                 firearms: 6
-            }
+            },
+            {
+                sidearm: 10
+            },
         ],
         descrip:`
             <em>
@@ -1048,7 +1069,10 @@ export const JOBS = [
             },
             {
                 firearms: 4
-            }
+            },
+            {
+                sidearm: 10
+            },
         ],
         descrip:`
             <em>
@@ -1202,7 +1226,7 @@ export const READINESS = [
     `<strong class="clickable">Gas Mask.</strong> <strong>DR8 Toughness</strong> to overcome <em>GAS</em>`,
     `<strong class="clickable">Tergol’s Secret Cocktail</strong> <strong>d4</strong> damage, SHOCK, BURN 3`,
     `<strong class="clickable">Helmet.</strong> break to prevent all damage from a <strong>single attack</strong>`,
-    `War Scroll`,
+    `<strong class="clickable">War Scroll added to your pack</strong>, see below`,
 ];
 
 export const PERSONAL = [
@@ -1221,26 +1245,26 @@ export const PERSONAL = [
 ];
 
 export const WAR_SCROLLS = [
-    `<strong class="clickable">Nay-Palm.</strong> Extending your hand, you issue commands with a fiery countenance. d3 creatures of your choice spontaneously combust and die in d4 turns. Their flames spread to all they touch.`,
-    `<strong class="clickable">Bite the Bullet.</strong> A target already wounded by a Firearm takes that same Firearm damage again as the bullet grows teeth and gnaws its way out of them. IMPACT 4.`,
-    `<strong class="clickable">For Whom the Bell Tolls.</strong> Fell utterances of Necrubel buffet the psyche. All within 30ft suffer SHOCK.`,
-    `<strong class="clickable">Afraid to Shoot Strangers.</strong> All Firearms around you jam for d4 turns.`,
-    `<strong class="clickable">Lay of the Land.</strong> Spectral seismic activity shifts the land in unnatural ways as Full cover surges up from the earth.`,
-    `<strong class="clickable">Red Badge of Courage.</strong> One creature is immune to SHOCK and does not spend Ammo for d4 rounds. They are always targeted first.`,
-    `<strong class="clickable">GAS!</strong> The immediate area is filled with toxic GAS.`,
-    `<strong class="clickable">Trenchfoot.</strong> The ground swallows one target. Their Armor rots one Tier for each turn they remain trapped. Test Strength DR12 to escape.`,
-    `<strong class="clickable">Full Metal Jacket.</strong> Sacrifice d2 Ammo: gain one Tier of Armor per Ammo sacrificed.`,
-    `<strong class="clickable">Apocalypse Later.</strong> Reduce d2 allies’ SHOCK to 0. They suffer d10 SHOCK the next morning.`,
-    `<strong class="clickable">Night and Day.</strong> The Sun and Moon are your playthings. Turn day to night or night to day, and roll all “next day” equipment immediately.`,
-    `<strong class="clickable">Black Candles Burn, All Minds Align.</strong> Evenly distribute the squad’s total SHOCK amongst all nearby allied grvnts.`,
-    `<strong class="clickable">Misfire</strong> All Ammo within 30ft instantly explodes for d4 damage.`,
-    `<strong class="clickable">Tumbling Down.</strong> Collapse all nearby buildings to your current level. Anyone inside takes d3 damage per level demolished.`,
-    `<strong class="clickable">Gunpowder Plot.</strong> Use your Warlord Order twice in the same mission, but your Warlord dies at the end of that mission.`,
-    `<strong class="clickable">Magnum Opus.</strong> Summon a phantom 666 Shooter that fires once each at d6 targets (1-5: it fires at you too).`,
-    `<strong class="clickable">VEX’s Assistant.</strong> A haggard intern brings the joyous tidings of VEX to the battlefield. Blue light consumes d2 random allies (test Presence to avoid) and d4 enemies as they disappear. You have no idea where they went.`,
-    `<strong class="clickable">Take Me to Your Leader.</strong> Gain a random Warlord Order from an opposing faction. `,
-    `<strong class="clickable">The Trooper.</strong> d2 allies may close the distance against an enemy wielding a Firearm as they fire.`,
-    `<strong class="clickable">War Pigs.</strong> A stampede of ravenous hogs comb the battlefield and eat everything, living or otherwise. 4d10 damage evenly distributed to all targets.`,
+    `<strong class="clickable">Nay-Palm.</strong> Extending your hand, you issue commands with a fiery countenance. <strong>d3 creatures</strong> of your choice <em>spontaneously combust and die</em> in d4 turns. <em>Their flames spread to all they touch</em>.`,
+    `<strong class="clickable">Bite the Bullet.</strong> A target already <em>wounded by a Firearm takes that same Firearm damage again</em> as the bullet <strong>grows teeth and gnaws its way out of them</strong>. <em>IMPACT 4</em>.`,
+    `<strong class="clickable">For Whom the Bell Tolls.</strong> Fell utterances of Necrubel buffet the psyche. <em>All within 30ft suffer <strong>SHOCK</strong></em>.`,
+    `<strong class="clickable">Afraid to Shoot Strangers.</strong> All <em>Firearms</em> around you jam for <strong>d4 turns</strong>.`,
+    `<strong class="clickable">Lay of the Land.</strong> Spectral seismic activity shifts the land in unnatural ways as <em>Full cover surges up from the earth</em>.`,
+    `<strong class="clickable">Red Badge of Courage.</strong> <em>One creature is immune to <strong>SHOCK</strong> and does not spend Ammo</em> for <strong>d4 rounds</strong>. <em>They are always targeted first</em>.`,
+    `<strong class="clickable">GAS!</strong> The immediate area is filled with toxic <strong>GAS</strong>.`,
+    `<strong class="clickable">Trenchfoot.</strong> <strong>The ground swallows one target</strong>. Their Armor rots <em>one Tier for each turn they remain trapped</em>. <strong>Test Strength DR12 to escape</strong>.`,
+    `<strong class="clickable">Full Metal Jacket.</strong> <strong>Sacrifice d2 Ammo</strong>: gain one Tier of Armor per Ammo sacrificed.`,
+    `<strong class="clickable">Apocalypse Later.</strong> Reduce d2 allies’ <strong>SHOCK</strong> to 0. They suffer <em>d10 <strong>SHOCK</strong> the next morning</em>.`,
+    `<strong class="clickable">Night and Day.</strong> <em>The Sun and Moon are your playthings</em>. Turn day to night or night to day, and roll all “next day” equipment immediately.`,
+    `<strong class="clickable">Black Candles Burn, All Minds Align.</strong> Evenly distribute the squad’s total <strong>SHOCK</strong> amongst all <em>nearby allied grvnts</em>.`,
+    `<strong class="clickable">Misfire</strong> All Ammo within <strong>30ft</strong> instantly explodes for <strong>d4 damage</strong>.`,
+    `<strong class="clickable">Tumbling Down.</strong> <em>Collapse all nearby buildings to your current level</em>. Anyone inside takes <strong>d3 damage per level demolished</strong>.`,
+    `<strong class="clickable">Gunpowder Plot.</strong> Use your <strong>Warlord Order</strong> twice in the same mission, but your <em>Warlord dies at the end of that mission</em>.`,
+    `<strong class="clickable">Magnum Opus.</strong> Summon a <strong>phantom 666 Shooter</strong> that fires once each at <strong>d6 targets</strong> (<em>1-5: it fires at you too</em>).`,
+    `<strong class="clickable">VEX’s Assistant.</strong> A haggard intern brings the joyous tidings of <strong class="emphasize">VEX</strong> to the battlefield. Blue light consumes <strong>d2 random allies</strong> (<em>test Presence to avoid</em>) and <strong>d4 enemies as they disappear</strong>. <em>You have no idea where they went</em>.`,
+    `<strong class="clickable">Take Me to Your Leader.</strong> Gain a random <strong>Warlord Order</strong> from an <em>opposing faction</em>. `,
+    `<strong class="clickable">The Trooper.</strong> <strong>d2 allies</strong> may close the distance against <em>an enemy wielding a Firearm as they fire</em>.`,
+    `<strong class="clickable">War Pigs.</strong> A stampede of <strong>ravenous hogs</strong> comb the battlefield and eat everything, <em>living or otherwise</em>. <strong>4d10 damage evenly distributed to all targets</strong>.`,
 ];
 
 export const FIREARMS = [
@@ -1257,16 +1281,16 @@ export const FIREARMS = [
 ];
 
 export const SIDEARMS = [
-    `<strong class="clickable">[d3] Smog Poppers</strong> Smoke grenades that create Full cover in an area`,
-    `<strong class="clickable">[d3] SLAGG Bangs</strong> Creatures within 20ft suffer -2 to all rolls for d2 turns, SHOCK`,
-    `<strong class="clickable">[d3] Scream Grenades</strong> small explosive (d4, BLAST 3, HEAVY)`,
-    `<strong class="clickable">Punch Dagger</strong> d4, SHOCK`,
-    `<strong class="clickable">Fire Spear</strong> d6 melee or d8 ranged, BURN 1 once per combat`,
-    `<strong class="clickable">Shorter Sword</strong> d6, can be fastened as a bayonet`,
-    `<strong class="clickable">Barbed Wire Club</strong> d6, ignores helmets`,
-    `<strong class="clickable">Short Bow</strong> d6 (with [10+Presence] arrows)`,
-    `<strong class="clickable">Zweihander</strong> d10, HEAVY`,
-    `<strong class="clickable">[d2] Shinrippers</strong> 3d4, IMPACT 1, HEAVY, SHOCK; 1-in-6 chance to go off when handled`,
+    `<strong class="clickable">[d3] Smog Poppers</strong> Smoke grenades that create <em>Full cover in an area</em>`,
+    `<strong class="clickable">[d3] SLAGG Bangs</strong> Creatures within 20ft suffer <strong>-2</strong> to all rolls for <strong>d2 turns</strong>, <em>SHOCK</em>`,
+    `<strong class="clickable">[d3] Scream Grenades</strong> small explosive (<strong>d4</strong>, <em>BLAST 3, HEAVY</em>)`,
+    `<strong class="clickable">Punch Dagger</strong> <strong>d4</strong>, <em>SHOCK</em>`,
+    `<strong class="clickable">Fire Spear</strong> <strong>d6</strong> melee or <strong>d8</strong> ranged, <em>BURN 1 once per combat</em>`,
+    `<strong class="clickable">Shorter Sword</strong> <strong>d6</strong>, can be fastened as a <em>bayonet</em>`,
+    `<strong class="clickable">Barbed Wire Club</strong> <strong>d6</strong>, <em>ignores helmets</em>`,
+    `<strong class="clickable">Short Bow</strong> <strong>d6</strong> (with [Presence+10] arrows)`,
+    `<strong class="clickable">Zweihander</strong> <strong>d10</strong>, <em>HEAVY</em>`,
+    `<strong class="clickable">[d2] Shinrippers</strong> <strong>3d4</strong>, <em>IMPACT 1, HEAVY, SHOCK</em>; 1-in-6 chance to go off when handled`,
 ];
 
 export const ARMOR = [

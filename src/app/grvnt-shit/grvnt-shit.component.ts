@@ -13,6 +13,7 @@ import { CommonModule } from '@angular/common';
 export class GrvntShitComponent implements OnInit, OnChanges {
   @Input() presenceMod: number = 0;
   @Input() job: any;
+  @Input() shuffleAll: boolean = false;
   constructor(
     private random: RandomNumberService
   ) {}
@@ -87,11 +88,17 @@ export class GrvntShitComponent implements OnInit, OnChanges {
   nothingValue: number = 0;
 
   ngOnInit(): void {
+    setTimeout(() => {
       this.rollArrays();
       this.rerollAll();
+    });
   }
 
   ngOnChanges(changes: SimpleChanges): void {
+    if (changes['shuffleAll'] && !changes['shuffleAll'].firstChange) {
+      this.rerollAll();
+    }
+
     if (changes['job']) {
       this.extrasArray = [];
       if (changes['job'].previousValue) {
@@ -172,12 +179,16 @@ export class GrvntShitComponent implements OnInit, OnChanges {
               this.firearmsObj.limitNum = Number(value);
               this.rerollFirearms(this.firearmsObj.limitNum);
             }
-
             break;
           }
           case key === 'armor': {
+            //get armor as normal
             this.armorObj.limitNum = Number(value);
             this.rerollArmor(this.armorObj.limitNum);
+            //check for nothing
+            if (this.hasNothing) {
+              this.getNothingGear();
+            }
             break;
           }
           case key === 'sidearm': {
@@ -196,6 +207,13 @@ export class GrvntShitComponent implements OnInit, OnChanges {
             break;
           }
           case key === 'warscroll': {
+            if (this.warScrolls.some(scroll => scroll.isFromClass)) {
+              do {
+                const scrollToRemoveIndex = this.warScrolls.findIndex(scroll => scroll.isFromClass);
+                this.warScrolls.splice(scrollToRemoveIndex, 1);
+              } while (this.warScrolls.some(scroll => scroll.isFromClass));
+            }
+            this.random.shuffleArray(WAR_SCROLLS);
             for (let i = 0; i < Number(value); i++) {
               this.rerollWarScroll(false, false, undefined, true);
             }
@@ -210,11 +228,12 @@ export class GrvntShitComponent implements OnInit, OnChanges {
   }
 
   rerollAll() {
+    this.removeNothingScroll();
+    this.removeReadinessScroll();
     this.rerollCarry();
     if (this.job && this.job.startingShit.length > 0) {
       this.getStartingShit();
     }
-
     this.rerollAmmo();
     
     if (!this.hasNothing) {
@@ -273,6 +292,21 @@ export class GrvntShitComponent implements OnInit, OnChanges {
       } else {
         this.hasNothing = false;
         this.removeNothingScroll();
+        if (this.armorObj.descrip.includes('Lobster')) {
+          this.armorObj = {
+            descrip: '',
+            currIndex: -1,
+            limitNum: -1,
+          };
+          this.job.startingShit.forEach((shit: {key: string, value: string | number}) => {
+            for (const [key, value] of Object.entries(shit)) {
+              if (key === 'armor') {
+                this.armorObj.limitNum = Number(value);
+                this.rerollArmor(this.armorObj.limitNum);
+              }
+            }
+          });
+        }
         if (this.readyObj.descrip === '' && this.personalObj.descrip === '') {
           this.rerollReady();
           this.rerollPersonal();
@@ -356,6 +390,13 @@ export class GrvntShitComponent implements OnInit, OnChanges {
     this.armorWithHelmet = this.armorObj.descrip.includes('helmet');
   }
 
+  private removeReadinessScroll() {
+    if (this.warScrolls.some(scroll => scroll.isFromReadiness)) {
+      const scrollToRemoveIndex = this.warScrolls.findIndex(scroll => scroll.isFromReadiness);
+      this.warScrolls.splice(scrollToRemoveIndex, 1);
+    }
+  }
+
   private removeNothingScroll() {
     if (this.warScrolls.some(scroll => scroll.isFromNothing)) {
       const scrollToRemoveIndex = this.warScrolls.findIndex(scroll => scroll.isFromNothing);
@@ -365,12 +406,26 @@ export class GrvntShitComponent implements OnInit, OnChanges {
 
   private getNothingGear() {
     this.removeNothingScroll();
+    this.removeReadinessScroll();
     this.hasNothing = true;
     this.shockObj.personal = 0;
     this.shockObj.ready = 0;
-    this.nothingValue = this.random.getRandomNumber(1, 6);
-    if (this.nothingValue <= 4) {
-      this.rerollWarScroll(false, true);
+    if (this.job.name === 'altered mercenary') {
+        this.rerollWarScroll(false, true);
+        this.carryObj.descrip = `a <strong>warscroll</strong> and <strong class="clickable">nothing</strong> to carry it in - <em>kiss your mom goodbye</em>.`
+    } else {
+      this.nothingValue = this.random.getRandomNumber(1, 6);
+      if (this.nothingValue <= 4) {
+        this.rerollWarScroll(false, true);
+        this.carryObj.descrip = `a <strong>warscroll</strong> and <strong class="clickable">nothing</strong> to carry it in - <em>kiss your mom goodbye</em>.`
+      } else {
+        this.armorObj = {
+          descrip: `<strong class="underline">Tier 4 Lobster Armor</strong> (-d8 damage) <em>a misnomer, any deep water is deadly</em>`,
+          currIndex: -1,
+          limitNum: -1,
+        }
+        this.carryObj.descrip = `<strong>a set of lobster armor</strong>, a kick to the teeth, and <strong class="clickable">nothing</strong> to show for it - <em>kiss the world goodbye...</em>`
+      }
     }
   }
 
@@ -406,10 +461,10 @@ export class GrvntShitComponent implements OnInit, OnChanges {
     }
     const tableIndex = this.readyTable.findIndex(search => search === newDescrip);
 
-    if (newDescrip === 'War Scroll') {
+    if (newDescrip.includes('War Scroll')) {
       //get random warscroll
       this.rerollWarScroll(true);
-    } else if (this.readyObj.descrip === 'War Scroll') {
+    } else if (this.readyObj.descrip.includes('War Scroll')) {
       // remove old warscroll
       const scrollToRemoveIndex = this.warScrolls.findIndex(scroll => scroll.isFromReadiness);
       this.warScrolls.splice(scrollToRemoveIndex, 1);

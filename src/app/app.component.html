@@ -1,6 +1,9 @@
 <span class="farewell-layout {{currentUI}}" [ngClass]="currentTheme">
     <header>
         <h1>GRVNT RECRUITER</h1>
+        <span class="reroll-all">
+            <div (click)="rerollAll()" class="clickable"><strong>A NEW GRVNT FOR THE FRONT</strong></div>
+        </span>
         <!-- <em>random generators for <strong>FAREWELL TO ARMS: REDUX</strong></em> -->
     </header>
 
@@ -10,6 +13,7 @@
                 <div (click)="shuffleTheme()" class="clickable">SHUFFLE THEME:</div>
                 <strong>{{getThemeName()}}</strong>
             </span>
+
             <span class="theme-section no-extra-section">
                 <div (click)="toggleRolls()" class="clickable">{{showRolls ? 'HIDE' : 'SHOW'}} ROLLS</div>
             </span>
@@ -29,6 +33,7 @@
         <app-grvnt-identity
             class="id"
             [isEmbedded]="isEmbedded"
+            [shuffleAll]="getNewAll"
         >
         </app-grvnt-identity>
         <app-grvnt-class
@@ -39,6 +44,7 @@
         ></app-grvnt-class>
         <app-grvnt-shit
             class="shit"
+            [shuffleAll]="getNewAll"
             [presenceMod]="presenceNum"
             [job]="jobObj"
         ></app-grvnt-shit>
@@ -51,6 +57,6 @@
         </div>
         <div>MÖRK BORG is copyright Ockult Örtmästare Games and Stockholm Kartell.</div>
         <div>Farewell to Arms REDUX is copyright 2023 rivethead games. Web app by codeLiches</div>
-        <div><em>v0.12: Armed & Dangerous</em></div>
+        <div><em>v0.13: Armed & Dangerous</em></div>
     </footer>
 </span>

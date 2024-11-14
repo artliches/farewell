@@ -107,6 +107,7 @@ export class AppComponent implements OnInit {
 
   beastHP: number = 0;
   presenceNum: number = -5;
+  getNewAll: boolean = false;
 
   ngOnInit(): void {
     //shuffle jobs and choose the first on load
@@ -126,6 +127,11 @@ export class AppComponent implements OnInit {
 
   toggleRolls() {
     this.showRolls = !this.showRolls;
+  }
+
+  rerollAll() {
+    this.getNewJob();
+    this.getNewAll = !this.getNewAll;
   }
 
   getNewJob() {

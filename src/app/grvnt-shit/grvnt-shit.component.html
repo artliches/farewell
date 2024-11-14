@@ -66,22 +66,17 @@
                     <li><span [innerHTML]="extra.descrip"></span></li>
                 }
             }
-            @if (!hasNothing || hasNothing && nothingValue >= 5) {
+            @if (!hasNothing) {
                 <em class="small-font underline">Shit</em>
             }
             @if (!hasNothing) {
-                @if (readyObj.descrip !== 'War Scroll') {
-                    <li>
-                        <span (click)="rerollReady()" [innerHTML]="readyObj.descrip"></span>
-                    </li>
-                }
-
                 <li>
                     <span (click)="rerollPersonal()" [innerHTML]="personalObj.descrip"></span>
                 </li>
-            } @else if (nothingValue >= 5) {
-                <!-- hasNothing -->
-                <li><strong class="underline">Lobster Armor</strong> (-d8 damage) <em>a misnomer, any deep water is deadly - <strong>kiss the world goodbye...</strong></em></li>
+                
+                <li>
+                    <span (click)="rerollReady()" [innerHTML]="readyObj.descrip"></span>
+                </li>
             }
         </ul>
         @if (warScrolls.length > 0) {
@@ -100,8 +95,10 @@
                             <span class="extra-shit-info">
                                 <div>
                                     <em>
-                                        @if (scroll.isFromReadiness || scroll.isFromNothing) {
+                                        @if (scroll.isFromReadiness) {
                                             Part of starting pack
+                                        } @else if (scroll.isFromNothing) {
+                                            Scraps thrown to you out of pity
                                         } @else if (job.name === 'arcane medic') {
                                             Part of the Arcane Medic kit
                                         } @else if (job.name === 'despondent interpreter') {
@@ -111,10 +108,12 @@
                                         }
                                     </em>
                                 </div>
-                                @if (scroll.isFromReadiness) {
-                                    <span (click)="rerollReady()" [innerHTML]="scroll.descrip"></span>
-                                } @else if (scroll.isFromNothing) {
+                                @if (scroll.isFromNothing) {
                                     <span (click)="rerollWarScroll(false, true, $index)" [innerHTML]="scroll.descrip"></span>
+                                } @else if (scroll.isFromReadiness) {
+                                    <span (click)="rerollWarScroll(true, false, $index)" [innerHTML]="scroll.descrip"></span>
+                                } @else if (scroll.isFromClass) {
+                                    <span (click)="rerollWarScroll(false, false, $index, true)" [innerHTML]="scroll.descrip"></span>
                                 } @else {
                                     <span (click)="rerollWarScroll(false, false, $index)" [innerHTML]="scroll.descrip"></span>
                                 }

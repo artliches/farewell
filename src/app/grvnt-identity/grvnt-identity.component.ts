@@ -16,6 +16,7 @@ export class GrvntIdentityComponent implements OnInit, OnChanges {
   ) {}
 
   @Input() isEmbedded: boolean = false;
+  @Input() shuffleAll: boolean = false;
 
   nameObj = {
     name: '',
@@ -53,13 +54,16 @@ export class GrvntIdentityComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-      if (!changes['isEmbedded'].firstChange) {
-        if (changes['isEmbedded'].currentValue) {
+    if (changes['isEmbedded'] && !changes['isEmbedded'].firstChange) {
+      if (changes['isEmbedded'].currentValue) {
           this.getNewEmbeddedName();
         } else {
           this.rerollName();
         }
       }
+    if (changes['shuffleAll'] && !changes['shuffleAll'].firstChange) {
+      this.rerollAll(true);
+    }
   }
 
   rerollAll(isPageLoad: boolean) {
