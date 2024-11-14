@@ -7,6 +7,9 @@
     --red: red;
     --scroll-font-color: #333333;
 
+    --nav-background-color: var(--fta-blue);
+    --nav-font-color: var(--off-white);
+
     --background-color: var(--chromatic-black);
     --body-color: var(--off-white);
     --main-header-left-color: var(--fta-blue);
@@ -27,6 +30,9 @@
 }
 
 .charge {
+    --nav-background-color: var(--chromatic-black);
+    --nav-font-color: var(--fta-blue);
+
     --background-color: var(--fta-blue);
     --body-color: var(--chromatic-black);
     --main-header-left-color: var(--chromatic-black);
@@ -250,7 +256,37 @@ body {
     }
 }
 
+.page-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    grid-template-areas:
+        "nav"
+        "content";
+}
+
+nav {
+    grid-area: nav;
+    background-color: var(--nav-background-color);
+    color: var(--nav-font-color);
+    display: flex;
+    justify-content: space-around;
+    font-family: 'DIRTBAG';
+    padding: 0.5rem;
+    position: sticky;
+    top: 0;
+    div.active {
+        background-color: var(--hover-background);
+        color: var(--header-color);
+        &:hover {
+            background-color: var(--hover-color);
+            color: var(--header-background);
+        }
+    }
+}
+
 .farewell-layout {
+    grid-area: content;
     background-color: var(--background-color);
     width: 100%;
     @include flex-column(0.5rem);
@@ -376,6 +412,30 @@ ul {
 
 //TABLET
 @media only screen and (min-width: 768px) {
+    .page-layout {
+        grid-template-columns: 20vw auto;
+        grid-template-rows: 1fr;
+        grid-template-areas:
+            "nav    content";
+
+        nav {
+            background-color: unset;
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-auto-rows: min-content;
+            grid-gap: 1rem;
+            position: fixed;
+           
+            padding: 25vh 0.5rem 0 0;
+            height: 100%;
+            text-align: center;
+            div {
+                padding-left: 1rem;
+                width: 100%;
+                font-size: 1.3rem;
+            }
+        }
+    }
     .farewell-layout {
         header {
             h1 {
@@ -393,6 +453,9 @@ ul {
 
 // small laptop
 @media only screen and (min-width: 1024px) {
+    .page-layout {
+        grid-template-columns: 14vw 1fr;
+    }
     .farewell-layout {
         max-width: 90%;
         margin: auto;
@@ -441,6 +504,9 @@ ul {
 }
 
 @media print {
+    nav {
+        display: none;
+    }
     .farewell-layout {
         color: black;
         display: flex;

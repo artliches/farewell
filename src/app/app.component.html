@@ -1,67 +1,94 @@
-<span class="farewell-layout {{currentUI}}" [ngClass]="currentTheme">
-    <header>
-        <h1>GRVNT RECRUITER</h1>
-        <span class="reroll-all">
-            <div (click)="rerollAll()" class="clickable"><strong>A NEW GRVNT FOR THE FRONT</strong></div>
-        </span>
-        <!-- <em>random generators for <strong>FAREWELL TO ARMS: REDUX</strong></em> -->
-    </header>
+<span class="page-layout">
 
-    <section class="body-layout">
-        <span class="toolbar">
-            <span class="flex-row">
-                <span class="theme-section">
-                    <div (click)="shuffleTheme()" class="clickable">SHUFFLE THEME:</div>
-                    <strong>{{getThemeName()}}</strong>
+    <span class="farewell-layout {{currentUI}}" [ngClass]="currentTheme">
+        @if (sectionToShow === 'grvnts') {
+            <header>
+                <h1>GRVNT RECRUITER</h1>
+                <span class="reroll-all">
+                    <div (click)="rerollAll()" class="clickable"><strong>A NEW GRVNT FOR THE FRONT</strong></div>
                 </span>
-                <span class="theme-section no-extra-section">
-                    <div (click)="print()" class="clickable">PRINT</div>
+                <!-- <em>random generators for <strong>FAREWELL TO ARMS: REDUX</strong></em> -->
+            </header>
+        
+            <section class="body-layout">
+                <span class="toolbar">
+                    <span class="flex-row">
+                        <span class="theme-section">
+                            <div (click)="shuffleTheme()" class="clickable">SHUFFLE THEME:</div>
+                            <strong>{{getThemeName()}}</strong>
+                        </span>
+                        <span class="theme-section no-extra-section">
+                            <div (click)="print()" class="clickable">PRINT</div>
+                        </span>
+                    </span>
+        
+                    <span class="theme-section no-extra-section">
+                        <div (click)="toggleRolls()" class="clickable">{{showRolls ? 'HIDE' : 'SHOW'}} ROLLS</div>
+                    </span>
                 </span>
-            </span>
+                <app-grvnt-abilities
+                    class="stats"
+                    [job]="jobObj"
+                    [showRolls]="showRolls"
+                    [beastHP]="beastHP"
+                    (presence)="getPresence($event)"
+                >
+                </app-grvnt-abilities>
+                <app-grvnt-identity
+                    class="id"
+                    [isEmbedded]="isEmbedded"
+                    [shuffleAll]="getNewAll"
+                >
+                </app-grvnt-identity>
+                <app-grvnt-class
+                    class="job"
+                    [job]="jobObj"
+                    (newJobEmitter)="getNewJob()"
+                    (newBeast)="addBeastHP($event)"
+                ></app-grvnt-class>
+                <app-grvnt-shit
+                    class="shit"
+                    [shuffleAll]="getNewAll"
+                    [presenceMod]="presenceNum"
+                    [job]="jobObj"
+                ></app-grvnt-shit>
+            </section>
+        } @else if (sectionToShow === 'missions') {
+            <header>
+                <h1>MISSION GENERATOR</h1>
+            </header>
+            <section class="body-layout">
+                <span class="toolbar">
+                    <span class="flex-row">
+                        <span class="theme-section">
+                            <div (click)="shuffleTheme()" class="clickable">SHUFFLE THEME:</div>
+                            <strong>{{getThemeName()}}</strong>
+                        </span>
+                        <span class="theme-section no-extra-section">
+                            <div (click)="print()" class="clickable">PRINT</div>
+                        </span>
+                    </span>
+        
+                    <span class="theme-section no-extra-section">
+                        <div (click)="toggleRolls()" class="clickable">{{showRolls ? 'HIDE' : 'SHOW'}} ROLLS</div>
+                    </span>
+                </span>
+                <div>coming soon...</div>
+            </section>
+        }
+        <footer>
+            <div>
+                Farewell to Arms REDUX is an independent production by rivethead games and is not affiliated with Ockult
+                Örtmästare Games or Stockholm Kartell. It is published under the MÖRK BORG Third Party License.
+            </div>
+            <div>MÖRK BORG is copyright Ockult Örtmästare Games and Stockholm Kartell.</div>
+            <div>Farewell to Arms REDUX is copyright 2023 rivethead games. Web app by codeLiches</div>
+            <div><em>v0.16: Incoming...</em></div>
+        </footer>
+    </span>
 
-            <span class="theme-section no-extra-section">
-                <div (click)="toggleRolls()" class="clickable">{{showRolls ? 'HIDE' : 'SHOW'}} ROLLS</div>
-            </span>
-            <!-- <span class="theme-section">
-                <div (click)="shuffleUI()" class="clickable">LAYOUT TEST</div>
-                <strong>{{currentUI | uppercase}}</strong>
-            </span> -->
-        </span>
-        <app-grvnt-abilities
-            class="stats"
-            [job]="jobObj"
-            [showRolls]="showRolls"
-            [beastHP]="beastHP"
-            (presence)="getPresence($event)"
-        >
-        </app-grvnt-abilities>
-        <app-grvnt-identity
-            class="id"
-            [isEmbedded]="isEmbedded"
-            [shuffleAll]="getNewAll"
-        >
-        </app-grvnt-identity>
-        <app-grvnt-class
-            class="job"
-            [job]="jobObj"
-            (newJobEmitter)="getNewJob()"
-            (newBeast)="addBeastHP($event)"
-        ></app-grvnt-class>
-        <app-grvnt-shit
-            class="shit"
-            [shuffleAll]="getNewAll"
-            [presenceMod]="presenceNum"
-            [job]="jobObj"
-        ></app-grvnt-shit>
-    </section>
-
-    <footer>
-        <div>
-            Farewell to Arms REDUX is an independent production by rivethead games and is not affiliated with Ockult
-            Örtmästare Games or Stockholm Kartell. It is published under the MÖRK BORG Third Party License.
-        </div>
-        <div>MÖRK BORG is copyright Ockult Örtmästare Games and Stockholm Kartell.</div>
-        <div>Farewell to Arms REDUX is copyright 2023 rivethead games. Web app by codeLiches</div>
-        <div><em>v0.15: Stop the presses</em></div>
-    </footer>
+    <nav>
+        <div [ngClass]="{'active': sectionToShow === 'grvnts'}" (click)="displaySection('grvnts')" class="clickable">GRVNTS</div>
+        <div [ngClass]="{'active': sectionToShow === 'missions'}" (click)="displaySection('missions')" class="clickable">MISSIONS</div>
+    </nav>
 </span>

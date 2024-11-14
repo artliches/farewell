@@ -108,6 +108,7 @@ export class AppComponent implements OnInit {
   beastHP: number = 0;
   presenceNum: number = -5;
   getNewAll: boolean = false;
+  sectionToShow: string = 'grvnts';
 
   ngOnInit(): void {
     //shuffle jobs and choose the first on load
@@ -136,6 +137,10 @@ export class AppComponent implements OnInit {
   rerollAll() {
     this.getNewJob();
     this.getNewAll = !this.getNewAll;
+  }
+
+  displaySection(sectionName: string) {
+    this.sectionToShow = sectionName;
   }
 
   getNewJob() {
