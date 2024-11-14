@@ -278,6 +278,16 @@ export class GrvntShitComponent implements OnInit, OnChanges {
     if (isSingleReroll) {
       if (this.carryObj.tableIndex + 1 <= 2) {
         this.getNothingGear();
+        if (this.armorObj.descrip.includes('Lobster') && this.warScrolls.some(scroll => scroll.isFromNothing)) {
+          this.job.startingShit.forEach((shit: {key: string, value: string | number}) => {
+            for (const [key, value] of Object.entries(shit)) {
+              if (key === 'armor') {
+                this.armorObj.limitNum = Number(value);
+                this.rerollArmor(this.armorObj.limitNum);
+              }
+            }
+          });
+        }
         this.readyObj = {
           descrip: '',
           currIndex: -1,
@@ -419,6 +429,7 @@ export class GrvntShitComponent implements OnInit, OnChanges {
         this.rerollWarScroll(false, true);
         this.carryObj.descrip = `a <strong>warscroll</strong> and <strong class="clickable">nothing</strong> to carry it in - <em>kiss your mom goodbye</em>.`
       } else {
+        this.armorWithHelmet = false;
         this.armorObj = {
           descrip: `<strong class="underline">Tier 4 Lobster Armor</strong> (-d8 damage) <em>a misnomer, any deep water is deadly</em>`,
           currIndex: -1,
