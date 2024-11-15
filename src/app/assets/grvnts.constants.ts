@@ -810,7 +810,11 @@ export const JOBS = [
             '<strong>Ontological Oddity.</strong> Test Toughness to become invisible (cannot attack or heal).'
         ],
         startingGear: [],
-        startingShit: [],
+        startingShit: [
+            {
+                sidearm: 10
+            }
+        ],
         descrip:`
             <em>
             Like all Pale Ones, you are <strong>ephemeral</strong>, <strong>unknowable</strong>. Sent by your kin to observe (<strong>and participate in</strong>) the Dying Lands’ war, you are out of place and time. Your squad views you with varying levels of contempt, fascination, and distrust. What mysteries of these primitive beasts will you solve? For now, <strong>you ensconce yourself in their violent ways</strong>.

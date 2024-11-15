@@ -8,7 +8,10 @@
     --scroll-font-color: #333333;
 
     --nav-background-color: var(--fta-blue);
-    --nav-font-color: var(--off-white);
+    --nav-link-background-color: var(--fta-blue);
+    --nav-link-font-color: var(--chromatic-black);
+    --nav-link-active-background-color: var(--off-white);
+    --nav-link-active-color: var(--fta-blue);
 
     --background-color: var(--chromatic-black);
     --body-color: var(--off-white);
@@ -263,24 +266,29 @@ body {
     grid-template-areas:
         "nav"
         "content";
-}
 
-nav {
-    grid-area: nav;
-    background-color: var(--nav-background-color);
-    color: var(--nav-font-color);
-    display: flex;
-    justify-content: space-around;
-    font-family: 'DIRTBAG';
-    padding: 0.5rem;
-    position: sticky;
-    top: 0;
-    div.active {
-        background-color: var(--hover-background);
-        color: var(--header-color);
-        &:hover {
-            background-color: var(--hover-color);
-            color: var(--header-background);
+    nav {
+        grid-area: nav;
+        background-color: var(--nav-background-color);
+        display: flex;
+        justify-content: space-around;
+        font-family: 'DIRTBAG';
+        padding: 0.5rem;
+        position: sticky;
+        top: 0;
+        div.clickable {
+            color: var(--nav-link-font-color);
+            background-color: var(--nav-link-background-color);
+            &.active {
+                background-color: var(--nav-link-active-background-color);
+                color: var(--nav-link-active-color);
+                font-weight: bold;
+                transform: scale(1.1) rotate(2deg) !important;
+                &:hover {
+                    background-color: var(--hover-color);
+                    color: var(--header-background);
+                }
+            }
         }
     }
 }
@@ -429,7 +437,7 @@ ul {
             padding: 25vh 0.5rem 0 0;
             height: 100%;
             text-align: center;
-            div {
+            div.clickable {
                 padding-left: 1rem;
                 width: 100%;
                 font-size: 1.3rem;
