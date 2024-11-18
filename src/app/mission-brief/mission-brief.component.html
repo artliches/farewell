@@ -1,0 +1,32 @@
+<div class="mission-card">
+    <h2>MISSION BRIEFING</h2>
+    <div class="mission-body">
+        <div>
+            <span class="mission-part-header">
+                <h3 class="clickable" (click)="rerollMission()">OBJECTIVES</h3>
+                <em>Players may accomplish some or all of these</em>
+            </span>
+            <ol>
+                @for (mission of missionObjectives; track $index) {
+                    <li>
+                        <strong><span (click)="rerollIndividualMissionPart($index, 'objective')">{{mission.objective}}</span> <span (click)="rerollIndividualMissionPart($index, 'target')">{{mission.target}}</span></strong>
+                    </li>
+                }
+            </ol>
+        </div>
+
+        <div>
+            <span class="mission-part-header">
+                <h3 (click)="rerollTwists()" class="clickable">TWISTS</h3>
+                <em>You may use none, one, or a few of theses</em>
+            </span>
+            <ol>
+                @for (twist of twists.descrips; track $index) {
+                    <li>
+                        <span (click)="rerollIndividualTwist($index)">{{twist}}</span> 
+                    </li>
+                }
+            </ol>
+        </div>
+    </div>
+</div>

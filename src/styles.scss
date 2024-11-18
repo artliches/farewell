@@ -320,6 +320,9 @@ body {
 
     .body-layout {
         @include flex-column;
+        h2, h3 {
+            margin: 0;
+        }
         *:nth-child(even) {
             .grvnt-header.clickable {
                 &:hover  {
@@ -336,6 +339,16 @@ body {
         @include flex-column(0.3rem);
         font-size: 0.8rem;
         text-align: center;
+    }
+}
+
+.mission-card {
+    padding: 0 1rem;
+    h2 {
+        text-decoration: underline;
+    }
+    &:first-of-type {
+        border-top: var(--border-width) solid var(--border-color);
     }
 }
 
@@ -451,6 +464,38 @@ ul {
                 font-size: 5rem;
             }
         }
+        &.missions {
+            .body-layout {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                grid-auto-rows: auto;
+                grid-template-areas: 
+                    "toolbar    toolbar"
+                    "brief      brief"
+                    "advance    action"
+                    "aftermath  rewards";
+
+                .toolbar {
+                    grid-area: toolbar;
+                }
+                .brief {
+                    grid-area: brief;
+                }
+                .advance {
+                    grid-area: advance;
+                }
+                .action {
+                    grid-area: action;
+                }
+                .aftermath {
+                    grid-area: aftermath;
+                }
+                .rewards {
+                    grid-area: rewards;
+                }
+            }
+        }
+
     }
     .grvnt-card {
         .grvnt-header {
@@ -469,33 +514,37 @@ ul {
         margin: auto;
         .body-layout {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            grid-auto-rows: auto;
-            grid-template-areas: 
-                "toolbar    toolbar"
-                "stats      stats"
-                "id         job"
-                "shit       shit";
-            .toolbar {
-                grid-area: toolbar;
-            }
-            .stats {
-                grid-area: stats;
-            }
-            .id {
-                grid-area: id;
-                .grvnt-card {
-                    border-right: var(--border-width) solid var(--border-color);
+        }
+        &.grvnts {
+            .body-layout {
+                grid-template-columns: repeat(2, 1fr);
+                grid-auto-rows: auto;
+                grid-template-areas: 
+                    "toolbar    toolbar"
+                    "stats      stats"
+                    "id         job"
+                    "shit       shit";
+                .toolbar {
+                    grid-area: toolbar;
                 }
-            }
-            .job {
-                grid-area: job;
-                .grvnt-card {
-                    border-left: var(--border-width) solid var(--border-color);
+                .stats {
+                    grid-area: stats;
                 }
-            }
-            .shit {
-                grid-area: shit;
+                .id {
+                    grid-area: id;
+                    .grvnt-card {
+                        border-right: var(--border-width) solid var(--border-color);
+                    }
+                }
+                .job {
+                    grid-area: job;
+                    .grvnt-card {
+                        border-left: var(--border-width) solid var(--border-color);
+                    }
+                }
+                .shit {
+                    grid-area: shit;
+                }
             }
         }
     }
@@ -514,6 +563,9 @@ ul {
 @media print {
     nav {
         display: none;
+        div {
+            display: none;
+        }
     }
     .farewell-layout {
         color: black;
@@ -528,6 +580,12 @@ ul {
             }
         }
         .body-layout {
+            .mission-card {
+                border-color: black;
+                .mission-body div {
+                    border-color: black !important;
+                }
+            }
             .grvnt-card {
                 border-color: black;
                 .grvnt-body {

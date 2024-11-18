@@ -8,11 +8,16 @@ import { GrvntVitalsComponent } from "./grvnt-vitals/grvnt-vitals.component";
 import { RandomNumberService } from './random-number.service';
 import { JOBS } from './assets/grvnts.constants';
 import { GrvntShitComponent } from "./grvnt-shit/grvnt-shit.component";
+import { MissionBriefComponent } from './mission-brief/mission-brief.component';
+import { MissionAdvanceComponent } from "./mission-advance/mission-advance.component";
+import { MissionActionComponent } from "./mission-action/mission-action.component";
+import { MissionAftermathComponent } from "./mission-aftermath/mission-aftermath.component";
+import { MissionRewardsComponent } from "./mission-rewards/mission-rewards.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [GrvntAbilitiesComponent, GrvntIdentityComponent, CommonModule, GrvntClassComponent, GrvntVitalsComponent, GrvntShitComponent],
+  imports: [GrvntAbilitiesComponent, GrvntIdentityComponent, CommonModule, GrvntClassComponent, GrvntVitalsComponent, GrvntShitComponent, MissionBriefComponent, MissionAdvanceComponent, MissionActionComponent, MissionAftermathComponent, MissionRewardsComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

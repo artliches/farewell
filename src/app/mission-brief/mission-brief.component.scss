@@ -1,0 +1,40 @@
+.mission-body {
+    display: grid;
+    grid-template-columns: 1fr;
+    div:first-of-type {
+        border-bottom: 1px solid var(--border-color);
+        padding-bottom: 1rem;
+    }
+}
+
+ol {
+    margin: .5rem 0 0;
+    padding-left: 1.5rem;
+    li {
+        strong {
+            display: flex;
+            gap: 0.2rem;
+        }
+        span {
+            cursor: pointer;
+            &:hover {
+                text-decoration: underline;
+                background-color: var(--hover-background);
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .mission-body {
+        grid-template-columns: repeat(2, 1fr);
+        div:first-of-type {
+            border-right: 1px solid var(--border-color);
+            border-bottom: none;
+            padding-bottom: 0rem;
+        }
+        div:not(:first-of-type) {
+            padding-left: 1rem;
+        }
+    }
+}
