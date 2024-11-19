@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RandomNumberService } from '../random-number.service';
-import { BEGGARS_TWISTS, COMBATANT_OBJECTIVE, FAITHSPIRE_TWISTS, MAD_TWISTS, MATERIAL_OBJECTIVE, NONCOMBAT_OBJECTIVE, STRUCTURE_OBJECTIVE, WHITE_TWISTS } from '../assets/missions.constants';
+import { BEGGARS_INTROS, BEGGARS_TWISTS, COMBATANT_OBJECTIVE, FAITHSPIRE_INTROS, FAITHSPIRE_TWISTS, LOCATION, MAD_INTROS, MAD_TWISTS, MATERIAL_OBJECTIVE, NONCOMBAT_OBJECTIVE, STRUCTURE_OBJECTIVE, TIME, TIME_LIMIT, WHITE_INTRO, WHITE_TWISTS } from '../assets/missions.constants';
 
 @Component({
   selector: 'app-mission-brief',
@@ -15,6 +15,12 @@ export class MissionBriefComponent implements OnInit {
     private random: RandomNumberService
   ) {}
 
+  briefObj: {intro: string, location: string, time: string} = {
+    intro: '',
+    location: '',
+    time: '',
+  };
+
   missionObjectivesList = ['material', 'non-combatant', 'combatant', 'structure'];
   missionObjectives: {objective: string, target: string, type: string, currIndex: number}[] = [];
 
@@ -27,6 +33,92 @@ export class MissionBriefComponent implements OnInit {
   ngOnInit(): void {
     this.rerollMission();
     this.rerollTwists();
+
+    // lets get a few different intros for the opposition
+    this.rerollBriefSummary();
+  }
+
+  private rerollBriefSummary() {
+    switch (true) {
+      case this.twists.type === 'faithspire': {
+        this.random.shuffleArray(FAITHSPIRE_INTROS);
+        this.briefObj.intro = FAITHSPIRE_INTROS[0];
+        break;
+      }
+      case this.twists.type === 'beggars': {
+        this.random.shuffleArray(BEGGARS_INTROS);
+        this.briefObj.intro = BEGGARS_INTROS[0];
+        break;
+      }
+      case this.twists.type === 'mad': {
+        this.random.shuffleArray(MAD_INTROS);
+        this.briefObj.intro = MAD_INTROS[0];
+        break;
+      }
+      case this.twists.type === 'white': {
+        this.random.shuffleArray(WHITE_INTRO);
+        this.briefObj.intro = WHITE_INTRO[0];
+        break;
+      }
+    }
+
+    this.briefObj.location = this.random.shuffleArray(LOCATION)[0];
+    this.briefObj.time = this.random.shuffleArray(TIME_LIMIT)[0];
+  }
+
+  rerollAll() {
+    this.rerollMission();
+    this.rerollTwists();
+    this.rerollBriefSummary();
+  }
+
+  rerollIndividualBrief(sectionToReroll: string) {
+    const section = sectionToReroll === 'intro' ? 'intro' : sectionToReroll === 'location' ? 'location' : 'time';
+
+    let arrayToCompare: string[] = [];
+    switch (true) {
+      case section === 'intro': {
+        switch (true) {
+          case this.twists.type === 'faithspire': {
+            arrayToCompare = FAITHSPIRE_INTROS;
+            break;
+          }
+          case this.twists.type === 'beggars': {
+            arrayToCompare = BEGGARS_INTROS;
+            break;
+          }
+          case this.twists.type === 'mad': {
+            arrayToCompare = MAD_INTROS
+            break;
+          }
+          case this.twists.type === 'white': {
+            arrayToCompare = WHITE_INTRO;
+            break;
+          }
+        }
+        break;
+      }
+      case section === 'location': {
+        arrayToCompare = LOCATION;
+        break;
+      }
+      case section === 'time': {
+        arrayToCompare = TIME_LIMIT;
+        break;
+      }
+      default: break;
+    }
+
+    let newIndex = arrayToCompare.indexOf(this.briefObj[section]);
+    if (newIndex + 1 === arrayToCompare.length) {
+      newIndex = 0;
+    } else {
+      do {
+        newIndex += 1;
+      } while (this.briefObj[section] === arrayToCompare[newIndex]);
+    }
+
+    this.briefObj[section] = arrayToCompare[newIndex];
   }
 
   rerollIndividualTwist(index: number) {
@@ -72,6 +164,7 @@ export class MissionBriefComponent implements OnInit {
     this.random.shuffleArray(this.twistsList);
     const chosenTwistArray = this.twistsList[0];
     this.twists.type = chosenTwistArray;
+
     switch (true) {
       case chosenTwistArray === 'faithspire': {
         this.random.shuffleArray(FAITHSPIRE_TWISTS);

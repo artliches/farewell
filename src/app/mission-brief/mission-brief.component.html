@@ -1,5 +1,13 @@
 <div class="mission-card">
-    <h2>MISSION BRIEFING</h2>
+    <h2 class="mission-clickable" (click)="rerollAll()">MISSION BRIEFING</h2>
+    <div class="brief-summary">
+        <span class="mission-clickable underline" (click)="rerollIndividualBrief('intro')">{{briefObj.intro}}</span> as you <span class="mission-clickable underline" (click)="rerollIndividualBrief('location')">{{briefObj.location}}</span>. You have your orders
+        @if (this.briefObj.time.trim() !== 'NOW!') {
+            and you have <span class="mission-clickable underline" (click)="rerollIndividualBrief('time')">{{briefObj.time}}</span> to do it. <strong>Now get to it.</strong>
+        } @else {
+            you have to do it <span class="mission-clickable underline" (click)="rerollIndividualBrief('time')"><strong>{{briefObj.time}}</strong></span> <strong> MOVE YOUR ASS, GRVNT!</strong>
+        }
+    </div>
     <div class="mission-body">
         <div>
             <span class="mission-part-header">
@@ -9,7 +17,7 @@
             <ol>
                 @for (mission of missionObjectives; track $index) {
                     <li>
-                        <strong><span (click)="rerollIndividualMissionPart($index, 'objective')">{{mission.objective}}</span> <span (click)="rerollIndividualMissionPart($index, 'target')">{{mission.target}}</span></strong>
+                        <strong><span class="mission-clickable" (click)="rerollIndividualMissionPart($index, 'objective')">{{mission.objective}}</span> <span class="mission-clickable" (click)="rerollIndividualMissionPart($index, 'target')">{{mission.target}}</span></strong>
                     </li>
                 }
             </ol>
@@ -23,7 +31,7 @@
             <ol>
                 @for (twist of twists.descrips; track $index) {
                     <li>
-                        <span (click)="rerollIndividualTwist($index)">{{twist}}</span> 
+                        <span class="mission-clickable" (click)="rerollIndividualTwist($index)">{{twist}}</span> 
                     </li>
                 }
             </ol>

@@ -1,6 +1,27 @@
+.mission-clickable {
+    &:hover {
+        cursor: pointer;
+        text-decoration: underline;
+        background-color: var(--hover-background);
+        color: var(--hover-color);
+    }
+}
+
+.mission-card {
+    h2 {
+        width: max-content;
+        user-select: none;
+    }
+    .brief-summary {
+        font-style: italic;
+        padding-bottom: 1rem;
+    }
+}
+
 .mission-body {
     display: grid;
     grid-template-columns: 1fr;
+    border-top: 1px solid var(--border-color);
     div:first-of-type {
         border-bottom: 1px solid var(--border-color);
         padding-bottom: 1rem;
@@ -14,13 +35,6 @@ ol {
         strong {
             display: flex;
             gap: 0.2rem;
-        }
-        span {
-            cursor: pointer;
-            &:hover {
-                text-decoration: underline;
-                background-color: var(--hover-background);
-            }
         }
     }
 }
