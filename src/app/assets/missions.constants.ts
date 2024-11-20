@@ -59,7 +59,7 @@ export const STRUCTURE_OBJECTIVE = [
 ];
 
 export const FAITHSPIRE_TWISTS = [
-    'Armed and ready, a Landcrusher sists just outside the objective.',
+    'Armed and ready, a Landcrusher sits just outside the objective.',
     'Captured heretics will assist you if they can just be freed...',
     'Missionaries of HE have fortified the area, resulting in more Cynically Cursed Chaplains.',
     'The presence of an Endajagare can be found all around the battlefield...',
@@ -90,7 +90,7 @@ export const LOCATION = [
     `arrive at a winding mountain pass`,
     'pick your way through the blackened forests of Treeswell',
     'wade though the sinking streets of Grift',
-    'airdropped into the beating heart of Alliáns',
+    'airdrop into the beating heart of Alliáns',
     'march into the sand-swept shores of the Endless Sea',
     'find yourself staring down the desolate desert of No-Man\'s Land',
     'espy the pastoral farmlands of Schleswig',

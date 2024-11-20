@@ -1,0 +1,26 @@
+.mission-body {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    grid-gap: 0.5rem;
+}
+
+.location-layout, .location-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.location-layout {
+    padding: 0 0.5rem 0.5rem 0;
+    border: 1px solid var(--border-color);
+    .location-details {
+        margin-left: 1rem;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    .mission-body {
+        grid-template-columns: auto 1fr;
+    }
+}

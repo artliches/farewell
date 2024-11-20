@@ -31,11 +31,7 @@ export class MissionBriefComponent implements OnInit {
   };
 
   ngOnInit(): void {
-    this.rerollMission();
-    this.rerollTwists();
-
-    // lets get a few different intros for the opposition
-    this.rerollBriefSummary();
+    this.rerollAll();
   }
 
   private rerollBriefSummary() {
