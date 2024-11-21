@@ -237,6 +237,18 @@ body {
     gap: 2px;
 }
 
+.subtle-clickable {
+    cursor: pointer;
+    user-select: none;
+    &:hover {
+        background-color: var(--hover-background);
+        text-decoration: underline;
+    }
+    &:active {
+        font-weight: unset;
+    }
+}
+
 .clickable {
     cursor: pointer;
     user-select: none;

@@ -4,7 +4,7 @@
     <strong class="underline">ENEMY SQUAD:</strong> "<strong (click)="getInitialSquad(squadObj.size)" class="clickable">{{squadMakeup.name[0]}}</strong>"
     <div class="flex-row">
         <span><strong>GRVNTS</strong> <span> {{squadObj.size}}</span></span>
-        <span><strong>MORALE</strong> <span> {{morale}}</span></span>
+        <span><strong class="subtle-clickable" (click)="rerollMorale()">MORALE</strong> <span> {{morale}}</span></span>
     </div>
     <div class="flex-column">
         <em class="small-font underline">{{squadObj.firearm.isScroll ? 'Warscroll' : 'Firearm'}}</em>

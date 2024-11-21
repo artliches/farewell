@@ -100,9 +100,9 @@ export class SquadMakerComponent implements OnInit, OnChanges {
     const coinFlip = this.random.getRandomNumber(1, 2);
     const moraleMod = this.random.getRandomNumber(1, 2);
     if (coinFlip === 1) {
-      this.morale = this.morale - moraleMod;
+      this.morale = 8 - moraleMod;
     } else {
-      this.morale = this.morale + moraleMod;
+      this.morale = 8 + moraleMod;
     }
   }
 
