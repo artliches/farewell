@@ -1,39 +1,13 @@
-@mixin flex-column($gap: 0rem) {
+.flex-column {
     display: flex;
     flex-direction: column;
-    gap: $gap;
 }
 
-.leader-layout {
-    border: 1px solid var(--border-color);
-    padding: 0 0.3rem 0.3rem 0;
-    @include flex-column(0.3rem);
-    .leader-body {
-        @include flex-column(0.3rem);
-        padding-left: 0.3rem;
-    }
+.flex-row {
+    gap: 1rem;
 }
 
-.leader-subsection {
-    @include flex-column(0.1rem);
-}
-
-.warscroll-layout {
-    border: 2px solid var(--border-color);
-    .warscroll-label {
-        background-color: var(--border-color);
-        color: var(--background-color);
-    }
-    ul {
-        padding-top: 0.2rem;
-        display: flex;
-        flex-direction: column;
-        gap: 0.2rem;
-        list-style: square;
-    }
-}
-
-.section-title {
-    font-size: 0.8rem;
-    text-decoration: underline;
+.squad-layout {
+    margin-top: 1rem;
+    border-top: 1px solid var(--border-color);
 }

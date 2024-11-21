@@ -144,7 +144,6 @@ export const WEATHER = [
 ];
 
 export const SQUAD_SIZE = [
-    'no enemies',
     'one squad',
     'one company',
     'one regiment',

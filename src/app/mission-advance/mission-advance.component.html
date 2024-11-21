@@ -1,24 +1,24 @@
-<div class="mission-card">
+ <div class="mission-card">
     <h2>SITUATION REPORT</h2>
     <em>knowledge from up-high or gleaned by your eyes</em>
     <div class="mission-body">
-        <div class="location-layout">
+        <div class="advance-layout location">
             <strong (click)="rerollAllLocationDetails()" class="clickable">LOCATION DETAILS</strong>
-            <div class="location-details">
+            <div class="advance-details">
                 <span><strong (click)="rerollIndividualLocationDetail('building')" class="clickable">BUILDING</strong>: {{situationObj.building | titlecase}}</span>
                 <span><strong (click)="rerollIndividualLocationDetail('defense')" class="clickable">DEFENSES</strong>: {{situationObj.defense | titlecase}}</span>
                 <span><strong (click)="rerollIndividualLocationDetail('time')" class="clickable">TIME OF DAY</strong>: {{situationObj.time | titlecase}}</span>
                 <span><strong (click)="rerollIndividualLocationDetail('weather')" class="clickable">WEATHER REPORT</strong>: {{situationObj.weather | titlecase}}</span>
             </div>
         </div>
-        <div class="location-layout">
+        <div class="advance-layout enemy">
             <span>
                 <strong class="clickable" (click)="rerollSquadSize()">ENEMY NUMBER</strong>
                 <em>: {{squadSize | titlecase}}</em>
             </span>
             @if (squadSize !== 'no enemies') {
-                <div class="location-details">
-                    <app-squad-maker></app-squad-maker>
+                <div class="advance-details">
+                    <app-squad-maker [enemySize]="squadSize"></app-squad-maker>
                 </div>
             }
         </div>

@@ -206,9 +206,9 @@ export const SCARS = [
     '[d6] <strong>missing teeth</strong>',
     'broken blood vessel in your <strong>right eye</strong>',
     'broken blood vessel in your <strong>left eye</strong>',
-    'a single <strong>fractured rib</strong> that rattle as you run',
-    'a pair of <strong>fractured ribs</strong> that rattle as you run',
-    'a set of weak knees and a hunched posture, making you a <strong>smaller target</strong>',
+    'single <strong>fractured rib</strong> that rattles as you run',
+    'pair of <strong>fractured ribs</strong> that rattles as you run',
+    'set of weak knees and a hunched posture, making you a <strong>smaller target</strong>',
     'massive, distracting <strong>hematoma</strong>',
     '<strong>Slaggvara</strong> shrapnel protruding from your head like a <strong>demon horn</strong>, promising certain death if removed',
     '<strong>gas-mask</strong> melted to your face - <strong>still works</strong>',
@@ -496,7 +496,7 @@ export const JOBS = [
             },
         ],
         extras: [
-            `Start with a <strong>Malevolent Rile</strong>. Do not roll for Firearms.`
+            `Start with a <strong>Malevolent Rifle</strong>. Do not roll for Firearms.`
         ],
         startingGear: [],
         startingShit: [

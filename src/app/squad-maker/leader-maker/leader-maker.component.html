@@ -1,0 +1,89 @@
+<div class="leader-layout">
+    <strong (click)="rerollSquadLeader()" class="clickable leader-title">SQUAD LEADER</strong>
+
+    <div class="leader-body">
+        <div>
+            <em>
+                @if (nickname) {
+                    <strong (click)="rerollNickname()" class="clickable">"{{nickname}}"</strong>
+                } @else if (embeddedNameObj.first) {
+                    <span class="flex-row">
+                        <strong (click)="rerollNickname()" class="clickable">"{{embeddedNameObj.first}}</strong>
+                        <strong (click)="rerollNickname()" class="clickable">{{embeddedNameObj.middle}}</strong>
+                        <strong (click)="rerollNickname()" class="clickable">{{embeddedNameObj.last}}"</strong>
+                    </span>
+                }
+                the
+            </em>
+            <strong class="underline">{{leaderObj.name | uppercase}}</strong>
+        </div>
+
+        <div>
+            <span>
+                <strong (click)="rerollHP()" class="clickable">HP:</strong>
+                <span> {{hpObj.value}} {{hpObj.die}}</span>
+            </span>
+        </div>
+        
+        <div class="leader-subsection">
+            <div>
+                <em class="section-title">Speciality</em>
+                @if (this.leaderObj.special) {
+                    <span class="small-font" [innerHTML]="this.leaderObj.special"></span>
+                }
+            </div>
+            @if (leaderObj.specialitiesObj.specialities.length > 0) {
+                <span (click)="rerollSpecialities()" [innerHTML]="leaderObj.specialitiesObj.chosenSpeciality"></span>
+            }
+        </div>
+        @if (this.firearmsObj.descrip) {
+            <div class="leader-subsection">
+                <em class="section-title">Firearms</em>
+                <span (click)="rerollFireArms(firearmsObj.limitNum)" [innerHTML]="firearmsObj.descrip"></span>
+                @if (this.ammoObj.value !== -1) {
+                    <span>
+                        <strong (click)="rerollAmmo()" class="clickable">Ammo:</strong>
+                        <span> {{ammoObj.value}} {{ammoObj.die}}</span>
+                    </span>
+                }
+            </div>
+        }
+        @if (this.sidearmsObj.descrip) {
+            <div class="leader-subsection">
+                <em class="section-title">Sidearm</em>
+                <span (click)="rerollSidearms(sidearmsObj.limitNum)" [innerHTML]="sidearmsObj.descrip"></span>
+            </div>
+        }
+        @if (this.armorObj.descrip) {
+            <div class="leader-subsection">
+                <em class="section-title">Armor</em>
+                <span (click)="rerollArmor(armorObj.limitNum)" [innerHTML]="armorObj.descrip"></span>
+                @if (this.armorWithHelmet) {
+                    <div>
+                        <strong class="underline">Helmet.</strong> break to prevent all damage from a <strong>single attack</strong>
+                    </div>
+                }
+            </div>
+        }
+        <div class="leader-subsection">
+            <em class="section-title">SHOCK</em>
+            <span class="flex-row">
+                <strong (click)="rerollShock()" class="clickable">SHOCK {{shockObj.value}}:</strong>
+                <span [innerHTML]="shockObj.effect"></span>
+            </span>
+        </div>
+        @if (this.warScrollObj.length > 0) {
+            <div class="warscroll-layout">
+                <strong class="warscroll-label">WARSCROLLS</strong>
+                <ul>
+                    @for (warScroll of warScrollObj; track $index) {
+                        <li><span (click)="rerollWarScroll($index)" [innerHTML]="warScroll.descrip"></span></li>
+                    }
+                </ul>
+            </div>
+        }
+    </div>
+    <div class="small-font">
+        Distinguished by {{nextWordGrammer(scarObj.descrip)}} <strong class="clickable" (click)="rerollScars()" [innerHTML]="scarObj.descrip"></strong>
+    </div>
+</div>

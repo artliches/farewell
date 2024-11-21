@@ -1,26 +1,36 @@
 .mission-body {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr;
+    grid-auto-rows: auto;
     grid-gap: 0.5rem;
 }
 
-.location-layout, .location-details {
+.advance-layout, .advance-details {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
 }
 
-.location-layout {
+.advance-layout {
     padding: 0 0.5rem 0.5rem 0;
     border: 1px solid var(--border-color);
-    .location-details {
+    .advance-details {
         margin-left: 1rem;
     }
 }
 
-@media only screen and (min-width: 1024px) {
+@media only screen and (min-width: 768px) {
     .mission-body {
         grid-template-columns: auto 1fr;
+        grid-template-rows: auto 1fr;
+        grid-template-areas: 
+            "location   enemy"
+            ".          enemy";
+        .location {
+            grid-area: location;
+        }
+        .enemy {
+            grid-area: enemy;
+        }
     }
 }
