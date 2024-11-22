@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1732308106982,
+  "timestamp": 1732314977689,
   "index": "/farewell/index.csr.html",
   "assetGroups": [
     {
@@ -14,10 +14,10 @@
         "/farewell/favicon.ico",
         "/farewell/index.csr.html",
         "/farewell/index.html",
-        "/farewell/main-DZ7H3PI5.js",
+        "/farewell/main-7FYOFTOX.js",
         "/farewell/manifest.webmanifest",
         "/farewell/polyfills-FFHMD2TL.js",
-        "/farewell/styles-F253IBXS.css"
+        "/farewell/styles-HHY2YIA6.css"
       ],
       "patterns": []
     },
@@ -47,13 +47,13 @@
     "/farewell/icons/apple-touch-icon.png": "2a6631e06169c8699d78a50d09097eef2d4f8a28",
     "/farewell/icons/favicon-16x16.png": "596b043a23ec2e2c7489b4ba06aa0fa0b9b94db6",
     "/farewell/icons/favicon-32x32.png": "52402d8c3733635b79ed660a20fe07a186704450",
-    "/farewell/index.csr.html": "5a2ccb05cca8b53ff3307f29362eb3956ee51302",
-    "/farewell/index.html": "fa88354fc463053c2ffe12e5f5ee1c99ee1eb9f9",
-    "/farewell/main-DZ7H3PI5.js": "4e2b31b0c1be7c279ddc8525d7d4e81959284f4a",
+    "/farewell/index.csr.html": "b4763a1d357459da903cda050b41f74a01dbd61c",
+    "/farewell/index.html": "722f71b02266d05a2f280ceaddc798bd53ae42f8",
+    "/farewell/main-7FYOFTOX.js": "aec35810fe86f21ed4b54cf289a59ed4f1b27bc8",
     "/farewell/manifest.webmanifest": "dc510c18c4126f4fef6aef9abda5d3599063837a",
     "/farewell/media/ALEGREYA-JSGAVCRA.ttf": "6609880948728419617455150aea67982b0319c1",
     "/farewell/polyfills-FFHMD2TL.js": "f49b49a155bc7d192db62a4c15d0a612b460a667",
-    "/farewell/styles-F253IBXS.css": "9453067b1bf042e7c2a26601ca9ed7e321e95cb6"
+    "/farewell/styles-HHY2YIA6.css": "418522843fefb62206584344442f5d5b9038ba8e"
   },
   "navigationUrls": [
     {
