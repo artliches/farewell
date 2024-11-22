@@ -32,6 +32,15 @@ header {
     }
 }
 
+.squad-size-section {
+    border-top: 2px solid var(--border-color);
+    padding-top: 0.3rem;
+    .squad-detail-button {
+        font-size: 1.3rem;
+        font-family: 'DIRTBAG';
+    }
+}
+
 @media only screen and (min-width: 768px) {
     .toolbar {
         font-size: 0.875rem;

@@ -415,3 +415,38 @@ export const SQUADS = [
         ],
     },
 ];
+
+export const MACHINES = [
+    {
+        name: 'GASLOBBER',
+        hp: 12, 
+        morale: '-',
+        weapon: `<strong>Gas Canister Shell.</strong> Releases GAS within 20ft radius of target`,
+        armor: `<strong>Blast Screen.</strong> -d4`,
+        special: 'Usually far from the front'
+    },
+    {
+        name: `LANDCRUSHER`,
+        hp: 20,
+        morale: '-',
+        weapon: `<strong>Mounted Cannon.</strong> d12, IMPACT 4, SHOCK (<em>fires once every d4 rounds</em>)`,
+        armor: `<strong>Forged SLAGG Plating.</strong> -d10`,
+        special: `Tries to run over grvnts between Cannon shots. Destroys all cover.`,
+    },
+    {
+        name: `SKYCRAWLER`,
+        hp: '*',
+        morale: 9,
+        weapon: `<strong>Strafe.</strong> d4 grvnts test Agility DR14 or 3d6 damage spread evenly (<em>IMPACT 1</em>)`,
+        armor: `<strong>Sheet Metal.</strong> -d4`,
+        special: `When Skycrawler would take damage, test Morale`,
+    },
+    {
+        name: `SEASPLITTER`,
+        hp: 30,
+        morale: 10 ,
+        weapon: `<strong>Heavy Guns.</strong> d12 damage to all targets in a 30ft area`,
+        armor: `<strong>Iron Lung.</strong> -d12`,
+        special: `Seacrawler cannot dodge, all attacks hit`,
+    },
+];

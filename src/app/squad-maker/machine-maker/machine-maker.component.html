@@ -1,0 +1,31 @@
+<div class="machine-layout">
+    <strong (click)="rerollMachine()" class="clickable">{{machineObj.name}}</strong>
+
+    <div class="machine-body">
+        <div class="flex-row stats-section">
+            <div class="flex-row">
+                <strong>HP</strong>
+                <span>{{machineObj.hp}}</span>
+            </div>
+            <div class="flex-row">
+                <strong>MORALE</strong>
+                <span>{{machineObj.morale}}</span>
+            </div>
+        </div>
+
+        <div class="flex-row machine-info-section">
+            <em class="small-font">Weapon</em>
+            <span [innerHTML]="machineObj.weapon"></span>
+        </div>
+
+        <div class="flex-row machine-info-section">
+            <em class="small-font">Armor</em>
+            <span [innerHTML]="machineObj.armor"></span>
+        </div>
+
+        <div class="flex-row machine-info-section">
+            <em class="small-font">Special</em>
+            <span>* {{machineObj.special}}</span>
+        </div>
+    </div>
+</div>

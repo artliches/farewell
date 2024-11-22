@@ -72,6 +72,28 @@
                 <app-mission-advance class="advance"></app-mission-advance>
                 <app-mission-rewards class="rewards"></app-mission-rewards>
             </section>
+        } @else if (sectionToShow === 'squads') {
+            <header>
+                <h1>SQUAD MAKER</h1>
+            </header>
+            <section class="body-layout">
+                <span class="toolbar">
+                    <span class="flex-row">
+                        <span class="theme-section">
+                            <div (click)="shuffleTheme()" class="clickable">SHUFFLE THEME:</div>
+                            <strong>{{getThemeName()}}</strong>
+                        </span>
+                        <span class="theme-section no-extra-section">
+                            <div (click)="print()" class="clickable">PRINT</div>
+                        </span>
+                    </span>
+                </span>
+                <div class="squad-size-section">
+                    <strong (click)="rerollSquadSize()" class="subtle-clickable squad-detail-button">SQUAD DETAILS:</strong>
+                    <span> {{squadSize | uppercase}}</span>
+                </div>
+                <app-squad-maker [enemySize]="squadSize"></app-squad-maker>
+            </section>
         }
         <footer>
             <div>
@@ -80,12 +102,13 @@
             </div>
             <div>MÖRK BORG is copyright Ockult Örtmästare Games and Stockholm Kartell.</div>
             <div>Farewell to Arms REDUX is copyright 2023 rivethead games. Web app by codeLiches</div>
-            <div><em>v0.22: Squads on the march...</em></div>
+            <div><em>v0.3: GRVNTS ON THE FRONT</em></div>
         </footer>
     </span>
 
     <nav>
         <div [ngClass]="{'active': sectionToShow === 'grvnts'}" (click)="displaySection('grvnts')" class="clickable">GRVNTS</div>
         <div [ngClass]="{'active': sectionToShow === 'missions'}" (click)="displaySection('missions')" class="clickable">MISSIONS</div>
+        <div [ngClass]="{'active': sectionToShow === 'squads'}" (click)="displaySection('squads')" class="clickable">SQUADS</div>
     </nav>
 </span>

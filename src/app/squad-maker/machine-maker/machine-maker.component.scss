@@ -1,0 +1,24 @@
+.machine-layout {
+    border-top: 1px solid var(--border-color);
+
+}
+
+.machine-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    padding-left: 0.3rem;
+
+    .stats-section {
+        gap: 0.5rem;
+    }
+
+    .machine-info-section {
+        display: flex;
+        flex-direction: column;
+        gap: 0rem;
+        em {
+            text-decoration: underline;
+        }
+    }
+}

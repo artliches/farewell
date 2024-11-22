@@ -1,31 +1,33 @@
-<app-leader-maker></app-leader-maker>
-
-<div class="squad-layout">
-    <strong class="underline">ENEMY SQUAD:</strong> "<strong (click)="getInitialSquad(squadObj.size)" class="clickable">{{squadMakeup.name[0]}}</strong>"
-    <div class="flex-row">
-        <span><strong>GRVNTS</strong> <span> {{squadObj.size}}</span></span>
-        <span><strong class="subtle-clickable" (click)="rerollMorale()">MORALE</strong> <span> {{morale}}</span></span>
-    </div>
-    <div class="flex-column">
-        <em class="small-font underline">{{squadObj.firearm.isScroll ? 'Warscroll' : 'Firearm'}}</em>
-        <span (click)="rerollSquadFirearms()" [innerHTML]="squadObj.firearm.descrip"></span>
-    </div>
-    <div class="flex-column">
-        <em class="small-font underline">{{squadObj.sidearm.isScroll ? 'Warscroll' : 'Sidearm'}}</em>
-        <span (click)="rerollSquadSidearms()" [innerHTML]="squadObj.sidearm.descrip"></span>
-    </div>
-    <div class="flex-column">
-        <em class="small-font underline">Armor</em>
-        <span (click)="rerollArmor()" [innerHTML]="armor"></span>
-        @if (this.hasHemlet) {
-            <div>
-                <strong class="underline">Helmet.</strong> break to prevent all damage from a <strong>single attack</strong>
-            </div>
-        }
-    </div>
-    <div class="flex-column">
-        <em class="small-font underline">Special</em>
-        <span (click)="rerollSpecial()" [innerHTML]="squadObj.special"></span>
+<div class="leader-squad-layout">
+    <app-leader-maker></app-leader-maker>
+    
+    <div class="squad-layout">
+        <strong class="underline">ENEMY SQUAD:</strong> "<strong (click)="getInitialSquad(squadObj.size)" class="clickable">{{squadMakeup.name[0]}}</strong>"
+        <div class="flex-row">
+            <span><strong>GRVNTS</strong> <span> {{squadObj.size}}</span></span>
+            <span><strong class="subtle-clickable" (click)="rerollMorale()">MORALE</strong> <span> {{morale}}</span></span>
+        </div>
+        <div class="flex-column">
+            <em class="small-font underline">{{squadObj.firearm.isScroll ? 'Warscroll' : 'Firearm'}}</em>
+            <span (click)="rerollSquadFirearms()" [innerHTML]="squadObj.firearm.descrip"></span>
+        </div>
+        <div class="flex-column">
+            <em class="small-font underline">{{squadObj.sidearm.isScroll ? 'Warscroll' : 'Sidearm'}}</em>
+            <span (click)="rerollSquadSidearms()" [innerHTML]="squadObj.sidearm.descrip"></span>
+        </div>
+        <div class="flex-column">
+            <em class="small-font underline">Armor</em>
+            <span (click)="rerollArmor()" [innerHTML]="armor"></span>
+            @if (this.hasHemlet) {
+                <div>
+                    <strong class="underline">Helmet.</strong> break to prevent all damage from a <strong>single attack</strong>
+                </div>
+            }
+        </div>
+        <div class="flex-column">
+            <em class="small-font underline">Special</em>
+            <span (click)="rerollSpecial()" [innerHTML]="squadObj.special"></span>
+        </div>
     </div>
 </div>
 
@@ -37,7 +39,17 @@
         </div>
         @for (item of [].constructor(attachmentsNum); track $index) {
             <div class="attachment-item">
-                <app-leader-maker [title]="'ATTACHMENT'"></app-leader-maker>
+                <app-leader-maker [title]="'GRVNT'"></app-leader-maker>
+            </div>
+        }
+
+        @if (machineNum > 0) {
+            <div class="machine-attachment-layout">
+                @for (item of [].constructor(machineNum); track $index) {
+                    <div class="machine-attachment-item">
+                        <app-machine-maker></app-machine-maker>
+                    </div>
+                }
             </div>
         }
     </div>

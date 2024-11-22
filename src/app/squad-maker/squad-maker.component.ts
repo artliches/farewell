@@ -4,11 +4,12 @@ import { LeaderMakerComponent } from "./leader-maker/leader-maker.component";
 import { RandomNumberService } from '../random-number.service';
 import { SQUADS } from '../assets/squads.constants';
 import { ARMOR, FIREARMS, SIDEARMS, WAR_SCROLLS } from '../assets/grvnts.constants';
+import { MachineMakerComponent } from "./machine-maker/machine-maker.component";
 
 @Component({
   selector: 'app-squad-maker',
   standalone: true,
-  imports: [CommonModule, LeaderMakerComponent],
+  imports: [CommonModule, LeaderMakerComponent, MachineMakerComponent],
   templateUrl: './squad-maker.component.html',
   styleUrl: './squad-maker.component.scss'
 })
@@ -20,6 +21,7 @@ export class SquadMakerComponent implements OnInit, OnChanges {
     @Input() enemySize: string = '';
 
     attachmentsNum: number = 0;
+    machineNum: number = 0;
     squadMakeup: {name: string[], firearms: string[], sidearms: string[], specials: string[]} = {
       name: [],
       firearms: [],
@@ -61,19 +63,24 @@ export class SquadMakerComponent implements OnInit, OnChanges {
       case this.enemySize.includes('squad'): {
         this.getInitialSquad(5);
         this.attachmentsNum = 0;
+        this.machineNum = 0;
         break;
       }
       case this.enemySize.includes('company'): {
+        this.attachmentsNum = 0;
+        this.machineNum = 0;
         this.getInitialSquad(10);
         if (this.random.getRandomNumber(1, 10) >= 6) {
           //get armor and attachments
           this.attachmentsNum = 2;
+          this.machineNum = 1;
         }
         break;
       }
       case this.enemySize.includes('regiment'): {
         this.getInitialSquad(20);
         this.attachmentsNum = 3;
+        this.machineNum = 2;
         break;
       }
     }

@@ -13,11 +13,13 @@ import { MissionAdvanceComponent } from "./mission-advance/mission-advance.compo
 import { MissionActionComponent } from "./mission-action/mission-action.component";
 import { MissionAftermathComponent } from "./mission-aftermath/mission-aftermath.component";
 import { MissionRewardsComponent } from "./mission-rewards/mission-rewards.component";
+import { SquadMakerComponent } from "./squad-maker/squad-maker.component";
+import { SQUAD_SIZE } from './assets/missions.constants';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [GrvntAbilitiesComponent, GrvntIdentityComponent, CommonModule, GrvntClassComponent, GrvntVitalsComponent, GrvntShitComponent, MissionBriefComponent, MissionAdvanceComponent, MissionActionComponent, MissionAftermathComponent, MissionRewardsComponent],
+  imports: [GrvntAbilitiesComponent, GrvntIdentityComponent, CommonModule, GrvntClassComponent, GrvntVitalsComponent, GrvntShitComponent, MissionBriefComponent, MissionAdvanceComponent, MissionActionComponent, MissionAftermathComponent, MissionRewardsComponent, SquadMakerComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
@@ -114,6 +116,7 @@ export class AppComponent implements OnInit {
   presenceNum: number = -5;
   getNewAll: boolean = false;
   sectionToShow: string = 'grvnts';
+  squadSize: string = '';
 
   ngOnInit(): void {
     //shuffle jobs and choose the first on load
@@ -129,6 +132,7 @@ export class AppComponent implements OnInit {
       currIndex: 0
     };
     this.isEmbedded = this.jobObj.name === 'embedded one';
+    this.random.shuffleArray(SQUAD_SIZE);
   }
 
   print() {
@@ -146,6 +150,23 @@ export class AppComponent implements OnInit {
 
   displaySection(sectionName: string) {
     this.sectionToShow = sectionName;
+    if (this.sectionToShow === 'squads') {
+      this.rerollSquadSize();
+    }
+  }
+
+  rerollSquadSize() {
+    let newIndex = SQUAD_SIZE.indexOf(this.squadSize);
+    if (newIndex + 1 === SQUAD_SIZE.length) {
+      newIndex = 0;
+    } else {
+      do {
+        newIndex += 1;
+      }
+      while (SQUAD_SIZE[newIndex] === this.squadSize);
+    }
+
+    this.squadSize = SQUAD_SIZE[newIndex];
   }
 
   getNewJob() {
