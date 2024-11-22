@@ -106,7 +106,7 @@ export const LOCATION = [
 ];
 
 export const BUILDINGS = [
-    'nothinig nearby',
+    'nothing nearby',
     'crumbling ruins',
     'tiny farmhouse',
     'town square',

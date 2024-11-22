@@ -5,10 +5,16 @@
     grid-gap: 0.5rem;
 }
 
-.advance-layout, .advance-details {
+.advance-layout {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+}
+
+.location .advance-details {
+    display: flex;
+    flex-flow: wrap;
+    justify-content: space-evenly;
 }
 
 .advance-layout {
@@ -16,21 +22,5 @@
     border: 1px solid var(--border-color);
     .advance-details {
         margin-left: 1rem;
-    }
-}
-
-@media only screen and (min-width: 768px) {
-    .mission-body {
-        grid-template-columns: auto 1fr;
-        grid-template-rows: auto 1fr;
-        grid-template-areas: 
-            "location   enemy"
-            ".          enemy";
-        .location {
-            grid-area: location;
-        }
-        .enemy {
-            grid-area: enemy;
-        }
     }
 }

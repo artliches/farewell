@@ -1,5 +1,5 @@
-<div class="leader-layout">
-    <strong (click)="rerollSquadLeader()" class="clickable leader-title">SQUAD LEADER</strong>
+<div [ngClass]="{'attachment': title === 'ATTACHMENT'}" class="leader-layout">
+    <strong (click)="rerollSquadLeader()" class="clickable leader-title">{{title}}</strong>
 
     <div class="leader-body">
         <div>
@@ -82,8 +82,9 @@
                 </ul>
             </div>
         }
+        <div class="small-font shock-section">
+            Distinguished by {{nextWordGrammer(scarObj.descrip)}} <strong class="clickable" (click)="rerollScars()" [innerHTML]="scarObj.descrip"></strong>
+        </div>
     </div>
-    <div class="small-font">
-        Distinguished by {{nextWordGrammer(scarObj.descrip)}} <strong class="clickable" (click)="rerollScars()" [innerHTML]="scarObj.descrip"></strong>
-    </div>
+
 </div>

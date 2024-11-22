@@ -28,3 +28,17 @@
         <span (click)="rerollSpecial()" [innerHTML]="squadObj.special"></span>
     </div>
 </div>
+
+@if (attachmentsNum > 0) {
+    <div class="attachments-layout">
+        <div class="attachments-title">
+            <strong class="underline">ATTACHMENTS:</strong>
+            <em> grvnts attached to the squad, but acting independently</em>
+        </div>
+        @for (item of [].constructor(attachmentsNum); track $index) {
+            <div class="attachment-item">
+                <app-leader-maker [title]="'ATTACHMENT'"></app-leader-maker>
+            </div>
+        }
+    </div>
+}

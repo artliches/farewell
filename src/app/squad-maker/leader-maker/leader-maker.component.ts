@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ARMOR, FIREARMS, SIDEARMS, NICKNAMES, EMBEDDED_NAMES, WAR_SCROLLS, SCARS } from '../../assets/grvnts.constants';
 import { LEADERS } from '../../assets/squads.constants';
 import { RandomNumberService } from '../../random-number.service';
@@ -15,6 +15,8 @@ export class LeaderMakerComponent {
   constructor(
     private random: RandomNumberService
   ) {}
+
+  @Input() title: string = 'SQUAD LEADER';
 
   leaderObj: {
     name: string,

@@ -19,6 +19,7 @@ export class SquadMakerComponent implements OnInit, OnChanges {
 
     @Input() enemySize: string = '';
 
+    attachmentsNum: number = 0;
     squadMakeup: {name: string[], firearms: string[], sidearms: string[], specials: string[]} = {
       name: [],
       firearms: [],
@@ -45,27 +46,38 @@ export class SquadMakerComponent implements OnInit, OnChanges {
     hasHemlet: boolean = false;
 
     ngOnInit(): void {
+      this.getSquadAndAttachments();
     }
 
     ngOnChanges(changes: SimpleChanges): void {
-      this.random.shuffleArray(SQUADS);
-        if (changes && changes['enemySize']) {
-          switch (true) {
-            case this.enemySize.includes('squad'): {
-              this.getInitialSquad(5);
-              break;
-            }
-            case this.enemySize.includes('company'): {
-              this.getInitialSquad(10);
-              break;
-            }
-            case this.enemySize.includes('regiment'): {
-              this.getInitialSquad(20);
-              break;
-            }
-          }
-        }
+      if (!changes['enemySize'].firstChange) {
+        this.getSquadAndAttachments();
+      }
     }
+
+  private getSquadAndAttachments() {
+    this.random.shuffleArray(SQUADS);
+    switch (true) {
+      case this.enemySize.includes('squad'): {
+        this.getInitialSquad(5);
+        this.attachmentsNum = 0;
+        break;
+      }
+      case this.enemySize.includes('company'): {
+        this.getInitialSquad(10);
+        if (this.random.getRandomNumber(1, 10) >= 6) {
+          //get armor and attachments
+          this.attachmentsNum = 2;
+        }
+        break;
+      }
+      case this.enemySize.includes('regiment'): {
+        this.getInitialSquad(20);
+        this.attachmentsNum = 3;
+        break;
+      }
+    }
+  }
 
     getInitialSquad(size: number) {
       const squadSize = size !== 5 ? size : this.random.getRandomNumber(3, 5);
