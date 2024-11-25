@@ -11,6 +11,9 @@
     display: flex;
     flex-direction: column;
     gap: 0.3rem;
+    &.no-attachments {
+        border-bottom: 2px solid var(--border-color);
+    }
 }
 
 .attachments-title {

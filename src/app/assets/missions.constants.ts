@@ -192,11 +192,11 @@ export const TIME_LIMIT = [
 ];
 
 export const REWARDS = [
-    '[d666]s',
+    '[1d666]s',
     '1 Requisition',
     '[2d100]s',
     '3 War Scrolls',
-    '[d66]s',
+    '[1d66]s',
     'Nothing'
 ];
 

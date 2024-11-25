@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { RandomNumberService } from '../random-number.service';
 import { BEGGARS_INTROS, BEGGARS_TWISTS, COMBATANT_OBJECTIVE, FAITHSPIRE_INTROS, FAITHSPIRE_TWISTS, LOCATION, MAD_INTROS, MAD_TWISTS, MATERIAL_OBJECTIVE, NONCOMBAT_OBJECTIVE, STRUCTURE_OBJECTIVE, TIME, TIME_LIMIT, WHITE_INTRO, WHITE_TWISTS } from '../assets/missions.constants';
 
@@ -10,10 +10,12 @@ import { BEGGARS_INTROS, BEGGARS_TWISTS, COMBATANT_OBJECTIVE, FAITHSPIRE_INTROS,
   styleUrl: './mission-brief.component.scss'
 })
 
-export class MissionBriefComponent implements OnInit {
+export class MissionBriefComponent implements OnInit, OnChanges {
   constructor(
     private random: RandomNumberService
   ) {}
+
+  @Input() getNewMission: boolean = false;
 
   briefObj: {intro: string, location: string, time: string} = {
     intro: '',
@@ -32,6 +34,12 @@ export class MissionBriefComponent implements OnInit {
 
   ngOnInit(): void {
     this.rerollAll();
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+      if (!changes['getNewMission'].firstChange) {
+        this.rerollAll();
+      }
   }
 
   private rerollBriefSummary() {

@@ -1,5 +1,5 @@
-<div class="leader-squad-layout">
-    <app-leader-maker></app-leader-maker>
+<div [ngClass]="{'no-attachments': attachmentsNum === 0}" class="leader-squad-layout">
+    <app-leader-maker [rerollGrvnt]="rerollGrvnt"></app-leader-maker>
     
     <div class="squad-layout">
         <strong class="underline">ENEMY SQUAD:</strong> "<strong (click)="getInitialSquad(squadObj.size)" class="clickable">{{squadMakeup.name[0]}}</strong>"
@@ -35,11 +35,11 @@
     <div class="attachments-layout">
         <div class="attachments-title">
             <strong class="underline">ATTACHMENTS:</strong>
-            <em> grvnts attached to the squad, but acting independently</em>
+            <em> grvnts and machines attached to the squad, but acting independently</em>
         </div>
         @for (item of [].constructor(attachmentsNum); track $index) {
             <div class="attachment-item">
-                <app-leader-maker [title]="'GRVNT'"></app-leader-maker>
+                <app-leader-maker [rerollGrvnt]="rerollGrvnt" [title]="'GRVNT'"></app-leader-maker>
             </div>
         }
 
@@ -47,7 +47,7 @@
             <div class="machine-attachment-layout">
                 @for (item of [].constructor(machineNum); track $index) {
                     <div class="machine-attachment-item">
-                        <app-machine-maker></app-machine-maker>
+                        <app-machine-maker [getNewMachines]="rerollGrvnt"></app-machine-maker>
                     </div>
                 }
             </div>

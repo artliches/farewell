@@ -6,7 +6,6 @@
                 <span class="reroll-all">
                     <div (click)="rerollAll()" class="clickable"><strong>A NEW GRVNT FOR THE FRONT</strong></div>
                 </span>
-                <!-- <em>random generators for <strong>FAREWELL TO ARMS: REDUX</strong></em> -->
             </header>
         
             <section class="body-layout">
@@ -55,6 +54,9 @@
         } @else if (sectionToShow === 'missions') {
             <header>
                 <h1>MISSION GENERATOR</h1>
+                <span class="reroll-all">
+                    <div (click)="rerollAllMission()" class="clickable"><strong>NEW ORDERS INCOMING</strong></div>
+                </span>
             </header>
             <section class="body-layout">
                 <span class="toolbar">
@@ -68,13 +70,16 @@
                         </span>
                     </span>
                 </span>
-                <app-mission-brief class="brief"></app-mission-brief>
-                <app-mission-advance class="advance"></app-mission-advance>
+                <app-mission-brief [getNewMission]="getNewMission" class="brief"></app-mission-brief>
+                <app-mission-advance [getNewMission]="getNewMission" class="advance"></app-mission-advance>
                 <app-mission-rewards class="rewards"></app-mission-rewards>
             </section>
         } @else if (sectionToShow === 'squads') {
             <header>
-                <h1>SQUAD MAKER</h1>
+                <h1>SQVAD MAKER</h1>
+                <span class="reroll-all">
+                    <div (click)="rerollAllSquad()" class="clickable"><strong>A NEW SQVAD MARCHES ON</strong></div>
+                </span>
             </header>
             <section class="body-layout">
                 <span class="toolbar">
@@ -92,7 +97,10 @@
                     <strong (click)="rerollSquadSize()" class="subtle-clickable squad-detail-button">SQUAD DETAILS:</strong>
                     <span> {{squadSize | uppercase}}</span>
                 </div>
-                <app-squad-maker [enemySize]="squadSize"></app-squad-maker>
+                <app-squad-maker
+                    [enemySize]="squadSize"
+                    [rerollGrvnt]="getNewSquad"
+                ></app-squad-maker>
             </section>
         }
         <footer>
@@ -102,13 +110,13 @@
             </div>
             <div>MÖRK BORG is copyright Ockult Örtmästare Games and Stockholm Kartell.</div>
             <div>Farewell to Arms REDUX is copyright 2023 rivethead games. Web app by codeLiches</div>
-            <div><em>v0.3: GRVNTS ON THE FRONT</em></div>
+            <div><em>v0.4: SHINRIPPER SHUFFLE</em></div>
         </footer>
     </span>
 
     <nav>
         <div [ngClass]="{'active': sectionToShow === 'grvnts'}" (click)="displaySection('grvnts')" class="clickable">GRVNTS</div>
-        <div [ngClass]="{'active': sectionToShow === 'missions'}" (click)="displaySection('missions')" class="clickable">MISSIONS</div>
         <div [ngClass]="{'active': sectionToShow === 'squads'}" (click)="displaySection('squads')" class="clickable">SQUADS</div>
+        <div [ngClass]="{'active': sectionToShow === 'missions'}" (click)="displaySection('missions')" class="clickable">MISSIONS</div>
     </nav>
 </span>

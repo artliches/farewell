@@ -19,6 +19,7 @@ export class SquadMakerComponent implements OnInit, OnChanges {
     ) {}
 
     @Input() enemySize: string = '';
+    @Input() rerollGrvnt: boolean = false;
 
     attachmentsNum: number = 0;
     machineNum: number = 0;
@@ -52,7 +53,7 @@ export class SquadMakerComponent implements OnInit, OnChanges {
     }
 
     ngOnChanges(changes: SimpleChanges): void {
-      if (!changes['enemySize'].firstChange) {
+      if (changes['enemySize'] && !changes['enemySize'].firstChange) {
         this.getSquadAndAttachments();
       }
     }

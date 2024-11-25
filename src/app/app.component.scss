@@ -34,14 +34,20 @@ header {
 
 .squad-size-section {
     border-top: 2px solid var(--border-color);
-    padding-top: 0.3rem;
+    padding: 0.3rem 0 0 0.5rem;
     .squad-detail-button {
         font-size: 1.3rem;
         font-family: 'DIRTBAG';
     }
+    span {
+        font-family: 'BAHNSCHRIFT';
+    }
 }
 
 @media only screen and (min-width: 768px) {
+    .squad-size-section {
+        padding: 0.3rem 0 0 0;
+    }
     .toolbar {
         font-size: 0.875rem;
     }

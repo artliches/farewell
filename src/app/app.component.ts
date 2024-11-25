@@ -115,6 +115,8 @@ export class AppComponent implements OnInit {
   beastHP: number = 0;
   presenceNum: number = -5;
   getNewAll: boolean = false;
+  getNewMission: boolean = false;
+  getNewSquad: boolean = false;
   sectionToShow: string = 'grvnts';
   squadSize: string = '';
 
@@ -146,6 +148,15 @@ export class AppComponent implements OnInit {
   rerollAll() {
     this.getNewJob();
     this.getNewAll = !this.getNewAll;
+  }
+
+  rerollAllMission() {
+    this.getNewMission = !this.getNewMission;
+  }
+
+  rerollAllSquad() {
+    this.rerollSquadSize();
+    this.getNewSquad = !this.getNewSquad;
   }
 
   displaySection(sectionName: string) {

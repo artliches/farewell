@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { RandomNumberService } from '../random-number.service';
 import { BUILDINGS, DEFENSE, SQUAD_LEADER, SQUAD_SIZE, TIME, WEATHER } from '../assets/missions.constants';
 import { CommonModule } from '@angular/common';
@@ -11,10 +11,12 @@ import { SquadMakerComponent } from "../squad-maker/squad-maker.component";
   templateUrl: './mission-advance.component.html',
   styleUrl: './mission-advance.component.scss'
 })
-export class MissionAdvanceComponent implements OnInit {
+export class MissionAdvanceComponent implements OnInit, OnChanges {
   constructor(
     private random: RandomNumberService
   ) {}
+
+  @Input() getNewMission: boolean = false;
 
   arrayIndexObj = {
     building: BUILDINGS,
@@ -41,6 +43,14 @@ export class MissionAdvanceComponent implements OnInit {
       this.shuffleArrays();
       this.rerollAllLocationDetails();
       this.rerollSquadSize();
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+      if (!changes['getNewMission'].firstChange) {
+        this.shuffleArrays();
+        this.rerollAllLocationDetails();
+        this.rerollSquadSize();
+      }
   }
 
   rerollSquadSize() {

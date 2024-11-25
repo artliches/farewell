@@ -1,4 +1,13 @@
-
 h2 {
+    width: max-content;
     font-family: 'DIRTBAG';
+}
+
+.mission-card {
+    border-bottom: 2px solid var(--border-color);
+    .mission-body {
+        padding-left: 0.5rem;
+        font-family: 'BAHNSCHRIFT';
+        font-size: 1.2rem;
+    }
 }

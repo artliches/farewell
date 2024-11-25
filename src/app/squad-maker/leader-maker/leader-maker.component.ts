@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { ARMOR, FIREARMS, SIDEARMS, NICKNAMES, EMBEDDED_NAMES, WAR_SCROLLS, SCARS } from '../../assets/grvnts.constants';
 import { LEADERS } from '../../assets/squads.constants';
 import { RandomNumberService } from '../../random-number.service';
@@ -11,12 +11,13 @@ import { CommonModule } from '@angular/common';
   templateUrl: './leader-maker.component.html',
   styleUrl: './leader-maker.component.scss'
 })
-export class LeaderMakerComponent {
+export class LeaderMakerComponent implements OnInit, OnChanges {
   constructor(
     private random: RandomNumberService
   ) {}
 
   @Input() title: string = 'SQUAD LEADER';
+  @Input() rerollGrvnt: boolean = false;
 
   leaderObj: {
     name: string,
@@ -111,6 +112,12 @@ export class LeaderMakerComponent {
     this.random.shuffleArray(SCARS);
     //get a squad leader
     this.rerollSquadLeader();
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+      if (changes['rerollGrvnt'] && !changes['rerollGrvnt'].firstChange) {
+        this.rerollSquadLeader();
+      }
   }
 
   rerollSquadLeader() {
