@@ -21,7 +21,14 @@ header {
             padding-right: 0rem;
             div.clickable {
                 padding-top: 0.2rem;
-            }            
+            }       
+            div.warlord {
+                padding-top: 0.2rem;
+                background-color: var(--background-color);
+                color: var(--border-color);
+                font-family: 'DIRTBAG';
+                border-color: var(--background-color);
+            }     
         }
         strong {
             font-family: 'BAHNSCHRIFT';

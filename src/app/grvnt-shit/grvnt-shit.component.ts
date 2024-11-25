@@ -14,6 +14,11 @@ export class GrvntShitComponent implements OnInit, OnChanges {
   @Input() presenceMod: number = 0;
   @Input() job: any;
   @Input() shuffleAll: boolean = false;
+  @Input() promoEquip: {show: boolean, descrip: string} = {
+    show: false,
+    descrip: ''
+  };
+  @Input() clearPromos: boolean = false;
   constructor(
     private random: RandomNumberService
   ) {}
@@ -32,6 +37,10 @@ export class GrvntShitComponent implements OnInit, OnChanges {
     tableIndex: -1,
     presenceString: '',
   };
+  readyObjFromMerit: {
+    descrip: string,
+    original: string,
+  }[] = [];
 
   personalTable: any[] =[];
   personalObj: {descrip: string, currIndex: number, tableIndex: number} = {
@@ -81,11 +90,13 @@ export class GrvntShitComponent implements OnInit, OnChanges {
       isFromReadiness?: boolean,
       isFromNothing?: boolean,
       isFromClass?: boolean,
+      isFromPromo?: boolean,
     }[] = [];
   extrasArray: {descrip: string, presenceString?: string}[] = [];
 
   hasNothing: boolean = false;
   nothingValue: number = 0;
+  slagvarra: string[] = [];
 
   ngOnInit(): void {
     setTimeout(() => {
@@ -160,6 +171,35 @@ export class GrvntShitComponent implements OnInit, OnChanges {
           this.extrasArray[index].descrip = this.parseAndReplaceNumberString(extra.presenceString);
         }
       }) 
+    }
+
+    if (changes['promoEquip'] && !changes['promoEquip'].firstChange) {
+      switch (true) {
+        case this.promoEquip.descrip === 'war scroll': {
+          this.slagvarra = [];
+          this.rerollWarScroll(false, false, undefined, false, true);
+          break;
+        }
+        case this.promoEquip.descrip === 'ready': {
+          this.slagvarra = [];
+          this.rerollReadyFromMerit();
+          break;
+        }
+        case this.promoEquip.descrip === "A piece of SLAGVARRA": {
+          this.slagvarra.push(`A piece of <strong class="underline">SLAGVARRA</strong>`)
+          break;
+        }
+      }
+    }
+
+    if (changes['clearPromos'] && !changes['clearPromos'].firstChange) {
+      this.promoEquip = {
+        descrip: '',
+        show: false
+      };
+      this.slagvarra = [];
+      this.warScrolls = this.warScrolls.filter(scroll => !scroll.isFromPromo);
+      this.readyObjFromMerit = [];
     }
   }
 
@@ -492,6 +532,69 @@ export class GrvntShitComponent implements OnInit, OnChanges {
     this.hasShock = this.checkForShock();
   }
 
+  rerollReadyFromMerit(index?: number) {
+    if (index !== undefined) {
+      let newIndex = READINESS.indexOf(this.readyObjFromMerit[index].original);
+      
+      if (newIndex + 1 === READINESS.length) {
+        newIndex = 0;
+      } else {
+        do {
+          newIndex ++;
+        } while (READINESS[newIndex] === this.readyObjFromMerit[index].original);
+      }
+
+      let objToPush = {
+        descrip: READINESS[newIndex],
+        original: READINESS[newIndex]
+      };
+
+      if (objToPush.descrip.includes('[')) {
+        objToPush.descrip = this.parseAndReplaceNumberString(objToPush.descrip);
+      }
+  
+      if (objToPush.descrip.includes('War Scroll')) {
+        this.rerollWarScroll(false, false, undefined, false, true);
+      } else if (this.readyObjFromMerit[index].original.includes('War Scroll')) {
+        const scrollToRemoveIndex = this.warScrolls.findIndex(scroll => scroll.descrip === this.readyObjFromMerit[index].original);
+        this.warScrolls.splice(scrollToRemoveIndex, 1);
+      }
+      //need to be able to remove warscroll
+      this.readyObjFromMerit[index] = objToPush;
+
+    } else {
+      let objToPush: {
+        descrip: string,
+        original: string,
+      } = {
+        descrip: '',
+        original: ''
+      };
+      let descripsToSkip = this.readyObjFromMerit.map(gear => gear.original);
+      let newIndex = -1;
+      if (descripsToSkip) {
+        do {
+          newIndex ++;
+        } while (descripsToSkip.some(descrip => descrip === READINESS[newIndex]));
+      }
+  
+      objToPush = {
+        descrip: READINESS[newIndex],
+        original: READINESS[newIndex]
+      };
+  
+      if (objToPush.descrip.includes('[')) {
+        objToPush.descrip = this.parseAndReplaceNumberString(objToPush.descrip);
+      }
+  
+      if (objToPush.descrip.includes('War Scroll')) {
+        this.rerollWarScroll(false, false, undefined, false, true);
+      }
+  
+      this.readyObjFromMerit.push(objToPush);
+    }
+  }
+
   rerollPersonal() {
     let newIndex;
     const isEndOfArray = this.personalObj.currIndex + 1 === PERSONAL.length;
@@ -568,7 +671,8 @@ export class GrvntShitComponent implements OnInit, OnChanges {
     isFromReadiness?: boolean,
     isFromNothing?: boolean,
     index?: number | undefined,
-    isFromClass?: boolean
+    isFromClass?: boolean,
+    isFromPromo?: boolean,
   ) {
     if (this.warScrolls.length === 0) {
       //adding new warscroll
@@ -578,6 +682,7 @@ export class GrvntShitComponent implements OnInit, OnChanges {
         isFromReadiness: isFromReadiness,
         isFromNothing: isFromNothing,
         isFromClass: isFromClass,
+        isFromPromo: isFromPromo
       });
     } else if (index !== undefined) {
       // get new existing scroll
@@ -618,6 +723,7 @@ export class GrvntShitComponent implements OnInit, OnChanges {
         isFromReadiness: isFromReadiness,
         isFromNothing: isFromNothing,
         isFromClass: isFromClass,
+        isFromPromo: isFromPromo
       }
 
     } else {
@@ -642,6 +748,7 @@ export class GrvntShitComponent implements OnInit, OnChanges {
         isFromReadiness: isFromReadiness,
         isFromNothing: isFromNothing,
         isFromClass: isFromClass,
+        isFromPromo: isFromPromo
       });
     }
   }

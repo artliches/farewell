@@ -1,5 +1,7 @@
 <span class="page-layout">
-    <span class="farewell-layout {{sectionToShow}}" [ngClass]="currentTheme">
+    <span 
+        class="farewell-layout {{sectionToShow}} {{currentTheme}}"
+    >
         @if (sectionToShow === 'grvnts') {
             <header>
                 <h1>GRVNT RECRUITER</h1>
@@ -12,16 +14,25 @@
                 <span class="toolbar">
                     <span class="flex-row">
                         <span class="theme-section">
-                            <div (click)="shuffleTheme()" class="clickable">SHUFFLE THEME:</div>
+                            <div (click)="shuffleTheme()" class="clickable">THEME:</div>
                             <strong>{{getThemeName()}}</strong>
                         </span>
                         <span class="theme-section no-extra-section">
                             <div (click)="print()" class="clickable">PRINT</div>
                         </span>
                     </span>
-        
-                    <span class="theme-section no-extra-section">
-                        <div (click)="toggleRolls()" class="clickable">{{showRolls ? 'HIDE' : 'SHOW'}} ROLLS</div>
+
+                    <span class="flex-row">
+                        <span class="theme-section no-extra-section">
+                            <div [ngClass]="{
+                                'clickable': numPromotions !== 2,
+                                'warlord': numPromotions === 2
+                            }" 
+                            (click)="promoteGrvnt()">{{numPromotions === 2 ? 'WARLORD': 'PROMOTE'}}</div>
+                        </span>
+                        <span class="theme-section no-extra-section">
+                            <div (click)="toggleRolls()" class="clickable">{{showRolls ? 'HIDE' : 'SHOW'}} ROLLS</div>
+                        </span>
                     </span>
                 </span>
                 <app-grvnt-abilities
@@ -29,6 +40,8 @@
                     [job]="jobObj"
                     [showRolls]="showRolls"
                     [beastHP]="beastHP"
+                    [promoteGrvnt]="rollPromotion"
+                    [clearPromos]="clearPromo"
                     (presence)="getPresence($event)"
                 >
                 </app-grvnt-abilities>
@@ -49,6 +62,8 @@
                     [shuffleAll]="getNewAll"
                     [presenceMod]="presenceNum"
                     [job]="jobObj"
+                    [promoEquip]="promoEquipObj"
+                    [clearPromos]="clearPromo"
                 ></app-grvnt-shit>
             </section>
         } @else if (sectionToShow === 'missions') {
@@ -62,7 +77,7 @@
                 <span class="toolbar">
                     <span class="flex-row">
                         <span class="theme-section">
-                            <div (click)="shuffleTheme()" class="clickable">SHUFFLE THEME:</div>
+                            <div (click)="shuffleTheme()" class="clickable">THEME:</div>
                             <strong>{{getThemeName()}}</strong>
                         </span>
                         <span class="theme-section no-extra-section">
@@ -85,7 +100,7 @@
                 <span class="toolbar">
                     <span class="flex-row">
                         <span class="theme-section">
-                            <div (click)="shuffleTheme()" class="clickable">SHUFFLE THEME:</div>
+                            <div (click)="shuffleTheme()" class="clickable">THEME:</div>
                             <strong>{{getThemeName()}}</strong>
                         </span>
                         <span class="theme-section no-extra-section">
@@ -110,7 +125,7 @@
             </div>
             <div>MÖRK BORG is copyright Ockult Örtmästare Games and Stockholm Kartell.</div>
             <div>Farewell to Arms REDUX is copyright 2023 rivethead games. Web app by codeLiches</div>
-            <div><em>v0.4: SHINRIPPER SHUFFLE</em></div>
+            <div><em>v0.5: Medal of Dishonor</em></div>
         </footer>
     </span>
 

@@ -16,6 +16,10 @@
                                     {{stat.statMod}}
                                 }
                             </div>
+                            @if (stat.promoRolls) {
+                                <div><strong class="underline">PROMOTION</strong></div>
+                                <span [innerHTML]="stat.promoRolls"></span>
+                            }
                         }
                     </small>
                     <span class="stat">
@@ -42,6 +46,10 @@
                                     }
                                 ]
                             </div>
+                            @if (vital.promoRolls) {
+                                <div><strong class="underline">PROMOTION</strong></div>
+                                <span [innerHTML]="vital.promoRolls"></span>
+                            }
                         }
                     </small>
                     <span class="stat">

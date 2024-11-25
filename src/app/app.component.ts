@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 import { GrvntAbilitiesComponent } from "./grvnt-abilities/grvnt-abilities.component";
 import { GrvntIdentityComponent } from "./grvnt-identity/grvnt-identity.component";
 import { CommonModule } from '@angular/common';
@@ -117,8 +116,15 @@ export class AppComponent implements OnInit {
   getNewAll: boolean = false;
   getNewMission: boolean = false;
   getNewSquad: boolean = false;
+  rollPromotion: boolean = false;
+  numPromotions: number = 0;
   sectionToShow: string = 'grvnts';
   squadSize: string = '';
+  clearPromo: boolean = false;
+  promoEquipObj: {show: boolean, descrip: string} = {
+    show: false,
+    descrip: '',
+  };
 
   ngOnInit(): void {
     //shuffle jobs and choose the first on load
@@ -146,6 +152,8 @@ export class AppComponent implements OnInit {
   }
 
   rerollAll() {
+    this.numPromotions = 0;
+    this.clearPromo = !this.clearPromo;
     this.getNewJob();
     this.getNewAll = !this.getNewAll;
   }
@@ -154,9 +162,41 @@ export class AppComponent implements OnInit {
     this.getNewMission = !this.getNewMission;
   }
 
-  rerollAllSquad() {
+  rerollAllSquad() { 
     this.rerollSquadSize();
     this.getNewSquad = !this.getNewSquad;
+  }
+
+  promoteGrvnt() {
+    if (this.numPromotions !== 2) {
+      this.rollPromotion = !this.rollPromotion;
+      this.numPromotions += 1;
+      
+      const merits = this.random.getRandomNumber(1, 6);
+      switch (true) {
+        case merits === 4: {
+          this.promoEquipObj = {
+            show: !this.promoEquipObj.show,
+            descrip: 'war scroll',
+          };
+          break;
+        }
+        case merits === 5: {
+          this.promoEquipObj = {
+            show: !this.promoEquipObj.show,
+            descrip: 'ready',
+          };
+          break;
+        }
+        case merits === 6: {
+          this.promoEquipObj = {
+            show: !this.promoEquipObj.show,
+            descrip: 'A piece of SLAGVARRA',
+          };
+          break;
+        }
+      }
+    }
   }
 
   displaySection(sectionName: string) {

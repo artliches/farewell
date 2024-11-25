@@ -34,7 +34,7 @@
             }
             .stat {
                 grid-area: stat;
-                place-self: center;
+                place-self: start center;
                 font-size: 2rem;
             }
             &:nth-child(odd) {

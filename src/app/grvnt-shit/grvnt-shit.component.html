@@ -76,8 +76,26 @@
                 
                 <li>
                     <span (click)="rerollReady()" [innerHTML]="readyObj.descrip"></span>
-                </li>
+                </li>                
             }
+            @if (promoEquip.descrip) {
+                <div><em class="underline small-font">Merits</em></div>
+                @if (readyObjFromMerit.length > 0) {
+                    @for (gear of readyObjFromMerit; track $index) {
+                        <li>
+                            <span (click)="rerollReadyFromMerit($index)" [innerHTML]="gear.descrip"></span>
+                        </li>
+                    }
+                }
+                @if (slagvarra.length > 0) {
+                    @for (slag of slagvarra; track $index) {
+                        <li>
+                            <span [innerHTML]="slag"></span>
+                        </li>
+                    }
+                }
+            }
+
         </ul>
         @if (warScrolls.length > 0) {
             <div class="warscroll-section">
@@ -99,6 +117,8 @@
                                             Part of starting pack
                                         } @else if (scroll.isFromNothing) {
                                             Scraps thrown to you out of pity
+                                         }@else if (scroll.isFromPromo) {
+                                            Merit from Promotion
                                         } @else if (job.name === 'arcane medic') {
                                             Part of the Arcane Medic kit
                                         } @else if (job.name === 'despondent interpreter') {
@@ -114,6 +134,8 @@
                                     <span (click)="rerollWarScroll(true, false, $index)" [innerHTML]="scroll.descrip"></span>
                                 } @else if (scroll.isFromClass) {
                                     <span (click)="rerollWarScroll(false, false, $index, true)" [innerHTML]="scroll.descrip"></span>
+                                } @else if (scroll.isFromPromo) {
+                                    <span (click)="rerollWarScroll(false, false, $index, false, true)" [innerHTML]="scroll.descrip"></span>
                                 } @else {
                                     <span (click)="rerollWarScroll(false, false, $index)" [innerHTML]="scroll.descrip"></span>
                                 }

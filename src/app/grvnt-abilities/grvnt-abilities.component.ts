@@ -16,6 +16,8 @@ export class GrvntAbilitiesComponent implements OnInit, OnChanges {
   @Input() job: any;
   @Input() showRolls: boolean = false;
   @Input() beastHP: number = 0;
+  @Input() promoteGrvnt: boolean = false;
+  @Input() clearPromos: boolean = false;
   @Output() presence: EventEmitter<any> = new EventEmitter();
 
   statsArray: Array<{
@@ -24,6 +26,7 @@ export class GrvntAbilitiesComponent implements OnInit, OnChanges {
     value: number,
     rollsArray: Array<any>,
     statMod: string,
+    promoRolls: any,
   }> = [
     {
       name: 'toughness',
@@ -31,6 +34,7 @@ export class GrvntAbilitiesComponent implements OnInit, OnChanges {
       value: 0,
       rollsArray: [],
       statMod: '',
+      promoRolls: ''
     },
     {
       name: 'agility',
@@ -38,6 +42,7 @@ export class GrvntAbilitiesComponent implements OnInit, OnChanges {
       value: 0,
       rollsArray: [],
       statMod: '',
+      promoRolls: ''
     },
     {
       name: 'presence',
@@ -45,6 +50,7 @@ export class GrvntAbilitiesComponent implements OnInit, OnChanges {
       value: 0,
       rollsArray: [],
       statMod: '',
+      promoRolls: ''
     },
     {
       name: 'strength',
@@ -52,6 +58,7 @@ export class GrvntAbilitiesComponent implements OnInit, OnChanges {
       value: 0,
       rollsArray: [],
       statMod: '',
+      promoRolls: ''
     }
   ];
 
@@ -64,12 +71,14 @@ export class GrvntAbilitiesComponent implements OnInit, OnChanges {
       die: string,
     },
     rollsArray: string,
+    promoRolls?: any,
   }> = [
     {
       name: 'hp',
       descrip: '0 or -1: downed | -2: DEATH',
       value: 1,
       rollsArray: '',
+      promoRolls: '',
     },
     {
       name: 'omens',
@@ -115,6 +124,53 @@ export class GrvntAbilitiesComponent implements OnInit, OnChanges {
         this.vitalsArray[hpIndex].value += this.beastHP;
       }
     }
+    if (changes['promoteGrvnt'] && !changes['promoteGrvnt'].firstChange) {
+      this.grvntPromotor();
+    }
+    if (changes['clearPromos'] && !changes['clearPromos'].firstChange) {
+      this.statsArray.forEach((stat, index, array) => {
+        array[index].promoRolls = '';
+      });
+      const vitalsHP = this.vitalsArray[this.vitalsArray.findIndex(vital => vital.name === 'hp')];
+      vitalsHP.promoRolls = '';
+    }
+  }
+
+  private grvntPromotor() {
+    const currentHP = this.vitalsArray.find(vital => vital.name === 'hp');
+    const rollTotal = this.random.rollMultipleDie(6, 10);
+    const getNewHP = rollTotal >= currentHP?.value!;
+    const vitalsHP = this.vitalsArray[this.vitalsArray.findIndex(vital => vital.name === 'hp')];
+
+    vitalsHP.promoRolls = `<div>Roll Total (6d10): ${rollTotal}</div>`;
+    if (getNewHP) {
+      const extraHPValue = this.random.getRandomNumber(1, 6);
+      vitalsHP.value = currentHP?.value! + extraHPValue;
+      vitalsHP.promoRolls = vitalsHP.promoRolls + `<div>Additional HP (+d6): ${extraHPValue}</div>`;
+    }
+
+    //roll for new stats
+    this.statsArray.forEach((stat, index, array) => {
+      const rollToCompare = this.random.getRandomNumber(1, 6);
+
+      array[index].promoRolls = `
+          <div>Previous Value: ${stat.value} || Roll to Compare: ${rollToCompare}</div>
+        `;
+      if (stat.value <= 1) {
+        //always increase unless the rollToCompare is 1
+        if (rollToCompare !== 1) {
+          array[index].value = stat.value + 1;
+        } else {
+          array[index].value = stat.value - 1 === -4 ? -3 : stat.value - 1;
+        }
+      } else {
+        if (stat.value <= rollToCompare) {
+          array[index].value = stat.value + 1 === 7 ? 6 : stat.value + 1;
+        } else {
+          array[index].value = stat.value - 1 === -4 ? -3 : stat.value - 1;
+        }
+      }
+    });
   }
 
   rerollAll() {
