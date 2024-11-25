@@ -78,7 +78,7 @@
                     <span (click)="rerollReady()" [innerHTML]="readyObj.descrip"></span>
                 </li>                
             }
-            @if (promoEquip.descrip) {
+            @if (slagvarra.length > 0 || readyObjFromMerit.length > 0) {
                 <div><em class="underline small-font">Merits</em></div>
                 @if (readyObjFromMerit.length > 0) {
                     @for (gear of readyObjFromMerit; track $index) {
