@@ -33,7 +33,7 @@ export class AppComponent implements OnInit {
   red = 'red';
 
   currentUI: string = 'stacked';
-  currentTheme: string = 'nomansland';
+  currentTheme: string = 'charge';
   themeArray: Array<string> = [
     'nomansland',
     'charge',

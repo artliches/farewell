@@ -7,6 +7,33 @@
     --red: red;
     --scroll-font-color: #333333;
 
+    --nav-background-color: var(--chromatic-black);
+    --nav-link-background-color: var(--fta-blue);
+    --nav-link-font-color: var(--fta-blue);
+    --nav-link-background-color: var(--chromatic-black);
+    --nav-link-active-background-color: var(--fta-blue);
+    --nav-link-active-color: var(--chromatic-black);
+
+    --background-color: var(--fta-blue);
+    --body-color: var(--chromatic-black);
+    --main-header-left-color: var(--chromatic-black);
+    --main-header-right-color: black;
+
+    --header-background-color: var(--chromatic-black);
+    --header-color: var(--fta-blue);
+
+    --hover-background: var(--pink);
+    --hover-color: var(--off-white);
+
+    --border-color: var(--chromatic-black);
+    --selection-background-color: var(--chromatic-black);
+    --selection-color: var(--fta-blue);
+
+    --border-width: 0.125rem;
+    --scroll-font-size: 1rem;
+}
+
+.nomansland {
     --nav-background-color: var(--fta-blue);
     --nav-link-background-color: var(--fta-blue);
     --nav-link-font-color: var(--chromatic-black);
@@ -28,13 +55,15 @@
     --border-width: 0.125rem;
     --selection-background-color: var(--fta-blue);
     --selection-color: var(--chromatic-black);
-
-    --scroll-font-size: 1rem;
 }
 
 .charge {
     --nav-background-color: var(--chromatic-black);
-    --nav-font-color: var(--fta-blue);
+    --nav-link-background-color: var(--fta-blue);
+    --nav-link-font-color: var(--fta-blue);
+    --nav-link-background-color: var(--chromatic-black);
+    --nav-link-active-background-color: var(--fta-blue);
+    --nav-link-active-color: var(--chromatic-black);
 
     --background-color: var(--fta-blue);
     --body-color: var(--chromatic-black);
@@ -43,11 +72,13 @@
 
     --header-background-color: var(--chromatic-black);
     --header-color: var(--fta-blue);
+
+    --hover-background: var(--pink);
+    --hover-color: var(--off-white);
+
     --border-color: var(--chromatic-black);
     --selection-background-color: var(--chromatic-black);
     --selection-color: var(--fta-blue);
-
-    --scroll-font-color: #66cccc;
 }
 
 .bone {
@@ -291,6 +322,10 @@ body {
         div.clickable {
             color: var(--nav-link-font-color);
             background-color: var(--nav-link-background-color);
+            &:hover {
+                background-color: var(--hover-background);
+                color: var(--hover-color);
+            }
             &.active {
                 background-color: var(--nav-link-active-background-color);
                 color: var(--nav-link-active-color);
@@ -461,8 +496,11 @@ ul {
            
             padding: 25vh 0.5rem 0 0;
             height: 100%;
-            text-align: center;
+            text-align: center;            
             div.clickable {
+                &.active {
+                    background-color: var(--pink);
+                }
                 padding-left: 1rem;
                 width: 100%;
                 font-size: 1.3rem;
@@ -473,7 +511,7 @@ ul {
         header {
             h1 {
                 letter-spacing: 2rem;
-                font-size: 5rem;
+                font-size: 3rem;
             }
         }
         &.missions {
@@ -519,9 +557,15 @@ ul {
 // small laptop
 @media only screen and (min-width: 1024px) {
     .page-layout {
-        grid-template-columns: min-content 1fr;
+        grid-template-columns: 14vw 1fr;
     }
     .farewell-layout {
+        header {
+            h1 {
+                letter-spacing: 2rem;
+                font-size: 4.5rem;
+            }
+        }
         max-width: 90%;
         margin: auto;
         .body-layout {
