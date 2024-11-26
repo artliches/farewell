@@ -168,7 +168,7 @@ export class AppComponent implements OnInit {
   }
 
   promoteGrvnt() {
-    if (this.numPromotions !== 2) {
+    if (this.numPromotions !== 1) {
       this.rollPromotion = !this.rollPromotion;
       this.numPromotions += 1;
       

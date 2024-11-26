@@ -25,10 +25,10 @@
                     <span class="flex-row">
                         <span class="theme-section no-extra-section">
                             <div [ngClass]="{
-                                'clickable': numPromotions !== 2,
-                                'warlord': numPromotions === 2
+                                'clickable': numPromotions !== 1,
+                                'warlord': numPromotions === 1
                             }" 
-                            (click)="promoteGrvnt()">{{numPromotions === 2 ? 'WARLORD': 'PROMOTE'}}</div>
+                            (click)="promoteGrvnt()">{{numPromotions === 1 ? 'WARLORD': 'PROMOTE'}}</div>
                         </span>
                         <span class="theme-section no-extra-section">
                             <div (click)="toggleRolls()" class="clickable">{{showRolls ? 'HIDE' : 'SHOW'}} ROLLS</div>
@@ -91,9 +91,9 @@
             </section>
         } @else if (sectionToShow === 'squads') {
             <header>
-                <h1>SQVAD MAKER</h1>
+                <h1>SQUAD MAKER</h1>
                 <span class="reroll-all">
-                    <div (click)="rerollAllSquad()" class="clickable"><strong>A NEW SQVAD MARCHES ON</strong></div>
+                    <div (click)="rerollAllSquad()" class="clickable"><strong>A NEW SQUAD MARCHES ON</strong></div>
                 </span>
             </header>
             <section class="body-layout">
@@ -125,7 +125,7 @@
             </div>
             <div>MÖRK BORG is copyright Ockult Örtmästare Games and Stockholm Kartell.</div>
             <div>Farewell to Arms REDUX is copyright 2023 rivethead games. Web app by codeLiches</div>
-            <div><em>v0.51: Medal of Dishonor</em></div>
+            <div><em>v0.52: Medal of Dishonor</em></div>
         </footer>
     </span>
 
