@@ -14,11 +14,13 @@ import { MissionAftermathComponent } from "./mission-aftermath/mission-aftermath
 import { MissionRewardsComponent } from "./mission-rewards/mission-rewards.component";
 import { SquadMakerComponent } from "./squad-maker/squad-maker.component";
 import { SQUAD_SIZE } from './assets/missions.constants';
+import { RulesReferenceComponent } from "./rules-reference/rules-reference.component";
+import { GasReferenceComponent } from "./gas-reference/gas-reference.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [GrvntAbilitiesComponent, GrvntIdentityComponent, CommonModule, GrvntClassComponent, GrvntVitalsComponent, GrvntShitComponent, MissionBriefComponent, MissionAdvanceComponent, MissionActionComponent, MissionAftermathComponent, MissionRewardsComponent, SquadMakerComponent],
+  imports: [GrvntAbilitiesComponent, GrvntIdentityComponent, CommonModule, GrvntClassComponent, GrvntVitalsComponent, GrvntShitComponent, MissionBriefComponent, MissionAdvanceComponent, MissionActionComponent, MissionAftermathComponent, MissionRewardsComponent, SquadMakerComponent, RulesReferenceComponent, GasReferenceComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
@@ -88,6 +90,7 @@ export class AppComponent implements OnInit {
   ];
 
   showRolls: boolean = false;
+  showGas: boolean = false;
 
   jobObj: {
     name: string,
@@ -165,6 +168,10 @@ export class AppComponent implements OnInit {
   rerollAllSquad() { 
     this.rerollSquadSize();
     this.getNewSquad = !this.getNewSquad;
+  }
+
+  toggleGas() {
+    this.showGas = !this.showGas;
   }
 
   promoteGrvnt() {

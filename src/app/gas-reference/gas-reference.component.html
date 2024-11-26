@@ -1,0 +1,19 @@
+<div class="rules-subsection-layout">
+    <div (click)="rollGas()" class="gas-header">
+        <h2 class="clickable emphasize">GAS!</h2>
+    </div>
+    <div class="rules-subsection-body">
+        <div class="gas-flavor-section">
+            <div>The foul putrescence of <strong>SLAGG</strong> vaporized with the essence of fading living matter. Toxic to those who cling to life – even more so to those who deny their own existence.  </div>
+            <div><strong>BUT NOT ALL DROWN:</strong> Test Toughness DR14 each round GAS is present to avoid succumbing.</div>
+            <div>All caught within its wrath are permanently disfigured according to the table below:</div>
+        </div>
+        <div class="gas-table">
+            @for (entry of gasTable; track $index) {
+                <div [ngClass]="{'chosen': chosenGas === $index + 1}" class="flex-row">
+                    <strong>{{$index + 1}}.</strong> <span [innerHTML]="entry"></span>
+                </div>
+            }
+        </div>
+    </div>
+</div>

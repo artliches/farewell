@@ -463,6 +463,12 @@ ul {
     }
 }
 
+.rules-subsection-layout {
+    h2, .rules-subsection-body {
+        padding-left: 1rem;
+    }
+}
+
 @media only screen and (min-width: 375px) {
     .farewell-layout {
         header {
@@ -480,6 +486,11 @@ ul {
 
 //TABLET
 @media only screen and (min-width: 768px) {
+    .rules-subsection-layout {
+        h2, .rules-subsection-body {
+            padding-left: 0rem;
+        }
+    }
     .page-layout {
         grid-template-columns: 20vw auto;
         grid-template-rows: 1fr;

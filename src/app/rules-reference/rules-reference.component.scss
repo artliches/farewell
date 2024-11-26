@@ -1,0 +1,23 @@
+h2 {
+    border-top: 2px solid var(--border-color);
+}
+
+.rules-subsection-body {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.info-section {
+    .flex-row {
+        gap: 1rem;
+        &.indent-left {
+            padding-left: 1rem;
+        }
+    }
+    h3 {
+        font-family: 'DIRTBAG';
+        border-bottom: 2px solid var(--border-color);
+    }
+}

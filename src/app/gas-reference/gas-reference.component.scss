@@ -1,0 +1,19 @@
+.gas-header {
+    border-top: 2px solid var(--border-color);
+}
+
+.emphasize {
+    font-size: 2rem;
+}
+
+.gas-table {
+    padding-left: 1rem;
+    .flex-row {
+        gap: 0.5rem;
+    }
+}
+
+.chosen {
+    background-color: var(--selection-background-color);
+    color: var(--selection-color);
+}
