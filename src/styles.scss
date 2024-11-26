@@ -519,7 +519,7 @@ ul {
 // small laptop
 @media only screen and (min-width: 1024px) {
     .page-layout {
-        grid-template-columns: 14vw 1fr;
+        grid-template-columns: min-content 1fr;
     }
     .farewell-layout {
         max-width: 90%;
@@ -566,9 +566,12 @@ ul {
 }
 
 @media only screen and (min-width: 1440px) {
+    .page-layout {
+        grid-template-columns: min-content 1fr;
+    }
     .farewell-layout {
+        place-self: start;
         max-width: 65%;
-        margin: auto;
     }
 }
 
