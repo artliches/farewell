@@ -1,0 +1,19 @@
+<div class="rules-subsection-layout">
+    <div class="shock-header">
+        <h2>SHOCK</h2>
+    </div>
+    <div class="rules-subsection-body">
+        <div class="shock-flavor-section">
+            <div>When receiving SHOCK, test <strong>Toughness DR14:</strong></div>
+            <div><strong>On a failure add d4 to your current SHOCK,</strong> and immediately resolve the new effect.</div>
+            <div>When losing <strong>SHOCK</strong>, ignore the new effect.</div>
+        </div>
+        <div class="shock-table">
+            @for (entry of shockTable; track $index) {
+                <div class="flex-row">
+                    <strong>{{$index + 1}}.</strong> <span [innerHTML]="entry"></span>
+                </div>
+            }
+        </div>
+    </div>
+</div>

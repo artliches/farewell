@@ -134,12 +134,15 @@
                             <div (click)="toggleGas()" class="clickable">{{showGas ? 'HIDE' : 'SHOW'}} GAS</div>
                         </span>
                         <span class="theme-section no-extra-section">
-                            <div (click)="print()" class="clickable">SHOW SHOCK</div>
+                            <div (click)="toggleShock()" class="clickable">{{showShock ? 'HIDE' : 'SHOW'}} SHOCK</div>
                         </span>
                     </span>
                 </span>
                 @if (showGas) {
                     <app-gas-reference></app-gas-reference>
+                }
+                @if (showShock) {
+                    <app-shock-reference></app-shock-reference>
                 }
                 <app-rules-reference></app-rules-reference>
             </section>
@@ -151,7 +154,7 @@
             </div>
             <div>MÖRK BORG is copyright Ockult Örtmästare Games and Stockholm Kartell.</div>
             <div>Farewell to Arms REDUX is copyright 2023 rivethead games. Web app by codeLiches</div>
-            <div><em>v0.55: Rules of Nature</em></div>
+            <div><em>v0.56: Rules of Nature</em></div>
         </footer>
     </span>
 

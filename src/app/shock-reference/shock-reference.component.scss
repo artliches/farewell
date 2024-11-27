@@ -1,0 +1,10 @@
+.shock-header {
+    border-top: 2px solid var(--border-color);
+}
+
+.shock-table {
+    padding-left: 1rem;
+    .flex-row {
+        gap: 0.5rem;
+    }
+}
