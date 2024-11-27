@@ -2,22 +2,73 @@ h2 {
     border-top: 2px solid var(--border-color);
 }
 
+.rules-subsection-layout {
+    padding-bottom: 1rem;
+    &:last-of-type {
+        border-bottom: 2px solid var(--border-color);
+    }
+}
+
 .rules-subsection-body {
     margin-top: 1rem;
     display: flex;
     flex-direction: column;
     gap: 1rem;
+
+    .rules-column {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
+
+.indent-left {
+    padding-left: 1rem;
 }
 
 .info-section {
     .flex-row {
         gap: 1rem;
-        &.indent-left {
-            padding-left: 1rem;
-        }
+    }
+    .info-section-title {
+        border-bottom: 2px solid var(--border-color);
+    }
+    .info-section-body {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
     }
     h3 {
         font-family: 'DIRTBAG';
-        border-bottom: 2px solid var(--border-color);
+    }
+}
+
+ol {
+    margin: 0;
+    padding-left: 1rem;
+}
+
+.chosen {
+    background-color: var(--selection-background-color);
+    color: var(--selection-color);
+}
+
+@media only screen and (min-width: 768px) {
+    .rules-subsection-body {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        .rules-column {
+            &:nth-child(2) {
+                border-left: 2px solid var(--border-color);
+                padding-left: 1rem;
+            }
+            &:nth-child(3) {
+                grid-column: span 2;
+            }
+        }
+    }
+    .two-column-list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
     }
 }

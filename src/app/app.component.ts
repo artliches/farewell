@@ -208,8 +208,12 @@ export class AppComponent implements OnInit {
 
   displaySection(sectionName: string) {
     this.sectionToShow = sectionName;
-    if (this.sectionToShow === 'squads') {
+    if (this.sectionToShow === 'squads' && !this.squadSize) {
       this.rerollSquadSize();
+    }
+
+    if (this.sectionToShow === 'grvnts') {
+      this.getNewJob();
     }
   }
 
