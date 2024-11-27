@@ -1,8 +1,9 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { ARMOR, FIREARMS, SIDEARMS, NICKNAMES, EMBEDDED_NAMES, WAR_SCROLLS, SCARS } from '../../assets/grvnts.constants';
 import { LEADERS } from '../../assets/squads.constants';
 import { RandomNumberService } from '../../random-number.service';
 import { CommonModule } from '@angular/common';
+import { LeaderObj } from '../../grvnt-interfaces';
 
 @Component({
   selector: 'app-leader-maker',
@@ -18,6 +19,8 @@ export class LeaderMakerComponent implements OnInit, OnChanges {
 
   @Input() title: string = 'SQUAD LEADER';
   @Input() rerollGrvnt: boolean = false;
+  @Input() leaderSaveObj: LeaderObj = {} as LeaderObj;
+  @Output() leaderSaveObjEmitter: EventEmitter<any> = new EventEmitter();
 
   leaderObj: {
     name: string,
@@ -100,18 +103,68 @@ export class LeaderMakerComponent implements OnInit, OnChanges {
   };
 
   ngOnInit(): void {
-    this.random.shuffleArray(LEADERS);
-    this.orderedArmorTable = JSON.parse(JSON.stringify(ARMOR));
-    this.orderedFirearmsTable = JSON.parse(JSON.stringify(FIREARMS));
-    this.orderedSidearmsTable = JSON.parse(JSON.stringify(SIDEARMS));
-    this.random.shuffleArray(NICKNAMES);
-    for (let i = 0; i < EMBEDDED_NAMES.length; i++) {
-      this.random.shuffleArray(EMBEDDED_NAMES[i]);
+    if (Object.keys(this.leaderSaveObj).length === 0) {
+      this.random.shuffleArray(LEADERS);
+      this.orderedArmorTable = JSON.parse(JSON.stringify(ARMOR));
+      this.orderedFirearmsTable = JSON.parse(JSON.stringify(FIREARMS));
+      this.orderedSidearmsTable = JSON.parse(JSON.stringify(SIDEARMS));
+      this.random.shuffleArray(NICKNAMES);
+      for (let i = 0; i < EMBEDDED_NAMES.length; i++) {
+        this.random.shuffleArray(EMBEDDED_NAMES[i]);
+      }
+      this.random.shuffleArray(WAR_SCROLLS);
+      this.random.shuffleArray(SCARS);
+      //get a squad leader
+      this.rerollSquadLeader();
+    } else {
+      this.leaderObj = this.leaderSaveObj.leaderObj ? this.leaderSaveObj.leaderObj : {
+        name: '',
+        specialitiesObj: {
+          specialities: [],
+          chosenSpeciality: '',
+          original: '',
+        },
+        special: '',
+        stats: [],
+        startingShit: []
+      };
+      this.ammoObj = this.leaderSaveObj.ammoObj ? this.leaderSaveObj.ammoObj :{
+        value: -1,
+        die: ''
+      };
+      this.hpObj = this.leaderSaveObj.hpObj ? this.leaderSaveObj.hpObj :{
+        value: -1,
+        die: ''
+      };
+      this.embeddedNameObj = this.leaderSaveObj.embeddedNameObj ? this.leaderSaveObj.embeddedNameObj : {
+        first: '',
+        middle: '',
+        last: ''
+      };
+      this.nickname = this.leaderSaveObj.nickname ? this.leaderSaveObj.nickname : '';
+      this.armorWithHelmet = this.leaderSaveObj.armorWithHelmet ? this.leaderSaveObj.armorWithHelmet : false;
+      this.armorObj = this.leaderSaveObj.armorObj ? this.leaderSaveObj.armorObj : {
+        descrip: '',
+        currIndex: -1,
+        limitNum: -1,
+      };
+      this.firearmsObj = this.leaderSaveObj.firearmsObj ? this.leaderSaveObj.firearmsObj : {
+        descrip: '',
+        currIndex: -1,
+        limitNum: -1,
+      };
+      this.sidearmsObj = this.leaderSaveObj.sidearmsObj ? this.leaderSaveObj.sidearmsObj : {
+        descrip: '',
+        currIndex: -1,
+        limitNum: -1,
+      };
+      this.warScrollObj = this.leaderSaveObj.warScrollObj ? this.leaderSaveObj.warScrollObj : [];
+      this.shockObj = this.leaderSaveObj.shockObj ? this.leaderSaveObj.shockObj : {
+        value: 0,
+        effect: ''
+      };
     }
-    this.random.shuffleArray(WAR_SCROLLS);
-    this.random.shuffleArray(SCARS);
-    //get a squad leader
-    this.rerollSquadLeader();
+
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -172,6 +225,26 @@ export class LeaderMakerComponent implements OnInit, OnChanges {
 
     this.rerollScars();
     this.getInitialShock();
+
+    this.saveAndEmitLeaderObj();
+  }
+
+  private saveAndEmitLeaderObj() {
+    this.leaderSaveObj = {
+      leaderObj: this.leaderObj,
+      ammoObj: this.ammoObj,
+      hpObj: this.hpObj,
+      embeddedNameObj: this.embeddedNameObj,
+      nickname: this.nickname,
+      armorWithHelmet: this.armorWithHelmet, 
+      armorObj: this.armorObj,
+      firearmsObj: this.firearmsObj,
+      sidearmsObj: this.sidearmsObj,
+      warScrollObj: this.warScrollObj,
+      shockObj: this.shockObj,
+    };
+
+    this.leaderSaveObjEmitter.emit(this.leaderSaveObj);
   }
 
   private getInitialArmor() {
@@ -181,6 +254,7 @@ export class LeaderMakerComponent implements OnInit, OnChanges {
 
       this.rerollArmor(this.armorLimitNum);
     }
+    this.saveAndEmitLeaderObj();
   }
 
   private getInitialFirearm() {
@@ -198,6 +272,7 @@ export class LeaderMakerComponent implements OnInit, OnChanges {
         this.rerollFireArms(this.firearmLimitNum);
       }
     }
+    this.saveAndEmitLeaderObj();
   }
 
   private getInitialSidearm() {
@@ -215,6 +290,7 @@ export class LeaderMakerComponent implements OnInit, OnChanges {
         this.rerollSidearms(sidearm.sidearm);
       }
     }
+    this.saveAndEmitLeaderObj();
   }
 
   private getInitialWarscrolls() {
@@ -226,6 +302,7 @@ export class LeaderMakerComponent implements OnInit, OnChanges {
         loopNum++;
       } while (loopNum !== warscrolls.warscroll);
     }
+    this.saveAndEmitLeaderObj();
   }
 
   private getInitialShock() {
@@ -233,6 +310,7 @@ export class LeaderMakerComponent implements OnInit, OnChanges {
     this.shockObj.effect = this.shockObj.value === 1 ?
       `<strong class="underline">THE SHAKES.</strong> Always have last initiative` :
       `<strong class="underline">PRIMAL FEAR.</strong> Next <strong>SHOCK</strong> roll is d6`;
+    this.saveAndEmitLeaderObj();
   }
 
   rerollShock() {
@@ -240,6 +318,7 @@ export class LeaderMakerComponent implements OnInit, OnChanges {
     this.shockObj.effect = this.shockObj.value === 1 ?
       `<strong class="underline">THE SHAKES.</strong> Always have last initiative` :
       `<strong class="underline">PRIMAL FEAR.</strong> Next <strong>SHOCK</strong> roll is d6`;
+    this.saveAndEmitLeaderObj();
   }
 
   rerollScars() {
@@ -279,7 +358,8 @@ export class LeaderMakerComponent implements OnInit, OnChanges {
 
       this.scarObj.descrip = this.scarObj.original.replace('[d4]', finger);
       this.scarObj.descrip = this.scarObj.descrip.replace('[d2]', hand);
-    } 
+    }
+    this.saveAndEmitLeaderObj(); 
   }
 
   nextWordGrammer(nextSentence: string) {
@@ -413,6 +493,7 @@ export class LeaderMakerComponent implements OnInit, OnChanges {
       this.nickname = NICKNAMES[newIndex];
     }
 
+    this.saveAndEmitLeaderObj();
   }
 
   rerollSidearms(modNumber: number) {
@@ -435,6 +516,7 @@ export class LeaderMakerComponent implements OnInit, OnChanges {
         currIndex: newIndex,
         limitNum: modNumber,
       };
+      this.saveAndEmitLeaderObj();
     }, 10);
   }
 
@@ -456,6 +538,7 @@ export class LeaderMakerComponent implements OnInit, OnChanges {
         currIndex: newIndex,
         limitNum: modNumber,
       };
+      this.saveAndEmitLeaderObj();
     }, 10);
   }
 
@@ -480,6 +563,7 @@ export class LeaderMakerComponent implements OnInit, OnChanges {
       };
   
       this.armorWithHelmet = this.armorObj.descrip.includes('helmet');
+      this.saveAndEmitLeaderObj();
     }, 10);
   }
 
@@ -491,6 +575,7 @@ export class LeaderMakerComponent implements OnInit, OnChanges {
       value: roll,
       die: `(d${hpInfo!.mod})`
     };
+    this.saveAndEmitLeaderObj();
   }
 
   rerollAmmo() {
@@ -499,6 +584,7 @@ export class LeaderMakerComponent implements OnInit, OnChanges {
         value: -1,
         die: ''
       };
+      this.saveAndEmitLeaderObj();
       return;
     }
 
@@ -509,6 +595,7 @@ export class LeaderMakerComponent implements OnInit, OnChanges {
       value: roll,
       die: `(d${ammoInfo!.mod})`
     };
+    this.saveAndEmitLeaderObj();
   }
 
   rerollSpecialities() {
@@ -543,6 +630,7 @@ export class LeaderMakerComponent implements OnInit, OnChanges {
           this.leaderObj.specialitiesObj.original.replace(stringToReplace, this.random.getRandomNumber(1, Number(dieSize)).toString());
       }
     }
+    this.saveAndEmitLeaderObj();
   }
 
   private parseAndReplaceNumberString(descrip: string): string {

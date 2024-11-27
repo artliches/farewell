@@ -1,7 +1,8 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { RandomNumberService } from '../random-number.service';
 import { ARMOR, CARRY, FIREARMS, PERSONAL, READINESS, SIDEARMS, WAR_SCROLLS } from '../assets/grvnts.constants';
 import { CommonModule } from '@angular/common';
+import { AmmoObj, DescripIndexLimitObj, DescripIndexTableObj, DescripOriginalObj, ExtrasObj, ReadyObject, ShitObj, ShockTrackerObj, WarscrollObj } from '../grvnt-interfaces';
 
 @Component({
   selector: 'app-grvnt-shit',
@@ -11,6 +12,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './grvnt-shit.component.scss'
 })
 export class GrvntShitComponent implements OnInit, OnChanges {
+  @Input() shitObj: ShitObj = {} as ShitObj;
   @Input() presenceMod: number = 0;
   @Input() job: any;
   @Input() shuffleAll: boolean = false;
@@ -19,80 +21,70 @@ export class GrvntShitComponent implements OnInit, OnChanges {
     descrip: ''
   };
   @Input() clearPromos: boolean = false;
+  @Output() shitObjectEmitter: EventEmitter<any> = new EventEmitter();
   constructor(
     private random: RandomNumberService
   ) {}
 
   carryTable: any[] = [];
-  carryObj: {descrip: string, currIndex: number, tableIndex: number} = {
+  carryObj: DescripIndexTableObj = {
     descrip: '',
     currIndex: -1,
     tableIndex: -1,
   };
 
   readyTable: any[] = [];
-  readyObj: {descrip: string, currIndex: number, tableIndex: number, presenceString: string} = {
+  readyObj: ReadyObject = {
     descrip: '',
     currIndex: -1,
     tableIndex: -1,
     presenceString: '',
   };
-  readyObjFromMerit: {
-    descrip: string,
-    original: string,
-  }[] = [];
+  readyObjFromMerit: DescripOriginalObj[] = [];
 
   personalTable: any[] =[];
-  personalObj: {descrip: string, currIndex: number, tableIndex: number} = {
+  personalObj: DescripIndexTableObj = {
     descrip: '',
     currIndex: -1,
     tableIndex: -1,
   };
 
-  ammoObj: {descrip: number, die: string} = {
+  ammoObj: AmmoObj = {
     descrip: 0,
     die: '',
   };
 
   armorTable: any[] = [];
   armorWithHelmet: boolean = false;
-  armorObj: {descrip: string, currIndex: number, limitNum: number} = {
+  armorObj: DescripIndexLimitObj = {
     descrip: '',
     currIndex: -1,
     limitNum: -1,
   };
 
   firearmsTable: any[] = [];
-  firearmsObj: {descrip: string, currIndex: number, limitNum: number} = {
+  firearmsObj: DescripIndexLimitObj = {
     descrip: '',
     currIndex: -1,
     limitNum: -1,
   };
 
   sidearmsTable: any[] = [];
-  sidearmsObj: {descrip: string, currIndex: number, limitNum: number} = {
+  sidearmsObj: DescripIndexLimitObj = {
     descrip: '',
     currIndex: -1,
     limitNum: -1,
   };
 
   hasShock: boolean = false;
-  shockObj: {carry: number, ready: number, personal: number} = {
+  shockObj: ShockTrackerObj = {
     carry: 0,
     ready: 0,
     personal: 0
   };
 
-  warScrolls: 
-    {
-      descrip: string,
-      currIndex: number,
-      isFromReadiness?: boolean,
-      isFromNothing?: boolean,
-      isFromClass?: boolean,
-      isFromPromo?: boolean,
-    }[] = [];
-  extrasArray: {descrip: string, presenceString?: string}[] = [];
+  warScrolls: WarscrollObj[] = [];
+  extrasArray: ExtrasObj[] = [];
 
   hasNothing: boolean = false;
   nothingValue: number = 0;
@@ -101,16 +93,37 @@ export class GrvntShitComponent implements OnInit, OnChanges {
   ngOnInit(): void {
     setTimeout(() => {
       this.rollArrays();
-      this.rerollAll();
+
+      if (Object.keys(this.shitObj).length === 0) {
+        this.rerollAll();
+
+        this.saveAndEmitShitObject();
+
+      } else {
+        this.carryObj = this.shitObj.carryObj;
+        this.firearmsObj = this.shitObj.firearmsObj ? this.shitObj.firearmsObj : {descrip: '', currIndex: -1, limitNum: -1,};
+        this.ammoObj = this.shitObj.ammoObj ? this.shitObj.ammoObj : { descrip: 0, die: '',};
+        this.sidearmsObj = this.shitObj.sidearmsObj ? this.shitObj.sidearmsObj : {descrip: '', currIndex: -1, limitNum: -1,};
+        this.armorObj = this.shitObj.armorObj ? this.shitObj.armorObj : { descrip: '', currIndex: -1, limitNum: -1, };
+        this.extrasArray = this.shitObj.extrasArray ? this.shitObj.extrasArray : [];
+        this.personalObj = this.shitObj.personalObj ? this.shitObj.personalObj : {descrip: '', currIndex: -1, tableIndex: -1,};
+        this.readyObj = this.shitObj.readyObj ? this.shitObj.readyObj : { descrip: '', currIndex: -1, tableIndex: -1, presenceString: '',};
+        this.readyObjFromMerit = this.shitObj.readyObjFromMerit ? this.shitObj.readyObjFromMerit : [];
+        this.slagvarra = this.shitObj.slagvarra ? this.shitObj.slagvarra : [];
+        this.warScrolls = this.shitObj.warScrolls ? this.shitObj.warScrolls : [];
+        this.shockObj = this.shitObj.shockObj ? this.shitObj.shockObj : {carry: 0, ready: 0, personal: 0};
+        this.hasNothing = this.shitObj.hasNothing ? this.shitObj.hasNothing : false;
+      }
     });
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['shuffleAll'] && !changes['shuffleAll'].firstChange) {
       this.rerollAll();
+      this.saveAndEmitShitObject();
     }
 
-    if (changes['job']) {
+    if (changes['job'] && !changes['job'].firstChange) {
       this.extrasArray = [];
       if (changes['job'].previousValue) {
         const previousJobHadScroll = 
@@ -159,6 +172,8 @@ export class GrvntShitComponent implements OnInit, OnChanges {
           }
         });
       }
+
+      this.saveAndEmitShitObject();
     }
 
     if (changes['presenceMod'] && !changes['presenceMod'].firstChange) {
@@ -190,6 +205,8 @@ export class GrvntShitComponent implements OnInit, OnChanges {
           break;
         }
       }
+
+      this.saveAndEmitShitObject();
     }
 
     if (changes['clearPromos'] && !changes['clearPromos'].firstChange) {
@@ -200,6 +217,8 @@ export class GrvntShitComponent implements OnInit, OnChanges {
       this.slagvarra = [];
       this.warScrolls = this.warScrolls.filter(scroll => !scroll.isFromPromo);
       this.readyObjFromMerit = [];
+
+      this.saveAndEmitShitObject();
     }
   }
 
@@ -294,6 +313,8 @@ export class GrvntShitComponent implements OnInit, OnChanges {
         die: `d${ammoMod}`
       };
     }
+
+    this.saveAndEmitShitObject();
   }
 
   rerollCarry(isSingleReroll?: boolean) {
@@ -371,6 +392,8 @@ export class GrvntShitComponent implements OnInit, OnChanges {
     }
     this.shockObj.carry = this.carryObj.tableIndex + 1;
     this.hasShock = this.checkForShock();
+
+    this.saveAndEmitShitObject();
   }
 
   rerollFirearms(modNumber: number) {
@@ -392,6 +415,8 @@ export class GrvntShitComponent implements OnInit, OnChanges {
       currIndex: newIndex,
       limitNum: modNumber,
     };
+
+    this.saveAndEmitShitObject();
   }
 
   rerollSidearm(modNumber: number) {
@@ -415,6 +440,8 @@ export class GrvntShitComponent implements OnInit, OnChanges {
       currIndex: newIndex,
       limitNum: modNumber,
     };
+
+    this.saveAndEmitShitObject();
   }
 
   rerollArmor(modNumber: number) {
@@ -438,6 +465,8 @@ export class GrvntShitComponent implements OnInit, OnChanges {
     };
 
     this.armorWithHelmet = this.armorObj.descrip.includes('helmet');
+
+    this.saveAndEmitShitObject();
   }
 
   private removeReadinessScroll() {
@@ -478,6 +507,7 @@ export class GrvntShitComponent implements OnInit, OnChanges {
         this.carryObj.descrip = `<strong>a set of lobster armor</strong>, a kick to the teeth, and <strong class="clickable">nothing</strong> to show for it - <em>kiss the world goodbye...</em>`
       }
     }
+    this.saveAndEmitShitObject();
   }
 
   rerollReady() {
@@ -530,6 +560,8 @@ export class GrvntShitComponent implements OnInit, OnChanges {
 
     this.shockObj.ready = this.readyObj.tableIndex + 1;
     this.hasShock = this.checkForShock();
+
+    this.saveAndEmitShitObject();
   }
 
   rerollReadyFromMerit(index?: number) {
@@ -620,6 +652,8 @@ export class GrvntShitComponent implements OnInit, OnChanges {
 
     this.shockObj.personal = this.personalObj.tableIndex + 1;
     this.hasShock = this.checkForShock();
+
+    this.saveAndEmitShitObject();
   }
 
   private checkForShock(): boolean {
@@ -751,5 +785,26 @@ export class GrvntShitComponent implements OnInit, OnChanges {
         isFromPromo: isFromPromo
       });
     }
+
+    this.saveAndEmitShitObject();
+  }
+
+  private saveAndEmitShitObject() {
+    this.shitObj = {
+      carryObj: this.carryObj,
+      firearmsObj: this.firearmsObj,
+      ammoObj: this.ammoObj,
+      sidearmsObj: this.sidearmsObj,
+      armorObj: this.armorObj,
+      extrasArray: this.extrasArray,
+      personalObj: this.personalObj,
+      readyObj: this.readyObj,
+      readyObjFromMerit: this.readyObjFromMerit,
+      slagvarra: this.slagvarra,
+      warScrolls: this.warScrolls,
+      shockObj: this.shockObj,
+      hasNothing: this.hasNothing,
+    };
+    this.shitObjectEmitter.emit(this.shitObj);
   }
 }

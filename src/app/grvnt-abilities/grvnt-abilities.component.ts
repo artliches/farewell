@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { RandomNumberService } from '../random-number.service';
 import { CommonModule } from '@angular/common';
+import { AbilitiesObj, StatsObject, VitalsObject } from '../grvnt-interfaces';
 
 @Component({
   selector: 'app-grvnt-abilities',
@@ -13,21 +14,16 @@ export class GrvntAbilitiesComponent implements OnInit, OnChanges {
   constructor(
     private random: RandomNumberService
   ) {}
+  @Input() abilitiesObj: AbilitiesObj= {} as AbilitiesObj;
   @Input() job: any;
   @Input() showRolls: boolean = false;
   @Input() beastHP: number = 0;
   @Input() promoteGrvnt: boolean = false;
   @Input() clearPromos: boolean = false;
   @Output() presence: EventEmitter<any> = new EventEmitter();
+  @Output() abilityObjEmitter: EventEmitter<any> = new EventEmitter();
 
-  statsArray: Array<{
-    name: string,
-    descrip: string,
-    value: number,
-    rollsArray: Array<any>,
-    statMod: string,
-    promoRolls: any,
-  }> = [
+  statsArray: StatsObject[] = [
     {
       name: 'toughness',
       descrip: 'resist shock/gas/cold/heat',
@@ -62,17 +58,7 @@ export class GrvntAbilitiesComponent implements OnInit, OnChanges {
     }
   ];
 
-  vitalsArray: Array<{
-    name: string,
-    descrip: string,
-    value?: number,
-    valueObj?: {
-      current: number,
-      die: string,
-    },
-    rollsArray: string,
-    promoRolls?: any,
-  }> = [
+  vitalsArray: VitalsObject[] = [
     {
       name: 'hp',
       descrip: '0 or -1: downed | -2: DEATH',
@@ -104,13 +90,29 @@ export class GrvntAbilitiesComponent implements OnInit, OnChanges {
   ];
 
   ngOnInit(): void {
-    this.beastHP = 0;
-    this.statsArray.forEach(stat => {
-      this.rerollStat(stat.name);
-    });
-    this.vitalsArray.forEach(vital => {
-      this.rerollVital(vital.name)
-    });
+    if (Object.keys(this.abilitiesObj).length === 0) {
+      this.beastHP = 0;
+      this.statsArray.forEach(stat => {
+        this.rerollStat(stat.name);
+      });
+      this.vitalsArray.forEach(vital => {
+        this.rerollVital(vital.name)
+      });
+  
+      this.saveAndEmitAbilitiesObj();
+    } else {
+      this.statsArray = this.abilitiesObj.statsArray;
+      this.vitalsArray = this.abilitiesObj.vitalsArray;
+    }
+  }
+
+  private saveAndEmitAbilitiesObj() {
+    this.abilitiesObj = {
+      statsArray: this.statsArray,
+      vitalsArray: this.vitalsArray,
+    };
+
+    this.abilityObjEmitter.emit(this.abilitiesObj);
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -133,6 +135,7 @@ export class GrvntAbilitiesComponent implements OnInit, OnChanges {
       });
       const vitalsHP = this.vitalsArray[this.vitalsArray.findIndex(vital => vital.name === 'hp')];
       vitalsHP.promoRolls = '';
+      
     }
   }
 
@@ -196,9 +199,11 @@ export class GrvntAbilitiesComponent implements OnInit, OnChanges {
     this.vitalsArray.forEach(vital => {
       this.rerollVital(vital.name)
     });
+
+    this.saveAndEmitAbilitiesObj();
   }
 
-  rerollVital(vitalName: string) {
+  rerollVital(vitalName: string, rerolledFromTemplate?: boolean) {
     const vital = this.vitalsArray.find(vital => vital.name === vitalName);
     if (vital) {
       const jobMod = this.job.stats.find((mod: {name: string}) => mod.name === vital.name);
@@ -241,9 +246,13 @@ export class GrvntAbilitiesComponent implements OnInit, OnChanges {
         }
       }
     }
+
+    if (rerolledFromTemplate) {
+      this.saveAndEmitAbilitiesObj();
+    }
   }
 
-  rerollStat(statName: string) {
+  rerollStat(statName: string, rerolledFromTemplate?: boolean) {
     const stat = this.statsArray.find(stat => stat.name === statName);
     if (stat) {
       stat.value = 0;
@@ -278,6 +287,10 @@ export class GrvntAbilitiesComponent implements OnInit, OnChanges {
       }
     } else {
       console.error('undefined');
+    }
+
+    if (rerolledFromTemplate) {
+      this.saveAndEmitAbilitiesObj();
     }
   }
 

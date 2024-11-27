@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { RandomNumberService } from '../random-number.service';
 import { CommonModule } from '@angular/common';
+import { ClassObj } from '../grvnt-interfaces';
 
 @Component({
   selector: 'app-grvnt-class',
@@ -13,9 +14,11 @@ export class GrvntClassComponent implements OnInit, OnChanges {
   constructor(
     private random: RandomNumberService
   ) {}
+  @Input() classObj: ClassObj = {} as ClassObj;
   @Input() job: any;
   @Output() newJobEmitter: EventEmitter<boolean> = new EventEmitter();
   @Output() newBeast: EventEmitter<number> = new EventEmitter();
+  @Output() classObjectEmitter: EventEmitter<any> = new EventEmitter();
 
   skillObj: {
     descrip: string,
@@ -33,7 +36,12 @@ export class GrvntClassComponent implements OnInit, OnChanges {
   };
 
   ngOnInit(): void {
+    if (Object.keys(this.classObj).length === 0) {
       this.getSkills();
+    } else {
+      this.beastObj = this.classObj.beastObj;
+      this.skillObj = this.classObj.skillObj;
+    }
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -114,6 +122,8 @@ export class GrvntClassComponent implements OnInit, OnChanges {
         }
       });
     }
+
+    this.saveAndEmitClassObject();
   }
 
   rerollSkill(index: number) {
@@ -159,6 +169,8 @@ export class GrvntClassComponent implements OnInit, OnChanges {
         this.beastObj.currBeast = this.getBeastIndex(this.skillObj[index].data);    
       }
     }
+
+    this.saveAndEmitClassObject();
   }
 
   private getBeastIndex(beastDescripToMatch: string) {
@@ -219,5 +231,11 @@ export class GrvntClassComponent implements OnInit, OnChanges {
         return 'null';
       }
     }
+  }
+
+  private saveAndEmitClassObject() {
+    this.classObj.skillObj = this.skillObj;
+    this.classObj.beastObj = this.beastObj;
+    this.classObjectEmitter.emit(this.classObj);
   }
 }

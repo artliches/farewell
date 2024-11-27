@@ -6,7 +6,7 @@
                     {{name.part}}
                 }
             } @else {
-                {{nameObj.name | uppercase}}
+                {{nameObj.descrip | uppercase}}
             }
         </strong>
     </div>
@@ -20,7 +20,7 @@
                     }
                 </span>
             } @else {
-                <span (click)="rerollName()" class="clickable">"{{nameObj.name}}"</span>
+                <span (click)="rerollName()" class="clickable">"{{nameObj.descrip}}"</span>
             }.
         </div>
         <div>

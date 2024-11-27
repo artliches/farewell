@@ -17,6 +17,7 @@ import { SQUAD_SIZE } from './assets/missions.constants';
 import { RulesReferenceComponent } from "./rules-reference/rules-reference.component";
 import { GasReferenceComponent } from "./gas-reference/gas-reference.component";
 import { ShockReferenceComponent } from './shock-reference/shock-reference.component';
+import { AbilitiesObj, ClassObj, IdentityObj, LeaderObj, ShitObj, SquadObj } from './grvnt-interfaces';
 
 @Component({
   selector: 'app-root',
@@ -114,6 +115,13 @@ export class AppComponent implements OnInit {
     currIndex: -1,
   };
 
+  abilitiesObj: AbilitiesObj = {} as AbilitiesObj;
+  identityObj: IdentityObj = {} as IdentityObj;
+  classObj: ClassObj = {} as ClassObj;
+  shitObj: ShitObj = {} as ShitObj;
+  squadObj: SquadObj = {} as SquadObj;
+  leaderObj: LeaderObj = {} as LeaderObj;
+
   isEmbedded: boolean = false;
 
   beastHP: number = 0;
@@ -152,6 +160,30 @@ export class AppComponent implements OnInit {
     window.print();
   }
 
+  updateAbilitiesObj(abilityObject: AbilitiesObj) {
+    this.abilitiesObj = abilityObject;
+  }
+
+  updateIdentityObj(identityObject: IdentityObj) {
+    this.identityObj = identityObject;
+  }
+
+  updateClassObj(classObject: ClassObj) {
+    this.classObj = classObject;
+  }
+
+  updateShitObj(shitObject: ShitObj) {
+    this.shitObj = shitObject;
+  }
+
+  updateSquadObj(squadObject: SquadObj) {
+    this.squadObj = squadObject;
+  }
+
+  updateLeaderObj(leaderObject: LeaderObj) {
+    this.leaderObj = leaderObject;
+  }
+
   toggleRolls() {
     this.showRolls = !this.showRolls;
   }
@@ -172,6 +204,8 @@ export class AppComponent implements OnInit {
   }
 
   rerollAllSquad() { 
+    this.leaderObj = {} as LeaderObj;
+    this.squadObj = {} as SquadObj;
     this.rerollSquadSize();
     this.getNewSquad = !this.getNewSquad;
   }
@@ -216,10 +250,6 @@ export class AppComponent implements OnInit {
     this.sectionToShow = sectionName;
     if (this.sectionToShow === 'squads' && !this.squadSize) {
       this.rerollSquadSize();
-    }
-
-    if (this.sectionToShow === 'grvnts') {
-      this.getNewJob();
     }
   }
 

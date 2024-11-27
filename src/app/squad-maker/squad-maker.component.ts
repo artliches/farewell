@@ -1,10 +1,11 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LeaderMakerComponent } from "./leader-maker/leader-maker.component";
 import { RandomNumberService } from '../random-number.service';
 import { SQUADS } from '../assets/squads.constants';
 import { ARMOR, FIREARMS, SIDEARMS, WAR_SCROLLS } from '../assets/grvnts.constants';
 import { MachineMakerComponent } from "./machine-maker/machine-maker.component";
+import { LeaderObj, SquadObj } from '../grvnt-interfaces';
 
 @Component({
   selector: 'app-squad-maker',
@@ -17,9 +18,12 @@ export class SquadMakerComponent implements OnInit, OnChanges {
     constructor(
       private random: RandomNumberService
     ) {}
-
+    @Input() squadSaveObj: SquadObj = {} as SquadObj;
+    @Input() leaderSaveObj: LeaderObj = {} as LeaderObj;
     @Input() enemySize: string = '';
     @Input() rerollGrvnt: boolean = false;
+    @Output() squadSaveObjEmitter: EventEmitter<any> = new EventEmitter();
+    @Output() leaderSaveObjEmitter: EventEmitter<any> = new EventEmitter();
 
     attachmentsNum: number = 0;
     machineNum: number = 0;
@@ -46,10 +50,39 @@ export class SquadMakerComponent implements OnInit, OnChanges {
 
     morale: number = 8;
     armor: string = '';
-    hasHemlet: boolean = false;
+    hasHelmet: boolean = false;
 
     ngOnInit(): void {
-      this.getSquadAndAttachments();
+      if (Object.keys(this.squadSaveObj).length === 0) {
+        this.getSquadAndAttachments();
+      } else {
+        this.attachmentsNum = this.squadSaveObj.attachmentsNum ? this.squadSaveObj.attachmentsNum : 0;
+        this.machineNum = this.squadSaveObj.machineNum ? this.squadSaveObj.machineNum : 0;
+        this.squadMakeup = this.squadSaveObj.squadMakeup ? this.squadSaveObj.squadMakeup :
+        { 
+          name: [],
+          firearms: [],
+          sidearms: [],
+          specials: [],
+        };
+        this.squadObj = this.squadSaveObj.squadObj ? this.squadSaveObj.squadObj : {
+          size: 0,
+          firearm: {
+            descrip: '',
+            original: '',
+            isScroll: false,
+          },
+          sidearm: {
+            descrip: '',
+            original: '',
+            isScroll: false,
+          },
+          special: '',
+        };
+        this.morale = this.squadSaveObj.morale ? this.squadSaveObj.morale : 8;
+        this.armor = this.squadSaveObj.armor ? this.squadSaveObj.armor : '';
+        this.hasHelmet = this.squadSaveObj.hasHelmet ? this.squadSaveObj.hasHelmet : false;
+      }
     }
 
     ngOnChanges(changes: SimpleChanges): void {
@@ -124,6 +157,7 @@ export class SquadMakerComponent implements OnInit, OnChanges {
     } else {
       this.morale = 8 + moraleMod;
     }
+    this.saveAndEmitSquadSaveObj();
   }
 
   rerollArmor() {
@@ -139,7 +173,8 @@ export class SquadMakerComponent implements OnInit, OnChanges {
     }
 
     this.armor = ARMOR[armorIndex];
-    this.hasHemlet = this.armor.includes('helmet');
+    this.hasHelmet = this.armor.includes('helmet');
+    this.saveAndEmitSquadSaveObj();
   }
 
   rerollSpecial() {
@@ -158,6 +193,7 @@ export class SquadMakerComponent implements OnInit, OnChanges {
       const newNum = this.random.rollMultipleDie(2, 2);
       this.squadObj.special = this.squadObj.special.replace('2d2', newNum.toString());
     }
+    this.saveAndEmitSquadSaveObj();
   }
 
   rerollSquadFirearms() {
@@ -190,6 +226,7 @@ export class SquadMakerComponent implements OnInit, OnChanges {
     }
 
     this.squadObj.firearm.descrip = fullFirearmName;
+    this.saveAndEmitSquadSaveObj();
   }
 
   rerollSquadSidearms() {
@@ -240,5 +277,24 @@ export class SquadMakerComponent implements OnInit, OnChanges {
     }
 
     this.squadObj.sidearm.descrip = fullSidearmName;
+    this.saveAndEmitSquadSaveObj();
+  }
+
+  private saveAndEmitSquadSaveObj() {
+    this.squadSaveObj = {
+      attachmentsNum: this.attachmentsNum,
+      machineNum: this.machineNum,
+      squadMakeup: this.squadMakeup,
+      squadObj: this.squadObj,
+      morale: this.morale,
+      armor: this.armor,
+      hasHelmet: this.hasHelmet,
+    };
+
+    this.squadSaveObjEmitter.emit(this.squadSaveObj);
+  }
+
+  emitLeaderSaveObj(leaderObject: LeaderObj) {
+    this.leaderSaveObjEmitter.emit(leaderObject);
   }
 }

@@ -1,5 +1,10 @@
 <div [ngClass]="{'no-attachments': attachmentsNum === 0}" class="leader-squad-layout">
-    <app-leader-maker [rerollGrvnt]="rerollGrvnt"></app-leader-maker>
+    <app-leader-maker
+        [rerollGrvnt]="rerollGrvnt"
+        [leaderSaveObj]="leaderSaveObj"
+        (leaderSaveObjEmitter)="emitLeaderSaveObj($event)"
+    >
+    </app-leader-maker>
     
     <div class="squad-layout">
         <strong class="underline">ENEMY SQUAD:</strong> "<strong (click)="getInitialSquad(squadObj.size)" class="clickable">{{squadMakeup.name[0]}}</strong>"
@@ -18,7 +23,7 @@
         <div class="flex-column">
             <em class="small-font underline">Armor</em>
             <span (click)="rerollArmor()" [innerHTML]="armor"></span>
-            @if (this.hasHemlet) {
+            @if (this.hasHelmet) {
                 <div>
                     <strong class="underline">Helmet.</strong> break to prevent all damage from a <strong>single attack</strong>
                 </div>

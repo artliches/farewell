@@ -37,33 +37,41 @@
                 </span>
                 <app-grvnt-abilities
                     class="stats"
+                    [abilitiesObj]="abilitiesObj"
                     [job]="jobObj"
                     [showRolls]="showRolls"
                     [beastHP]="beastHP"
                     [promoteGrvnt]="rollPromotion"
                     [clearPromos]="clearPromo"
                     (presence)="getPresence($event)"
+                    (abilityObjEmitter)="updateAbilitiesObj($event)"
                 >
                 </app-grvnt-abilities>
                 <app-grvnt-identity
                     class="id"
+                    [identityObj]="identityObj"
                     [isEmbedded]="isEmbedded"
                     [shuffleAll]="getNewAll"
+                    (identityObjectEmitter)="updateIdentityObj($event)"
                 >
                 </app-grvnt-identity>
                 <app-grvnt-class
                     class="job"
+                    [classObj]="classObj"
                     [job]="jobObj"
+                    (classObjectEmitter)="updateClassObj($event)"
                     (newJobEmitter)="getNewJob()"
                     (newBeast)="addBeastHP($event)"
                 ></app-grvnt-class>
                 <app-grvnt-shit
                     class="shit"
+                    [shitObj]="shitObj"
                     [shuffleAll]="getNewAll"
                     [presenceMod]="presenceNum"
                     [job]="jobObj"
                     [promoEquip]="promoEquipObj"
                     [clearPromos]="clearPromo"
+                    (shitObjectEmitter)="updateShitObj($event)"
                 ></app-grvnt-shit>
             </section>
         } @else if (sectionToShow === 'missions') {
@@ -113,8 +121,12 @@
                     <span> {{squadSize | uppercase}}</span>
                 </div>
                 <app-squad-maker
+                    [squadSaveObj]="squadObj"
+                    [leaderSaveObj]="leaderObj"
                     [enemySize]="squadSize"
                     [rerollGrvnt]="getNewSquad"
+                    (squadSaveObjEmitter)="updateSquadObj($event)"
+                    (leaderSaveObjEmitter)="updateLeaderObj($event)"
                 ></app-squad-maker>
             </section>
         } @else if (sectionToShow === 'rules') {
@@ -154,7 +166,7 @@
             </div>
             <div>MÖRK BORG is copyright Ockult Örtmästare Games and Stockholm Kartell.</div>
             <div>Farewell to Arms REDUX is copyright 2023 rivethead games. Web app by codeLiches</div>
-            <div><em>v0.56: Rules of Nature</em></div>
+            <div><em>v0.6a: Permanence</em></div>
         </footer>
     </span>
 

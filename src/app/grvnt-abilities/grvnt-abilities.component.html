@@ -6,7 +6,7 @@
         <span class="ability-layout">
             @for (stat of statsArray; track $index) {
                 <span class="ability">
-                    <div (click)="rerollStat(stat.name)" class="ability-name clickable">{{stat.name | uppercase}}</div>
+                    <div (click)="rerollStat(stat.name, true)" class="ability-name clickable">{{stat.name | uppercase}}</div>
                     <small class="ability-description">
                         {{stat.descrip}}
                         @if (showRolls && stat.rollsArray) {
@@ -35,7 +35,7 @@
         <span class="ability-layout">
             @for (vital of vitalsArray; track $index) {
                 <span class="ability">
-                    <div (click)="rerollVital(vital.name)" class="ability-name clickable">{{vital.name | uppercase}}</div>
+                    <div (click)="rerollVital(vital.name, true)" class="ability-name clickable">{{vital.name | uppercase}}</div>
                     <small class="ability-description">
                         {{vital.descrip}}
                         @if (showRolls && vital.rollsArray) {
