@@ -17,7 +17,7 @@ import { SQUAD_SIZE } from './assets/missions.constants';
 import { RulesReferenceComponent } from "./rules-reference/rules-reference.component";
 import { GasReferenceComponent } from "./gas-reference/gas-reference.component";
 import { ShockReferenceComponent } from './shock-reference/shock-reference.component';
-import { AbilitiesObj, ClassObj, IdentityObj, LeaderObj, ShitObj, SquadObj } from './grvnt-interfaces';
+import { AbilitiesObj, ClassObj, IdentityObj, LeaderGrvntSaveObj, LeaderObj, ShitObj, SquadObj } from './grvnt-interfaces';
 
 @Component({
   selector: 'app-root',
@@ -120,7 +120,7 @@ export class AppComponent implements OnInit {
   classObj: ClassObj = {} as ClassObj;
   shitObj: ShitObj = {} as ShitObj;
   squadObj: SquadObj = {} as SquadObj;
-  leaderObj: LeaderObj = {} as LeaderObj;
+  leaderAndAttachmentsArray: LeaderGrvntSaveObj[] = [];
 
   isEmbedded: boolean = false;
 
@@ -138,6 +138,8 @@ export class AppComponent implements OnInit {
     show: false,
     descrip: '',
   };
+
+  saveSquads: boolean = false;
 
   ngOnInit(): void {
     //shuffle jobs and choose the first on load
@@ -180,8 +182,8 @@ export class AppComponent implements OnInit {
     this.squadObj = squadObject;
   }
 
-  updateLeaderObj(leaderObject: LeaderObj) {
-    this.leaderObj = leaderObject;
+  updateLeaderObj(saveObject: LeaderGrvntSaveObj[]) {
+    this.leaderAndAttachmentsArray = saveObject;
   }
 
   toggleRolls() {
@@ -208,8 +210,9 @@ export class AppComponent implements OnInit {
   }
 
   rerollAllSquad() { 
-    this.leaderObj = {} as LeaderObj;
+    this.leaderAndAttachmentsArray = [];
     this.squadObj = {} as SquadObj;
+    
     this.rerollSquadSize();
     this.getNewSquad = !this.getNewSquad;
   }

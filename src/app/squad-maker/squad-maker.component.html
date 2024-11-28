@@ -1,8 +1,8 @@
 <div [ngClass]="{'no-attachments': attachmentsNum === 0}" class="leader-squad-layout">
     <app-leader-maker
         [rerollGrvnt]="rerollGrvnt"
-        [leaderSaveObj]="leaderSaveObj"
-        (leaderSaveObjEmitter)="emitLeaderSaveObj($event)"
+        [leaderSaveObj]="leaderAndAttachmentsArray[0]"
+        (leaderSaveObjEmitter)="emitLeaderSaveObj($event, 0)"
     >
     </app-leader-maker>
     
@@ -44,7 +44,12 @@
         </div>
         @for (item of [].constructor(attachmentsNum); track $index) {
             <div class="attachment-item">
-                <app-leader-maker [rerollGrvnt]="rerollGrvnt" [title]="'GRVNT'"></app-leader-maker>
+                <app-leader-maker
+                    [rerollGrvnt]="rerollGrvnt"
+                    [title]="'GRVNT'"
+                    [leaderSaveObj]="leaderAndAttachmentsArray[$index + 1]"
+                    (leaderSaveObjEmitter)="emitLeaderSaveObj($event, $index+1)"
+                ></app-leader-maker>
             </div>
         }
 

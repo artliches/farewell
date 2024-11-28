@@ -164,5 +164,11 @@ export interface LeaderObj {
       firearmsObj: {descrip: string, currIndex: number, limitNum: number},
       sidearmsObj: {descrip: string, currIndex: number, limitNum: number},
       warScrollObj: {descrip: string, currIndex: number}[],
-      shockObj: {value: number, effect: string}
+      shockObj: {value: number, effect: string},
+      scarObj: {descrip: string, original: string},
+};
+
+export interface LeaderGrvntSaveObj {
+    grvntInfo: LeaderObj,
+    arrayIndex: number,
 };

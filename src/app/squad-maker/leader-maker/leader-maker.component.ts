@@ -3,7 +3,7 @@ import { ARMOR, FIREARMS, SIDEARMS, NICKNAMES, EMBEDDED_NAMES, WAR_SCROLLS, SCAR
 import { LEADERS } from '../../assets/squads.constants';
 import { RandomNumberService } from '../../random-number.service';
 import { CommonModule } from '@angular/common';
-import { LeaderObj } from '../../grvnt-interfaces';
+import { LeaderGrvntSaveObj, LeaderObj } from '../../grvnt-interfaces';
 
 @Component({
   selector: 'app-leader-maker',
@@ -19,7 +19,7 @@ export class LeaderMakerComponent implements OnInit, OnChanges {
 
   @Input() title: string = 'SQUAD LEADER';
   @Input() rerollGrvnt: boolean = false;
-  @Input() leaderSaveObj: LeaderObj = {} as LeaderObj;
+  @Input() leaderSaveObj: LeaderGrvntSaveObj = {} as LeaderGrvntSaveObj;
   @Output() leaderSaveObjEmitter: EventEmitter<any> = new EventEmitter();
 
   leaderObj: {
@@ -103,21 +103,14 @@ export class LeaderMakerComponent implements OnInit, OnChanges {
   };
 
   ngOnInit(): void {
-    if (Object.keys(this.leaderSaveObj).length === 0) {
-      this.random.shuffleArray(LEADERS);
-      this.orderedArmorTable = JSON.parse(JSON.stringify(ARMOR));
-      this.orderedFirearmsTable = JSON.parse(JSON.stringify(FIREARMS));
-      this.orderedSidearmsTable = JSON.parse(JSON.stringify(SIDEARMS));
-      this.random.shuffleArray(NICKNAMES);
-      for (let i = 0; i < EMBEDDED_NAMES.length; i++) {
-        this.random.shuffleArray(EMBEDDED_NAMES[i]);
-      }
-      this.random.shuffleArray(WAR_SCROLLS);
-      this.random.shuffleArray(SCARS);
+    if (!this.leaderSaveObj) {
+      this.shuffleGrvntTables();
       //get a squad leader
       this.rerollSquadLeader();
     } else {
-      this.leaderObj = this.leaderSaveObj.leaderObj ? this.leaderSaveObj.leaderObj : {
+      const data: LeaderObj = this.leaderSaveObj.grvntInfo;
+
+      this.leaderObj = data.leaderObj ? data.leaderObj : {
         name: '',
         specialitiesObj: {
           specialities: [],
@@ -128,47 +121,64 @@ export class LeaderMakerComponent implements OnInit, OnChanges {
         stats: [],
         startingShit: []
       };
-      this.ammoObj = this.leaderSaveObj.ammoObj ? this.leaderSaveObj.ammoObj :{
+      this.ammoObj = data.ammoObj ? data.ammoObj :{
         value: -1,
         die: ''
       };
-      this.hpObj = this.leaderSaveObj.hpObj ? this.leaderSaveObj.hpObj :{
+      this.hpObj = data.hpObj ? data.hpObj :{
         value: -1,
         die: ''
       };
-      this.embeddedNameObj = this.leaderSaveObj.embeddedNameObj ? this.leaderSaveObj.embeddedNameObj : {
+      this.embeddedNameObj = data.embeddedNameObj ? data.embeddedNameObj : {
         first: '',
         middle: '',
         last: ''
       };
-      this.nickname = this.leaderSaveObj.nickname ? this.leaderSaveObj.nickname : '';
-      this.armorWithHelmet = this.leaderSaveObj.armorWithHelmet ? this.leaderSaveObj.armorWithHelmet : false;
-      this.armorObj = this.leaderSaveObj.armorObj ? this.leaderSaveObj.armorObj : {
+      this.nickname = data.nickname ? data.nickname : '';
+      this.armorWithHelmet = data.armorWithHelmet ? data.armorWithHelmet : false;
+      this.armorObj = data.armorObj ? data.armorObj : {
         descrip: '',
         currIndex: -1,
         limitNum: -1,
       };
-      this.firearmsObj = this.leaderSaveObj.firearmsObj ? this.leaderSaveObj.firearmsObj : {
+      this.firearmsObj = data.firearmsObj ? data.firearmsObj : {
         descrip: '',
         currIndex: -1,
         limitNum: -1,
       };
-      this.sidearmsObj = this.leaderSaveObj.sidearmsObj ? this.leaderSaveObj.sidearmsObj : {
+      this.sidearmsObj = data.sidearmsObj ? data.sidearmsObj : {
         descrip: '',
         currIndex: -1,
         limitNum: -1,
       };
-      this.warScrollObj = this.leaderSaveObj.warScrollObj ? this.leaderSaveObj.warScrollObj : [];
-      this.shockObj = this.leaderSaveObj.shockObj ? this.leaderSaveObj.shockObj : {
+      this.warScrollObj = data.warScrollObj ? data.warScrollObj : [];
+      this.shockObj = data.shockObj ? data.shockObj : {
         value: 0,
         effect: ''
       };
+      this.scarObj = data.scarObj ? data.scarObj : {
+        descrip: '',
+        original: ''
+      };
     }
+  }
 
+  private shuffleGrvntTables() {
+    this.random.shuffleArray(LEADERS);
+    this.orderedArmorTable = JSON.parse(JSON.stringify(ARMOR));
+    this.orderedFirearmsTable = JSON.parse(JSON.stringify(FIREARMS));
+    this.orderedSidearmsTable = JSON.parse(JSON.stringify(SIDEARMS));
+    this.random.shuffleArray(NICKNAMES);
+    for (let i = 0; i < EMBEDDED_NAMES.length; i++) {
+      this.random.shuffleArray(EMBEDDED_NAMES[i]);
+    }
+    this.random.shuffleArray(WAR_SCROLLS);
+    this.random.shuffleArray(SCARS);
   }
 
   ngOnChanges(changes: SimpleChanges): void {
       if (changes['rerollGrvnt'] && !changes['rerollGrvnt'].firstChange) {
+        this.shuffleGrvntTables();
         this.rerollSquadLeader();
       }
   }
@@ -226,11 +236,10 @@ export class LeaderMakerComponent implements OnInit, OnChanges {
     this.rerollScars();
     this.getInitialShock();
 
-    this.saveAndEmitLeaderObj();
-  }
+   this.saveAndEmitLeaderObj();  }
 
   private saveAndEmitLeaderObj() {
-    this.leaderSaveObj = {
+    const saveObject: LeaderObj = {
       leaderObj: this.leaderObj,
       ammoObj: this.ammoObj,
       hpObj: this.hpObj,
@@ -242,9 +251,10 @@ export class LeaderMakerComponent implements OnInit, OnChanges {
       sidearmsObj: this.sidearmsObj,
       warScrollObj: this.warScrollObj,
       shockObj: this.shockObj,
-    };
+      scarObj: this.scarObj,
+    }
 
-    this.leaderSaveObjEmitter.emit(this.leaderSaveObj);
+    this.leaderSaveObjEmitter.emit(saveObject);
   }
 
   private getInitialArmor() {
@@ -254,8 +264,7 @@ export class LeaderMakerComponent implements OnInit, OnChanges {
 
       this.rerollArmor(this.armorLimitNum);
     }
-    this.saveAndEmitLeaderObj();
-  }
+   this.saveAndEmitLeaderObj();  }
 
   private getInitialFirearm() {
     if (this.leaderObj.startingShit.find(shit => shit.firearms)) {
@@ -272,8 +281,7 @@ export class LeaderMakerComponent implements OnInit, OnChanges {
         this.rerollFireArms(this.firearmLimitNum);
       }
     }
-    this.saveAndEmitLeaderObj();
-  }
+   this.saveAndEmitLeaderObj();  }
 
   private getInitialSidearm() {
     const sidearm = this.leaderObj.startingShit.find(shit => shit.sidearm);
@@ -290,8 +298,7 @@ export class LeaderMakerComponent implements OnInit, OnChanges {
         this.rerollSidearms(sidearm.sidearm);
       }
     }
-    this.saveAndEmitLeaderObj();
-  }
+   this.saveAndEmitLeaderObj();  }
 
   private getInitialWarscrolls() {
     const warscrolls = this.leaderObj.startingShit.find(shit => shit.warscroll);
@@ -302,24 +309,21 @@ export class LeaderMakerComponent implements OnInit, OnChanges {
         loopNum++;
       } while (loopNum !== warscrolls.warscroll);
     }
-    this.saveAndEmitLeaderObj();
-  }
+   this.saveAndEmitLeaderObj();  }
 
   private getInitialShock() {
     this.shockObj.value = this.random.getRandomNumber(1, 2);
     this.shockObj.effect = this.shockObj.value === 1 ?
       `<strong class="underline">THE SHAKES.</strong> Always have last initiative` :
       `<strong class="underline">PRIMAL FEAR.</strong> Next <strong>SHOCK</strong> roll is d6`;
-    this.saveAndEmitLeaderObj();
-  }
+   this.saveAndEmitLeaderObj();  }
 
   rerollShock() {
     this.shockObj.value = this.shockObj.value === 2 ? 1 : 2;
     this.shockObj.effect = this.shockObj.value === 1 ?
       `<strong class="underline">THE SHAKES.</strong> Always have last initiative` :
       `<strong class="underline">PRIMAL FEAR.</strong> Next <strong>SHOCK</strong> roll is d6`;
-    this.saveAndEmitLeaderObj();
-  }
+   this.saveAndEmitLeaderObj();  }
 
   rerollScars() {
     let newIndex = SCARS.indexOf(this.scarObj.original);
@@ -493,8 +497,7 @@ export class LeaderMakerComponent implements OnInit, OnChanges {
       this.nickname = NICKNAMES[newIndex];
     }
 
-    this.saveAndEmitLeaderObj();
-  }
+   this.saveAndEmitLeaderObj();  }
 
   rerollSidearms(modNumber: number) {
     setTimeout(() => {
@@ -516,8 +519,7 @@ export class LeaderMakerComponent implements OnInit, OnChanges {
         currIndex: newIndex,
         limitNum: modNumber,
       };
-      this.saveAndEmitLeaderObj();
-    }, 10);
+     this.saveAndEmitLeaderObj();    }, 10);
   }
 
   rerollFireArms(modNumber: number) {
@@ -538,8 +540,7 @@ export class LeaderMakerComponent implements OnInit, OnChanges {
         currIndex: newIndex,
         limitNum: modNumber,
       };
-      this.saveAndEmitLeaderObj();
-    }, 10);
+     this.saveAndEmitLeaderObj();    }, 10);
   }
 
   rerollArmor(modNumber: number) {
@@ -563,8 +564,7 @@ export class LeaderMakerComponent implements OnInit, OnChanges {
       };
   
       this.armorWithHelmet = this.armorObj.descrip.includes('helmet');
-      this.saveAndEmitLeaderObj();
-    }, 10);
+     this.saveAndEmitLeaderObj();    }, 10);
   }
 
   rerollHP() {
@@ -575,8 +575,7 @@ export class LeaderMakerComponent implements OnInit, OnChanges {
       value: roll,
       die: `(d${hpInfo!.mod})`
     };
-    this.saveAndEmitLeaderObj();
-  }
+   this.saveAndEmitLeaderObj();  }
 
   rerollAmmo() {
     if (!this.leaderObj.stats.some(stat => stat.name === 'ammo')) {
@@ -584,8 +583,7 @@ export class LeaderMakerComponent implements OnInit, OnChanges {
         value: -1,
         die: ''
       };
-      this.saveAndEmitLeaderObj();
-      return;
+     this.saveAndEmitLeaderObj();      return;
     }
 
     const ammoInfo = this.leaderObj.stats.find(stat => stat.name === 'ammo');
@@ -595,8 +593,7 @@ export class LeaderMakerComponent implements OnInit, OnChanges {
       value: roll,
       die: `(d${ammoInfo!.mod})`
     };
-    this.saveAndEmitLeaderObj();
-  }
+   this.saveAndEmitLeaderObj();  }
 
   rerollSpecialities() {
     if (this.leaderObj.specialitiesObj.specialities.length > 0) {
@@ -630,8 +627,7 @@ export class LeaderMakerComponent implements OnInit, OnChanges {
           this.leaderObj.specialitiesObj.original.replace(stringToReplace, this.random.getRandomNumber(1, Number(dieSize)).toString());
       }
     }
-    this.saveAndEmitLeaderObj();
-  }
+   this.saveAndEmitLeaderObj();  }
 
   private parseAndReplaceNumberString(descrip: string): string {
     // parse and replace

@@ -1,11 +1,11 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LeaderMakerComponent } from "./leader-maker/leader-maker.component";
 import { RandomNumberService } from '../random-number.service';
 import { SQUADS } from '../assets/squads.constants';
 import { ARMOR, FIREARMS, SIDEARMS, WAR_SCROLLS } from '../assets/grvnts.constants';
 import { MachineMakerComponent } from "./machine-maker/machine-maker.component";
-import { LeaderObj, SquadObj } from '../grvnt-interfaces';
+import { LeaderGrvntSaveObj, LeaderObj, SquadObj } from '../grvnt-interfaces';
 
 @Component({
   selector: 'app-squad-maker',
@@ -14,12 +14,12 @@ import { LeaderObj, SquadObj } from '../grvnt-interfaces';
   templateUrl: './squad-maker.component.html',
   styleUrl: './squad-maker.component.scss'
 })
-export class SquadMakerComponent implements OnInit, OnChanges {
+export class SquadMakerComponent implements OnInit, OnChanges, OnDestroy {
     constructor(
       private random: RandomNumberService
     ) {}
     @Input() squadSaveObj: SquadObj = {} as SquadObj;
-    @Input() leaderSaveObj: LeaderObj = {} as LeaderObj;
+    @Input() leaderAndAttachmentsArray: LeaderGrvntSaveObj[] = [];
     @Input() enemySize: string = '';
     @Input() rerollGrvnt: boolean = false;
     @Output() squadSaveObjEmitter: EventEmitter<any> = new EventEmitter();
@@ -52,7 +52,12 @@ export class SquadMakerComponent implements OnInit, OnChanges {
     armor: string = '';
     hasHelmet: boolean = false;
 
+    grvntsSaveArray: LeaderGrvntSaveObj[] = [];
+
     ngOnInit(): void {
+      if (this.leaderAndAttachmentsArray.length > 0) {
+        this.grvntsSaveArray = this.leaderAndAttachmentsArray;
+      }
       if (Object.keys(this.squadSaveObj).length === 0) {
         this.getSquadAndAttachments();
       } else {
@@ -91,6 +96,10 @@ export class SquadMakerComponent implements OnInit, OnChanges {
       }
     }
 
+    ngOnDestroy(): void {
+      this.leaderSaveObjEmitter.emit(this.grvntsSaveArray);
+    }
+
   private getSquadAndAttachments() {
     this.random.shuffleArray(SQUADS);
     switch (true) {
@@ -118,6 +127,7 @@ export class SquadMakerComponent implements OnInit, OnChanges {
         break;
       }
     }
+    this.saveAndEmitSquadSaveObj();
   }
 
     getInitialSquad(size: number) {
@@ -294,7 +304,16 @@ export class SquadMakerComponent implements OnInit, OnChanges {
     this.squadSaveObjEmitter.emit(this.squadSaveObj);
   }
 
-  emitLeaderSaveObj(leaderObject: LeaderObj) {
-    this.leaderSaveObjEmitter.emit(leaderObject);
+  emitLeaderSaveObj(leaderObject: LeaderObj, arrayIndex: number) {
+    const saveObject: LeaderGrvntSaveObj = {
+      grvntInfo: leaderObject,
+      arrayIndex: arrayIndex
+    };
+
+    if (this.grvntsSaveArray[arrayIndex]) {
+      this.grvntsSaveArray[arrayIndex] = saveObject;
+    } else {
+      this.grvntsSaveArray.push(saveObject);
+    }
   }
 }
