@@ -195,6 +195,10 @@ export class AppComponent implements OnInit {
   rerollAll() {
     this.numPromotions = 0;
     this.clearPromo = !this.clearPromo;
+    this.abilitiesObj = {} as AbilitiesObj;
+    this.identityObj = {} as IdentityObj;
+    this.classObj = {} as ClassObj;
+    this.shitObj = {} as ShitObj;
     this.getNewJob();
     this.getNewAll = !this.getNewAll;
   }

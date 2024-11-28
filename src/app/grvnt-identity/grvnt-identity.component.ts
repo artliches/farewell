@@ -62,6 +62,8 @@ export class GrvntIdentityComponent implements OnInit, OnChanges {
         }
       }
     if (changes['shuffleAll'] && !changes['shuffleAll'].firstChange) {
+      this.identityObj = {} as IdentityObj;
+      this.createArrays();
       this.rerollAll(true);
     }
   }
