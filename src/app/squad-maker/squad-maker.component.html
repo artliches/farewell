@@ -57,7 +57,12 @@
             <div class="machine-attachment-layout">
                 @for (item of [].constructor(machineNum); track $index) {
                     <div class="machine-attachment-item">
-                        <app-machine-maker [getNewMachines]="rerollGrvnt"></app-machine-maker>
+                        <app-machine-maker
+                            [getNewMachines]="rerollGrvnt"
+                            [machineSaveObj]="machineArray[$index]"
+                            (machineSaveObjEmitter)="saveMachineObjEmitted($event, $index)"
+                        >
+                        </app-machine-maker>
                     </div>
                 }
             </div>

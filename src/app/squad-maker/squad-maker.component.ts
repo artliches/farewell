@@ -5,7 +5,7 @@ import { RandomNumberService } from '../random-number.service';
 import { SQUADS } from '../assets/squads.constants';
 import { ARMOR, FIREARMS, SIDEARMS, WAR_SCROLLS } from '../assets/grvnts.constants';
 import { MachineMakerComponent } from "./machine-maker/machine-maker.component";
-import { LeaderGrvntSaveObj, LeaderObj, SquadObj } from '../grvnt-interfaces';
+import { LeaderGrvntSaveObj, LeaderObj, MachineObj, MachineSaveObj, SquadObj } from '../grvnt-interfaces';
 
 @Component({
   selector: 'app-squad-maker',
@@ -20,10 +20,12 @@ export class SquadMakerComponent implements OnInit, OnChanges, OnDestroy {
     ) {}
     @Input() squadSaveObj: SquadObj = {} as SquadObj;
     @Input() leaderAndAttachmentsArray: LeaderGrvntSaveObj[] = [];
+    @Input() machineArray: MachineSaveObj[] = [];
     @Input() enemySize: string = '';
     @Input() rerollGrvnt: boolean = false;
     @Output() squadSaveObjEmitter: EventEmitter<any> = new EventEmitter();
     @Output() leaderSaveObjEmitter: EventEmitter<any> = new EventEmitter();
+    @Output() machineSaveObjEmitter: EventEmitter<any> = new EventEmitter();
 
     attachmentsNum: number = 0;
     machineNum: number = 0;
@@ -53,10 +55,14 @@ export class SquadMakerComponent implements OnInit, OnChanges, OnDestroy {
     hasHelmet: boolean = false;
 
     grvntsSaveArray: LeaderGrvntSaveObj[] = [];
+    machineSaveArray: MachineSaveObj[] = [];
 
     ngOnInit(): void {
       if (this.leaderAndAttachmentsArray.length > 0) {
         this.grvntsSaveArray = this.leaderAndAttachmentsArray;
+      }
+      if (this.machineArray.length > 0) {
+        this.machineSaveArray = this.machineArray;
       }
       if (Object.keys(this.squadSaveObj).length === 0) {
         this.getSquadAndAttachments();
@@ -98,6 +104,7 @@ export class SquadMakerComponent implements OnInit, OnChanges, OnDestroy {
 
     ngOnDestroy(): void {
       this.leaderSaveObjEmitter.emit(this.grvntsSaveArray);
+      this.machineSaveObjEmitter.emit(this.machineSaveArray);
     }
 
   private getSquadAndAttachments() {
@@ -314,6 +321,19 @@ export class SquadMakerComponent implements OnInit, OnChanges, OnDestroy {
       this.grvntsSaveArray[arrayIndex] = saveObject;
     } else {
       this.grvntsSaveArray.push(saveObject);
+    }
+  }
+
+  saveMachineObjEmitted(machineToSave: MachineObj, arrayIndex: number) {
+    const saveObject: MachineSaveObj = {
+      machineInfo: machineToSave,
+      arrayIndex: arrayIndex,
+    };
+
+    if (this.machineSaveArray[arrayIndex]) {
+      this.machineSaveArray[arrayIndex] = saveObject;
+    } else {
+      this.machineSaveArray.push(saveObject);
     }
   }
 }

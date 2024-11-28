@@ -17,7 +17,7 @@ import { SQUAD_SIZE } from './assets/missions.constants';
 import { RulesReferenceComponent } from "./rules-reference/rules-reference.component";
 import { GasReferenceComponent } from "./gas-reference/gas-reference.component";
 import { ShockReferenceComponent } from './shock-reference/shock-reference.component';
-import { AbilitiesObj, ClassObj, IdentityObj, LeaderGrvntSaveObj, LeaderObj, ShitObj, SquadObj } from './grvnt-interfaces';
+import { AbilitiesObj, ClassObj, IdentityObj, LeaderGrvntSaveObj, LeaderObj, MachineSaveObj, ShitObj, SquadObj } from './grvnt-interfaces';
 
 @Component({
   selector: 'app-root',
@@ -121,6 +121,7 @@ export class AppComponent implements OnInit {
   shitObj: ShitObj = {} as ShitObj;
   squadObj: SquadObj = {} as SquadObj;
   leaderAndAttachmentsArray: LeaderGrvntSaveObj[] = [];
+  machineSaveArray: MachineSaveObj[] = [];
 
   isEmbedded: boolean = false;
 
@@ -186,6 +187,10 @@ export class AppComponent implements OnInit {
     this.leaderAndAttachmentsArray = saveObject;
   }
 
+  updateMachineObj(saveObject: MachineSaveObj[]) {
+    this.machineSaveArray = saveObject;
+  }
+
   toggleRolls() {
     this.showRolls = !this.showRolls;
   }
@@ -212,6 +217,7 @@ export class AppComponent implements OnInit {
   rerollAllSquad() { 
     this.leaderAndAttachmentsArray = [];
     this.squadObj = {} as SquadObj;
+    this.machineSaveArray = [];
     
     this.rerollSquadSize();
     this.getNewSquad = !this.getNewSquad;

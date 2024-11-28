@@ -1,6 +1,7 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { RandomNumberService } from '../../random-number.service';
 import { MACHINES } from '../../assets/squads.constants';
+import { MachineObj, MachineSaveObj } from '../../grvnt-interfaces';
 
 @Component({
   selector: 'app-machine-maker',
@@ -15,8 +16,10 @@ export class MachineMakerComponent implements OnInit, OnChanges {
   ) {}
 
   @Input() getNewMachines: boolean = false;
+  @Input() machineSaveObj: MachineSaveObj = {} as MachineSaveObj;
+  @Output() machineSaveObjEmitter: EventEmitter<any> = new EventEmitter();
 
-  machineObj: {name: string, hp: number | string, morale: number | string, weapon: string, armor: string, special: string} = {
+  machineObj: MachineObj = {
     name: '',
     hp: 0,
     morale: '-',
@@ -26,12 +29,17 @@ export class MachineMakerComponent implements OnInit, OnChanges {
   };
 
   ngOnInit(): void {
-      this.random.shuffleArray(MACHINES);
-      this.rerollMachine();
+      if (!this.machineSaveObj) {
+        this.random.shuffleArray(MACHINES);
+        this.rerollMachine();
+      } else {
+        this.machineObj = this.machineSaveObj.machineInfo;
+      }
+
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-      if (!changes['getNewMachines'].firstChange) {
+      if (changes['getNewMachines'] && !changes['getNewMachines'].firstChange) {
         this.rerollMachine();
       }
   }
@@ -48,5 +56,7 @@ export class MachineMakerComponent implements OnInit, OnChanges {
     }
 
     this.machineObj = MACHINES[newIndex];
+
+    this.machineSaveObjEmitter.emit(this.machineObj);
   }
 }

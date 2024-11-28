@@ -123,10 +123,12 @@
                 <app-squad-maker
                     [squadSaveObj]="squadObj"
                     [leaderAndAttachmentsArray]="leaderAndAttachmentsArray"
+                    [machineArray]="machineSaveArray"
                     [enemySize]="squadSize"
                     [rerollGrvnt]="getNewSquad"
                     (squadSaveObjEmitter)="updateSquadObj($event)"
                     (leaderSaveObjEmitter)="updateLeaderObj($event)"
+                    (machineSaveObjEmitter)="updateMachineObj($event)"
                 ></app-squad-maker>
             </section>
         } @else if (sectionToShow === 'rules') {
@@ -166,7 +168,7 @@
             </div>
             <div>MÖRK BORG is copyright Ockult Örtmästare Games and Stockholm Kartell.</div>
             <div>Farewell to Arms REDUX is copyright 2023 rivethead games. Web app by codeLiches</div>
-            <div><em>v0.62a: Permanence</em></div>
+            <div><em>v0.63a: Permanence</em></div>
         </footer>
     </span>
 

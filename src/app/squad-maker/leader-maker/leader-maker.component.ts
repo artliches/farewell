@@ -163,8 +163,10 @@ export class LeaderMakerComponent implements OnInit, OnChanges {
     }
   }
 
-  private shuffleGrvntTables() {
-    this.random.shuffleArray(LEADERS);
+  private shuffleGrvntTables(keepLeaders?: boolean) {
+    if (!keepLeaders) {
+      this.random.shuffleArray(LEADERS);
+    }
     this.orderedArmorTable = JSON.parse(JSON.stringify(ARMOR));
     this.orderedFirearmsTable = JSON.parse(JSON.stringify(FIREARMS));
     this.orderedSidearmsTable = JSON.parse(JSON.stringify(SIDEARMS));
@@ -184,6 +186,7 @@ export class LeaderMakerComponent implements OnInit, OnChanges {
   }
 
   rerollSquadLeader() {
+    this.shuffleGrvntTables(true);
     this.armorObj = {
       descrip: '',
       currIndex: -1,

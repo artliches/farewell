@@ -172,3 +172,16 @@ export interface LeaderGrvntSaveObj {
     grvntInfo: LeaderObj,
     arrayIndex: number,
 };
+
+export interface MachineObj {
+    name: string,
+    hp: number | string,
+    morale: number | string,
+    weapon: string,
+    armor: string,
+    special: string
+};
+export interface MachineSaveObj {
+    machineInfo: MachineObj,
+    arrayIndex: number,
+};
