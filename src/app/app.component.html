@@ -93,9 +93,31 @@
                         </span>
                     </span>
                 </span>
-                <app-mission-brief [getNewMission]="getNewMission" class="brief"></app-mission-brief>
-                <app-mission-advance [getNewMission]="getNewMission" class="advance"></app-mission-advance>
-                <app-mission-rewards class="rewards"></app-mission-rewards>
+                <app-mission-brief
+                    [getNewMission]="getNewMission"
+                    [briefSaveObj]="missionBriefSaveObj"
+                    (briefSaveObjEmitter)="updateMissionBriefObj($event)"
+                    class="brief">
+                </app-mission-brief>
+                <app-mission-advance
+                    [squadSaveObj]="squadObj"
+                    [leaderAndAttachmentsArray]="leaderAndAttachmentsArray"
+                    [machineArray]="machineSaveArray"
+                    [enemySize]="squadSize"
+                    [situationSaveObj]="missionAdvanceSaveObj"
+                    [getNewMission]="getNewMission"
+                    (leaderSaveObjEmitter)="updateLeaderObj($event)"
+                    (situationSaveObjEmitter)="updateSituationObj($event)"
+                    (squadSaveObjEmitter)="updateSquadObj($event)"
+                    (machineSaveObjEmitter)="updateMachineObj($event)"
+                    class="advance">
+                </app-mission-advance>
+                <app-mission-rewards
+                    class="rewards"
+                    [rewardsSaveObj]="rewardsSaveObj"
+                    (rewardsSaveObjEmitter)="updateRewards($event)"
+                >
+                </app-mission-rewards>
             </section>
         } @else if (sectionToShow === 'squads') {
             <header>
@@ -168,7 +190,7 @@
             </div>
             <div>MÖRK BORG is copyright Ockult Örtmästare Games and Stockholm Kartell.</div>
             <div>Farewell to Arms REDUX is copyright 2023 rivethead games. Web app by codeLiches</div>
-            <div><em>v0.63a: Permanence</em></div>
+            <div><em>v0.7: Permanence</em></div>
         </footer>
     </span>
 

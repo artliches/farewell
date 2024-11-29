@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { RandomNumberService } from '../random-number.service';
 import { REWARDS } from '../assets/missions.constants';
+import { RewardsObj } from '../grvnt-interfaces';
 
 @Component({
   selector: 'app-mission-rewards',
@@ -9,20 +10,32 @@ import { REWARDS } from '../assets/missions.constants';
   templateUrl: './mission-rewards.component.html',
   styleUrl: './mission-rewards.component.scss'
 })
-export class MissionRewardsComponent implements OnInit {
+export class MissionRewardsComponent implements OnInit, OnDestroy {
   constructor(
     private random: RandomNumberService
   ) {}
 
-  rewardObj: {descrip: string, original: string} = {
+  @Input() rewardsSaveObj: RewardsObj = {} as RewardsObj;
+  @Output() rewardsSaveObjEmitter: EventEmitter<any> = new EventEmitter();
+
+  rewardsObjToEmit: RewardsObj = {} as RewardsObj
+  rewardObj: RewardsObj = {
     descrip: '',
     original: ''
   };
 
   ngOnInit(): void {
+    if (Object.keys(this.rewardsSaveObj).length > 0) {
+      this.rewardObj = this.rewardsSaveObj;
+      this.rewardsObjToEmit = this.rewardsSaveObj;
+    } else {
       this.random.shuffleArray(REWARDS);
-
       this.rerollRewards();
+    }
+  }
+
+  ngOnDestroy(): void {
+      this.rewardsSaveObjEmitter.emit(this.rewardsObjToEmit);
   }
 
   rerollRewards() {
@@ -51,5 +64,11 @@ export class MissionRewardsComponent implements OnInit {
       this.rewardObj.descrip = this.rewardObj.descrip.replace(
         stringToReplace, this.random.rollMultipleDie(numDieToRoll, dieSize).toString());
     }
+
+    this.saveRewardsObj();
+  }
+
+  private saveRewardsObj() {
+    this.rewardsObjToEmit = this.rewardObj;
   }
 }

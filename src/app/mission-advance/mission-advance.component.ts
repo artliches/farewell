@@ -1,8 +1,9 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
 import { RandomNumberService } from '../random-number.service';
 import { BUILDINGS, DEFENSE, SQUAD_LEADER, SQUAD_SIZE, TIME, WEATHER } from '../assets/missions.constants';
 import { CommonModule } from '@angular/common';
 import { SquadMakerComponent } from "../squad-maker/squad-maker.component";
+import { SquadObj, LeaderGrvntSaveObj, MachineSaveObj, SituationObj } from '../grvnt-interfaces';
 
 @Component({
   selector: 'app-mission-advance',
@@ -11,12 +12,23 @@ import { SquadMakerComponent } from "../squad-maker/squad-maker.component";
   templateUrl: './mission-advance.component.html',
   styleUrl: './mission-advance.component.scss'
 })
-export class MissionAdvanceComponent implements OnInit, OnChanges {
+export class MissionAdvanceComponent implements OnInit, OnChanges, OnDestroy {
   constructor(
     private random: RandomNumberService
   ) {}
 
   @Input() getNewMission: boolean = false;
+  @Input() situationSaveObj: SituationObj = {} as SituationObj;
+  @Output() situationSaveObjEmitter: EventEmitter<any> = new EventEmitter();
+
+  //squad-maker data
+  @Input() squadSaveObj: SquadObj = {} as SquadObj;
+  @Input() leaderAndAttachmentsArray: LeaderGrvntSaveObj[] = [];
+  @Input() machineArray: MachineSaveObj[] = [];
+  @Input() enemySize: string = '';
+  @Output() squadSaveObjEmitter: EventEmitter<any> = new EventEmitter();
+  @Output() leaderSaveObjEmitter: EventEmitter<any> = new EventEmitter();
+  @Output() machineSaveObjEmitter: EventEmitter<any> = new EventEmitter();
 
   arrayIndexObj = {
     building: BUILDINGS,
@@ -25,46 +37,57 @@ export class MissionAdvanceComponent implements OnInit, OnChanges {
     weather: WEATHER
   }; 
 
-  situationObj: {
-    building: string,
-    defense: string,
-    time: string,
-    weather: string,
-  } = {
+  situationObj: SituationObj = {
     building: '',
     defense: '',
     time: '',
     weather: ''
   };
 
-  squadSize: string = '';
+  situationObjToEmit: SituationObj = {} as SituationObj;
+  squadSaveObjToEmit: SquadObj = {} as SquadObj;
+  leaderGrvntObjToEmit: LeaderGrvntSaveObj[] = [];
+  machineObjToEmit: MachineSaveObj[] = [];
 
   ngOnInit(): void {
+    if (Object.keys(this.situationSaveObj).length > 0) {
+      this.situationObj = this.situationSaveObj;
+      this.situationObjToEmit = this.situationSaveObj;
+    } if(Object.keys(this.squadSaveObj).length > 0) {
+      this.squadSaveObjToEmit = this.squadSaveObj;
+    } else {
       this.shuffleArrays();
       this.rerollAllLocationDetails();
-      this.rerollSquadSize();
+    }
   }
 
   ngOnChanges(changes: SimpleChanges): void {
       if (!changes['getNewMission'].firstChange) {
         this.shuffleArrays();
         this.rerollAllLocationDetails();
-        this.rerollSquadSize();
       }
   }
 
+  ngOnDestroy(): void {
+      this.situationSaveObjEmitter.emit(this.situationObjToEmit);
+      this.squadSaveObjEmitter.emit(this.squadSaveObjToEmit);
+      this.leaderSaveObjEmitter.emit(this.leaderGrvntObjToEmit);
+      this.machineSaveObjEmitter.emit(this.machineObjToEmit);
+  }
+
   rerollSquadSize() {
-    let newIndex = SQUAD_SIZE.indexOf(this.squadSize);
+    let newIndex = SQUAD_SIZE.indexOf(this.enemySize);
     if (newIndex + 1 === SQUAD_SIZE.length) {
       newIndex = 0;
     } else {
       do {
         newIndex += 1;
       }
-      while (SQUAD_SIZE[newIndex] === this.squadSize);
+      while (SQUAD_SIZE[newIndex] === this.enemySize);
     }
 
-    this.squadSize = SQUAD_SIZE[newIndex];
+    this.enemySize = SQUAD_SIZE[newIndex];
+    this.leaderAndAttachmentsArray = [];
   }
 
   rerollAllLocationDetails() {
@@ -93,6 +116,8 @@ export class MissionAdvanceComponent implements OnInit, OnChanges {
     }
 
     this.situationObj[keyIndex] = arrayToRoll[newIndex];
+
+    this.situationObjToEmit = this.situationObj;
   }
 
   private shuffleArrays() {
@@ -101,5 +126,17 @@ export class MissionAdvanceComponent implements OnInit, OnChanges {
     this.random.shuffleArray(TIME);
     this.random.shuffleArray(WEATHER);
     this.random.shuffleArray(SQUAD_SIZE);
+  }
+
+  emitSquadObj(saveObject: SquadObj) {
+    this.squadSaveObjToEmit = saveObject;
+  }
+
+  emitLeaderObj(saveObject: LeaderGrvntSaveObj[]) {
+    this.leaderGrvntObjToEmit = saveObject;
+  }
+
+  emitMachineObj(event: any) {
+    this.machineObjToEmit = event;
   }
 }

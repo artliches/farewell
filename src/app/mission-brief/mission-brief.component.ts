@@ -1,6 +1,7 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
 import { RandomNumberService } from '../random-number.service';
 import { BEGGARS_INTROS, BEGGARS_TWISTS, COMBATANT_OBJECTIVE, FAITHSPIRE_INTROS, FAITHSPIRE_TWISTS, LOCATION, MAD_INTROS, MAD_TWISTS, MATERIAL_OBJECTIVE, NONCOMBAT_OBJECTIVE, STRUCTURE_OBJECTIVE, TIME, TIME_LIMIT, WHITE_INTRO, WHITE_TWISTS } from '../assets/missions.constants';
+import { BriefSaveObj } from '../grvnt-interfaces';
 
 @Component({
   selector: 'app-mission-brief',
@@ -10,13 +11,16 @@ import { BEGGARS_INTROS, BEGGARS_TWISTS, COMBATANT_OBJECTIVE, FAITHSPIRE_INTROS,
   styleUrl: './mission-brief.component.scss'
 })
 
-export class MissionBriefComponent implements OnInit, OnChanges {
+export class MissionBriefComponent implements OnInit, OnChanges, OnDestroy {
   constructor(
     private random: RandomNumberService
   ) {}
 
   @Input() getNewMission: boolean = false;
+  @Input() briefSaveObj: BriefSaveObj = {} as BriefSaveObj;
+  @Output() briefSaveObjEmitter: EventEmitter<any> = new EventEmitter();
 
+  briefObjToEmit: BriefSaveObj = {} as BriefSaveObj;
   briefObj: {intro: string, location: string, time: string} = {
     intro: '',
     location: '',
@@ -33,13 +37,31 @@ export class MissionBriefComponent implements OnInit, OnChanges {
   };
 
   ngOnInit(): void {
-    this.rerollAll();
+    if (Object.keys(this.briefSaveObj).length > 0) {
+      this.briefObj = this.briefSaveObj.briefObj ? this.briefSaveObj.briefObj : {
+        intro: '',
+        location: '',
+        time: '',};
+      this.missionObjectives = this.briefSaveObj.missionObjectives ? this.briefSaveObj.missionObjectives : [];
+      this.twists = this.briefSaveObj.twists ? this.briefSaveObj.twists : {
+        type: '',
+        descrips: []
+      };
+
+      this.briefObjToEmit = this.briefSaveObj;
+    } else {
+      this.rerollAll();
+    }
   }
 
   ngOnChanges(changes: SimpleChanges): void {
       if (!changes['getNewMission'].firstChange) {
         this.rerollAll();
       }
+  }
+
+  ngOnDestroy(): void {
+      this.briefSaveObjEmitter.emit(this.briefObjToEmit);
   }
 
   private rerollBriefSummary() {
@@ -68,6 +90,12 @@ export class MissionBriefComponent implements OnInit, OnChanges {
 
     this.briefObj.location = this.random.shuffleArray(LOCATION)[0];
     this.briefObj.time = this.random.shuffleArray(TIME_LIMIT)[0];
+
+    this.briefObjToEmit = {
+      briefObj: this.briefObj,
+      missionObjectives: this.missionObjectives,
+      twists: this.twists,
+    };
   }
 
   rerollAll() {
@@ -199,6 +227,12 @@ export class MissionBriefComponent implements OnInit, OnChanges {
         break;
       }
     }
+
+    this.briefObjToEmit = {
+      briefObj: this.briefObj,
+      missionObjectives: this.missionObjectives,
+      twists: this.twists,
+    };
   }
 
   rerollIndividualMissionPart(index: number, missionPart: string) {
@@ -270,6 +304,12 @@ export class MissionBriefComponent implements OnInit, OnChanges {
       const mission = this.missionObjectivesList[i];
       this.missionObjectives.push(this.getObjectiveAndTarget(mission));
     }
+
+    this.briefObjToEmit = {
+      briefObj: this.briefObj,
+      missionObjectives: this.missionObjectives,
+      twists: this.twists,
+    };
   }
 
   private getObjectiveAndTarget(missionType: string, missionPart?: string): any {

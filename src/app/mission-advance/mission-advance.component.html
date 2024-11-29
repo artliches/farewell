@@ -14,13 +14,19 @@
         <div class="advance-layout enemy">
             <span>
                 <strong class="clickable" (click)="rerollSquadSize()">ENEMY DETAILS</strong>
-                <span>: {{squadSize | titlecase}}</span>
+                <span>: {{enemySize | titlecase}}</span>
             </span>
-            @if (squadSize !== 'no enemies') {
+            @if (enemySize !== 'no enemies') {
                 <div class="advance-details">
                     <app-squad-maker
-                        [enemySize]="squadSize"
+                        [squadSaveObj]="squadSaveObj"
+                        [leaderAndAttachmentsArray]="leaderAndAttachmentsArray"
+                        [machineArray]="machineArray"
+                        [enemySize]="enemySize"
                         [rerollGrvnt]="getNewMission"
+                        (squadSaveObjEmitter)="emitSquadObj($event)"
+                        (leaderSaveObjEmitter)="emitLeaderObj($event)"
+                        (machineSaveObjEmitter)="emitMachineObj($event)"
                     ></app-squad-maker>
                 </div>
             }

@@ -185,3 +185,28 @@ export interface MachineSaveObj {
     machineInfo: MachineObj,
     arrayIndex: number,
 };
+
+export interface BriefSaveObj {
+    briefObj: {
+        intro: string,
+        location: string,
+        time: string,
+    },
+    missionObjectives: {
+        objective: string, target: string, type: string, currIndex: number
+    }[],
+    twists: {
+        type: string, descrips: string[]
+    }
+};
+
+export interface SituationObj {
+    building: string,
+    defense: string,
+    time: string,
+    weather: string,
+};
+
+export interface RewardsObj {
+    descrip: string, original: string
+}

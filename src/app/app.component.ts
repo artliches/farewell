@@ -17,7 +17,7 @@ import { SQUAD_SIZE } from './assets/missions.constants';
 import { RulesReferenceComponent } from "./rules-reference/rules-reference.component";
 import { GasReferenceComponent } from "./gas-reference/gas-reference.component";
 import { ShockReferenceComponent } from './shock-reference/shock-reference.component';
-import { AbilitiesObj, ClassObj, IdentityObj, LeaderGrvntSaveObj, LeaderObj, MachineSaveObj, ShitObj, SquadObj } from './grvnt-interfaces';
+import { AbilitiesObj, BriefSaveObj, ClassObj, IdentityObj, LeaderGrvntSaveObj, LeaderObj, MachineSaveObj, RewardsObj, ShitObj, SituationObj, SquadObj } from './grvnt-interfaces';
 
 @Component({
   selector: 'app-root',
@@ -122,6 +122,9 @@ export class AppComponent implements OnInit {
   squadObj: SquadObj = {} as SquadObj;
   leaderAndAttachmentsArray: LeaderGrvntSaveObj[] = [];
   machineSaveArray: MachineSaveObj[] = [];
+  missionBriefSaveObj: BriefSaveObj = {} as BriefSaveObj;
+  missionAdvanceSaveObj: SituationObj = {} as SituationObj;
+  rewardsSaveObj: RewardsObj = {} as RewardsObj;
 
   isEmbedded: boolean = false;
 
@@ -191,6 +194,18 @@ export class AppComponent implements OnInit {
     this.machineSaveArray = saveObject;
   }
 
+  updateMissionBriefObj(saveObject: BriefSaveObj) {
+    this.missionBriefSaveObj = saveObject;
+  }
+
+  updateSituationObj(saveObject: SituationObj) {
+    this.missionAdvanceSaveObj = saveObject;
+  }
+
+  updateRewards(saveObject: RewardsObj) {
+    this.rewardsSaveObj = saveObject;
+  }
+
   toggleRolls() {
     this.showRolls = !this.showRolls;
   }
@@ -212,6 +227,7 @@ export class AppComponent implements OnInit {
 
   rerollAllMission() {
     this.getNewMission = !this.getNewMission;
+    this.rerollSquadSize();
   }
 
   rerollAllSquad() { 
@@ -261,7 +277,10 @@ export class AppComponent implements OnInit {
 
   displaySection(sectionName: string) {
     this.sectionToShow = sectionName;
-    if (this.sectionToShow === 'squads' && !this.squadSize) {
+    if (
+        (this.sectionToShow === 'squads' && !this.squadSize) ||
+        (this.sectionToShow === 'missions' && !this.squadSize)
+    ) {
       this.rerollSquadSize();
     }
   }
