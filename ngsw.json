@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1732944318628,
+  "timestamp": 1732944339141,
   "index": "/farewell/index.csr.html",
   "assetGroups": [
     {
@@ -48,7 +48,7 @@
     "/farewell/icons/favicon-16x16.png": "596b043a23ec2e2c7489b4ba06aa0fa0b9b94db6",
     "/farewell/icons/favicon-32x32.png": "52402d8c3733635b79ed660a20fe07a186704450",
     "/farewell/index.csr.html": "69d38958c5df03572912798d0e4e87faa19e1652",
-    "/farewell/index.html": "55f844e1e4cc75af8f94b4d1685183bf6709989e",
+    "/farewell/index.html": "0d87905a8a0648a03d556548170494e685de2ff2",
     "/farewell/main-DXW54KG3.js": "86abadc91ecf823fd21777924d324e7b936482d4",
     "/farewell/manifest.webmanifest": "dc510c18c4126f4fef6aef9abda5d3599063837a",
     "/farewell/media/ALEGREYA-JSGAVCRA.ttf": "6609880948728419617455150aea67982b0319c1",
