@@ -68,8 +68,8 @@ export class GrvntIdentityComponent implements OnInit, OnChanges {
     }
   }
 
-  rerollAll(isPageLoad: boolean) {
-    if (Object.keys(this.identityObj).length === 0) {
+  rerollAll(isPageLoad: boolean, forceReload?: boolean) {
+    if (Object.keys(this.identityObj).length === 0 || forceReload) {
       if (this.isEmbedded) {
         this.getNewEmbeddedName();
       } else {
