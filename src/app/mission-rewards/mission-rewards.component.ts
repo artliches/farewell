@@ -20,8 +20,11 @@ export class MissionRewardsComponent implements OnInit, OnDestroy {
 
   rewardsObjToEmit: RewardsObj = {} as RewardsObj
   rewardObj: RewardsObj = {
-    descrip: '',
-    original: ''
+    slagg: -1,
+    extras: {
+      descrip: '',
+      original: ''
+    }
   };
 
   ngOnInit(): void {
@@ -31,6 +34,7 @@ export class MissionRewardsComponent implements OnInit, OnDestroy {
     } else {
       this.random.shuffleArray(REWARDS);
       this.rerollRewards();
+      this.rewardObj.slagg = this.random.getRandomNumber(0, 5);
     }
   }
 
@@ -38,30 +42,36 @@ export class MissionRewardsComponent implements OnInit, OnDestroy {
       this.rewardsSaveObjEmitter.emit(this.rewardsObjToEmit);
   }
 
+  rerollSlagg() {
+    const slaggArray = [0, 1, 2, 3, 4, 5];
+    const newIndex = slaggArray.indexOf(this.rewardObj.slagg) + 1 === slaggArray.length ? 0 : slaggArray.indexOf(this.rewardObj.slagg) + 1;
+    this.rewardObj.slagg = slaggArray[newIndex];
+  }
+
   rerollRewards() {
-    let newIndex = REWARDS.indexOf(this.rewardObj.original);
+    let newIndex = REWARDS.indexOf(this.rewardObj.extras.original);
 
     if (newIndex + 1 === REWARDS.length) {
       newIndex = 0;
     } else {
       do {
         newIndex++;
-      } while (REWARDS[newIndex] === this.rewardObj.original);
+      } while (REWARDS[newIndex] === this.rewardObj.extras.original);
     }
 
-    this.rewardObj = {
+    this.rewardObj.extras = {
       descrip: REWARDS[newIndex],
       original: REWARDS[newIndex],
     };
 
-    if (this.rewardObj.descrip.includes('[')) {
-      const firstBracketIndex = this.rewardObj.descrip.indexOf('[');
-      const lastBracketIndex = this.rewardObj.descrip.indexOf(']');
-      const stringToReplace = this.rewardObj.descrip.slice(firstBracketIndex, lastBracketIndex + 1);
+    if (this.rewardObj.extras.descrip.includes('[')) {
+      const firstBracketIndex = this.rewardObj.extras.descrip.indexOf('[');
+      const lastBracketIndex = this.rewardObj.extras.descrip.indexOf(']');
+      const stringToReplace = this.rewardObj.extras.descrip.slice(firstBracketIndex, lastBracketIndex + 1);
       const numDieToRoll = Number(stringToReplace.slice(1, stringToReplace.indexOf('d')));
       const dieSize = Number(stringToReplace.slice(stringToReplace.indexOf('d') + 1, stringToReplace.length - 1));
       
-      this.rewardObj.descrip = this.rewardObj.descrip.replace(
+      this.rewardObj.extras.descrip = this.rewardObj.extras.descrip.replace(
         stringToReplace, this.random.rollMultipleDie(numDieToRoll, dieSize).toString());
     }
 

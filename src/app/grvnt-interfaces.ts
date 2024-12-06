@@ -208,5 +208,8 @@ export interface SituationObj {
 };
 
 export interface RewardsObj {
-    descrip: string, original: string
+    slagg: number,
+    extras: {
+        descrip: string, original: string
+    }
 }

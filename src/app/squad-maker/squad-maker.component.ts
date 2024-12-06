@@ -111,26 +111,43 @@ export class SquadMakerComponent implements OnInit, OnChanges, OnDestroy {
     this.random.shuffleArray(SQUADS);
     switch (true) {
       case this.enemySize.includes('squad'): {
-        this.getInitialSquad(5);
-        this.attachmentsNum = 0;
         this.machineNum = 0;
+        this.attachmentsNum = 0;
+        this.getInitialSquad(5);
+        if (this.random.getRandomNumber(1, 10) >= 3) {
+          this.attachmentsNum = 1;
+        }
         break;
       }
       case this.enemySize.includes('company'): {
         this.attachmentsNum = 0;
         this.machineNum = 0;
         this.getInitialSquad(10);
+
+        for (let i = 0; i < 2; i++) {
+          if (this.random.getRandomNumber(1, 10) >= 6) {
+            this.attachmentsNum += 1;
+          }
+        }
         if (this.random.getRandomNumber(1, 10) >= 6) {
-          //get armor and attachments
-          this.attachmentsNum = 2;
           this.machineNum = 1;
         }
         break;
       }
       case this.enemySize.includes('regiment'): {
+        this.attachmentsNum = 0;
+        this.machineNum = 0;
         this.getInitialSquad(20);
-        this.attachmentsNum = 3;
-        this.machineNum = 2;
+        for (let i = 0; i < 3; i++) {
+          if (this.random.getRandomNumber(1, 10) >= 6) {
+            this.attachmentsNum += 1;
+          }
+        }
+        for (let i = 0; i < 2; i++) {
+          if (this.random.getRandomNumber(1, 10) >= 6) {
+            this.machineNum += 1;
+          }
+        }
         break;
       }
     }

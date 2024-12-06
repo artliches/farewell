@@ -1,6 +1,9 @@
 <div class="mission-card">
-    <h2 class="subtle-clickable" (click)="rerollRewards()">REWARDS</h2>
+    <h2 class="subtle-clickable" (click)="rerollRewards(); rerollSlagg()">REWARDS</h2>
     <div class="mission-body">
-        {{rewardObj.descrip}}
+        <div class="flex-row">
+            <span (click)="rerollSlagg()" class="clickable">{{rewardObj.slagg}}</span> <strong>SLAGG</strong>
+        </div>
+        {{rewardObj.extras.descrip}}
     </div>
 </div>

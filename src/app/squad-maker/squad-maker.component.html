@@ -43,7 +43,7 @@
             <em> grvnts and machines attached to the squad, but acting independently</em>
         </div>
         @for (item of [].constructor(attachmentsNum); track $index) {
-            <div class="attachment-item">
+            <div [ngClass]="{'single-attachment': attachmentsNum === 1}" class="attachment-item">
                 <app-leader-maker
                     [rerollGrvnt]="rerollGrvnt"
                     [title]="'GRVNT'"

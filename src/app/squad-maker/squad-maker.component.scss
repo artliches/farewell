@@ -64,6 +64,9 @@
             grid-area: title;
         }
         .attachment-item {
+            &.single-attachment {
+                grid-column: span 2;
+            }
             &:nth-child(3) {
                 border-left: 1px solid var(--border-color);
             }
