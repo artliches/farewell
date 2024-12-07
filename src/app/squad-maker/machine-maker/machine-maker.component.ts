@@ -16,6 +16,7 @@ export class MachineMakerComponent implements OnInit, OnChanges {
   ) {}
 
   @Input() getNewMachines: boolean = false;
+  @Input () rerollAttachments: boolean = false;
   @Input() machineSaveObj: MachineSaveObj = {} as MachineSaveObj;
   @Output() machineSaveObjEmitter: EventEmitter<any> = new EventEmitter();
 
@@ -37,9 +38,12 @@ export class MachineMakerComponent implements OnInit, OnChanges {
       }
 
   }
-
+  
   ngOnChanges(changes: SimpleChanges): void {
-      if (changes['getNewMachines'] && !changes['getNewMachines'].firstChange) {
+      if (
+        (changes['getNewMachines'] && !changes['getNewMachines'].firstChange) ||
+        (changes['rerollAttachments'] && !changes['rerollAttachments'].firstChange)
+      ) {
         this.rerollMachine();
       }
   }

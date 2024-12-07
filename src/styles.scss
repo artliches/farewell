@@ -631,6 +631,9 @@ ul {
 }
 
 @media print {
+    * {
+        color: black !important;
+    }
     nav {
         display: none;
         div {

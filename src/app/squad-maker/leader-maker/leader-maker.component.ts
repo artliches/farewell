@@ -19,6 +19,7 @@ export class LeaderMakerComponent implements OnInit, OnChanges {
 
   @Input() title: string = 'SQUAD LEADER';
   @Input() rerollGrvnt: boolean = false;
+  @Input() rerollAttachments: boolean = false;
   @Input() leaderSaveObj: LeaderGrvntSaveObj = {} as LeaderGrvntSaveObj;
   @Output() leaderSaveObjEmitter: EventEmitter<any> = new EventEmitter();
 
@@ -179,7 +180,10 @@ export class LeaderMakerComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-      if (changes['rerollGrvnt'] && !changes['rerollGrvnt'].firstChange) {
+      if (
+        (changes['rerollGrvnt'] && !changes['rerollGrvnt'].firstChange) ||
+        (changes['rerollAttachments'] && !changes['rerollAttachments'].firstChange)
+      ) {
         this.shuffleGrvntTables();
         this.rerollSquadLeader();
       }

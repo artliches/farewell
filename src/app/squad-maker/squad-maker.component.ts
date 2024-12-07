@@ -56,6 +56,7 @@ export class SquadMakerComponent implements OnInit, OnChanges, OnDestroy {
 
     grvntsSaveArray: LeaderGrvntSaveObj[] = [];
     machineSaveArray: MachineSaveObj[] = [];
+    rerollAttachmentsBool: boolean = false;
 
     ngOnInit(): void {
       if (this.leaderAndAttachmentsArray.length > 0) {
@@ -312,6 +313,10 @@ export class SquadMakerComponent implements OnInit, OnChanges, OnDestroy {
 
     this.squadObj.sidearm.descrip = fullSidearmName;
     this.saveAndEmitSquadSaveObj();
+  }
+
+  rerollAllAttachments() {
+    this.rerollAttachmentsBool = !this.rerollAttachmentsBool;
   }
 
   private saveAndEmitSquadSaveObj() {

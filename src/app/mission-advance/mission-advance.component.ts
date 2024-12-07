@@ -53,11 +53,12 @@ export class MissionAdvanceComponent implements OnInit, OnChanges, OnDestroy {
     if (Object.keys(this.situationSaveObj).length > 0) {
       this.situationObj = this.situationSaveObj;
       this.situationObjToEmit = this.situationSaveObj;
-    } if(Object.keys(this.squadSaveObj).length > 0) {
-      this.squadSaveObjToEmit = this.squadSaveObj;
     } else {
       this.shuffleArrays();
       this.rerollAllLocationDetails();
+    }
+    if(Object.keys(this.squadSaveObj).length > 0) {
+      this.squadSaveObjToEmit = this.squadSaveObj;
     }
   }
 

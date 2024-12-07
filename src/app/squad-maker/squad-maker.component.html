@@ -39,13 +39,14 @@
 @if (attachmentsNum > 0) {
     <div class="attachments-layout">
         <div class="attachments-title">
-            <strong class="underline">ATTACHMENTS:</strong>
+            <strong (click)="rerollAllAttachments()" class="underline subtle-clickable">ATTACHMENTS:</strong>
             <em> grvnts and machines attached to the squad, but acting independently</em>
         </div>
         @for (item of [].constructor(attachmentsNum); track $index) {
             <div [ngClass]="{'single-attachment': attachmentsNum === 1}" class="attachment-item">
                 <app-leader-maker
                     [rerollGrvnt]="rerollGrvnt"
+                    [rerollAttachments]="rerollAttachmentsBool"
                     [title]="'GRVNT'"
                     [leaderSaveObj]="leaderAndAttachmentsArray[$index + 1]"
                     (leaderSaveObjEmitter)="emitLeaderSaveObj($event, $index+1)"
@@ -59,6 +60,7 @@
                     <div class="machine-attachment-item">
                         <app-machine-maker
                             [getNewMachines]="rerollGrvnt"
+                            [rerollAttachments]="rerollAttachmentsBool"
                             [machineSaveObj]="machineArray[$index]"
                             (machineSaveObjEmitter)="saveMachineObjEmitted($event, $index)"
                         >
