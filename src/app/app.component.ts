@@ -3,32 +3,31 @@ import { GrvntAbilitiesComponent } from "./grvnt-abilities/grvnt-abilities.compo
 import { GrvntIdentityComponent } from "./grvnt-identity/grvnt-identity.component";
 import { CommonModule } from '@angular/common';
 import { GrvntClassComponent } from "./grvnt-class/grvnt-class.component";
-import { GrvntVitalsComponent } from "./grvnt-vitals/grvnt-vitals.component";
 import { RandomNumberService } from './random-number.service';
 import { JOBS } from './assets/grvnts.constants';
 import { GrvntShitComponent } from "./grvnt-shit/grvnt-shit.component";
 import { MissionBriefComponent } from './mission-brief/mission-brief.component';
 import { MissionAdvanceComponent } from "./mission-advance/mission-advance.component";
-import { MissionActionComponent } from "./mission-action/mission-action.component";
-import { MissionAftermathComponent } from "./mission-aftermath/mission-aftermath.component";
 import { MissionRewardsComponent } from "./mission-rewards/mission-rewards.component";
 import { SquadMakerComponent } from "./squad-maker/squad-maker.component";
 import { SQUAD_SIZE } from './assets/missions.constants';
 import { RulesReferenceComponent } from "./rules-reference/rules-reference.component";
 import { GasReferenceComponent } from "./gas-reference/gas-reference.component";
 import { ShockReferenceComponent } from './shock-reference/shock-reference.component';
-import { AbilitiesObj, BriefSaveObj, ClassObj, IdentityObj, LeaderGrvntSaveObj, LeaderObj, MachineSaveObj, RewardsObj, ShitObj, SituationObj, SquadObj } from './grvnt-interfaces';
+import { AbilitiesObj, BriefSaveObj, ClassObj, IdentityObj, LeaderGrvntSaveObj, MachineSaveObj, RewardsObj, ShitObj, SituationObj, SquadObj } from './grvnt-interfaces';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [GrvntAbilitiesComponent, GrvntIdentityComponent, CommonModule, GrvntClassComponent, GrvntVitalsComponent, GrvntShitComponent, MissionBriefComponent, MissionAdvanceComponent, MissionActionComponent, MissionAftermathComponent, MissionRewardsComponent, SquadMakerComponent, RulesReferenceComponent, GasReferenceComponent, ShockReferenceComponent],
+  imports: [GrvntAbilitiesComponent, GrvntIdentityComponent, CommonModule, GrvntClassComponent, GrvntShitComponent, MissionBriefComponent, MissionAdvanceComponent, MissionRewardsComponent, SquadMakerComponent, RulesReferenceComponent, GasReferenceComponent, ShockReferenceComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent implements OnInit {
   constructor(
-    private random: RandomNumberService
+    private random: RandomNumberService,
+    private titleService: Title,
   ) {}
   offWhite = '#FAF9F6';
   chromeBlack = '#010203';
@@ -283,6 +282,31 @@ export class AppComponent implements OnInit {
     ) {
       this.rerollSquadSize();
     }
+    this.setTitle(sectionName);
+  }
+
+  setTitle(currentSection: string) {
+    let sectionTitle = '';
+    switch(true) {
+      case currentSection === 'grvnts': {
+        sectionTitle = 'GRVNT RECRUITER'
+        break;
+      }
+      case currentSection === 'squads': {
+        sectionTitle = 'SQUAD MAKER'
+        break;
+      }
+      case currentSection === 'missions': {
+        sectionTitle = 'MISSION GENERATOR'
+        break;
+      }
+      case currentSection === 'rules': {
+        sectionTitle = 'RULES REFERENCE'
+        break;
+      }
+    }
+
+    this.titleService.setTitle(`FAREWELL: ${sectionTitle}`);
   }
 
   rerollSquadSize() {

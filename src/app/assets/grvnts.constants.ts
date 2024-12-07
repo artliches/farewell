@@ -156,7 +156,7 @@ export const EMBEDDED_NAMES = [
         `the Tower`,
         `the Battle`,
         `the Flame`,
-        `the Sulfer`,
+        `the Sulfur`,
         `the Joy`,
         `the Wastes`,
         `the Creation`,
@@ -222,7 +222,7 @@ export const SCARS = [
     'bite mark from <strong>something human</strong>',
     '<strong>flayed scalp</strong>, dangles in the wind',
     '<strong>snaggletooth</strong> punctured through your lip',
-    'arrow loged in your <strong>femoral artery</strong>, tickes to the touch',
+    'arrow lodged in your <strong>femoral artery</strong>, tickles to the touch',
     '<strong>broken foot</strong>, crushed by iron treads',
     '<strong>Slaggvara tattoo</strong>, won\'t stop itching',
     '<strong>shoulder</strong> that pops out of place at will',
@@ -238,7 +238,7 @@ export const VICES = [
     'fondling a <strong>Shinripper</strong>',
     'confessing <strong>war crimes</strong> to the cynically cursed chaplain',
     'burning through an <strong>entire pack of smokes</strong> in a night',
-    'writing horrible poetry (and forcing otheres to <strong>listen to it</strong>)',
+    'writing horrible poetry (and forcing others to <strong>listen to it</strong>)',
     'holding your hand above flames until the <strong>pain</strong> is too great',
     'placing bets with your fellow <strong>grvnts</strong>',
     '<strong>endlessly</strong> counting ammunition',
@@ -300,7 +300,7 @@ export const JOBS = [
             }
         ],
         descrip:`
-            <em>It's rare that a grvnt live to fight another day, but then - with the Dying Lands constantly at war - there's as much opportunity to live as to die. Oftentimes they're one and the same. Such experience is valued among the sea of countless conscripts who reek fo pissed trousers. <strong>What doesn't kill you makes a great story</strong>.</em>
+            <em>It's rare that a grvnt live to fight another day, but then - with the Dying Lands constantly at war - there's as much opportunity to live as to die. Oftentimes they're one and the same. Such experience is valued among the sea of countless conscripts who reek of pissed trousers. <strong>What doesn't kill you makes a great story</strong>.</em>
         `,
         skills: [
             {
@@ -320,7 +320,7 @@ export const JOBS = [
                     '<strong class="clickable">Battle Buddy Bayonet.</strong> After seeing enough violence, even objects have a mind of their own. Your bayonet speaks to you - at least you think it does, no one else can hear it. Its whispers assure that you will never return alive. <strong>d6 damage, -2 DR on all SHOCK tests</strong>.',
                     '<strong class="clickable">Troll Blooded.</strong> Due to wartime experimentation or an unfortunate lineage, you can force your metabolism into overdrive to heal most wounds. <strong>Spend your turn to heal d6</strong>.',
                     '<strong class="clickable">Bear-zerker Rage.</strong> Your jaundiced jingoism has clouded your mind, replacing rational thought with only anger. <strong>Always attack twice per turn, once ranged and once in melee</strong>.',
-                    '<strong class="clickable">Skulls Unit.</strong> Tethered to you are the remains of your last squad in the form of <strong>[d4+1] skeletal soldiers</strong>. The Skulls must always remain tethered to you; <strong>seperation results in suffereing SHOCK</strong> as you feel the pain of losing them again. The squad uses your <strong>Presence for all tests</strong> and attacks a group (<strong>d4 damage per squad member</strong>).',
+                    '<strong class="clickable">Skulls Unit.</strong> Tethered to you are the remains of your last squad in the form of <strong>[d4+1] skeletal soldiers</strong>. The Skulls must always remain tethered to you; <strong>separation results in suffering SHOCK</strong> as you feel the pain of losing them again. The squad uses your <strong>Presence for all tests</strong> and attacks a group (<strong>d4 damage per squad member</strong>).',
                     '<strong class="clickable">The Tank Slicer.</strong> A foul <strong>Zweihander</strong> forged from the tusks of a Kongoose and quenched in crude SLAGG. <strong>d10, IMPACT 2</strong>.',
                     '<strong class="clickable">Thunderhorse.</strong> Birthed out of mankind\'s foul ecological crimes, the steed races across No Man\'s Land in a streak of flame. It has only one desire; <strong>kill</strong>. Its hooves crack like gunshots (<strong>d6</strong>) or bellows fiery breath (<strong>costs 1 Power, d8, BURN 2</strong>). Defends with DR10, HP12.',
                 ],
@@ -392,7 +392,7 @@ export const JOBS = [
             {
                 descrip: '',
                 table: [
-                    '<strong class="clickable">Thumper.</strong> Nothing stand between you and your mission - <strong>not even walls</strong>. All your items gain <strong>HEAVY</strong>.',
+                    '<strong class="clickable">Thumper.</strong> Nothing stands between you and your mission - <strong>not even walls</strong>. All your items gain <strong>HEAVY</strong>.',
                     '<strong class="clickable">Foresight.</strong> You planned for this...to go <strong>BOOM</strong>. Spend 1 Power: detonate a hidden <strong>Shinripper</strong> anywhere on the battlefield. 1-in-6 chance you detonated the <strong>wrong one</strong>.',
                     '<strong class="clickable">POAB.</strong> The Parent of All Bombs. Don\'t be around when this thing goes off. All creatures, structures, and solid objects within 50ft take <strong>d12+2 damage, IMPACT 3, HEAVY, SHOCK</strong>. Set the timer and test <strong>Agility DR12</strong> for the next 3 turns to escape the blast. Once per mission.',
                     '<strong class="clickable">Juggernaut.</strong> Clad in solid metal, you bash through walls and anything else in your way. You wear <strong>Lobster Armor</strong> with a Punch attack (<strong>d4, HEAVY</strong>). Stick a <strong>SLAGG</strong> in it: damage becomes d8.',
@@ -770,7 +770,7 @@ export const JOBS = [
                     '<strong class="clickable">Schunk-Striped.</strong> Never clean and always reeking of death, you discovered a deterrent is often the best weapon. When you take <strong>SHOCK or suffer damage</strong>, your body spurts putrid <strong>GAS at the damage source</strong>.',
                     '<strong class="clickable">Arach-Webbed.</strong> Webs of lies and demise, both of which you deftly spin. <strong>Spend 1 Power</strong>: fire a razor web, immobilizing the target until the wire is removed. Ensnared enemies suffer <strong>d6 damage per turn</strong>. Test <strong>Toughness DR14</strong> each round or the web tears.',
                     '<strong class="clickable">Falchon-Winged.</strong> You have four large, flight-capable wings, and your face is more bird-like than human. Your razor-sharp talons at the ends of your fingers deal <strong>d10 damage</strong>. <strong>Agility tests are -2 DR while flying</strong>.',
-                    '<strong class="clickable">Hyena-Throated.</strong> Your bark is worse than your bite (<strong>d6, dealing damage heals d2</strong>). The insidious laughter bellowing from your jowls mimicks the <strong>death knell of dying grvnts</strong>. <strong>Spend 1 Power and test Presence DR8</strong>: cast a random War Scroll.',
+                    '<strong class="clickable">Hyena-Throated.</strong> Your bark is worse than your bite (<strong>d6, dealing damage heals d2</strong>). The insidious laughter bellowing from your jowls mimics the <strong>death knell of dying grvnts</strong>. <strong>Spend 1 Power and test Presence DR8</strong>: cast a random War Scroll.',
                     '<strong class="clickable">Krok-Toothed.</strong> Adept amongst the mud and battlefield debris, you find cover where most others cannot. Lay flat on your belly and test <strong>Agility DR10</strong>: gain Partial cover and remain undetected. Attacks with your giant maw from cover hit at DR8 (<strong>d8 damage, SHOCK</strong>) with rows upon rows of <strong class="emphasize"> TEETH</strong> that lock their victim in a harrowing death maelstrom.',
                     '<strong class="clickable">Kongoose-Tusked.</strong> From your jaw protrude two mammoth tusks, curving to the sky and glowing white (<strong>2d6 between up to two adjacent creatures, IMPACT 1</strong>). You are covered in long, shaggy fur <strong>(-d6 permanent Armor</strong>).',
                 ],
@@ -1113,7 +1113,7 @@ export const JOBS = [
                     `An entire enemy <strong>squad</strong> runs away.`,
                     `Your unit acquires three or more <strong>Battle Scars</strong> in a mission.`,
                     `An enemy faction <strong>Special Forces</strong> unit is eliminated.`,
-                    `Mulitple enemies die from <strong>BURN</strong>.`,
+                    `Multiple enemies die from <strong>BURN</strong>.`,
                     `Multiple enemies die from a single <strong>BLAST</strong> attack.`,
                     `A <strong>Radiant Bannerman </strong>is killed in the line of duty.`,
                     `A <strong>1</strong> is rolled after using an <strong>Omen</strong>.`,
@@ -1126,7 +1126,7 @@ export const JOBS = [
                 table: [
                     `+1 <strong>SLAGG</strong> every mission.`,
                     `Roll <strong>Broken</strong> up to <strong>-2 HP</strong>.`,
-                    `Gain <strong>Lobster Armor</strong> as available Requistions.`,
+                    `Gain <strong>Lobster Armor</strong> as available Requisitions.`,
                     `When gaining<strong> War Scrolls</strong>, <strong>choose</strong> instead of rolling random.`,
                     `All members of the squad are <strong>Promoted</strong> at the end of the mission.`,
                     `Word of your accomplishments reaches faraway ears. Automatically win your next <strong>Diplomacy Phase</strong>.`,
