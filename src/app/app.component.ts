@@ -43,9 +43,9 @@ export class AppComponent implements OnInit {
     'mork',
     'gum',
     'bone',
-    'vet',
-    'sapper',
-    'marks',
+    // 'vet',
+    // 'sapper',
+    // 'marks',
   ];
   themeBackgrounds: Array<any> = [
     {
@@ -289,7 +289,7 @@ export class AppComponent implements OnInit {
     let sectionTitle = '';
     switch(true) {
       case currentSection === 'grvnts': {
-        sectionTitle = 'GRVNT RECRUITER'
+        sectionTitle = 'GRVNTDRAFTER'
         break;
       }
       case currentSection === 'squads': {

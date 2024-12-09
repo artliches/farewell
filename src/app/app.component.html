@@ -4,7 +4,7 @@
     >
         @if (sectionToShow === 'grvnts') {
             <header>
-                <h1>GRVNT RECRUITER</h1>
+                <h1>GRVNTDRAFTER</h1>
                 <span class="reroll-all">
                     <div (click)="rerollAll()" class="clickable"><strong>A NEW GRVNT FOR THE FRONT</strong></div>
                 </span>
@@ -193,11 +193,11 @@
             </div>
             <div>MÖRK BORG is copyright Ockult Örtmästare Games and Stockholm Kartell.</div>
             <div>Farewell to Arms REDUX is copyright 2023 rivethead games. Web app by codeLiches</div>
-            <div><em>v0.94: Anxious Attachments</em></div>
+            <div><em>v0.95: Anxious Attachments</em></div>
         </footer>
     </span>
 
-    <nav>
+    <nav class="{{currentTheme}}">
         <div [ngClass]="{'active': sectionToShow === 'grvnts'}" (click)="displaySection('grvnts')" class="clickable">GRVNTS</div>
         <div [ngClass]="{'active': sectionToShow === 'squads'}" (click)="displaySection('squads')" class="clickable">SQUADS</div>
         <div [ngClass]="{'active': sectionToShow === 'missions'}" (click)="displaySection('missions')" class="clickable">MISSIONS</div>
