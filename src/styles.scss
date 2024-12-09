@@ -403,12 +403,10 @@ body {
     height: 100%;
     @include flex-column;
     padding: 0 1rem;
+    border-bottom: var(--border-width) solid var(--border-color);
 
     &:first-of-type {
         border-top: var(--border-width) solid var(--border-color);
-    }
-    &:not(:last-of-type) {
-        border-bottom: var(--border-width) solid var(--border-color);
     }
     .grvnt-header {
         text-align: center;
@@ -672,6 +670,7 @@ ul {
             }
         }
         .body-layout {
+            gap: 1.5rem;
             .mission-card {
                 border-color: black;
                 .mission-body div {
@@ -679,6 +678,7 @@ ul {
                 }
             }
             .grvnt-card {
+                border-bottom: none;
                 border-color: black;
                 .grvnt-body {
                     .skills {
