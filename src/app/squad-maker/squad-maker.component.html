@@ -36,12 +36,12 @@
     </div>
 </div>
 
-@if (attachmentsNum > 0) {
-    <div class="attachments-layout">
-        <div class="attachments-title">
-            <strong (click)="rerollAllAttachments()" class="underline subtle-clickable">ATTACHMENTS:</strong>
-            <em> grvnts and machines attached to the squad, but acting independently</em>
-        </div>
+<div [ngClass]="{'no-print': attachmentsNum === 0}" class="attachments-layout">
+    <div class="attachments-title">
+        <strong (click)="rerollAllAttachments()" class="underline subtle-clickable">ATTACHMENTS:</strong>
+        <em> grvnts and machines attached to the squad, but acting independently</em>
+    </div>
+    @if (attachmentsNum > 0) {
         @for (item of [].constructor(attachmentsNum); track $index) {
             <div [ngClass]="{'single-attachment': attachmentsNum === 1}" class="attachment-item">
                 <app-leader-maker
@@ -53,7 +53,7 @@
                 ></app-leader-maker>
             </div>
         }
-
+    
         @if (machineNum > 0) {
             <div class="machine-attachment-layout">
                 @for (item of [].constructor(machineNum); track $index) {
@@ -69,5 +69,8 @@
                 }
             </div>
         }
-    </div>
-}
+    } @else {
+        <em>No attachments.</em>
+    }
+
+</div>

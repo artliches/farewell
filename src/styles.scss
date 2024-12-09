@@ -403,10 +403,12 @@ body {
     height: 100%;
     @include flex-column;
     padding: 0 1rem;
-    border-bottom: var(--border-width) solid var(--border-color);
 
     &:first-of-type {
         border-top: var(--border-width) solid var(--border-color);
+    }
+    &:not(:last-of-type) {
+        border-bottom: var(--border-width) solid var(--border-color);
     }
     .grvnt-header {
         text-align: center;
@@ -634,6 +636,11 @@ ul {
     * {
         color: black !important;
     }
+
+    .no-print {
+        display: none !important;
+    }
+
     nav {
         display: none;
         div {
