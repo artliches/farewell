@@ -520,6 +520,7 @@ ul {
     }
     .farewell-layout {
         header {
+            
             h1 {
                 letter-spacing: 2rem;
                 font-size: 3rem;
@@ -637,6 +638,11 @@ ul {
 
     .no-print {
         display: none !important;
+    }
+
+    .page-layout {
+        display: block;
+        min-height: 100%;
     }
 
     nav {
