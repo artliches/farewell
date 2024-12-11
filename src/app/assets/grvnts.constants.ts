@@ -311,7 +311,7 @@ export const JOBS = [
                     ` Betrayed by the brass and <strong>left for dead</strong>. Trust nothing beyond the reach of your bayonet.`,
                     ` <strong>Court-martialed</strong> for insubordination...but your talents were too valuable to be let go.`,
                     ` Gas, grvnts <strong>drowning on dry land</strong>, the sound of shells falling all around you...`,
-                    ` <strong>Premature burial</strong>. Your company thought you dead, but you're made of tougher stuff. You stick of grave soil.`,
+                    ` <strong>Premature burial</strong>. Your company thought you dead, but you're made of tougher stuff. You stink of grave soil.`,
                 ]
             },
             {
@@ -320,7 +320,7 @@ export const JOBS = [
                     '<strong class="clickable">Battle Buddy Bayonet.</strong> After seeing enough violence, even objects have a mind of their own. Your bayonet speaks to you - at least you think it does, no one else can hear it. Its whispers assure that you will never return alive. <strong>d6 damage, -2 DR on all SHOCK tests</strong>.',
                     '<strong class="clickable">Troll Blooded.</strong> Due to wartime experimentation or an unfortunate lineage, you can force your metabolism into overdrive to heal most wounds. <strong>Spend your turn to heal d6</strong>.',
                     '<strong class="clickable">Bear-zerker Rage.</strong> Your jaundiced jingoism has clouded your mind, replacing rational thought with only anger. <strong>Always attack twice per turn, once ranged and once in melee</strong>.',
-                    '<strong class="clickable">Skulls Unit.</strong> Tethered to you are the remains of your last squad in the form of <strong>[d4+1] skeletal soldiers</strong>. The Skulls must always remain tethered to you; <strong>separation results in suffering SHOCK</strong> as you feel the pain of losing them again. The squad uses your <strong>Presence for all tests</strong> and attacks a group (<strong>d4 damage per squad member</strong>).',
+                    '<strong class="clickable">Skulls Unit.</strong> Tethered to you are the remains of your last squad in the form of <strong>[d4+1] skeletal soldiers</strong>. The Skulls must always remain tethered to you; <strong>separation results in suffering SHOCK</strong> as you feel the pain of losing them again. The squad uses your <strong>Presence for all tests</strong> and attacks as a group (<strong>d4 damage per squad member</strong>).',
                     '<strong class="clickable">The Tank Slicer.</strong> A foul <strong>Zweihander</strong> forged from the tusks of a Kongoose and quenched in crude SLAGG. <strong>d10, IMPACT 2</strong>.',
                     '<strong class="clickable">Thunderhorse.</strong> Birthed out of mankind\'s foul ecological crimes, the steed races across No Man\'s Land in a streak of flame. It has only one desire; <strong>kill</strong>. Its hooves crack like gunshots (<strong>d6</strong>) or bellows fiery breath (<strong>costs 1 Power, d8, BURN 2</strong>). Defends with DR10, HP12.',
                 ],
@@ -1006,12 +1006,12 @@ export const JOBS = [
             {
                 descrip: 'You may construct any <strong>two</strong> of the following <strong>once per mission</strong>:',
                 table: [
+                    `<strong>Hunker Dory.</strong> Pour a stone and metal reinforced box, providing <strong>Total Cover</strong> and a long, narrow embrasure. <strong>Fits two grvnts</strong>.`,
                     `<strong>Tower of Power.</strong>Erect a wooden tower <strong>d3</strong> levels high. Firing from the tower adds <strong>+1 Presence per level</strong>. Falling deals <strong>d3 damage per level</strong>. Provides Partial cover.`,
+                    `<strong>Bridge the Gap.</strong> Quickly assemble a wooden fording bridge across rivers or chasms. <strong>Strong enough to hold a squad but not armored units</strong>.`,
                     `<strong>So Hwatcha Want.</strong> Construct a mobile rocket battery (<strong>2d6 rockets, d2 damage each, IMPACT 2</strong>). Costs 1 <strong>SLAGG</strong> to fire.`,
                     `<strong>No Tanks.</strong> Install a row of metal <strong>“Dredgehog”</strong> tank traps. Armored enemies cannot pass them (<strong>lose d2 turns finding a new path</strong>).`,
-                    `<strong>Bridge the Gap.</strong> Quickly assemble a wooden fording bridge across rivers or chasms. <strong>Strong enough to hold a squad but not armored units</strong>.`,
-                    `<strong>Hunker Dory.</strong> Pour a stone and metal reinforced box, providing <strong>Total Cover</strong> and a long, narrow embrasure. <strong>Fits two grvnts</strong>.`,
-                    `<strong>Barbed and Ready.</strong> You have a near-unlimited supply of Barbed Wire, and you deploy it like a sculptor (<strong>spend 1 Power</strong>). All enemies encountering it roll (<strong>d3</strong>):
+                    `<strong>Barbed and Ready.</strong> You have a near-unlimited supply of Barbed Wire, and you deploy it like a sculptor. All enemies encountering it roll (<strong>d3</strong>):
                         <ol>
                             <li><strong>d3</strong> damage</li>
                             <li><strong>Morale</strong></li>

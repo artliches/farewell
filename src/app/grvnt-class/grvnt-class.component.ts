@@ -127,11 +127,12 @@ export class GrvntClassComponent implements OnInit, OnChanges {
   }
 
   rerollSkill(index: number) {
-    const skillIndex = this.job.name === 'new world engineer' ? index + 1 : index;
+    const isEngineerOrSoldier: boolean = this.job.name === 'new world engineer' || this.job.name === 'sadistic soldier';
+    const skillIndex = isEngineerOrSoldier ? index + 1 : index;
     let newIndex = 0;
-    const isEndOfArray = this.job.skills[index]['table'].length === this.skillObj[index].currIndex + 1;
+    const isEndOfArray = this.job.skills[skillIndex]['table'].length === this.skillObj[index].currIndex + 1;
     if (isEndOfArray) {
-      this.random.shuffleArray(this.job.skills[index]['table']);
+      this.random.shuffleArray(this.job.skills[skillIndex]['table']);
     } else {
       newIndex = this.skillObj[index].currIndex + 1;
     }

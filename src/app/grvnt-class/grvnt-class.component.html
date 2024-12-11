@@ -18,13 +18,24 @@
                         <span [innerHTML]="job.skills[0].descrip"></span>
                     </div>
                     <span>
-                        <ol class="compact-list">
-                            @for (building of job.skills[0].table; track $index) {
-                                <li>
-                                    <span [innerHtml]="building"></span>
-                                </li>
-                            }
-                        </ol>
+                        @if (job.name === 'sadistic soldier') {
+                            <ol class="compact-list">
+                                @for (building of job.skills[0].table; track $index) {
+                                    <li>
+                                        <span [innerHtml]="building"></span>
+                                    </li>
+                                }
+                            </ol>
+                        } @else {
+                            <ul class="compact-list">
+                                @for (building of job.skills[0].table; track $index) {
+                                    <li>
+                                        <span [innerHtml]="building"></span>
+                                    </li>
+                                }
+                            </ul>
+                        }
+
                     </span>
                     @if (job.name === 'sadistic soldier') {
                         <div class="skill-label">

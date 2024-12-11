@@ -505,6 +505,27 @@ ul {
                 }
             }
         }
+        span>ul {
+            margin: .5rem 0 0;
+            padding-left: 1rem;
+            list-style-type: square;
+            &.compact-list {
+                columns: 2;
+                font-size: .8rem;
+                li {
+                    &:not(:last-of-type) {
+                        margin-bottom: 0.2rem;
+                    }
+                    ol {
+                        margin: 0;
+                        li {
+                            margin-bottom: 0 !important;
+                        }
+                    }
+                }
+            }
+        }
+
     }
 }
 
