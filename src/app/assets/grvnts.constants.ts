@@ -1007,7 +1007,7 @@ export const JOBS = [
                 descrip: 'You may construct any <strong>two</strong> of the following <strong>once per mission</strong>:',
                 table: [
                     `<strong>Hunker Dory.</strong> Pour a stone and metal reinforced box, providing <strong>Total Cover</strong> and a long, narrow embrasure. <strong>Fits two grvnts</strong>.`,
-                    `<strong>Tower of Power.</strong>Erect a wooden tower <strong>d3</strong> levels high. Firing from the tower adds <strong>+1 Presence per level</strong>. Falling deals <strong>d3 damage per level</strong>. Provides Partial cover.`,
+                    `<strong>Tower of Power. </strong>Erect a wooden tower <strong>d3</strong> levels high. Firing from the tower adds <strong>+1 Presence per level</strong>. Falling deals <strong>d3 damage per level</strong>. Provides Partial cover.`,
                     `<strong>Bridge the Gap.</strong> Quickly assemble a wooden fording bridge across rivers or chasms. <strong>Strong enough to hold a squad but not armored units</strong>.`,
                     `<strong>So Hwatcha Want.</strong> Construct a mobile rocket battery (<strong>2d6 rockets, d2 damage each, IMPACT 2</strong>). Costs 1 <strong>SLAGG</strong> to fire.`,
                     `<strong>No Tanks.</strong> Install a row of metal <strong>“Dredgehog”</strong> tank traps. Armored enemies cannot pass them (<strong>lose d2 turns finding a new path</strong>).`,
