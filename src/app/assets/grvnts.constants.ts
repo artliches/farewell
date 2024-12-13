@@ -530,7 +530,7 @@ export const JOBS = [
                 table: [
                     `<div><strong class="underline">Letters from Home.</strong> Loathed by your family, they send letters doused in poison or booby-trapped with explosives; you’ve learned the hard way never to open them. They make great makeshift weapons though (<strong>d4 damage plus a random Weapon Keyword</strong>). You start with d4 and slowly receive more as you write home.</div>`,
                     `<div><strong class="underline">Stop Watch</strong> Before your grizzled veteran grandfather passed, he left you his pocket watch. It smells like shit… <strong>1-in-4 chance to block all non-BLAST damage</strong>.</div>`,
-                    `<div><strong class="underline">Purple Heart Poetry</strong> Writing your thoughts in a leather-bound journal keeps you sane in an insane world. Your words shake souls: <strong>Spend 1 Power:</strong> add your current SHOCK to a target. They immediately suffer the new result.</div>`,
+                    `<div><strong class="underline">Purple Heart Poetry</strong> Writing your thoughts in a leather-bound journal keeps you sane in an insane world. Your words shake souls: <strong>Spend 1 Power:</strong> add your current <strong>SHOCK</strong> to a target. They immediately suffer the new result.</div>`,
                     `<div><strong class="underline">Lovesick</strong> You carry a small painting of your love back home; sometimes it animates and speaks to you. Conversing with the painting allows you to successfully <strong>cast a random War Scroll once per day</strong>, even if you don’t own the Scroll.</div>`,
                 ],
             },
