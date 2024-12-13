@@ -93,7 +93,6 @@ export const LEADERS = [
         name: 'homesick rifleman',
         specialities: [
             `<strong class="clickable">Beheader.</strong> <strong>Malevolent Rifle</strong> with <strong>d8 </strong>bayonet`,
-            `<strong class="clickable">Carbine.</strong> Attacks <strong>twice</strong> in melee`,
             `<strong class="clickable">Letters From Home.</strong> <strong>[d4]</strong> letter explosives with a random <strong>Weapon Keyword</strong>`,
             `<strong class="clickable">Lovesick.</strong> Casts a random <strong>War Scroll</strong>, once per combat`,
         ],
@@ -150,8 +149,8 @@ export const LEADERS = [
         name: 'arcane medic',
         specialities: [
             `<strong class="clickable">Leeches.</strong> <strong>[d6]</strong> Onda Leeches (<em>block d2 damage per squad member</em>)`,
-            `<strong class="clickable">Aegis.</strong> Shield giving <strong>Full cover</strong>`,
-            `<strong class="clickable">Last Rites.</strong> Raise <strong>[d2]</strong> fallen squad members, once per combat`,
+            `<strong class="clickable">Aegis.</strong> Shield with <strong>Full cover</strong>`,
+            `<strong class="clickable">Last Rites.</strong> Raises <strong>[d2]</strong> fallen squad members, once per combat`,
         ],
         special: '',
         stats: [
@@ -250,7 +249,7 @@ export const LEADERS = [
         name: 'new world engineer',
         specialities: [
             `<strong class="clickable">Tower.</strong> <strong>[d3]</strong> levels, <strong>+1 DR</strong> to avoid attacks per level`,
-            `<strong class="clickable">Wire.</strong> Stop grvnts for <strong>[d2]</strong> turn(s) (<em>d3 damage, then test SHOCK</em>)`,
+            `<strong class="clickable">Wire.</strong> Stop grvnts for <strong>[d2]</strong> turn(s) (<em>d3 damage, and test SHOCK</em>)`,
             `<strong class="clickable">Bunker.</strong> <strong>Full cover</strong> for squad`,
         ],
         special: '',
@@ -351,7 +350,7 @@ export const SQUADS = [
             `Barbed Wire Club`,
         ],
         specials: [
-            `<strong class="clickable">Cover Huggers.</strong> DR13 to hit`,
+            `<strong class="clickable">Cover Huggers.</strong>Base DR13 to hit`,
             `<strong class="clickable">Ferocious.</strong> Does not suffer <strong>SHOCK</strong>`,
             `<strong class="clickable">Medic.</strong> Replenishes 1 squad member once`,
             `<strong class="clickable">Well Equipped.</strong> Attacks with a <strong>Richters MG</strong> (<em>Spend 1 SLAGG: 2d6 to d3 targets, IMPACT 1; d2 turns to set up</em>) instead of Firearm`,
@@ -371,7 +370,7 @@ export const SQUADS = [
         ],
         specials: [
             `<strong class="clickable">Life Eternal.</strong> Each felled squad member drops a live <strong>Scream Grenade</strong> (<em>small explosive <strong>d4</strong>, <em>BLAST 3, HEAVY</em></em>)`,
-            `<strong class="clickable">Cold Iron.</strong> One squad member wields a <strong>Zweihander</strong> (<em><strong>d10</strong>, <em>HEAVY</em></em>) but dies taking any damage`,
+            `<strong class="clickable">Cold Iron.</strong> One squad member wields a <strong>Zweihander</strong> (<em><strong>d10</strong>, <em>HEAVY</em></em>). Is killed when taking any damage.`,
             `<strong class="clickable">Munitions Expert.</strong> Attacks with a <strong>Malevolent Rifle (M1)</strong> (<em><strong>d8</strong> rifle, <em>two-handed, IMPACT 1</em></em>) as if they had an additional squad member`,
             `<strong class="clickable">Detonation Pike.</strong> Sacrifice a squad member to make one attack with a <strong>Boom Lance</strong> (<em><strong>d10</strong> rocket launcher, <em>two-handed, BLAST 2, HEAVY</em></em>)`,
         ],
@@ -410,7 +409,7 @@ export const SQUADS = [
         specials: [
             `<strong class="clickable">SLAGG Transport.</strong> Carries 2 <strong>SLAGG</strong>`,
             `<strong class="clickable">Temporally Displaced.</strong> Remaining squad size doubles after <strong>2d2 turns</strong>`,
-            `<strong class="clickable">Destructive.</strong> Spends a turn to completely destroy a target’s <strong>cover</strong>`,
+            `<strong class="clickable">Destructive.</strong> Removes all <strong>cover</strong> instead of attacking with Firearm.`,
             `<strong class="clickable">Flanking.</strong> Moves to cover when a squad member is <strong>Downed</strong>`,
         ],
     },
@@ -421,7 +420,7 @@ export const MACHINES = [
         name: 'GASLOBBER',
         hp: 12, 
         morale: '-',
-        weapon: `<strong>Gas Canister Shell.</strong> Releases GAS within 20ft radius of target`,
+        weapon: `<strong>Gas Canister Shell.</strong> Releases GAS within 20ft of target`,
         armor: `<strong>Blast Screen.</strong> -d4`,
         special: 'Usually far from the front'
     },
@@ -429,7 +428,7 @@ export const MACHINES = [
         name: `LANDCRUSHER`,
         hp: 20,
         morale: '-',
-        weapon: `<strong>Mounted Cannon.</strong> d12, IMPACT 4, SHOCK (<em>fires once every d4 rounds</em>)`,
+        weapon: `<strong>Mounted Cannon.</strong> d12 once per d4 rounds, IMPACT 4, SHOCK`,
         armor: `<strong>Forged SLAGG Plating.</strong> -d10`,
         special: `Tries to run over grvnts between Cannon shots. Destroys all cover.`,
     },
@@ -437,7 +436,7 @@ export const MACHINES = [
         name: `SKYCRAWLER`,
         hp: '*',
         morale: 9,
-        weapon: `<strong>Strafe.</strong> d4 grvnts test Agility DR14 or 3d6 damage spread evenly (<em>IMPACT 1</em>)`,
+        weapon: `<strong>Strafe.</strong> 3d6 spread (<em>IMPACT 1</em>), DR14 to avoid.`,
         armor: `<strong>Sheet Metal.</strong> -d4`,
         special: `When Skycrawler would take damage, test Morale`,
     },
@@ -445,7 +444,7 @@ export const MACHINES = [
         name: `SEASPLITTER`,
         hp: 30,
         morale: 10 ,
-        weapon: `<strong>Heavy Guns.</strong> d12 damage to all targets in a 30ft area`,
+        weapon: `<strong>Heavy Guns.</strong> d12 to all within 30ft of target`,
         armor: `<strong>Iron Lung.</strong> -d12`,
         special: `Seacrawler cannot dodge, all attacks hit`,
     },
