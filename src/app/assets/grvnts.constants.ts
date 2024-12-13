@@ -174,8 +174,8 @@ export const REASONS = [
     'because you had no choice - it was that, or be <strong>hung for your crimes</strong>',
     'because as a prisoner you developed an obsession with <span class="emphasize">BRUTALITY AND PAIN</span>',
     'for the greater good of your <strong>god</strong>',
-    'because killing is your business, & business is <strong>good</strong>',
-    'because you were <strong>exiled from your village</strong> and had no where else to go.',
+    'because killing is your business, and business is <strong>good</strong>',
+    'because you were <strong>exiled from your village</strong> and had nowhere else to go.',
     'due to your desire for wanton, bloody, terrifying <strong>hedonism</strong>',
     'because an incurable disease ails you - <strong>you are not long for this world anyway</strong>',
     'to feed your <strong>addiction</strong> to the roar of flames and blasts of shrapnel',
@@ -202,7 +202,7 @@ export const SCARS = [
     'razor wire embedded in your arm (d6)',
     'shortened stride from a <strong>Shinripper</strong>. You tread lightly ever since.',
     'permanent <strong>thousand-league</strong> stare',
-    'small piece of <strong>sharpnel</strong> that painfully migrates through your body',
+    'small piece of <strong>shrapnel</strong> that painfully migrates through your body',
     '[d6] <strong>missing teeth</strong>',
     'broken blood vessel in your <strong>right eye</strong>',
     'broken blood vessel in your <strong>left eye</strong>',
@@ -210,21 +210,21 @@ export const SCARS = [
     'pair of <strong>fractured ribs</strong> that rattles as you run',
     'set of weak knees and a hunched posture, making you a <strong>smaller target</strong>',
     'massive, distracting <strong>hematoma</strong>',
-    '<strong>Slaggvara</strong> shrapnel protruding from your head like a <strong>demon horn</strong>, promising certain death if removed',
-    '<strong>gas-mask</strong> melted to your face - <strong>still works</strong>',
+    '<strong>SLAGGVARA</strong> shrapnel protruding from your head like a <strong>demon horn</strong>, promising certain death if removed',
+    '<strong>gas mask</strong> melted to your face - <strong>still works</strong>',
     'crudely <strong>severed hand</strong>',
     'hole in the side of your mouth, <strong>exposing teeth</strong>',
     'stab wound that <strong>never heals</strong>, stuffed with gauze',
     'severe case of <strong>battle tinnitus</strong> that <strong>blocks out everything</strong> else when in shock',
     'disfiguration from <strong>Dark Thoughts</strong>; you don\'t like talking about it',
-    '<strong>terminal cough</strong>...small puffs of <strong>gas</strong> hacked up from time to time',
+    '<strong>terminal cough</strong>...small puffs of <strong>Gas</strong> hacked up from time to time',
     '<strong>ripped throat</strong> from an attempted assassination',
     'bite mark from <strong>something human</strong>',
     '<strong>flayed scalp</strong>, dangles in the wind',
     '<strong>snaggletooth</strong> punctured through your lip',
     'arrow lodged in your <strong>femoral artery</strong>, tickles to the touch',
     '<strong>broken foot</strong>, crushed by iron treads',
-    '<strong>Slaggvara tattoo</strong>, won\'t stop itching',
+    '<strong>SLAGGVARA tattoo</strong>, won\'t stop itching',
     '<strong>shoulder</strong> that pops out of place at will',
     'criss-cross of <strong>deep rope burns</strong> on your palms',
     '<strong>hole in your skull</strong> that causes helmets to never fit right',
@@ -236,7 +236,7 @@ export const SCARS = [
 
 export const VICES = [
     'fondling a <strong>Shinripper</strong>',
-    'confessing <strong>war crimes</strong> to the cynically cursed chaplain',
+    'confessing <strong>war crimes</strong> to the Cynically Cursed Chaplain',
     'burning through an <strong>entire pack of smokes</strong> in a night',
     'writing horrible poetry (and forcing others to <strong>listen to it</strong>)',
     'holding your hand above flames until the <strong>pain</strong> is too great',
@@ -245,12 +245,12 @@ export const VICES = [
     'reading the names on every dog tag you\'ve collected (<strong>you must have more</strong>)',
     'walking among the corpses, looking for a <strong>familiar face</strong>',
     'biting your <strong>fingernails</strong> way too short',
-    'creating <strong>morose paints</strong> of the day\'s atrocities',
+    'creating <strong>morose paintings</strong> of the day\'s atrocities',
     'juggling <strong>grenades</strong> - the more, the better',
     'overindulging in drink until <strong>passing out</strong>',
     'meticulously and eerily <strong>cleaning weapons</strong>',
-    'donning a <strong>gas-mask</strong> for no reason',
-    'snorting crushed <strong>slagg</strong>',
+    'donning a <strong>gas mask</strong> for no reason',
+    'snorting crushed <strong>SLAGG</strong>',
     'writing letters to <strong>no one</strong>',
     'dry shaving with a jagged, rusty <strong>bayonet</strong>',
     'carving <strong>useless</strong> wooden crosses',
@@ -300,7 +300,7 @@ export const JOBS = [
             }
         ],
         descrip:`
-            <em>It's rare that a grvnt live to fight another day, but then - with the Dying Lands constantly at war - there's as much opportunity to live as to die. Oftentimes they're one and the same. Such experience is valued among the sea of countless conscripts who reek of pissed trousers. <strong>What doesn't kill you makes a great story</strong>.</em>
+            <em>It's rare that a grvnt lives to fight another day, but then - with the Dying Lands constantly at war - there's as much opportunity to live as to die. Oftentimes they're one and the same. Such experience is valued among the sea of countless conscripts who reek of pissed trousers. <strong>What doesn't kill you makes a great story</strong>.</em>
         `,
         skills: [
             {
@@ -521,16 +521,16 @@ export const JOBS = [
                 table: [
                     `<div><strong class="underline">Legion, the Haunted Rifle.</strong> Found atop a pyre of fallen grvnts, their souls are bound to this Malevolent Rifle and refer to themselves as <strong>Legion</strong>. <strong>Spend 1 Power</strong>: Legion’s ghost wages war by your side, dealing <strong>d8 damage</strong>. Legion’s ghost does not use Ammo.</div>`,
                     `<div><strong class="underline">The Galgen Beheader</strong> A Malevolent Rifle capped with an <strong>oversized bayonet</strong> (<strong>d8</strong>), perfect for beheading many an unfortunate grvnt. <strong>Melee attacks Crit on an 18-20</strong>.</div>`,
-                    `<div><strong class="underline">R.O.D. Grenades</strong> Revengeful Occvlt Destruction (R.O.D.) mounted at the end of any Firearm’s barrel. <strong>Add any grenade type to your rifle’s next attack</strong>.</div>`,
-                    `<div><strong class="underline">Basilisk Carbine</strong> Your rifle suffers no penalties in melee. While in melee, <strong>spend another ammo to attack again this turn</strong>.</div>`,
+                    `<div><strong class="underline">R.O.D. Grenades</strong> Revengeful Occvlt Destruction (R.O.D.) mounted at the end of any Firearm’s barrel. <strong>Spend 1 Power:</strong> add any grenade type to your rifle’s next attack.</div>`,
+                    `<div><strong class="underline">Basilisk Carbine</strong> Your rifle suffers no penalties and gains <strong>BLAST 2, SHOCK</strong> in melee.`,
                 ]
             },
             {
                 descrip: 'What did you bring with you:',
                 table: [
                     `<div><strong class="underline">Letters from Home.</strong> Loathed by your family, they send letters doused in poison or booby-trapped with explosives; you’ve learned the hard way never to open them. They make great makeshift weapons though (<strong>d4 damage plus a random Weapon Keyword</strong>). You start with d4 and slowly receive more as you write home.</div>`,
-                    `<div><strong class="underline">Stop Watch</strong> Before your grizzled veteran grandfather passed, he left you his pocket watch. It smells like shit… <strong>1-in-4 chance to block a successful non-BLAST attack</strong>.</div>`,
-                    `<div><strong class="underline">Purple Heart Poetry</strong> Writing your thoughts in a leather-bound journal keeps you sane in an insane world. Your words shake souls: <strong>test Presence DR12 to add your SHOCK to a target</strong>. They immediately suffer the new result.</div>`,
+                    `<div><strong class="underline">Stop Watch</strong> Before your grizzled veteran grandfather passed, he left you his pocket watch. It smells like shit… <strong>1-in-4 chance to block all non-BLAST damage</strong>.</div>`,
+                    `<div><strong class="underline">Purple Heart Poetry</strong> Writing your thoughts in a leather-bound journal keeps you sane in an insane world. Your words shake souls: <strong>Spend 1 Power:</strong> add your current SHOCK to a target. They immediately suffer the new result.</div>`,
                     `<div><strong class="underline">Lovesick</strong> You carry a small painting of your love back home; sometimes it animates and speaks to you. Conversing with the painting allows you to successfully <strong>cast a random War Scroll once per day</strong>, even if you don’t own the Scroll.</div>`,
                 ],
             },
@@ -539,7 +539,7 @@ export const JOBS = [
                 table: [
                     ` If the war does not end you, they will <strong>consider themselves well fed</strong> upon your return.`,
                     ` Write home always – they need <strong>fuel for the hearth</strong>.`,
-                    ` Finally, the family name can be cleared from its <strong>generational curse</strong>.`,
+                    ` Finally, the family name can be cleared from the <strong>generational curse</strong>.`,
                     ` They <strong>never even noticed</strong> you left.`,
                     ` Try to <strong>block the bullets</strong> for the other, better grvnts.`,
                     ` Remember to wear a helmet. <strong>Protect what little brains you got left</strong>.`,
@@ -866,7 +866,7 @@ export const JOBS = [
                             <div><strong class="underline">16-18</strong> all enemies take <strong>d6 damage</strong>.</div>
                         </div>
                     </div>`,
-                    `<div class="embedded-padding"><strong class="underline">GROWTH.</strong>  <strong>Roll 2d6</strong>. <div>For each <strong>4-6</strong>, d3 creatures near you GROW enormous (<strong>x2 HP, d12 melee attack</strong>). For each <strong>1-3</strong>, d3 creatures near you SHRINK smaller (DR16 to hit, half HP and attack).</div></div>`,
+                    `<div class="embedded-padding"><strong class="underline">GROWTH.</strong>  <strong>Roll 2d6</strong>. <div>For each <strong>4-6</strong>, d3 creatures near you GROW enormous (<strong>double HP, d12 melee attack</strong>). For each <strong>1-3</strong>, d3 creatures near you SHRINK smaller (DR16 to hit, half HP and attack).</div></div>`,
                     `<div class="embedded-padding"><strong class="underline">DECAY.</strong>  <strong>Roll 3d6</strong>. <div>For each <strong>1-2</strong>, d3 Firearms nearby turn to dust. For each <strong>3-4</strong>, Armor rots off d3 grvnts near you. For each <strong>5-6</strong>, d3 creatures near you take d8 damage.</div></div>`,
                     `<div class="embedded-padding"><strong class="underline">INTERDEPENDENCE.</strong>  <strong>Roll 4d6</strong> and assign each to one creature. <div>That creature can add or subtract their die’s value from any roll. The squad lose all SHOCK.</div></div>`,
                     `<div class="embedded-padding"><strong class="underline">MOVEMENT.</strong>  <strong>Roll 1d6</strong>. Your squad takes that many immediate actions.</div>`,
@@ -1092,7 +1092,7 @@ export const JOBS = [
                     ` Fine, sharpened <strong>Mountfont graphite fitted to Blacktrunk wood</strong>.`,
                     ` Liquified <strong>Black Salt Wind</strong> and a custom-handled <strong>Dredgehog quill</strong>.`,
                     ` The means matter not so long as the stationary is <strong>well-pressed Onda kelp papyri</strong>.`,
-                    ` Dyed <strong>Butaboar fats</strong> and the <strong>twisted pin of a grenade</strong>.`,
+                    ` Dyed <strong>Butaboar fats</strong> and the <strong>twisted pin of a Scream Grenade</strong>.`,
 
                 ]
             },
@@ -1126,11 +1126,11 @@ export const JOBS = [
                 table: [
                     `+1 <strong>SLAGG</strong> every mission.`,
                     `Roll <strong>Broken</strong> up to <strong>-2 HP</strong>.`,
-                    `Gain <strong>Lobster Armor</strong> as available Requisitions.`,
+                    `Gain <strong>Lobster Armor</strong> (2) as available Requisitions.`,
                     `When gaining<strong> War Scrolls</strong>, <strong>choose</strong> instead of rolling random.`,
                     `All members of the squad are <strong>Promoted</strong> at the end of the mission.`,
-                    `Word of your accomplishments reaches faraway ears. Automatically win your next <strong>Diplomacy Phase</strong>.`,
-                    `All <strong>new</strong> grvnts choose their own <strong>SHIT</strong>`,
+                    `Automatically win your next <strong>Diplomacy Phase</strong>.`,
+                    `All <strong>new</strong> grvnts choose their own <strong>SHIT</strong>.`,
                     `All <strong>SHOCK</strong> rolls for the squad are now <strong>d3</strong>.`,
                 ],
             },
@@ -1303,6 +1303,6 @@ export const ARMOR = [
     `<strong class="clickable">Tier 2 Armor.</strong> <strong class="underline">scrap-metal, splint mail</strong> (<em>-d4 damage</em>)`,
     `<strong class="clickable">Tier 2 Armor.</strong> <strong class="underline">scrap-metal, splint mail + helmet</strong> (<em>-d4 damage</em>)`,
     `<strong class="clickable">Tier 3 Armor.</strong> <strong class="underline">crawler bodywork, howler bear pelts </strong>(<em>-d6 damage</em>)`,
-    `<strong class="clickable">Tier 3 Armor.</strong> <strong class="underline">crawler bodywork, howler bear pelts + plus helmet</strong> (<em>-d6 damage</em>)`,
+    `<strong class="clickable">Tier 3 Armor.</strong> <strong class="underline">crawler bodywork, howler bear pelts + helmet</strong> (<em>-d6 damage</em>)`,
     `<strong class="clickable">Tier 4 Armor.</strong> <strong class="underline">Lobster Armor</strong> (a misnomer, any deep water is deadly) (<em>-d8 damage</em>)`,
 ];
