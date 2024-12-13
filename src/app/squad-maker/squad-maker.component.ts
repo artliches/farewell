@@ -115,7 +115,8 @@ export class SquadMakerComponent implements OnInit, OnChanges, OnDestroy {
         this.machineNum = 0;
         this.attachmentsNum = 0;
         this.getInitialSquad(5);
-        if (this.random.getRandomNumber(1, 10) >= 3) {
+
+        if (this.random.getRandomNumber(1, 10) <= 3) {
           this.attachmentsNum = 1;
         }
         break;
@@ -126,11 +127,11 @@ export class SquadMakerComponent implements OnInit, OnChanges, OnDestroy {
         this.getInitialSquad(10);
 
         for (let i = 0; i < 2; i++) {
-          if (this.random.getRandomNumber(1, 10) >= 6) {
+          if (this.random.getRandomNumber(1, 10) <= 6) {
             this.attachmentsNum += 1;
           }
         }
-        if (this.random.getRandomNumber(1, 10) >= 6) {
+        if (this.random.getRandomNumber(1, 10) <= 6) {
           this.machineNum = 1;
         }
         break;
@@ -140,12 +141,12 @@ export class SquadMakerComponent implements OnInit, OnChanges, OnDestroy {
         this.machineNum = 0;
         this.getInitialSquad(20);
         for (let i = 0; i < 3; i++) {
-          if (this.random.getRandomNumber(1, 10) >= 6) {
+          if (this.random.getRandomNumber(1, 10) <= 6) {
             this.attachmentsNum += 1;
           }
         }
         for (let i = 0; i < 2; i++) {
-          if (this.random.getRandomNumber(1, 10) >= 6) {
+          if (this.random.getRandomNumber(1, 10) <= 6) {
             this.machineNum += 1;
           }
         }
@@ -320,30 +321,30 @@ export class SquadMakerComponent implements OnInit, OnChanges, OnDestroy {
     this.machineNum = 0;
     switch(true) {
       case this.enemySize.includes('squad'): {
-        if (this.random.getRandomNumber(1, 10) >= 3) {
+        if (this.random.getRandomNumber(1, 10) <= 3) {
           this.attachmentsNum = 1;
         }
         break;
       }
       case this.enemySize.includes('company'): {
         for (let i = 0; i < 2; i++) {
-          if (this.random.getRandomNumber(1, 10) >= 6) {
+          if (this.random.getRandomNumber(1, 10) <= 6) {
             this.attachmentsNum += 1;
           }
         }
-        if (this.random.getRandomNumber(1, 10) >= 6) {
+        if (this.random.getRandomNumber(1, 10) <= 6) {
           this.machineNum = 1;
         }
         break;
       }
       case this.enemySize.includes('regiment'): {
         for (let i = 0; i < 3; i++) {
-          if (this.random.getRandomNumber(1, 10) >= 6) {
+          if (this.random.getRandomNumber(1, 10) <= 6) {
             this.attachmentsNum += 1;
           }
         }
         for (let i = 0; i < 2; i++) {
-          if (this.random.getRandomNumber(1, 10) >= 6) {
+          if (this.random.getRandomNumber(1, 10) <= 6) {
             this.machineNum += 1;
           }
         }
