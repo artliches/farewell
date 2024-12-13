@@ -519,7 +519,7 @@ export const JOBS = [
             {
                 descrip: 'What rifle did you start with:',
                 table: [
-                    `<div><strong class="underline">Legion, the Haunted Rifle.</strong> Found atop a pyre of fallen grvnts, their souls are bound to this Malevolent Rifle and refer to themselves as <strong>Legion</strong>. <strong>Spend 1 Power</strong>: Legion’s ghost wages war by your side, dealing <strong>d8 damage</strong>. Legion’s ghost does not use Ammo.</div>`,
+                    `<div><strong class="underline">Legion, the Haunted Rifle.</strong> Found atop a pyre of fallen grvnts, their souls are bound to this Malevolent Rifle and refer to themselves as <strong>Legion</strong>. <div><strong>Spend 1 Power</strong>: Legion’s ghost wages war by your side, dealing <strong>d8 damage</strong>. Legion’s ghost does not use Ammo.</div></div>`,
                     `<div><strong class="underline">The Galgen Beheader</strong> A Malevolent Rifle capped with an <strong>oversized bayonet</strong> (<strong>d8</strong>), perfect for beheading many an unfortunate grvnt. <strong>Melee attacks Crit on an 18-20</strong>.</div>`,
                     `<div><strong class="underline">R.O.D. Grenades</strong> Revengeful Occvlt Destruction (R.O.D.) mounted at the end of any Firearm’s barrel. <strong>Spend 1 Power:</strong> add any grenade type to your rifle’s next attack.</div>`,
                     `<div><strong class="underline">Basilisk Carbine</strong> Your rifle suffers no penalties and gains <strong>BLAST 2, SHOCK</strong> in melee.`,
