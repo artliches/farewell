@@ -621,6 +621,7 @@ export const JOBS = [
             },
         ]
     },
+    //arcane medic
     {
         name: 'arcane medic',
         stats: [
@@ -657,7 +658,6 @@ export const JOBS = [
                 descrip: `<strong class="underline">Field Dress Kit</strong>. <strong>[Presence+4]</strong> uses, (<strong>stops bleeding/infection and heals d6 HP</strong>)`,
                 presenceString: `<strong class="underline">Field Dress Kit</strong>. <strong>[Presence+4]</strong> uses, (<strong>stops bleeding/infection and heals d6 HP</strong>)`
             },
-            'war scroll'
         ],
         startingShit: [
             {
@@ -669,6 +669,9 @@ export const JOBS = [
             {
                 sidearm: 10
             },
+            {
+                warscroll: 1,
+            }
         ],
         descrip:`
             <em>
@@ -1066,7 +1069,7 @@ export const JOBS = [
             `A <strong>somewhat</strong> casual observer with a knack for conversing with the enemy. If nearby during an enemy Morale test, <strong>roll +1 on RESULT</strong>.`,
             'Start with a random <strong>War Scroll</strong>',
         ],
-        startingGear: ['war scroll'],
+        startingGear: [],
         startingShit: [
             {
                 armor: 4
@@ -1077,6 +1080,9 @@ export const JOBS = [
             {
                 sidearm: 10
             },
+            {
+                warscroll: 1,
+            }
         ],
         descrip:`
             <em>

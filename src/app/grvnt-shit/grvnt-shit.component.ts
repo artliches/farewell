@@ -123,6 +123,25 @@ export class GrvntShitComponent implements OnInit, OnChanges {
       this.saveAndEmitShitObject();
     }
 
+    if (changes['job'] && changes['job'].firstChange) {
+      if (this.job.startingGear.length > 0) {
+        this.job.startingGear.forEach((gear: string | {descrip: string, presenceString: string}) => {
+
+          if (typeof gear === 'object') {
+            if (gear.presenceString) {
+              gear.descrip = this.parseAndReplaceNumberString(gear.presenceString);
+            }
+            this.extrasArray.push(gear);
+          } 
+          else {
+            this.extrasArray.push({
+              descrip: gear
+            });
+          }
+        });
+      }
+    }
+
     if (changes['job'] && !changes['job'].firstChange) {
       this.extrasArray = [];
       if (changes['job'].previousValue) {
