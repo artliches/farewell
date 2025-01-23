@@ -6,6 +6,17 @@ header {
     }
 }
 
+.social-link {
+    text-decoration: none;
+    background-color: var(--header-background-color);
+    color: var(--header-color);
+    font-weight: bold;
+    &:hover {
+        background-color: var(--hover-background);
+        color: var(--hover-color);
+    }
+}
+
 .toolbar {
     font-size: 10px;
     display: flex;
