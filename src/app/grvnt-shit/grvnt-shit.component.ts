@@ -21,6 +21,7 @@ export class GrvntShitComponent implements OnInit, OnChanges {
     descrip: ''
   };
   @Input() clearPromos: boolean = false;
+  @Input() hasJuggernautArmor: boolean = false;
   @Output() shitObjectEmitter: EventEmitter<any> = new EventEmitter();
   constructor(
     private random: RandomNumberService
@@ -191,7 +192,6 @@ export class GrvntShitComponent implements OnInit, OnChanges {
           }
         });
       }
-
       this.saveAndEmitShitObject();
     }
 
@@ -238,6 +238,29 @@ export class GrvntShitComponent implements OnInit, OnChanges {
       this.readyObjFromMerit = [];
 
       this.saveAndEmitShitObject();
+    }
+
+    if (changes['hasJuggernautArmor']) {
+      if (changes['hasJuggernautArmor'].currentValue) {
+        this.armorWithHelmet = false;
+        this.armorObj = {
+          descrip: `
+            <div><strong class="non-clickable">TIER 4 ARMOR.</strong> <strong><u>Juggernaut Lobster Armor</u></strong> (a misnomer, any deep water is deadly) (<em>-d8 damage</em>)</div>
+            <div class="margin-left"><strong><u>Punch</u></strong> (<strong>d4, HEAVY</strong>), stick some <strong><em>SLAGG</em></strong> in it and damage becomes (<strong>d8, HEAVY</strong>)</div>
+          `,
+          currIndex: 3,
+          limitNum: 4
+        }
+
+        if (this.shitObj.armorObj && !changes['hasJuggernautArmor'].firstChange) this.saveAndEmitShitObject(); 
+      } else if (
+          !changes['hasJuggernautArmor'].currentValue 
+          && changes['hasJuggernautArmor'].previousValue
+          && !changes['job']
+        ) {
+          //we had juggernaut, now we need to get back to normal
+          this.rerollArmor(this.armorObj.limitNum);
+      }
     }
   }
 
@@ -382,7 +405,7 @@ export class GrvntShitComponent implements OnInit, OnChanges {
       } else {
         this.hasNothing = false;
         this.removeNothingScroll();
-        if (this.armorObj.descrip.includes('Lobster')) {
+        if (this.armorObj.descrip.includes('Lobster') && !this.armorObj.descrip.includes('Juggernaut')) {
           this.armorObj = {
             descrip: '',
             currIndex: -1,

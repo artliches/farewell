@@ -273,6 +273,16 @@ body {
     color: var(--selection-color);
 }
 
+.margin-left {
+    margin-left: 1rem;
+}
+
+.non-clickable {
+    background-color: var(--clickable-background-color);
+    color: var(--clickable-color);
+    width: max-content;
+}
+
 .emphasize {
     font-family: "BAALREGULAR";
     letter-spacing: 5px;

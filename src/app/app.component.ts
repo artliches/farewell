@@ -143,6 +143,7 @@ export class AppComponent implements OnInit {
   };
 
   saveSquads: boolean = false;
+  hasJuggernautArmor: boolean = false;
 
   ngOnInit(): void {
     //shuffle jobs and choose the first on load
@@ -211,6 +212,10 @@ export class AppComponent implements OnInit {
 
   toggleShock() {
     this.showShock = !this.showShock;
+  }
+
+  toggleJuggernautArmor(hasJuggernaut: boolean) {
+    this.hasJuggernautArmor = hasJuggernaut;
   }
 
   rerollAll() {

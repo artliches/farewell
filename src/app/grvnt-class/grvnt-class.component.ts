@@ -19,6 +19,7 @@ export class GrvntClassComponent implements OnInit, OnChanges {
   @Output() newJobEmitter: EventEmitter<boolean> = new EventEmitter();
   @Output() newBeast: EventEmitter<number> = new EventEmitter();
   @Output() classObjectEmitter: EventEmitter<any> = new EventEmitter();
+  @Output() toggleJuggernautArmor: EventEmitter<boolean> = new EventEmitter();
 
   skillObj: {
     descrip: string,
@@ -48,6 +49,7 @@ export class GrvntClassComponent implements OnInit, OnChanges {
     if (!changes['job'].firstChange) {
       this.skillObj = [];
       this.getSkills();
+      this.toggleJuggernautArmor.emit(this.skillObj.some(data => data.data.includes('Juggernaut')));
     }
   }
 
@@ -171,6 +173,7 @@ export class GrvntClassComponent implements OnInit, OnChanges {
       }
     }
 
+    this.toggleJuggernautArmor.emit(this.skillObj.some(data => data.data.includes('Juggernaut')));
     this.saveAndEmitClassObject();
   }
 
