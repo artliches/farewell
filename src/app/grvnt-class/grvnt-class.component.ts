@@ -20,6 +20,7 @@ export class GrvntClassComponent implements OnInit, OnChanges {
   @Output() newBeast: EventEmitter<number> = new EventEmitter();
   @Output() classObjectEmitter: EventEmitter<any> = new EventEmitter();
   @Output() toggleJuggernautArmor: EventEmitter<boolean> = new EventEmitter();
+  @Output() toggleEntrenchingTool: EventEmitter<boolean> = new EventEmitter();
 
   skillObj: {
     descrip: string,
@@ -39,6 +40,9 @@ export class GrvntClassComponent implements OnInit, OnChanges {
   ngOnInit(): void {
     if (Object.keys(this.classObj).length === 0) {
       this.getSkills();
+      this.toggleEntrenchingTool.emit(this.skillObj.some(data => data.data.includes('Death From Below')));
+      this.toggleJuggernautArmor.emit(this.skillObj.some(data => data.data.includes('Juggernaut')));
+
     } else {
       this.beastObj = this.classObj.beastObj;
       this.skillObj = this.classObj.skillObj;
@@ -49,7 +53,9 @@ export class GrvntClassComponent implements OnInit, OnChanges {
     if (!changes['job'].firstChange) {
       this.skillObj = [];
       this.getSkills();
+
       this.toggleJuggernautArmor.emit(this.skillObj.some(data => data.data.includes('Juggernaut')));
+      this.toggleEntrenchingTool.emit(this.skillObj.some(data => data.data.includes('Death From Below')));
     }
   }
 
@@ -174,6 +180,7 @@ export class GrvntClassComponent implements OnInit, OnChanges {
     }
 
     this.toggleJuggernautArmor.emit(this.skillObj.some(data => data.data.includes('Juggernaut')));
+    this.toggleEntrenchingTool.emit(this.skillObj.some(data => data.data.includes('Death From Below')));
     this.saveAndEmitClassObject();
   }
 

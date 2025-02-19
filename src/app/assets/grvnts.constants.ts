@@ -621,7 +621,6 @@ export const JOBS = [
             },
         ]
     },
-    //arcane medic
     {
         name: 'arcane medic',
         stats: [
@@ -1226,7 +1225,7 @@ export const CARRY = [
 
 export const READINESS = [
     `<strong class="clickable">Entrenching Tool</strong>. <strong>d4 damage</strong>`,
-    `<strong class="clickable">SLAGG Dip</strong>. <strong>d4</strong> applications, adds a <strong>random Weapon Keyword</strong>`,
+    `<strong class="clickable">SLAGG Dip</strong>. <strong>[d4]</strong> applications, adds a <strong>random Weapon Keyword</strong>`,
     `<strong class="clickable">Small Shield.</strong> -1 damage, break to prevent <strong>all damage from melee</strong> <em>Partial cover from ranged</em>`,
     `<strong class="clickable">Ammo Box</strong>. <strong>+[d4]</strong> Ammo (<strong>contains all types</strong>)`,
     `<strong class="clickable">Field Dress Kit</strong>. <strong>[Presence+4]</strong> uses, (<strong>stops bleeding/infection and heals d6 HP</strong>)`,

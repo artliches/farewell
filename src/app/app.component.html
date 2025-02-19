@@ -63,6 +63,7 @@
                     (newJobEmitter)="getNewJob()"
                     (newBeast)="addBeastHP($event)"
                     (toggleJuggernautArmor)="toggleJuggernautArmor($event)"
+                    (toggleEntrenchingTool)="toggleEntrenchingTool($event)"
                 ></app-grvnt-class>
                 <app-grvnt-shit
                     class="shit"
@@ -73,6 +74,7 @@
                     [promoEquip]="promoEquipObj"
                     [clearPromos]="clearPromo"
                     [hasJuggernautArmor]="hasJuggernautArmor"
+                    [hasEntrenchingTool]="hasEntrenchingTool"
                     (shitObjectEmitter)="updateShitObj($event)"
                 ></app-grvnt-shit>
             </section>
@@ -195,7 +197,7 @@
             </div>
             <div>MÖRK BORG is copyright Ockult Örtmästare Games and Stockholm Kartell.</div>
             <div>Farewell to Arms REDUX is copyright 2023 rivethead games. Web app by <a class="social-link" href="https://artliches.github.io/dungeons-coding/" target="_blank">{{'@codeLiches'}}</a></div>
-            <div><em>v1.2: One helluva lobster</em></div>
+            <div><em>v1.3: They're right below us!</em></div>
         </footer>
     </span>
 

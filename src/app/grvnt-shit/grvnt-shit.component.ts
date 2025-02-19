@@ -22,6 +22,7 @@ export class GrvntShitComponent implements OnInit, OnChanges {
   };
   @Input() clearPromos: boolean = false;
   @Input() hasJuggernautArmor: boolean = false;
+  @Input() hasEntrenchingTool: boolean = false;
   @Output() shitObjectEmitter: EventEmitter<any> = new EventEmitter();
   constructor(
     private random: RandomNumberService
@@ -90,6 +91,8 @@ export class GrvntShitComponent implements OnInit, OnChanges {
   hasNothing: boolean = false;
   nothingValue: number = 0;
   slagvarra: string[] = [];
+
+  extraTool: any;
 
   ngOnInit(): void {
     setTimeout(() => {
@@ -260,6 +263,21 @@ export class GrvntShitComponent implements OnInit, OnChanges {
         ) {
           //we had juggernaut, now we need to get back to normal
           this.rerollArmor(this.armorObj.limitNum);
+      }
+    }
+
+    if (changes['hasEntrenchingTool']) {
+      if (changes['hasEntrenchingTool'].currentValue) {
+        //add non-removable entrenching tool
+        this.extraTool = READINESS[READINESS.findIndex(data => data.includes('Entrenching Tool'))];
+        this.extraTool = this.extraTool.replace('clickable', 'non-clickable');
+
+        if (!changes['hasEntrenchingTool'].firstChange) this.saveAndEmitShitObject();
+      } else if (
+        !changes['hasEntrenchingTool'].currentValue
+        && changes['hasEntrenchingTool'].previousValue
+      ) {
+        this.extraTool = '';
       }
     }
   }
@@ -487,28 +505,30 @@ export class GrvntShitComponent implements OnInit, OnChanges {
   }
 
   rerollArmor(modNumber: number) {
-    let newIndex;
-    const armorTableToRoll = this.random.shuffleArray(JSON.parse(JSON.stringify(this.armorTable)).splice(0, modNumber));
-    const isEndOfArray = this.armorObj.currIndex + 1 === armorTableToRoll.length;
-
-    if (isEndOfArray) {
-      this.random.shuffleArray(armorTableToRoll);
-      newIndex = 0;
-    } else {
-      newIndex = this.armorObj.currIndex + 1;
+    if (!this.armorObj.descrip.includes('Juggernaut')) {
+      let newIndex;
+      const armorTableToRoll = this.random.shuffleArray(JSON.parse(JSON.stringify(this.armorTable)).splice(0, modNumber));
+      const isEndOfArray = this.armorObj.currIndex + 1 === armorTableToRoll.length;
+  
+      if (isEndOfArray) {
+        this.random.shuffleArray(armorTableToRoll);
+        newIndex = 0;
+      } else {
+        newIndex = this.armorObj.currIndex + 1;
+      }
+  
+      const newDescrip = armorTableToRoll[newIndex];
+  
+      this.armorObj = {
+        descrip: newDescrip,
+        currIndex: newIndex,
+        limitNum: modNumber,
+      };
+  
+      this.armorWithHelmet = this.armorObj.descrip.includes('helmet');
+  
+      this.saveAndEmitShitObject();
     }
-
-    const newDescrip = armorTableToRoll[newIndex];
-
-    this.armorObj = {
-      descrip: newDescrip,
-      currIndex: newIndex,
-      limitNum: modNumber,
-    };
-
-    this.armorWithHelmet = this.armorObj.descrip.includes('helmet');
-
-    this.saveAndEmitShitObject();
   }
 
   private removeReadinessScroll() {
@@ -536,7 +556,7 @@ export class GrvntShitComponent implements OnInit, OnChanges {
         this.carryObj.descrip = `a <strong>warscroll</strong> and <strong class="clickable">nothing</strong> to carry it in - <em>kiss your mom goodbye</em>.`
     } else {
       this.nothingValue = this.random.getRandomNumber(1, 6);
-      if (this.nothingValue <= 4) {
+      if (this.nothingValue <= 4 || this.armorObj.descrip.includes("Juggernaut")) {
         this.rerollWarScroll(false, true);
         this.carryObj.descrip = `a <strong>warscroll</strong> and <strong class="clickable">nothing</strong> to carry it in - <em>kiss your mom goodbye</em>.`
       } else {
@@ -599,6 +619,10 @@ export class GrvntShitComponent implements OnInit, OnChanges {
       tableIndex: tableIndex,
       presenceString: presenceString,
     };
+
+    if (this.extraTool && this.readyObj.descrip.includes('Entrenching Tool')) {
+      this.rerollReady();
+    }
 
     this.shockObj.ready = this.readyObj.tableIndex + 1;
     this.hasShock = this.checkForShock();

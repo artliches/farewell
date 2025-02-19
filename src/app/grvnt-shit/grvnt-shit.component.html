@@ -70,8 +70,14 @@
                     <li><span [innerHTML]="extra.descrip"></span></li>
                 }
             }
-            @if (!hasNothing) {
+            @if (!hasNothing || extraTool) {
                 <em class="small-font underline">Shit</em>
+            }
+            @if (extraTool) {
+                <div><em class="small-font">Earned via "Death From Below"</em></div>
+                <li>
+                    <span [innerHTML]="extraTool"></span>
+                </li>
             }
             @if (!hasNothing) {
                 <li>
