@@ -551,12 +551,12 @@ export class GrvntShitComponent implements OnInit, OnChanges {
     this.hasNothing = true;
     this.shockObj.personal = 0;
     this.shockObj.ready = 0;
-    if (this.job.name === 'altered mercenary') {
+    if (this.job.name === 'altered mercenary' || this.armorObj.descrip.includes("Juggernaut")) {
         this.rerollWarScroll(false, true);
         this.carryObj.descrip = `a <strong>warscroll</strong> and <strong class="clickable">nothing</strong> to carry it in - <em>kiss your mom goodbye</em>.`
     } else {
       this.nothingValue = this.random.getRandomNumber(1, 6);
-      if (this.nothingValue <= 4 || this.armorObj.descrip.includes("Juggernaut")) {
+      if (this.nothingValue <= 4) {
         this.rerollWarScroll(false, true);
         this.carryObj.descrip = `a <strong>warscroll</strong> and <strong class="clickable">nothing</strong> to carry it in - <em>kiss your mom goodbye</em>.`
       } else {
