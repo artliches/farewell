@@ -255,6 +255,9 @@ export class GrvntShitComponent implements OnInit, OnChanges {
           limitNum: 4
         }
 
+        //check if we have a nothing response
+        if (this.hasNothing) this.getNothingGear();
+
         if (this.shitObj.armorObj && !changes['hasJuggernautArmor'].firstChange) this.saveAndEmitShitObject(); 
       } else if (
           !changes['hasJuggernautArmor'].currentValue 
@@ -262,6 +265,7 @@ export class GrvntShitComponent implements OnInit, OnChanges {
           && !changes['job']
         ) {
           //we had juggernaut, now we need to get back to normal
+          this.armorObj.descrip = '';
           this.rerollArmor(this.armorObj.limitNum);
       }
     }
