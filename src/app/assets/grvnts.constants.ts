@@ -605,7 +605,7 @@ export const JOBS = [
                     ` The <strong>death of someone close to you</strong> in the name of the cause. A crisis of faith shakes you. `,
                     ` The horrors of war, utter destruction, and unspeakable violence. <strong>The heavens do not seem to care</strong>.`,
                     ` An acceptance of absurdist nihilism… <strong>That’s all war is, anyway</strong>.`,
-                    ` Mortar fire took more than just a piece of your brain: <strong>faith logically makes no sense to you anymore</strong>. Some call you a pessimist; you contend you’re a <strong>realist</strong>.>`
+                    ` Mortar fire took more than just a piece of your brain: <strong>faith logically makes no sense to you anymore</strong>. Some call you a pessimist; you contend you’re a <strong>realist</strong>.`
                 ]
             },
             {

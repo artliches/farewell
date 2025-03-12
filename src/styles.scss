@@ -730,6 +730,10 @@ ul {
 }
 
 @media print {
+    @page {
+        size: auto;
+        margin: 0;
+    }
     * {
         color: black !important;
     }
