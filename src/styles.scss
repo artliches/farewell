@@ -731,8 +731,8 @@ ul {
 
 @media print {
     @page {
-        size: auto;
-        margin: 0;
+        size: 8.5in 11in;
+        margin: 0.1in 0 0 0;
     }
     * {
         color: black !important;
@@ -818,6 +818,7 @@ ul {
             }
         }
         footer {
+            margin-top: 1.5rem;
             font-size: 0.5rem;
         }
     }
