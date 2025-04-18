@@ -765,6 +765,9 @@ ul {
     .mission-body {
         border-color: black !important;
     }
+    .leader-layout > *, .squad-layout > *, .attachments-title, .machine-layout > * {
+        margin-left: 1rem;
+    }
     .farewell-layout {
         color: black;
         display: flex;
