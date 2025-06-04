@@ -118,6 +118,7 @@
                 </app-mission-advance>
                 <app-mission-rewards
                     class="rewards"
+                    [getNewMission]="getNewMission"
                     [rewardsSaveObj]="rewardsSaveObj"
                     (rewardsSaveObjEmitter)="updateRewards($event)"
                 >
@@ -197,7 +198,7 @@
             </div>
             <div>MÖRK BORG is copyright Ockult Örtmästare Games and Stockholm Kartell.</div>
             <div>Farewell to Arms REDUX is copyright 2023 rivethead games. Web app by <a class="social-link" href="https://artliches.github.io/dungeons-coding/" target="_blank">{{'@codeLiches'}}</a></div>
-            <div><em>v1.5: Make room grvnt!</em></div>
+            <div><em>v1.6: Blood and slagg</em></div>
         </footer>
     </span>
 

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
 import { RandomNumberService } from '../random-number.service';
 import { REWARDS } from '../assets/missions.constants';
 import { RewardsObj } from '../grvnt-interfaces';
@@ -10,11 +10,12 @@ import { RewardsObj } from '../grvnt-interfaces';
   templateUrl: './mission-rewards.component.html',
   styleUrl: './mission-rewards.component.scss'
 })
-export class MissionRewardsComponent implements OnInit, OnDestroy {
+export class MissionRewardsComponent implements OnInit, OnDestroy, OnChanges {
   constructor(
     private random: RandomNumberService
   ) {}
 
+  @Input() getNewMission: boolean = false;
   @Input() rewardsSaveObj: RewardsObj = {} as RewardsObj;
   @Output() rewardsSaveObjEmitter: EventEmitter<any> = new EventEmitter();
 
@@ -38,14 +39,24 @@ export class MissionRewardsComponent implements OnInit, OnDestroy {
     }
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+      if (!changes['getNewMission'].firstChange) {
+        this.rerollRewards();
+        this.rerollSlagg();
+      }
+  }
+
   ngOnDestroy(): void {
       this.rewardsSaveObjEmitter.emit(this.rewardsObjToEmit);
   }
 
   rerollSlagg() {
-    const slaggArray = [0, 1, 2, 3, 4, 5];
-    const newIndex = slaggArray.indexOf(this.rewardObj.slagg) + 1 === slaggArray.length ? 0 : slaggArray.indexOf(this.rewardObj.slagg) + 1;
-    this.rewardObj.slagg = slaggArray[newIndex];
+    let tempNewSlagg = -1;
+    do {
+      tempNewSlagg = this.random.getRandomNumber(0,5);
+    } while (tempNewSlagg === this.rewardObj.slagg);
+
+    this.rewardObj.slagg = tempNewSlagg;
   }
 
   rerollRewards() {
